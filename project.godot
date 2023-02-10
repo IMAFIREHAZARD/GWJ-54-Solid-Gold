@@ -11,11 +11,13 @@ config_version=4
 [application]
 
 config/name="GWJ 54"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 KeyBinding="*res://addons/key_binding/key_binding.gd"
+Global="*res://Global.gd"
 
 [editor_plugins]
 
