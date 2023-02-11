@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 KeyBinding="*res://addons/key_binding/key_binding.gd"
 Global="*res://Global.gd"
+StageManager="*res://StageManager.gd"
 
 [editor_plugins]
 
