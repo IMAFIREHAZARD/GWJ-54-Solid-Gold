@@ -5,6 +5,7 @@ Autoload for managing scene transitions
 
 extends Control
 
+var current_map
 
 
 func _ready():
@@ -22,6 +23,7 @@ func change_scene_to(Scene : PackedScene):
 	yield(fadeTransition, "FadedOut")
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	get_tree().change_scene_to(Scene)
+	
 	fadeTransition.fade_in()
 	yield(fadeTransition, "FadedIn")
 	fadeTransition.queue_free()
