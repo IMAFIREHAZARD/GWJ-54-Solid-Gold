@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=1]
-[ext_resource path="res://GUI/InventoryFooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/HelpFooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
 
 [node name="HUD" type="CanvasLayer"]
@@ -38,5 +38,5 @@ margin_right = 649.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
-[node name="InventoryFooter" parent="." instance=ExtResource( 2 )]
-visible = false
+[node name="Footer" parent="." instance=ExtResource( 2 )]
+

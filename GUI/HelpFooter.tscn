@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sfx/shh.wav" type="AudioStream" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://GUI/HelpFooter.gd" type="Script" id=4]
+
+[node name="Footer" type="MarginContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="Vbox" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 112.0
+mouse_filter = 2
+custom_constants/separation = 10
+alignment = 1
+
+[node name="TogglePanelButton" type="Button" parent="Vbox"]
+margin_left = 491.0
+margin_right = 533.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+toggle_mode = true
+text = "Help"
+
+[node name="PanelContents" type="HBoxContainer" parent="Vbox"]
+margin_left = 422.0
+margin_top = 30.0
+margin_right = 602.0
+margin_bottom = 112.0
+grow_horizontal = 2
+mouse_filter = 2
+size_flags_horizontal = 4
+
+[node name="WASDMove" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_right = 78.0
+margin_bottom = 82.0
+
+[node name="WASDMove" type="Label" parent="Vbox/PanelContents/WASDMove"]
+margin_right = 78.0
+margin_bottom = 14.0
+text = "WASD Move"
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/WASDMove"]
+margin_top = 18.0
+margin_right = 78.0
+margin_bottom = 82.0
+texture = ExtResource( 3 )
+
+[node name="MouseShoot" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_left = 82.0
+margin_right = 180.0
+margin_bottom = 82.0
+
+[node name="MouseShoot" type="Label" parent="Vbox/PanelContents/MouseShoot"]
+margin_right = 98.0
+margin_bottom = 14.0
+text = "Left Click Shoot"
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/MouseShoot"]
+margin_top = 18.0
+margin_right = 98.0
+margin_bottom = 82.0
+texture = ExtResource( 3 )
+
+[node name="PanelOpenNoise" parent="." instance=ExtResource( 1 )]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[connection signal="toggled" from="Vbox/TogglePanelButton" to="." method="_on_InventoryButton_toggled"]
