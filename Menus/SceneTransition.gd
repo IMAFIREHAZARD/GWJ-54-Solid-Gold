@@ -14,11 +14,9 @@ func start():
 	
 
 func fade_out():
-	print("fading out")
 	$AnimationPlayer.play("FadeOut")
 	
 func fade_in():
-	print("fading in")
 	$AnimationPlayer.play("FadeIn")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

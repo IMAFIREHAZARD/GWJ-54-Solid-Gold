@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_RichTextLabel_meta_clicked(meta):
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	OS.shell_open(meta)
