@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sfx/click.wav" type="AudioStream" id=1]
 [ext_resource path="res://GUI/GenericButton.gd" type="Script" id=2]
 [ext_resource path="res://sfx/shh.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=5]
 
 [node name="GenericButton" type="Button"]
 margin_right = 83.0
 margin_bottom = 20.0
+theme = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 1, 0.121569, 0.121569, 1 )
 text = "Start Game"
 script = ExtResource( 2 )
 
@@ -20,4 +23,5 @@ stream = ExtResource( 1 )
 volume_db = -7.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_GenericButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_GenericButton_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_GenericButton_pressed"]
