@@ -10,6 +10,7 @@ extends MarginContainer
 func _ready():
 	$Vbox/TogglePanelButton.text = "Help [ " + InputMap.get_action_list("help")[0].as_text() + " ]"
 
+	margin_top = -1 * $Vbox/TogglePanelButton.get_rect().size.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

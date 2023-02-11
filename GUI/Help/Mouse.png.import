@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player_base_spritesheet.png-95799ed4d36d104e3c2d5d3d2c1dd134.stex"
+path="res://.import/Mouse.png-3649e2dff91e070ebd0587e4cfea31f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/player/Player_base_spritesheet.png"
-dest_files=[ "res://.import/Player_base_spritesheet.png-95799ed4d36d104e3c2d5d3d2c1dd134.stex" ]
+source_file="res://GUI/Help/Mouse.png"
+dest_files=[ "res://.import/Mouse.png-3649e2dff91e070ebd0587e4cfea31f8.stex" ]
 
 [params]
 
