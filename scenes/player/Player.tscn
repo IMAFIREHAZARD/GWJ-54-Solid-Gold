@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/test_art/Player_base.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -53,3 +54,5 @@ polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -64 )
 frames = SubResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
