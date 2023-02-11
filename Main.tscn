@@ -2,7 +2,7 @@
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -26,7 +26,7 @@ custom_constants/separation = 40
 
 [node name="StartGameButton" parent="CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 
-[node name="TestingButton" parent="CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+[node name="TestingMenuButton" parent="CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 60.0
 margin_bottom = 80.0
 text = "Testing"
