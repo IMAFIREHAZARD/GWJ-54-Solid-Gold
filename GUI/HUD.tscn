@@ -39,3 +39,4 @@ text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
 [node name="Footer" parent="." instance=ExtResource( 2 )]
+
