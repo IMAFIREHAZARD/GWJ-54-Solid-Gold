@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/key_binding/action_mapper.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=2]
+
+[node name="RemapControls" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 439.0
+margin_top = 235.0
+margin_right = 585.0
+margin_bottom = 365.0
+
+[node name="MoveLeft" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 146.0
+margin_bottom = 18.0
+action = "move_left"
+num_input_events = 2
+
+[node name="MoveRight" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 22.0
+margin_right = 146.0
+margin_bottom = 40.0
+action = "move_right"
+num_input_events = 2
+
+[node name="MoveUp" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 44.0
+margin_right = 146.0
+margin_bottom = 62.0
+action = "move_up"
+num_input_events = 2
+
+[node name="MoveDown" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_right = 146.0
+margin_bottom = 84.0
+action = "move_down"
+num_input_events = 2
+
+[node name="Inventory" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 88.0
+margin_right = 146.0
+margin_bottom = 106.0
+action = "toggle_inventory"
+num_input_events = 2
+
+[node name="MainMenuButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 110.0
+margin_right = 146.0
+margin_bottom = 130.0
+text = "Return to Main Menu"
+target_scene_path = "res://Main.tscn"
