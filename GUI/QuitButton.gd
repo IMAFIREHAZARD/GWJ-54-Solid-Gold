@@ -12,4 +12,8 @@ func _ready():
 
 
 func _on_GenericButton_pressed():
-	get_tree().quit()
+	$ClickNoise.start_persistant()
+	var timer = get_tree().create_timer(0.35)
+	yield(timer, "timeout")
+	
+	StageManager.quit()
