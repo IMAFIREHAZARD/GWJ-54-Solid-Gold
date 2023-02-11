@@ -54,9 +54,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="SceneTransition" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="SceneTransition" type="CanvasLayer"]
+layer = 10
 script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
