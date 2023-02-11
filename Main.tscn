@@ -16,18 +16,20 @@ margin_bottom = 600.0
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 470.0
 margin_top = 260.0
-margin_right = 553.0
+margin_right = 554.0
 margin_bottom = 340.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
-margin_right = 83.0
+margin_right = 84.0
 margin_bottom = 80.0
 custom_constants/separation = 40
 
 [node name="StartGameButton" parent="CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 84.0
 
 [node name="TestingMenuButton" parent="CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 60.0
+margin_right = 84.0
 margin_bottom = 80.0
 text = "Testing"
 
