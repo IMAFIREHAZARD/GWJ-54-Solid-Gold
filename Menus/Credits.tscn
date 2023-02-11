@@ -108,37 +108,37 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 60.0
-margin_top = 28.0
+margin_top = 63.0
 margin_right = 964.0
-margin_bottom = 571.0
+margin_bottom = 536.0
 custom_constants/separation = 25
 
 [node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 904.0
-margin_bottom = 36.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Credits"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 61.0
+margin_top = 47.0
 margin_right = 904.0
-margin_bottom = 490.0
+margin_bottom = 420.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 margin_right = 450.0
-margin_bottom = 429.0
+margin_bottom = 373.0
 
 [node name="ProductionLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 450.0
-margin_bottom = 36.0
+margin_bottom = 22.0
 text = "Production"
 
 [node name="James" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 40.0
+margin_top = 26.0
 margin_right = 450.0
-margin_bottom = 75.0
+margin_bottom = 61.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -147,15 +147,15 @@ bbcode_text = "James Medway (he/him) -  [url]https://www.linkedin.com/in/james-m
 text = "James Medway (he/him) -  https://www.linkedin.com/in/james-medway/"
 
 [node name="DesignLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 79.0
+margin_top = 65.0
 margin_right = 450.0
-margin_bottom = 115.0
+margin_bottom = 87.0
 text = "Design"
 
 [node name="Andy" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 119.0
+margin_top = 91.0
 margin_right = 450.0
-margin_bottom = 154.0
+margin_bottom = 126.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -164,15 +164,15 @@ bbcode_text = "Andy -  [url]https://ldandybrunet.wixsite.com/andy-brunet[/url]"
 text = "Andy -  https://ldandybrunet.wixsite.com/andy-brunet"
 
 [node name="ArtLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 158.0
+margin_top = 130.0
 margin_right = 450.0
-margin_bottom = 194.0
+margin_bottom = 152.0
 text = "Art"
 
 [node name="Kyveri" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 450.0
-margin_bottom = 233.0
+margin_bottom = 191.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -181,9 +181,9 @@ bbcode_text = "Kyveri -  [url]https://linktr.ee/kyveri[/url]"
 text = "Kyveri -  https://linktr.ee/kyveri"
 
 [node name="discolexia" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 237.0
+margin_top = 195.0
 margin_right = 450.0
-margin_bottom = 272.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -192,15 +192,15 @@ bbcode_text = "discolexia -  [url]...[/url]"
 text = "discolexia -  ..."
 
 [node name="AudioLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 276.0
+margin_top = 234.0
 margin_right = 450.0
-margin_bottom = 312.0
+margin_bottom = 256.0
 text = "Audio"
 
 [node name="Jesus" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 316.0
+margin_top = 260.0
 margin_right = 450.0
-margin_bottom = 351.0
+margin_bottom = 295.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -209,9 +209,9 @@ bbcode_text = "JesusCaballero -  [url]https://www.jesuscaballeromusic.com/[/url]
 text = "JesusCaballero -  https://www.jesuscaballeromusic.com/"
 
 [node name="RaSalz" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 355.0
+margin_top = 299.0
 margin_right = 450.0
-margin_bottom = 390.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -220,9 +220,9 @@ bbcode_text = "RaSalz - Music [url]https://on.soundcloud.com/YfRui[/url]"
 text = "RaSalz - Music https://on.soundcloud.com/YfRui"
 
 [node name="Wodan" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 394.0
+margin_top = 338.0
 margin_right = 450.0
-margin_bottom = 429.0
+margin_bottom = 373.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -233,17 +233,17 @@ text = "Wodan - Sound Designer - wodangameaudio@gmail.com"
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 margin_left = 454.0
 margin_right = 904.0
-margin_bottom = 429.0
+margin_bottom = 373.0
 
 [node name="CodeLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 450.0
-margin_bottom = 36.0
+margin_bottom = 22.0
 text = "Code"
 
 [node name="Hayden" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 40.0
+margin_top = 26.0
 margin_right = 450.0
-margin_bottom = 94.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -252,9 +252,9 @@ bbcode_text = "Hayden -  [url]https://haydoggo.itch.io/[/url]"
 text = "Hayden -  https://haydoggo.itch.io/"
 
 [node name="Plex" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 98.0
+margin_top = 80.0
 margin_right = 450.0
-margin_bottom = 153.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -263,9 +263,9 @@ bbcode_text = "Plexsoup -  [url]https://plexsoup.itch.io[/url]"
 text = "Plexsoup -  https://plexsoup.itch.io"
 
 [node name="Twilightrh" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 157.0
+margin_top = 134.0
 margin_right = 450.0
-margin_bottom = 212.0
+margin_bottom = 184.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -274,9 +274,9 @@ bbcode_text = "Twilightrh -  [url]...[/url]"
 text = "Twilightrh -  ..."
 
 [node name="Eddy14" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 216.0
+margin_top = 188.0
 margin_right = 450.0
-margin_bottom = 271.0
+margin_bottom = 238.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -285,9 +285,9 @@ bbcode_text = "Eddy14 -  [url]...[/url]"
 text = "Eddy14 -  ..."
 
 [node name="BitGhost" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 275.0
+margin_top = 242.0
 margin_right = 450.0
-margin_bottom = 330.0
+margin_bottom = 292.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -296,15 +296,15 @@ bbcode_text = "BitGhost -  [url]...[/url]"
 text = "BitGhost -  ..."
 
 [node name="WritingLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 334.0
+margin_top = 296.0
 margin_right = 450.0
-margin_bottom = 370.0
+margin_bottom = 318.0
 text = "Writing"
 
 [node name="Xaeinovis" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 374.0
+margin_top = 322.0
 margin_right = 450.0
-margin_bottom = 429.0
+margin_bottom = 373.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -314,9 +314,9 @@ text = "Xaeinovis -  "
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_left = 342.0
-margin_top = 515.0
+margin_top = 445.0
 margin_right = 561.0
-margin_bottom = 543.0
+margin_bottom = 473.0
 size_flags_horizontal = 6
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
