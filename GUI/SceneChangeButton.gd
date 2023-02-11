@@ -19,5 +19,5 @@ func _on_GenericButton_pressed():
 		else:
 			printerr("SceneChangeButton.gd " + self.name + " needs target_scene or target_scene_path")
 	else:
-		StageManager.change_scene(target_scene)
+		StageManager.change_scene_to(target_scene)
 		
