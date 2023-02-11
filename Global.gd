@@ -10,5 +10,6 @@ func _ready():
 
 
 func is_paused():
-	
-	return get_tree().paused
+	# Wow, this gets called a lot.
+	return false
+	#return get_tree().paused
