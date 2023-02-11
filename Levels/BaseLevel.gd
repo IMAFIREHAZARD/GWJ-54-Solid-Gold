@@ -2,7 +2,7 @@ extends Node2D
 
 onready var cam:Camera2D = get_node("Camera2D")
 onready var player:KinematicBody2D = find_node("Player")
-onready var tileMapLevel1:TileMap = get_node("TileMapLevel1")
+onready var tileMapLevel1:TileMap = find_node("TileMapLevel1")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

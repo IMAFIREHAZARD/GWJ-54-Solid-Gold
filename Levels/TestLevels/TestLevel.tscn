@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/test_art/test_tileset2.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/NPCs/PatrollingUnit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/test_art/blocks_3.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Objects/PassableObjects/BasePassableObject.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 547, 15, 418, -48, 483, -79, -98, -500, 31, -431, -35, -401, 352, -240, 383, -225, 320, -193, 255, -193, 27, -82, 94, -49, 158, -16, 34, 45, -95, -15, 574, -129, 703, -62, 510, -96, 64, -67, -129, -354, -255, -416, -61, -384, 159, -205, 97, -240, 164, -273, 277, -236, 224, -208, 190, -194, 286, -173, 255, -161 )
@@ -52,6 +53,9 @@ navpoly = SubResource( 1 )
 [node name="Camera2D" parent="." index="3"]
 position = Vector2( 471, -279 )
 zoom = Vector2( 2, 2 )
+
+[node name="Exit" parent="." index="4" instance=ExtResource( 7 )]
+position = Vector2( 590, -416 )
 
 [editable path="TileMapLevel1/PassableObject"]
 [editable path="TileMapLevel1/PatrollingUnit"]
