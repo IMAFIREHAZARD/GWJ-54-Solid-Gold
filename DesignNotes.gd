@@ -18,7 +18,26 @@ Roles:
 Accessibility Guidelines:
 	https://drive.google.com/file/d/1YBCVIlETy_qSzvsYDQg_aaW0ZdKCG-kE/view?usp=sharing
 	
+HackNPlan Page:
+	https://app.hacknplan.com/p/181387/gamemodel?nodeId=1&nodeTabId=basicinfo
 	
+GitHub:
+	https://github.com/IMAFIREHAZARD/GWJ-54-Solid-Gold
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Level 1: Shoot the creeps. Gun is slow, creeps replicate quickly.
+Level 1 Boons: Gun Hands: fast, continuous shooting. Makes it easier to kill the creeps
+
+Level 2: Navigate through the panes of glass. 
+	If you have continuous shooting hands, it'll be challenging, but possible.
+	Level 2 Boon: Glass can become impenetrable.
+	
+Level 3: 
+	Navigate through the level safely
+	If the glass is impenetrable, bullets ricochet, and might cause you harm.
+
 """
 
 extends Node
