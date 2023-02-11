@@ -1,6 +1,14 @@
 {
 	"events": [
 		{
+			"audio": "play",
+			"audio_bus": "sfx",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://sfx/ahhhahhh.wav",
+			"volume": -12
+		},
+		{
 			"animation": "slide_in_left.gd",
 			"animation_length": 0.5,
 			"animation_wait": true,
