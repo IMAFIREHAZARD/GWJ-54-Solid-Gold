@@ -12,7 +12,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_GenericButton_pressed():
-	$ClickNoise.start()
+	$ClickNoise.start_persistant()
 	if target_scene == null:
 		if target_scene_path != "":
 			StageManager.change_scene(target_scene_path)
