@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Projectiles/Bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Player/chracter_run_spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Player/Player_base_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0156
@@ -346,6 +347,7 @@ animations = [ {
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 5
 script = ExtResource( 1 )
+move_speed = 500
 bullet_scene = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -363,8 +365,27 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleSouth"
+frame = 1
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -31.0
+margin_top = -180.0
+margin_right = 33.0
+margin_bottom = -116.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_progress = ExtResource( 7 )
+fill_mode = 4
+
+[node name="GunCurse" type="Timer" parent="."]
+
+[connection signal="timeout" from="GunCurse" to="." method="shoot"]
