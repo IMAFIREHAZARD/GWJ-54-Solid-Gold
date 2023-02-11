@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://sfx/click.wav" type="AudioStream" id=1]
+[ext_resource path="res://GUI/Buttons/UI_hover_04.wav" type="AudioStream" id=1]
 [ext_resource path="res://GUI/GenericButton.gd" type="Script" id=2]
-[ext_resource path="res://sfx/shh.wav" type="AudioStream" id=3]
+[ext_resource path="res://GUI/Buttons/UI_hover_03.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=5]
 
@@ -16,11 +16,11 @@ script = ExtResource( 2 )
 
 [node name="HoverNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 3 )
-volume_db = -18.0
+pitch_shift = true
 
 [node name="ClickNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 1 )
-volume_db = -7.0
+volume_db = 5.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_GenericButton_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_GenericButton_mouse_exited"]
