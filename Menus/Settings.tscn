@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/RemapControls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/VolumeSetting.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sfx/SFXAudioVolumeTest.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Menus/ControllerDeadZone.tscn" type="PackedScene" id=5]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -34,42 +35,46 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 362.0
+margin_left = 303.0
 margin_top = 61.0
-margin_right = 662.0
+margin_right = 720.0
 margin_bottom = 135.0
 grow_horizontal = 2
 rect_min_size = Vector2( 300, 0 )
 custom_constants/separation = 50
 
 [node name="LeftSide" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 125.0
+margin_right = 215.0
 margin_bottom = 74.0
 size_flags_horizontal = 3
 
 [node name="KeyBindingsButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
-margin_right = 125.0
+margin_right = 215.0
 text = "Remap Controls"
 target_scene = ExtResource( 2 )
 
+[node name="ControllerDeadZone" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/LeftSide" instance=ExtResource( 5 )]
+
 [node name="RightSide" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 175.0
-margin_right = 300.0
+margin_left = 265.0
+margin_right = 417.0
 margin_bottom = 74.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide"]
-margin_right = 125.0
+margin_right = 152.0
 margin_bottom = 14.0
 text = "Volume"
 align = 1
 
 [node name="MasterVolumeSetting" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide" instance=ExtResource( 3 )]
 margin_top = 18.0
+margin_right = 152.0
 margin_bottom = 34.0
 
 [node name="MusicVolumeSetting" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide" instance=ExtResource( 3 )]
 margin_top = 38.0
+margin_right = 152.0
 margin_bottom = 54.0
 bus = "Music"
 
@@ -78,6 +83,7 @@ bus = "Music"
 
 [node name="SFXVolumeSetting" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide" instance=ExtResource( 3 )]
 margin_top = 58.0
+margin_right = 152.0
 margin_bottom = 74.0
 bus = "sfx"
 
