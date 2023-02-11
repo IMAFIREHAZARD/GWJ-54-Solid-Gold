@@ -13,11 +13,11 @@ script = ExtResource( 2 )
 
 [node name="HoverNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 3 )
-volume_db = -7.0
+volume_db = -18.0
 
 [node name="ClickNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 1 )
-volume_db = -5.0
+volume_db = -7.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_GenericButton_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_GenericButton_pressed"]
