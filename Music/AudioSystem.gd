@@ -35,9 +35,12 @@ func unsubscribe(uninterestedListenerNode, callbackFunction):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Global.is_paused() == true:
-		return
+func _broken_process(delta):
+	# something wrong with this?
+	return
+	
+#	if Global.is_paused() == true:
+#		return
 	
 	elapsed_time_sec += delta
 	
