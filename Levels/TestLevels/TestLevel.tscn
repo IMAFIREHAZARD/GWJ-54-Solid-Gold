@@ -37,7 +37,7 @@ position = Vector2( -138, -412 )
 [node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D5" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="3"]
 position = Vector2( 537, -381 )
 
-[node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="4"]
+[node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="2"]
 navpoly = SubResource( 1 )
 
 [editable path="TileMapLevel1/PatrollingUnit"]
