@@ -1,9 +1,8 @@
 extends AudioStreamPlayer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var pitch_shift : bool = false
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +15,8 @@ func start():
 	new_sound.connect("finished", new_sound, "_on_finished")
 	get_parent().add_child(new_sound)
 	
+	if pitch_shift:
+		new_sound.set_pitch_scale(rand_range(0.9, 1.1))
 	new_sound.play()
 	
 func _on_finished():
