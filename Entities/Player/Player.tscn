@@ -1,11 +1,11 @@
 [gd_scene load_steps=64 format=2]
 
-[ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/test_art/Player_base.png" type="Texture" id=3]
-[ext_resource path="res://scenes/player/Bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player/chracter_run_spritesheet.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Player/Player_base_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Projectiles/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Player/chracter_run_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Player/Player_base_spritesheet.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0156
@@ -13,27 +13,27 @@ radius = 32.0156
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 0, 570, 194, 285 )
+region = Rect2( 0, 0, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 194, 570, 194, 285 )
+region = Rect2( 194, 0, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 388, 570, 194, 285 )
+region = Rect2( 388, 0, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 582, 570, 194, 285 )
+region = Rect2( 582, 0, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 776, 570, 194, 285 )
+region = Rect2( 776, 0, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4

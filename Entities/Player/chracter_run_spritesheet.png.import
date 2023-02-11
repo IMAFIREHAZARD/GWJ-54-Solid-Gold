@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chracter_run_spritesheet.png-84e5b047a0dae5e506379f56bdef4e16.stex"
+path="res://.import/chracter_run_spritesheet.png-192d5488176d8520478b9703d437302a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/chracter_run_spritesheet.png"
-dest_files=[ "res://.import/chracter_run_spritesheet.png-84e5b047a0dae5e506379f56bdef4e16.stex" ]
+source_file="res://Entities/Player/chracter_run_spritesheet.png"
+dest_files=[ "res://.import/chracter_run_spritesheet.png-192d5488176d8520478b9703d437302a.stex" ]
 
 [params]
 

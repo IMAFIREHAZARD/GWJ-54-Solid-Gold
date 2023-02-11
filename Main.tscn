@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Menus/TestingMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level01_Shooter/Shooter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Levels/shooter/Shooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Control"]
@@ -45,14 +44,14 @@ margin_top = 125.0
 margin_right = 297.0
 margin_bottom = 145.0
 text = "Play Game"
-target_scene = ExtResource( 8 )
+target_scene = ExtResource( 4 )
 
 [node name="TestingMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 185.0
 margin_right = 297.0
 margin_bottom = 205.0
 text = "Testing"
-target_scene = ExtResource( 4 )
+target_scene_path = "res://Menus/TestingMenu.tscn"
 
 [node name="Settings" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 245.0
