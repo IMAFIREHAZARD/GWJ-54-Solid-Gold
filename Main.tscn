@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Levels/shooter/Shooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -43,6 +45,7 @@ margin_top = 125.0
 margin_right = 297.0
 margin_bottom = 145.0
 text = "Play Game"
+target_scene = ExtResource( 8 )
 
 [node name="TestingMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 185.0
@@ -56,6 +59,7 @@ margin_top = 245.0
 margin_right = 297.0
 margin_bottom = 265.0
 text = "Settings"
+target_scene = ExtResource( 9 )
 
 [node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 305.0
