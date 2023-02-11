@@ -4,7 +4,7 @@ onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 ## vars
-export var move_speed := 300
+export var move_speed := 200
 
 var vel := Vector2()
 
