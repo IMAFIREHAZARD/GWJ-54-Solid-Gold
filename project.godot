@@ -89,6 +89,7 @@ config/icon="res://Menus/Character.png"
 KeyBinding="*res://addons/key_binding/key_binding.gd"
 Global="*res://Global.gd"
 StageManager="*res://StageManager.gd"
+AudioSystem="*res://Music/AudioSystem.gd"
 
 [display]
 
