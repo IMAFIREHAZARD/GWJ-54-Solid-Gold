@@ -28,3 +28,10 @@ func change_scene_to(Scene : PackedScene):
 	yield(fadeTransition, "FadedIn")
 	fadeTransition.queue_free()
 	
+func quit():
+	var fadeTransition = preload("res://Menus/SceneTransition.tscn").instance()
+	add_child(fadeTransition)
+	fadeTransition.fade_out()
+	yield(fadeTransition, "FadedOut")
+	get_tree().quit()
+	

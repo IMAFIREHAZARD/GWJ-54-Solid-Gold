@@ -20,21 +20,22 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1019.0
-margin_bottom = 25.0
+margin_bottom = 33.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="Header/HBox"]
-margin_left = 365.0
-margin_top = 3.0
-margin_right = 493.0
-margin_bottom = 17.0
+margin_left = 328.0
+margin_top = 7.0
+margin_right = 456.0
+margin_bottom = 21.0
 text = "Cursed by Hindsight"
 
 [node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 503.0
-margin_right = 649.0
+margin_left = 466.0
+margin_right = 685.0
+margin_bottom = 28.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 

@@ -32,10 +32,10 @@ func _on_HSlider_value_changed(value):
 	# fires every frame. Don't waste it.
 	if elapsed_time > last_poll_time + polling_interval:
 		for action in actions:
-			InputMap.action_set_deadzone(action, $HSlider.value)
+			InputMap.action_set_deadzone(action, value)
 
 
-func _on_HSlider_drag_ended(value_changed):
+func _on_HSlider_drag_ended(_value_changed):
 	State = States.IDLE
 #	for action in actions:
 #		print(InputMap.action_get_deadzone(action))
