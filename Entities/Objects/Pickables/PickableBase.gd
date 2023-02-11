@@ -29,7 +29,7 @@ func pickup(body):
 	if body.has_method("_on_pickable_picked_up"):
 		connect("picked_up", body, "_on_pickable_picked_up")
 		emit_signal("picked_up")
-		$AnimationPlayer.play("picked_up")
+	$AnimationPlayer.play("picked_up")
 	
 
 func _on_Pickable_body_entered(body):
