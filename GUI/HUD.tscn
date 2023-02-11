@@ -39,3 +39,4 @@ text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
 [node name="InventoryFooter" parent="." instance=ExtResource( 2 )]
+visible = false

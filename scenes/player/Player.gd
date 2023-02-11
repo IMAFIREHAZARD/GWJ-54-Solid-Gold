@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var move_speed := 500
+export var move_speed := 300
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 export(PackedScene) var bullet_scene
 
