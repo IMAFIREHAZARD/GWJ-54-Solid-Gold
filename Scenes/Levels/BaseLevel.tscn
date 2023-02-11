@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="TileMapGround" type="TileMap" parent="."]
+mode = 1
+format = 1
+
+[node name="TileMapLevel1" type="TileMap" parent="."]
+mode = 1
+format = 1
+
+[node name="NPCParent" type="Node2D" parent="."]
+
+[node name="OtherParent" type="Node2D" parent="."]
