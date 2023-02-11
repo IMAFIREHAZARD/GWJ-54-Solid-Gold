@@ -40,4 +40,8 @@ position = Vector2( 537, -381 )
 [node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="2"]
 navpoly = SubResource( 1 )
 
+[node name="Camera2D" parent="." index="3"]
+position = Vector2( 471, -279 )
+zoom = Vector2( 2, 2 )
+
 [editable path="TileMapLevel1/PatrollingUnit"]
