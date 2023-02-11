@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://GUI/Buttons/ButtonBackgroundNormal.png" type="Texture" id=1]
 [ext_resource path="res://GUI/Fonts/Cinzel28_dynamicfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Buttons/ButtonBackgroundHover.png" type="Texture" id=3]
 
 [sub_resource type="Image" id=13]
 data = {
@@ -70,12 +71,12 @@ content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 2.0
 content_margin_bottom = 2.0
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 398, 88 )
-margin_left = 4.0
-margin_right = 4.0
-margin_top = 4.0
-margin_bottom = 4.0
+texture = ExtResource( 3 )
+region_rect = Rect2( -1.71045, -1.80989, 404, 89.7778 )
+margin_left = 68.4444
+margin_right = 72.0
+margin_top = 15.1111
+margin_bottom = 16.0
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 expand_margin_top = 2.0
@@ -88,8 +89,8 @@ content_margin_top = 3.0
 content_margin_bottom = 3.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 398, 88 )
-margin_left = 44.2222
-margin_right = 38.4444
+margin_left = 62.4444
+margin_right = 57.5555
 margin_top = 11.7778
 margin_bottom = 13.1111
 expand_margin_left = 2.0
