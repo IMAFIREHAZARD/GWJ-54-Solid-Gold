@@ -356,10 +356,14 @@ disabled = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -64 )
+[node name="SpriteRoot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteRoot"]
+position = Vector2( -2, -34 )
+scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
-animation = "RunNorth"
+animation = "IdleSouth"
+playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
