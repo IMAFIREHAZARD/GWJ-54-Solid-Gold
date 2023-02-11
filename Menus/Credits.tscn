@@ -49,8 +49,8 @@ rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "James -  [url]https://www.linkedin.com/in/james-medway/[/url]"
-text = "James -  https://www.linkedin.com/in/james-medway/"
+bbcode_text = "James Medway (he/him) - Producer -  [url]https://www.linkedin.com/in/james-medway/[/url]"
+text = "James Medway (he/him) - Producer -  https://www.linkedin.com/in/james-medway/"
 
 [node name="DesignLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 57.0
@@ -219,9 +219,11 @@ bbcode_text = "Xaeinovis -  [url][/url]"
 text = "Xaeinovis -  "
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 379.0
 margin_top = 405.0
-margin_right = 904.0
+margin_right = 525.0
 margin_bottom = 425.0
+size_flags_horizontal = 6
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
