@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player_base_spritesheet.png-95799ed4d36d104e3c2d5d3d2c1dd134.stex"
+path="res://.import/WASD.png-28ac88a1a0702ae08ecfdbc4767e1973.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/player/Player_base_spritesheet.png"
-dest_files=[ "res://.import/Player_base_spritesheet.png-95799ed4d36d104e3c2d5d3d2c1dd134.stex" ]
+source_file="res://GUI/Help/WASD.png"
+dest_files=[ "res://.import/WASD.png-28ac88a1a0702ae08ecfdbc4767e1973.stex" ]
 
 [params]
 
