@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sfx/click.wav" type="AudioStream" id=1]
+[ext_resource path="res://GUI/GenericButton.gd" type="Script" id=2]
+[ext_resource path="res://sfx/shh.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=4]
+
+[node name="GenericButton" type="Button"]
+margin_right = 83.0
+margin_bottom = 20.0
+text = "Start Game"
+script = ExtResource( 2 )
+
+[node name="HoverNoise" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 3 )
+volume_db = -18.0
+
+[node name="ClickNoise" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 1 )
+volume_db = -7.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_GenericButton_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_GenericButton_pressed"]
