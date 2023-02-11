@@ -4,8 +4,8 @@
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/test_art/Player_base.png" type="Texture" id=3]
 [ext_resource path="res://scenes/player/Bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/player/chracter_run_spritesheet.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/player/Player_base_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Player/chracter_run_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/Player_base_spritesheet.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0156
