@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 
-export var pitch_shift : bool = false
+export var pitch_shift : float = 0.0
 
 
 
@@ -15,8 +15,7 @@ func start():
 	new_sound.connect("finished", new_sound, "_on_finished")
 	get_parent().add_child(new_sound)
 	
-	if pitch_shift:
-		new_sound.set_pitch_scale(rand_range(0.9, 1.1))
+	new_sound.set_pitch_scale(rand_range(1.0-pitch_shift, 1.0+pitch_shift))
 	new_sound.play()
 	
 

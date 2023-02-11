@@ -16,7 +16,6 @@ script = ExtResource( 2 )
 
 [node name="HoverNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 3 )
-pitch_shift = true
 
 [node name="ClickNoise" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 1 )
