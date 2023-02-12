@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/test_art/test_tileset2.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/ground_sprites/TileSet_Ground.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/test_art/test_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Entities/NPCs/PatrollingUnit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/test_art/blocks_3.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Objects/PassableObjects/BasePassableObject.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/ground_sprites/TileSet_Sides.tres" type="TileSet" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 547, 15, 418, -48, 483, -79, -98, -500, 31, -431, -35, -401, 352, -240, 383, -225, 320, -193, 255, -193, 27, -82, 94, -49, 158, -16, 34, 45, -95, -15, 574, -129, 703, -62, 510, -96, 64, -67, -129, -354, -255, -416, -61, -384, 159, -205, 97, -240, 164, -273, 277, -236, 224, -208, 190, -194, 286, -173, 255, -161 )
@@ -15,11 +16,30 @@ outlines = [ PoolVector2Array( 34, 45, 158, -16, 94, -49, 190, -194, 255, -161, 
 
 [node name="TestLevel" instance=ExtResource( 1 )]
 
-[node name="TileMapGround" parent="." index="0"]
-tile_set = ExtResource( 2 )
-tile_data = PoolIntArray( -1441798, 0, 0, -1441797, 0, 0, -1441796, 0, 0, -1441795, 0, 0, -1441794, 0, 0, -1376262, 0, 0, -1376261, 0, 0, -1376260, 0, 0, -1376259, 0, 0, -1376258, 0, 0, -1310726, 0, 0, -1310725, 0, 0, -1310724, 0, 0, -1310723, 0, 0, -1310722, 0, 0, -1245190, 0, 0, -1245189, 0, 0, -1245188, 0, 0, -1245187, 0, 0, -1245186, 0, 0, -1179652, 0, 0, -1114116, 0, 0, -1048580, 0, 0, -983044, 0, 0, -917508, 0, 0, -851985, 0, 0, -851984, 0, 0, -851983, 0, 0, -851982, 0, 0, -851972, 0, 0, -786449, 0, 0, -786448, 0, 0, -786447, 0, 0, -786446, 0, 0, -786438, 0, 0, -786437, 0, 0, -786436, 0, 0, -786435, 0, 0, -786434, 0, 0, -851963, 0, 0, -851962, 0, 0, -851961, 0, 0, -851960, 0, 0, -720913, 0, 0, -720912, 0, 0, -720911, 0, 0, -720910, 0, 0, -720909, 0, 0, -720908, 0, 0, -720907, 0, 0, -720906, 0, 0, -720905, 0, 0, -720904, 0, 0, -720903, 0, 0, -720902, 0, 0, -720901, 0, 0, -720900, 0, 0, -720899, 0, 0, -720898, 0, 0, -786427, 0, 0, -786426, 0, 0, -786425, 0, 0, -786424, 0, 0, -655377, 0, 0, -655376, 0, 0, -655375, 0, 0, -655374, 0, 0, -655366, 0, 0, -655365, 0, 0, -655364, 0, 0, -655363, 0, 0, -655362, 0, 0, -655361, 0, 0, -720896, 0, 0, -720895, 0, 0, -720894, 0, 0, -720893, 0, 0, -720892, 0, 0, -720891, 0, 0, -720890, 0, 0, -720889, 0, 0, -720888, 0, 0, -589841, 0, 0, -589840, 0, 0, -589839, 0, 0, -589838, 0, 0, -589830, 0, 0, -589829, 0, 0, -589828, 0, 0, -589827, 0, 0, -589826, 0, 0, -655355, 0, 0, -655354, 0, 0, -655353, 0, 0, -655352, 0, 0, -524292, 1, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -393219, 1, 0, -262146, 1, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65538, 0, 0, 65539, 0, 0 )
+[node name="TileMapGroundSidesL" parent="." index="0"]
+mode = 1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 3, 0 )
 
-[node name="TileMapLevel1" parent="." index="1"]
+[node name="TileMapGroundSidesR" parent="." index="1"]
+mode = 1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 2, 0 )
+
+[node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="2"]
+navpoly = SubResource( 1 )
+
+[node name="TileMapGround" parent="." index="3"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 2, 0 )
+
+[node name="Exit" parent="." index="4" instance=ExtResource( 7 )]
+position = Vector2( 590, -416 )
+
+[node name="TileMapLevel1" parent="." index="5"]
 tile_set = ExtResource( 3 )
 tile_data = PoolIntArray( -851975, 0, 0, -851974, 0, 0, -851973, 0, 0, -851972, 0, 0, -786436, 0, 0, -720900, 0, 0 )
 
@@ -50,15 +70,9 @@ position = Vector2( -138, -412 )
 [node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D5" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="3"]
 position = Vector2( 537, -381 )
 
-[node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="2"]
-navpoly = SubResource( 1 )
-
-[node name="Camera2D" parent="." index="3"]
+[node name="Camera2D" parent="." index="6"]
 position = Vector2( 471, -279 )
 zoom = Vector2( 2, 2 )
-
-[node name="Exit" parent="." index="4" instance=ExtResource( 7 )]
-position = Vector2( 590, -416 )
 
 [editable path="TileMapLevel1/PassableObject"]
 [editable path="TileMapLevel1/PatrollingUnit"]

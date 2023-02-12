@@ -6,6 +6,7 @@ var current_bugs = 0
 export(String, "TimelineDropdown") var success_timeline
 
 func _ready() -> void:
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	$YSort/Critters.connect("child_exiting_tree", self, "_on_bug_died", [], CONNECT_DEFERRED)
 
 func _on_bug_died(_v):

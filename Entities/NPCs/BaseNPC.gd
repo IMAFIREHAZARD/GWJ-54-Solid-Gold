@@ -8,13 +8,14 @@ export var move_speed := 200
 
 var vel := Vector2()
 
-func _physics_process(delta : float):
+func _physics_process(_delta : float):
 	## calc next move
 	var move = global_position.direction_to(nav_agent.get_next_location());
 	# set move speed
 	var target_vel = move * move_speed
 	# move
 	if not nav_agent.is_navigation_finished():
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		move_and_slide(target_vel)
 	## adjust sprite frame dependend on move angle
 	var f = round(abs(Vector2.DOWN.angle_to(vel))/deg2rad(45))
