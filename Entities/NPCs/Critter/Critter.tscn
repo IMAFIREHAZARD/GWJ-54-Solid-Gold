@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/NPCs/BaseNPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/NPCs/Critter/Critter.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Critter" instance=ExtResource( 1 )]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="0"]
+frames = SubResource( 1 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -7, -4, 2, -7, 7, 3, -6, 7 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="3"]
+polygon = PoolVector2Array( -7, -3, -8, -12, -5, -4, -4, -12, -3, -4, 3, -3, 10, -13, 6, -2, 14, -7, 8, -2, 8, 4, 13, 12, 6, 5, 4, 14, 3, 5, -3, 6, -6, 15, -6, 6, -12, 11, -8, 4, -10, 0 )
+
+[node name="NavigationAgent2D2" type="NavigationAgent2D" parent="." index="4"]
+path_desired_distance = 30.0
+target_desired_distance = 30.0
+
+[node name="DebugTarget" type="Polygon2D" parent="." index="5"]
+color = Color( 0.14902, 1, 0, 1 )
+polygon = PoolVector2Array( 1, -15, 20, 6, -6, 20, -18, 2 )
+
+[node name="Label" type="Label" parent="." index="6"]
+margin_left = -22.0
+margin_top = -34.0
+margin_right = 18.0
+margin_bottom = -20.0
+
+[node name="Line2D" type="Line2D" parent="." index="7"]
+
+[connection signal="navigation_finished" from="NavigationAgent2D2" to="." method="_on_NavigationAgent2D2_navigation_finished"]
+[connection signal="path_changed" from="NavigationAgent2D2" to="." method="_on_NavigationAgent2D2_path_changed"]
+[connection signal="target_reached" from="NavigationAgent2D2" to="." method="_on_NavigationAgent2D2_target_reached"]
