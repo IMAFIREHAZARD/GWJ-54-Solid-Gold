@@ -327,21 +327,23 @@ move_speed = 500
 bullet_scene = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 31 )
+position = Vector2( 0.200001, 0 )
 shape = SubResource( 1 )
 disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.200001, -31 )
 polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
 
 [node name="SpriteRoot" type="Node2D" parent="."]
+position = Vector2( 0.200001, -31 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteRoot"]
 position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 2
+frame = 3
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
@@ -352,10 +354,10 @@ playing = true
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = -31.0
-margin_top = -180.0
-margin_right = 33.0
-margin_bottom = -116.0
+margin_left = -30.8
+margin_top = -211.0
+margin_right = 33.2
+margin_bottom = -147.0
 max_value = 1.0
 step = 0.0
 value = 1.0
@@ -366,7 +368,7 @@ fill_mode = 4
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0.0627451, 0.0117647, 0.0117647, 1 )
-position = Vector2( -1, 7 )
+position = Vector2( -0.799999, -24 )
 scale = Vector2( 0.52, 0.52 )
 texture = ExtResource( 8 )
 
