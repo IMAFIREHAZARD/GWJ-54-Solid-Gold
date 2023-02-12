@@ -6,6 +6,7 @@
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.gd" type="Script" id=4]
 
 [node name="Background" type="CanvasLayer"]
+layer = -100
 script = ExtResource( 4 )
 
 [node name="Clouds01" type="Sprite" parent="."]
