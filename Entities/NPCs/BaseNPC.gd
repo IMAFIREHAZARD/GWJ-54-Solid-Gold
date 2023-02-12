@@ -24,7 +24,6 @@ func _physics_process(delta : float):
 		animated_sprite.scale.x = -1
 	animated_sprite.frame = f
 
-
 func go_to_location(location:Vector2):
 	# set target location
 	nav_agent.set_target_location(location)
