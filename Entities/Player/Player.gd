@@ -25,18 +25,34 @@ const run_anim_names = [
 ]
 var dir_index = 0
 
+enum States { READY, PUSHING_BLOCK, PAUSED, DEAD }
+var State = States.READY
+
+
 func _ready() -> void:
 	Dialogic.has_current_dialog_node()
 
 func _physics_process(delta : float):
+	if State == States.READY:
+		move_normally(delta)
+	elif State == States.PUSHING_BLOCK:
+		pass # let the customAffordance move you?
+		
+		
+
+func move_normally(delta : float):
 	var move = Vector2()
 	if !Dialogic.has_current_dialog_node():
 		move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	move_and_slide(vel * Vector2(1,0.5))
+	animate_movement(vel)
 	
+
+func animate_movement(directionVector):
+	var vel = directionVector
 	var anim_array
 	if (vel.length() > 50):
 		anim_array = run_anim_names
