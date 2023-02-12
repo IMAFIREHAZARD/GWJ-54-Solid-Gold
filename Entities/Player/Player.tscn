@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/Player/chracter_run_spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Player/Player_base_spritesheet.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Art/Shadow.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0156
@@ -340,7 +341,7 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 1
+frame = 2
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
@@ -362,5 +363,11 @@ texture_progress = ExtResource( 7 )
 fill_mode = 4
 
 [node name="GunCurse" type="Timer" parent="."]
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 0.0627451, 0.0117647, 0.0117647, 1 )
+position = Vector2( -1, 7 )
+scale = Vector2( 0.52, 0.52 )
+texture = ExtResource( 8 )
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
