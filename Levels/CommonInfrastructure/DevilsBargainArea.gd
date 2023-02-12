@@ -1,17 +1,15 @@
 extends Area2D
 
-export (String) var timeline : String = "DevilsBargain"
+signal accept_curse()
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-
-
+export (String, "TimelineDropdown") var timeline
 
 func _on_DevilsBargainArea_body_entered(body):
 	if body.name == "Player":
 		var new_dialog = Dialogic.start(timeline)
 		add_child(new_dialog)
+		new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+func _on_dialogic_signal(param):
+	if param == "accept":
+		emit_signal("accept_curse")

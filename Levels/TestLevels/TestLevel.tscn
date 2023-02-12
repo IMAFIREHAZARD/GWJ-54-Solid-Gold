@@ -37,7 +37,7 @@ polygon = PoolVector2Array( 262, 107, 510, -19, 256, -393, 4, -277, -2, -5 )
 
 [node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D2" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="0"]
 
-[node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D3" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="1"]
+[node name="NPCParentPatrollingUnitPatrollingPathPosition2D3" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="1"]
 position = Vector2( 527, -37 )
 
 [node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D4" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="2"]

@@ -46,7 +46,7 @@
 			"value": ""
 		},
 		{
-			"emit_signal": "BulletproofGlassRequested",
+			"emit_signal": "accept",
 			"event_id": "dialogic_040"
 		},
 		{
