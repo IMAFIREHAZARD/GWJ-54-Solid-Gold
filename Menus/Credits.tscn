@@ -1,12 +1,106 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menus/Credits.gd" type="Script" id=1]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Themes/credits_theme.tres" type="Theme" id=3]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform vec4 BackColor : hint_color = vec4(0.0, 0.4, 0.58, 1.0);
+uniform vec4 CloudColor : hint_color = vec4(0.18, 0.70, 0.87, 1.0);
+uniform float speed : hint_range(0.0, 5.0) = 0.1;
+
+const float TAU = 6.28318530718;
+
+float Func(float pX)
+{
+	return 0.6*(0.5*sin(0.1*pX) + 0.5*sin(0.553*pX) + 0.7*sin(1.2*pX));
+}
+
+
+float FuncR(float pX)
+{
+	return 0.5 + 0.25*(1.0 + sin(mod(40.0*pX, TAU)));
+}
+
+
+float Layer(vec2 pQ, float pT)
+{
+	vec2 Qt = 3.5*pQ;
+	pT *= 0.5;
+	Qt.x += pT;
+
+	float Xi = floor(Qt.x);
+	float Xf = Qt.x - Xi -0.5;
+
+	vec2 C;
+	float Yi;
+	float D = 1.0 - step(Qt.y,  Func(Qt.x));
+
+	// Disk:
+	Yi = Func(Xi + 0.5);
+	C = vec2(Xf, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi+ pT/80.0));
+
+	// Previous disk:
+	Yi = Func(Xi+1.0 + 0.5);
+	C = vec2(Xf-1.0, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi+1.0+ pT/80.0));
+
+	// Next Disk:
+	Yi = Func(Xi-1.0 + 0.5);
+	C = vec2(Xf+1.0, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi-1.0+ pT/80.0));
+
+	return min(1.0, D);
+}
+
+void fragment() {
+	//vec2 uv = 8.0 * (SCREEN_UV - UV * 2.0);
+	vec2 uv = 3.0 * (SCREEN_UV - UV * 2.0);
+
+	// Render:
+	vec3 Color= BackColor.rgb;
+	for(float J = 0.0; J <= 1.0; J += 0.2)
+	{
+		// Cloud Layer:
+		float Lt =  TIME * speed * (0.5  + 2.0 * J) * (1.0 + 0.1 * sin(226.0 * J)) + 17.0 * J;
+		vec2 Lp = vec2(0.0, 0.3 + 1.5 * ( J - 0.5));
+		float L = Layer(uv + Lp, Lt);
+		// Blur and color:
+		float Blur = 4.0 * (0.5 * abs(2.0 - 5.0 * J)) / (11.0 - 5.0 * J);
+		float V = mix( 0.0, 1.0, 1.0 - smoothstep( 0.0, 0.01 +0.2 * Blur, L ) );
+		vec3 Lc=  mix(CloudColor.rgb, vec3(1.0), J);
+		Color =mix(Color, Lc,  V);
+	}
+	COLOR = vec4(Color,1.);
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/BackColor = Color( 0, 0.4, 0.58, 1 )
+shader_param/CloudColor = Color( 0.18, 0.7, 0.87, 1 )
+shader_param/speed = 0.1
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 7
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -14,54 +108,54 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 60.0
-margin_top = 87.0
+margin_top = 63.0
 margin_right = 964.0
-margin_bottom = 512.0
+margin_bottom = 536.0
 custom_constants/separation = 25
 
 [node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 904.0
-margin_bottom = 14.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Credits"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 39.0
+margin_top = 47.0
 margin_right = 904.0
-margin_bottom = 380.0
+margin_bottom = 420.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 margin_right = 450.0
-margin_bottom = 341.0
+margin_bottom = 373.0
 
 [node name="ProductionLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 450.0
-margin_bottom = 14.0
+margin_bottom = 22.0
 text = "Production"
 
 [node name="James" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 18.0
+margin_top = 26.0
 margin_right = 450.0
-margin_bottom = 53.0
+margin_bottom = 61.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "James Medway (he/him) - Producer -  [url]https://www.linkedin.com/in/james-medway/[/url]"
-text = "James Medway (he/him) - Producer -  https://www.linkedin.com/in/james-medway/"
+bbcode_text = "James Medway (he/him) -  [url]https://www.linkedin.com/in/james-medway/[/url]"
+text = "James Medway (he/him) -  https://www.linkedin.com/in/james-medway/"
 
 [node name="DesignLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 57.0
+margin_top = 65.0
 margin_right = 450.0
-margin_bottom = 71.0
+margin_bottom = 87.0
 text = "Design"
 
 [node name="Andy" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 75.0
+margin_top = 91.0
 margin_right = 450.0
-margin_bottom = 110.0
+margin_bottom = 126.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -70,15 +164,15 @@ bbcode_text = "Andy -  [url]https://ldandybrunet.wixsite.com/andy-brunet[/url]"
 text = "Andy -  https://ldandybrunet.wixsite.com/andy-brunet"
 
 [node name="ArtLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 114.0
+margin_top = 130.0
 margin_right = 450.0
-margin_bottom = 128.0
+margin_bottom = 152.0
 text = "Art"
 
 [node name="Kyveri" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 156.0
 margin_right = 450.0
-margin_bottom = 167.0
+margin_bottom = 191.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -87,9 +181,9 @@ bbcode_text = "Kyveri -  [url]https://linktr.ee/kyveri[/url]"
 text = "Kyveri -  https://linktr.ee/kyveri"
 
 [node name="discolexia" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 171.0
+margin_top = 195.0
 margin_right = 450.0
-margin_bottom = 206.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -98,15 +192,15 @@ bbcode_text = "discolexia -  [url]...[/url]"
 text = "discolexia -  ..."
 
 [node name="AudioLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 210.0
+margin_top = 234.0
 margin_right = 450.0
-margin_bottom = 224.0
+margin_bottom = 256.0
 text = "Audio"
 
 [node name="Jesus" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 228.0
+margin_top = 260.0
 margin_right = 450.0
-margin_bottom = 263.0
+margin_bottom = 295.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -115,41 +209,41 @@ bbcode_text = "JesusCaballero -  [url]https://www.jesuscaballeromusic.com/[/url]
 text = "JesusCaballero -  https://www.jesuscaballeromusic.com/"
 
 [node name="RaSalz" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 267.0
+margin_top = 299.0
 margin_right = 450.0
-margin_bottom = 302.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "RaSalz -  [url]...[/url]"
-text = "RaSalz -  ..."
+bbcode_text = "RaSalz - Music [url]https://on.soundcloud.com/YfRui[/url]"
+text = "RaSalz - Music https://on.soundcloud.com/YfRui"
 
 [node name="Wodan" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 306.0
+margin_top = 338.0
 margin_right = 450.0
-margin_bottom = 341.0
+margin_bottom = 373.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "Wodan -  [url]...[/url]"
-text = "Wodan -  ..."
+bbcode_text = "Wodan - Sound Designer - wodangameaudio@gmail.com"
+text = "Wodan - Sound Designer - wodangameaudio@gmail.com"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 margin_left = 454.0
 margin_right = 904.0
-margin_bottom = 341.0
+margin_bottom = 373.0
 
 [node name="CodeLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 450.0
-margin_bottom = 14.0
+margin_bottom = 22.0
 text = "Code"
 
 [node name="Hayden" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 18.0
+margin_top = 26.0
 margin_right = 450.0
-margin_bottom = 65.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -158,9 +252,9 @@ bbcode_text = "Hayden -  [url]https://haydoggo.itch.io/[/url]"
 text = "Hayden -  https://haydoggo.itch.io/"
 
 [node name="Plex" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 69.0
+margin_top = 80.0
 margin_right = 450.0
-margin_bottom = 117.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -169,9 +263,9 @@ bbcode_text = "Plexsoup -  [url]https://plexsoup.itch.io[/url]"
 text = "Plexsoup -  https://plexsoup.itch.io"
 
 [node name="Twilightrh" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 121.0
+margin_top = 134.0
 margin_right = 450.0
-margin_bottom = 168.0
+margin_bottom = 184.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -180,9 +274,9 @@ bbcode_text = "Twilightrh -  [url]...[/url]"
 text = "Twilightrh -  ..."
 
 [node name="Eddy14" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 172.0
+margin_top = 188.0
 margin_right = 450.0
-margin_bottom = 220.0
+margin_bottom = 238.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -191,9 +285,9 @@ bbcode_text = "Eddy14 -  [url]...[/url]"
 text = "Eddy14 -  ..."
 
 [node name="BitGhost" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 224.0
+margin_top = 242.0
 margin_right = 450.0
-margin_bottom = 271.0
+margin_bottom = 292.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -202,15 +296,15 @@ bbcode_text = "BitGhost -  [url]...[/url]"
 text = "BitGhost -  ..."
 
 [node name="WritingLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 275.0
+margin_top = 296.0
 margin_right = 450.0
-margin_bottom = 289.0
+margin_bottom = 318.0
 text = "Writing"
 
 [node name="Xaeinovis" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 293.0
+margin_top = 322.0
 margin_right = 450.0
-margin_bottom = 341.0
+margin_bottom = 373.0
 rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -219,10 +313,10 @@ bbcode_text = "Xaeinovis -  [url][/url]"
 text = "Xaeinovis -  "
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 379.0
-margin_top = 405.0
-margin_right = 525.0
-margin_bottom = 425.0
+margin_left = 342.0
+margin_top = 445.0
+margin_right = 561.0
+margin_bottom = 473.0
 size_flags_horizontal = 6
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"

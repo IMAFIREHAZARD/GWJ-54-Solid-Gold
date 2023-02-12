@@ -1,51 +1,102 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Levels/shooter/Shooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Gardening/Gardening.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Glass/GlassLevel01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Glass/GlassLevel02.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Cooking/Cooking.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/TestLevels/TestLevel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
 
 [node name="TestingMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 0.184314, 0.145098, 0.145098, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 439.0
-margin_top = 177.0
-margin_right = 585.0
-margin_bottom = 422.0
+margin_left = 341.0
+margin_top = 151.0
+margin_right = 682.0
+margin_bottom = 449.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 22.0
+text = "Testing"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 341.0
+margin_bottom = 266.0
+
+[node name="LeftSide" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 163.0
+margin_bottom = 240.0
 custom_constants/separation = 25
 
-[node name="SceneChangeButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_right = 146.0
+[node name="ShooterScene" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_right = 163.0
+margin_bottom = 28.0
 text = "Shooter Scene"
-target_scene = ExtResource( 2 )
+target_scene = ExtResource( 8 )
 
-[node name="SceneChangeButton2" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 45.0
-margin_right = 146.0
-margin_bottom = 65.0
+[node name="Glass01" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 53.0
+margin_right = 163.0
+margin_bottom = 81.0
+text = "Glass Scene"
+target_scene = ExtResource( 4 )
 
-[node name="SceneChangeButton3" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 90.0
-margin_right = 146.0
-margin_bottom = 110.0
+[node name="Glass02" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 106.0
+margin_right = 163.0
+margin_bottom = 134.0
+text = "Ricochet Scene"
+target_scene = ExtResource( 5 )
 
-[node name="SceneChangeButton4" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 135.0
-margin_right = 146.0
-margin_bottom = 155.0
+[node name="Gardening" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 159.0
+margin_right = 163.0
+margin_bottom = 187.0
+text = "Gardening"
+target_scene = ExtResource( 3 )
 
-[node name="SceneChangeButton5" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 180.0
-margin_right = 146.0
-margin_bottom = 200.0
+[node name="Cooking" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 212.0
+margin_right = 163.0
+margin_bottom = 240.0
+text = "Cooking"
+target_scene = ExtResource( 6 )
+
+[node name="RightSide" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 167.0
+margin_right = 341.0
+margin_bottom = 240.0
+
+[node name="Eddy14 TestLevel" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
+margin_right = 174.0
+margin_bottom = 28.0
+text = "Eddy14 Test Level"
+target_scene = ExtResource( 7 )
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 225.0
-margin_right = 146.0
-margin_bottom = 245.0
+margin_top = 270.0
+margin_right = 341.0
+margin_bottom = 298.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
