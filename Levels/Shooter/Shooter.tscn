@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/Clouds.png" type="Texture" id=8]
 [ext_resource path="res://Art/Background.png" type="Texture" id=9]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Shooter/TriggerHandler.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 78, 44, 77, 105, 13, 75, 16, 10 )
@@ -532,4 +533,9 @@ position = Vector2( 765, 534 )
 monitoring = false
 next_scene = ExtResource( 4 )
 
+[node name="TriggerHandler" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[connection signal="child_exiting_tree" from="YSort/Critters" to="TriggerHandler" method="_on_Critters_child_exiting_tree"]
 [connection signal="accept_curse" from="YSort/DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
+[connection signal="body_entered" from="Exit" to="TriggerHandler" method="_on_Exit_body_entered"]

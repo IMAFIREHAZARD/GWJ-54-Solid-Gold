@@ -120,6 +120,7 @@ visible = false
 position = Vector2( 0, 4 )
 scale = Vector2( 0.0190625, 0.0171849 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" parent="." index="1"]
@@ -143,7 +144,7 @@ anims/Wiggle = SubResource( 3 )
 position = Vector2( -1, 7 )
 scale = Vector2( 0.0800008, 0.0800008 )
 frames = SubResource( 15 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Shadow" type="Sprite" parent="AnimatedSprite2" index="0"]
