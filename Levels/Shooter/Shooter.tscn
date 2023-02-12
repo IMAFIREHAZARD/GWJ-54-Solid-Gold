@@ -15,6 +15,7 @@ outlines = [ PoolVector2Array( 93, 97, 156, 63, 186, 78, 178, 97, 252, 145, 304,
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource( 2 )
+success_timeline = "timeline-1676179945.json"
 
 [node name="NPCParent" type="Node2D" parent="."]
 
@@ -24,6 +25,7 @@ script = ExtResource( 2 )
 
 [node name="TileMapGround" type="TileMap" parent="YSort"]
 modulate = Color( 0.266667, 0.266667, 0.266667, 1 )
+z_index = -10
 mode = 1
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 32 )
@@ -74,7 +76,11 @@ position = Vector2( 775, 371 )
 position = Vector2( 824, 392 )
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
-position = Vector2( 765, 534 )
+visible = false
+position = Vector2( 140, 103 )
+rotation = -3.14159
+monitoring = false
+monitorable = false
 next_scene = ExtResource( 4 )
 
 [node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]

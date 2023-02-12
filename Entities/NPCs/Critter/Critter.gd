@@ -1,5 +1,6 @@
 class_name Critter extends "res://Entities/NPCs/BaseNPC.gd"
 onready var level = StageManager.current_map
+export(PackedScene) var splat_scene
 
 func _ready() -> void:
 	level.current_bugs += 1
@@ -19,3 +20,6 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 func kill():
 	level.current_bugs -= 1
 	queue_free()
+	var splat = splat_scene.instance()
+	get_parent().add_child(splat)
+	splat.global_position = global_position
