@@ -90,7 +90,12 @@ func get_tile_underneath():
 		return "Void"
 
 func _on_PlayerPushRadius_body_entered(body):
-	if body.name == "Player" and State == States.IDLE:
+	if State == States.IDLE:
+		var affordanceName = "InteractWithSokobanCubes"
+		if body.has_method("has_affordance") and body.has_affordance(affordanceName) != null:
+			var affordance = body.get_affordance(affordanceName)
+			pass # TBD
+	
 		$SpriteWhiteCube.visible = true
 		State = States.MOVING
 		pusher = body
