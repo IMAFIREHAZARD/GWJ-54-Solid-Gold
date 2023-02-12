@@ -9,11 +9,15 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
 			"path": "res://CutScenes/DevilPlaceholder.png"
+		},
+		{
+			"name": "Merchant",
+			"path": "res://Art/Devil_Bargin.png"
 		}
 	],
 	"scale": 100,
