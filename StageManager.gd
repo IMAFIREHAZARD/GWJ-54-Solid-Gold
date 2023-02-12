@@ -6,7 +6,7 @@ Autoload for managing scene transitions
 extends Control
 
 var current_map
-
+var current_packed_scene : PackedScene
 
 func _ready():
 	pass # Replace with function body.
@@ -16,6 +16,7 @@ func change_scene(ScenePath : String):
 	change_scene_to(Scene)
 	
 func change_scene_to(Scene : PackedScene):
+	current_packed_scene = Scene
 	# play some scene transition, then change scene
 	var fadeTransition = preload("res://Menus/SceneTransition.tscn").instance()
 	add_child(fadeTransition)

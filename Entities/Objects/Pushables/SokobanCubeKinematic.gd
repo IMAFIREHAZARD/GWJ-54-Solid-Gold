@@ -27,10 +27,21 @@ func _process(delta):
 		var separation_required = 50.0
 		if pusher.global_position.distance_squared_to(self.global_position) < separation_required * separation_required:
 			#warning-ignore:RETURN_VALUE_DISCARDED
-			move_and_slide(direction * speed)
-			#position += direction * speed * delta
+			#move_and_slide(direction * speed)
+			if is_clear(direction):
+				position += direction * speed * delta
 	elif State == States.FALLING:
 		fall(delta)
+
+
+func is_clear(direction):
+	var distance = 12.0
+	$RayCast2D.cast_to = direction * distance
+	$Line2D.points = [$RayCast2D.position, $RayCast2D.position + $RayCast2D.cast_to]
+	if $RayCast2D.is_colliding():
+		return false
+	else:
+		return true
 
 
 func fall(delta):
