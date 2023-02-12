@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/CommonInfrastructure/MinimalLevel.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Shooter/ParallaxLayer.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Glass/GlassLevel01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/Modular tileset_IN_engine.png" type="Texture" id=7]
 [ext_resource path="res://Art/Clouds.png" type="Texture" id=8]
 [ext_resource path="res://Art/Background.png" type="Texture" id=9]
+[ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 78, 44, 77, 105, 13, 75, 16, 10 )
@@ -399,8 +400,14 @@ points = PoolVector2Array( 71, 44, 71, 107, 6, 77, 10, 12 )
 } ]
 21/z_index = 0
 
+[sub_resource type="NavigationPolygon" id=9]
+vertices = PoolVector2Array( 216, 557, -290, 317, -130, 253, 368, 957, 200, 883, 360, 807, 1662, 1605, 1490, 1521, 1644, 1447, 1996, 1287, 2132, 1357, 38, 639, 1984, 969, 2300, 1125, 1486, 1369, -290, 168, 188, -73, 1830, 563, 1988, 643, 1818, 733, 1480, 245, 1666, 153, 2142, 405, 2138, 877, 664, 1447, 200, 1207, 348, 1125, 826, 1365, 208, 1045, 676, 171, 1002, 163, 854, 87, 1318, 1445, 1168, 1369, 1004, 1453, 1190, 81 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9, 10 ), PoolIntArray( 5, 11, 0 ), PoolIntArray( 12, 13, 9, 8, 14 ), PoolIntArray( 2, 15, 16 ), PoolIntArray( 17, 18, 19, 5 ), PoolIntArray( 20, 21, 22, 17, 5 ), PoolIntArray( 19, 23, 12 ), PoolIntArray( 24, 25, 26, 27 ), PoolIntArray( 26, 28, 3, 27 ), PoolIntArray( 0, 2, 16, 29 ), PoolIntArray( 30, 5, 0, 29, 31 ), PoolIntArray( 5, 19, 12, 14, 32, 33 ), PoolIntArray( 5, 33, 34, 27, 3 ), PoolIntArray( 30, 35, 20, 5 ) ]
+outlines = [ PoolVector2Array( -290, 168, 188, -73, 676, 171, 854, 87, 1002, 163, 1190, 81, 1480, 245, 1666, 153, 2142, 405, 1830, 563, 1988, 643, 1818, 733, 2138, 877, 1984, 969, 2300, 1125, 1996, 1287, 2132, 1357, 1662, 1605, 1490, 1521, 1644, 1447, 1486, 1369, 1318, 1445, 1168, 1369, 1004, 1453, 826, 1365, 664, 1447, 200, 1207, 348, 1125, 208, 1045, 368, 957, 200, 883, 360, 807, 38, 639, 216, 557, -290, 317, -130, 253 ) ]
+
 [node name="Shooter" type="Node2D"]
 script = ExtResource( 2 )
+success_timeline = "timeline-1676179945.json"
 
 [node name="NPCParent" type="Node2D" parent="."]
 
@@ -480,12 +487,34 @@ position = Vector2( 655, 1364 )
 scale = Vector2( 3.19252, 2.21462 )
 texture = ExtResource( 8 )
 
+[node name="Critters" type="YSort" parent="YSort"]
+
+[node name="Critter" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
+[node name="Critter2" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
+[node name="Critter3" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
+[node name="Critter4" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
+[node name="Critter5" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
+[node name="Critter6" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1127, 887 )
+
 [node name="Exit" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 765, 534 )
+monitoring = false
 next_scene = ExtResource( 4 )
 
 [node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]
-timeline = "GunArms"
+timeline = "timeline-1676112450.json"
 
 [node name="Bottom" type="TileMap" parent="."]
 position = Vector2( -132, 16 )
@@ -498,3 +527,8 @@ cell_custom_transform = Transform2D( 66.757, 6.96, 0, 64, 0, 0 )
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -393191, 536870914, 0, 65537, 536870927, 0, 131074, 536870927, 0, 131075, 536870927, 0, 131076, 536870927, 0, 262157, 536870927, 0, 327692, 536870927, 0, 393225, 536870927, 0, 393226, 536870927, 0, 393227, 536870927, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 9 )
+
+[connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
