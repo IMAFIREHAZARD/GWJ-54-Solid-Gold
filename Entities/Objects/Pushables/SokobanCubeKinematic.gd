@@ -27,8 +27,8 @@ func _process(delta):
 		var separation_required = 50.0
 		if pusher.global_position.distance_squared_to(self.global_position) < separation_required * separation_required:
 			#warning-ignore:RETURN_VALUE_DISCARDED
-			#move_and_slide(direction * speed)
-			position += direction * speed * delta
+			move_and_slide(direction * speed)
+			#position += direction * speed * delta
 	elif State == States.FALLING:
 		fall(delta)
 

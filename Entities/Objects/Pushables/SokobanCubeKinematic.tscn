@@ -28,6 +28,7 @@ polygon = PoolVector2Array( 1, 32, -32, 16, 0, 0, 32, 16 )
 [node name="PlayerPushRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPushRadius"]
+visible = false
 scale = Vector2( 1, 0.67 )
 shape = SubResource( 1 )
 
