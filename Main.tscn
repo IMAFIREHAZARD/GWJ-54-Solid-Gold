@@ -1,129 +1,93 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menus/TestingMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Menus/Title_screen_image.png" type="Texture" id=8]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Music/LEVEL_MUSIC_TEST.ogg" type="AudioStream" id=10]
-[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=11]
-[ext_resource path="res://GUI/Buttons/UI_cancel.wav" type="AudioStream" id=12]
-[ext_resource path="res://Accreditation.gd" type="Script" id=13]
+[ext_resource path="res://Art/Title_screen54.png" type="Texture" id=10]
+[ext_resource path="res://Music/LEVEL_MUSIC_TEST.ogg" type="AudioStream" id=11]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 11 )
 script = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-texture = ExtResource( 8 )
+[node name="TitleScreen54" type="Sprite" parent="."]
+position = Vector2( 510, 306 )
+texture = ExtResource( 10 )
 
-[node name="DesignNotes" type="Node" parent="."]
-script = ExtResource( 1 )
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 249.0
+margin_top = 8.0
+margin_right = 1273.0
+margin_bottom = 608.0
 
-[node name="Accreditation" type="Node" parent="."]
-script = ExtResource( 13 )
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -297.0
-custom_constants/margin_left = -200
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
-margin_left = -200.0
-margin_right = 297.0
-margin_bottom = 600.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-margin_left = 20.0
-margin_top = 58.0
-margin_right = 476.0
-margin_bottom = 542.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 363.0
+margin_top = 87.0
+margin_right = 660.0
+margin_bottom = 512.0
 custom_constants/separation = 40
 
-[node name="GameTitle" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_right = 456.0
-margin_bottom = 47.0
+[node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 297.0
+margin_bottom = 31.0
 text = "Cursed by Hindsight
 "
 align = 1
 
-[node name="GameSubtitle" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 87.0
-margin_right = 456.0
-margin_bottom = 109.0
+[node name="GameSubtitle" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 297.0
+margin_bottom = 85.0
 text = "Realtime Action Puzzler for Godot Wild Jam 54"
 align = 1
 
-[node name="StartGameButton" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 153.0
-margin_top = 149.0
-margin_right = 303.0
-margin_bottom = 184.0
-rect_min_size = Vector2( 150, 35 )
-size_flags_horizontal = 6
-theme = null
+[node name="StartGameButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 125.0
+margin_right = 297.0
+margin_bottom = 153.0
 text = "Play Game"
+target_scene = ExtResource( 8 )
+
+[node name="TestingMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 193.0
+margin_right = 297.0
+margin_bottom = 221.0
+text = "Testing"
 target_scene = ExtResource( 4 )
 
-[node name="TestingMenuButton" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 153.0
-margin_top = 224.0
-margin_right = 303.0
-margin_bottom = 259.0
-rect_min_size = Vector2( 150, 35 )
-size_flags_horizontal = 6
-theme = null
-text = "Testing"
-target_scene_path = "res://Menus/TestingMenu.tscn"
-
-[node name="Settings" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 153.0
-margin_top = 299.0
-margin_right = 303.0
-margin_bottom = 334.0
-rect_min_size = Vector2( 150, 35 )
-size_flags_horizontal = 6
-theme = null
+[node name="Settings" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 261.0
+margin_right = 297.0
+margin_bottom = 289.0
 text = "Settings"
 target_scene = ExtResource( 9 )
 
-[node name="Credits" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 153.0
-margin_top = 374.0
-margin_right = 303.0
-margin_bottom = 409.0
-rect_min_size = Vector2( 150, 35 )
-size_flags_horizontal = 6
-theme = null
+[node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 329.0
+margin_right = 297.0
+margin_bottom = 357.0
 text = "Credits"
 target_scene = ExtResource( 7 )
 
-[node name="QuitButton" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
-margin_left = 153.0
-margin_top = 449.0
-margin_right = 303.0
-margin_bottom = 484.0
-rect_min_size = Vector2( 150, 35 )
-size_flags_horizontal = 6
+[node name="QuitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 397.0
+margin_right = 297.0
+margin_bottom = 425.0
 text = "Quit"
 script = ExtResource( 6 )
 
-[node name="ClickNoise" parent="MarginContainer/CenterContainer/VBoxContainer/QuitButton" index="1"]
-stream = ExtResource( 12 )
+[node name="DesignNotes" type="Node" parent="."]
+script = ExtResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 volume_db = -24.0
 autoplay = true
-
-[editable path="MarginContainer/CenterContainer/VBoxContainer/QuitButton"]
+bus = "Music"

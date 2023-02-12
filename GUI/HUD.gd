@@ -16,7 +16,7 @@ func delayed_ready():
 	# call this after ancestors have loaded
 	if StageManager.current_map != null and is_instance_valid(StageManager.current_map):
 		$Header/HBox/Label.text = StageManager.current_map.name
-
+	$Header/HBox/ResetLevelButton.target_scene = StageManager.current_packed_scene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -10,11 +10,12 @@ var vel := Vector2()
 
 func _physics_process(delta : float):
 	## calc next move
-	var move = nav_agent.get_next_location()-global_position;
+	var move = global_position.direction_to(nav_agent.get_next_location());
 	# set move speed
-	var target_vel = move.limit_length(move_speed)  
+	var target_vel = move * move_speed
 	# move
-	move_and_slide(target_vel)
+	if not nav_agent.is_navigation_finished():
+		move_and_slide(target_vel)
 	## adjust sprite frame dependend on move angle
 	var f = round(abs(Vector2.DOWN.angle_to(vel))/deg2rad(45))
 	if vel.x < 1:
@@ -22,7 +23,6 @@ func _physics_process(delta : float):
 	if vel.x > 1:
 		animated_sprite.scale.x = -1
 	animated_sprite.frame = f
-
 
 func go_to_location(location:Vector2):
 	# set target location
