@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CLOTHES_06.wav-3562370dd5a62b7168a5b1c19e726c16.sample"
+
+[deps]
+
+source_file="res://sfx/RustlingClothes/CLOTHES_06.wav"
+dest_files=[ "res://.import/CLOTHES_06.wav-3562370dd5a62b7168a5b1c19e726c16.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -62,6 +62,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			tween.tween_property(p, "value", 1.0, reload_timer.wait_time)
 			tween.tween_callback(p, "hide")
 
+func has_affordance(affordanceName : String):
+	if $CustomAffordances.get_node(affordanceName) != null:
+		return true
+	else:
+		return false
+
+func get_affordance(affordanceName : String):
+	if has_affordance(affordanceName):
+		return $CustomAffordances.get_node(affordanceName)
+	
+
 func shoot():
 	reload_timer.start()
 	var bullet = bullet_scene.instance() as Node2D
