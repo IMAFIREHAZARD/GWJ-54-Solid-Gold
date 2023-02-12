@@ -519,17 +519,17 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -393191, 536870914, 0, 65537, 536870927, 0, 131074, 536870927, 0, 131075, 536870927, 0, 131076, 536870927, 0, 196613, 536870927, 0, 196614, 536870927, 0, 196622, 536870927, 0, 262151, 536870927, 0, 262157, 536870927, 0, 327688, 536870927, 0, 327692, 536870927, 0, 393225, 536870927, 0, 393226, 536870927, 0, 393227, 536870927, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
 
-[node name="Exit" parent="YSort" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 765, 534 )
-monitoring = false
-next_scene = ExtResource( 4 )
-
 [node name="DevilsBargainArea" parent="YSort" instance=ExtResource( 6 )]
 timeline = "timeline-1676112450.json"
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 visible = false
 navpoly = SubResource( 9 )
+
+[node name="Exit" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 765, 534 )
+monitoring = false
+next_scene = ExtResource( 4 )
 
 [connection signal="accept_curse" from="YSort/DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
