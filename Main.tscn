@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Levels/shooter/Shooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Title_screen54.png" type="Texture" id=10]
 
@@ -28,9 +27,9 @@ margin_bottom = 608.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 363.0
-margin_top = 107.0
+margin_top = 87.0
 margin_right = 660.0
-margin_bottom = 492.0
+margin_bottom = 512.0
 custom_constants/separation = 40
 
 [node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -50,35 +49,34 @@ align = 1
 [node name="StartGameButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 125.0
 margin_right = 297.0
-margin_bottom = 145.0
+margin_bottom = 153.0
 text = "Play Game"
-target_scene = ExtResource( 8 )
 
 [node name="TestingMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 185.0
+margin_top = 193.0
 margin_right = 297.0
-margin_bottom = 205.0
+margin_bottom = 221.0
 text = "Testing"
 target_scene = ExtResource( 4 )
 
 [node name="Settings" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 245.0
+margin_top = 261.0
 margin_right = 297.0
-margin_bottom = 265.0
+margin_bottom = 289.0
 text = "Settings"
 target_scene = ExtResource( 9 )
 
 [node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 305.0
+margin_top = 329.0
 margin_right = 297.0
-margin_bottom = 325.0
+margin_bottom = 357.0
 text = "Credits"
 target_scene = ExtResource( 7 )
 
 [node name="QuitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
-margin_top = 365.0
+margin_top = 397.0
 margin_right = 297.0
-margin_bottom = 385.0
+margin_bottom = 425.0
 text = "Quit"
 script = ExtResource( 6 )
 
