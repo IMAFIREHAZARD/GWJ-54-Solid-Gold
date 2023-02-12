@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BronceSR_ex.png-d897da96a2bcf1554340cf719621b81a.stex"
+path="res://.import/rescaled_StoneSL_ex.png-3783a8a83165bdec747f700189239a24.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ground_sprites/BronceSR_ex.png"
-dest_files=[ "res://.import/BronceSR_ex.png-d897da96a2bcf1554340cf719621b81a.stex" ]
+source_file="res://assets/ground_sprites/rescaled_StoneSL_ex.png"
+dest_files=[ "res://.import/rescaled_StoneSL_ex.png-3783a8a83165bdec747f700189239a24.stex" ]
 
 [params]
 

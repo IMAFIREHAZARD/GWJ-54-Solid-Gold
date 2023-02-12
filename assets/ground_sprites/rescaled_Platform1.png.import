@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MossSR_ex.png-bdc8af9a5770f29ff511629612df166f.stex"
+path="res://.import/rescaled_Platform1.png-eb4cdf8f5318a1c8ce47bebea744852c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ground_sprites/MossSR_ex.png"
-dest_files=[ "res://.import/MossSR_ex.png-bdc8af9a5770f29ff511629612df166f.stex" ]
+source_file="res://assets/ground_sprites/rescaled_Platform1.png"
+dest_files=[ "res://.import/rescaled_Platform1.png-eb4cdf8f5318a1c8ce47bebea744852c.stex" ]
 
 [params]
 

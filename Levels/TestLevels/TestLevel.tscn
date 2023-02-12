@@ -19,22 +19,22 @@ outlines = [ PoolVector2Array( 34, 45, 158, -16, 94, -49, 190, -194, 255, -161, 
 [node name="TileMapGroundSidesL" parent="." index="0"]
 mode = 1
 tile_set = ExtResource( 10 )
-cell_size = Vector2( 691, 345 )
-tile_data = PoolIntArray( -65535, 3, 0, 131071, 2, 0, 65537, 1, 0 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 3, 0 )
 
 [node name="TileMapGroundSidesR" parent="." index="1"]
 mode = 1
 tile_set = ExtResource( 10 )
-cell_size = Vector2( 691, 345 )
-tile_data = PoolIntArray( 65537, 0, 0 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 2, 0 )
 
 [node name="ManualNavigationPolygon" type="NavigationPolygonInstance" parent="." index="2"]
 navpoly = SubResource( 1 )
 
 [node name="TileMapGround" parent="." index="3"]
 tile_set = ExtResource( 2 )
-cell_size = Vector2( 691, 345 )
-tile_data = PoolIntArray( -1, 0, 0, -65535, 0, 0, 131071, 0, 0, 65537, 0, 0 )
+cell_size = Vector2( 256, 128 )
+tile_data = PoolIntArray( 2, 2, 0 )
 
 [node name="Exit" parent="." index="4" instance=ExtResource( 7 )]
 position = Vector2( 590, -416 )

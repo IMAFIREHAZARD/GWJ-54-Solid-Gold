@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StoneSL_ex.png-c41abd58cb7e1d2e040101e75d8ff7fc.stex"
+path="res://.import/rescaled_Platform2.png-d672a2dcb9f260ff244f74a08ab6b140.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ground_sprites/StoneSL_ex.png"
-dest_files=[ "res://.import/StoneSL_ex.png-c41abd58cb7e1d2e040101e75d8ff7fc.stex" ]
+source_file="res://assets/ground_sprites/rescaled_Platform2.png"
+dest_files=[ "res://.import/rescaled_Platform2.png-d672a2dcb9f260ff244f74a08ab6b140.stex" ]
 
 [params]
 

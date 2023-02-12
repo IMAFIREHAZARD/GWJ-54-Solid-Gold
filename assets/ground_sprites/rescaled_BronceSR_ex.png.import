@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BronceSL_ex.png-67e7ebc199522721f6a7c9902898ba5e.stex"
+path="res://.import/rescaled_BronceSR_ex.png-5e2b1e225b621c352bfb948cacc6256a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ground_sprites/BronceSL_ex.png"
-dest_files=[ "res://.import/BronceSL_ex.png-67e7ebc199522721f6a7c9902898ba5e.stex" ]
+source_file="res://assets/ground_sprites/rescaled_BronceSR_ex.png"
+dest_files=[ "res://.import/rescaled_BronceSR_ex.png-5e2b1e225b621c352bfb948cacc6256a.stex" ]
 
 [params]
 
