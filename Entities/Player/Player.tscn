@@ -376,6 +376,7 @@ playing = true
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
 margin_left = -31.0
 margin_top = -180.0
 margin_right = 33.0
@@ -387,5 +388,6 @@ texture_progress = ExtResource( 7 )
 fill_mode = 4
 
 [node name="GunCurse" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]

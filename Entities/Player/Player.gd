@@ -29,7 +29,9 @@ func _ready() -> void:
 	Dialogic.has_current_dialog_node()
 
 func _physics_process(delta : float):
-	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var move = Vector2()
+	if !Dialogic.has_current_dialog_node():
+		move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
 # warning-ignore:return_value_discarded
@@ -49,11 +51,10 @@ func _physics_process(delta : float):
 	else:
 		$SpriteRoot.scale.x = -1
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		if reload_timer.is_stopped():
 			shoot()
-			reload_timer.start()
 			var tween = create_tween()
 			var p = $TextureProgress
 			p.show()
@@ -62,8 +63,11 @@ func _input(event: InputEvent) -> void:
 			tween.tween_callback(p, "hide")
 
 func shoot():
+	reload_timer.start()
 	var bullet = bullet_scene.instance() as Node2D
 	bullet.rotation = get_local_mouse_position().angle()
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
-	
+
+func start_gun_curse():
+	$GunCurse.start()
