@@ -46,4 +46,6 @@ position = Vector2( 765, 534 )
 next_scene = ExtResource( 4 )
 
 [node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]
-timeline = "GunArms"
+timeline = "timeline-1676112450.json"
+
+[connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]

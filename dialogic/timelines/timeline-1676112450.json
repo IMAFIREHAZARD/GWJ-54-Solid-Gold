@@ -52,7 +52,7 @@
 			"value": ""
 		},
 		{
-			"emit_signal": "GunArmsRequested",
+			"emit_signal": "accept",
 			"event_id": "dialogic_040"
 		},
 		{

@@ -55,7 +55,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		if reload_timer.is_stopped():
 			shoot()
-			reload_timer.start()
 			var tween = create_tween()
 			var p = $TextureProgress
 			p.show()
@@ -64,8 +63,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			tween.tween_callback(p, "hide")
 
 func shoot():
+	reload_timer.start()
 	var bullet = bullet_scene.instance() as Node2D
 	bullet.rotation = get_local_mouse_position().angle()
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
-	
+
+func start_gun_curse():
+	$GunCurse.start()
