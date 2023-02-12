@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/VFX/Fire_2.png" type="Texture" id=1]
+[ext_resource path="res://Art/VFX/Fire_3.png" type="Texture" id=2]
+[ext_resource path="res://Art/VFX/Fire_4.png" type="Texture" id=3]
+[ext_resource path="res://Art/VFX/Fire_5.png" type="Texture" id=4]
+[ext_resource path="res://Art/VFX/Fire_1.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fire_Shot"
+length = 0.406
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Fire1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Fire1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fire_Shot = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Fire1" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 78, 38 )
+texture = ExtResource( 5 )
