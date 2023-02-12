@@ -32,7 +32,10 @@ scale = Vector2( 8, 8 )
 texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" parent="TileMapLevel1/PassableObject" index="1"]
-polygon = PoolVector2Array( 262, 107, 510, -19, 256, -393, 4, -277, -2, -5 )
+polygon = PoolVector2Array( 262, 107, 510, -19, 257, -112, -2, -5 )
+
+[node name="Polygon2D" parent="TileMapLevel1/PassableObject" index="2"]
+polygon = PoolVector2Array( -8, -9, 257, 110, 509, -16, 262, -399, 2, -278 )
 
 [node name="PatrollingUnit" parent="TileMapLevel1" index="1" instance=ExtResource( 4 )]
 
