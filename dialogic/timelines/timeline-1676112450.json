@@ -9,21 +9,21 @@
 			"volume": -12
 		},
 		{
-			"animation": "slide_in_left.gd",
+			"animation": "instant_in.gd",
 			"animation_length": 0.5,
-			"animation_wait": true,
+			"animation_wait": false,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1676112496.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
-			"portrait": "Default",
+			"portrait": "Merchant",
 			"portrait_definition": "",
 			"position": {
 				"0": false,
 				"1": false,
 				"2": false,
-				"3": false,
+				"3": true,
 				"4": false
 			},
 			"type": 0,
