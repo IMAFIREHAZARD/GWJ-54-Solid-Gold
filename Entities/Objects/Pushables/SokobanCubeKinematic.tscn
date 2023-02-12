@@ -31,5 +31,10 @@ polygon = PoolVector2Array( 1, 32, -32, 16, 0, 0, 32, 16 )
 scale = Vector2( 1, 0.67 )
 shape = SubResource( 1 )
 
+[node name="PollingTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_entered"]
 [connection signal="body_exited" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_exited"]
+[connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]
