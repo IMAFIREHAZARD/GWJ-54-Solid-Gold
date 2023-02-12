@@ -62,7 +62,7 @@ func is_outside_frustum():
 
 func get_direction(pushingSource):
 	var direction
-	direction = pusher.global_position.direction_to(self.global_position)
+	direction = pushingSource.global_position.direction_to(self.global_position)
 
 	if cardinal_directions_only:
 		if direction.x < 0.0:
@@ -93,6 +93,7 @@ func _on_PlayerPushRadius_body_entered(body):
 	if State == States.IDLE:
 		var affordanceName = "InteractWithSokobanCubes"
 		if body.has_method("has_affordance") and body.has_affordance(affordanceName) != null:
+			#warning-ignore:UNUSED_VARIABLE
 			var affordance = body.get_affordance(affordanceName)
 			pass # TBD
 	
