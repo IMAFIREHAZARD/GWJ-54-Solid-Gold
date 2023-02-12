@@ -344,6 +344,7 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
+frame = 1
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]

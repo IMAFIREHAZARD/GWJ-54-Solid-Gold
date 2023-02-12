@@ -12,11 +12,14 @@ func _ready():
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
-		if current_cube != null:
-			# lock player WASD movement to isometric grid somehow.
-			# need to override normal player movement.
-			pass # TBD
+		var current_cube = find_nearest_cube()
+		print("Found " + current_cube.name)
 		
+func find_nearest_cube():
+	var cubes = get_tree().get_nodes_in_group("SokobanCubes")
+	var nearestCube = Global.get_nearest_object(cubes, self)
+	if nearestCube != null:
+		return nearestCube
 
 func attach_to_sokoban_cube(cube):
 	current_cube = cube
