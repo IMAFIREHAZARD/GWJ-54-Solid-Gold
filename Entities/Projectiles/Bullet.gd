@@ -9,7 +9,9 @@ func _physics_process(delta: float) -> void:
 	if ray_cast_2d.is_colliding():
 		var bounced = false
 		var collider = ray_cast_2d.get_collider()
-		if "can_break" in collider:
+		if collider.has_method("kill"):
+			collider.kill()
+		elif "can_break" in collider:
 			if collider.can_break:
 				collider.break()
 			else:
@@ -17,4 +19,5 @@ func _physics_process(delta: float) -> void:
 				# bounce
 		if not bounced:
 			queue_free()
-	global_position += transform.x * speed * delta
+	else:
+		global_position += transform.x * speed * delta

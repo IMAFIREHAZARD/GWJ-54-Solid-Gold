@@ -44,19 +44,41 @@ format = 1
 tile_data = PoolIntArray( -786421, 0, 0, -786420, 0, 0, -786419, 0, 0, -786418, 0, 0, -720885, 0, 0, -720882, 0, 0, -720881, 0, 0, -655349, 0, 0, -655345, 0, 0, -655344, 0, 0, -589813, 0, 0, -589808, 0, 0, -524277, 0, 0, -524272, 0, 0, -458740, 0, 0, -458736, 0, 0, -458735, 0, 0, -393204, 0, 0, -393203, 0, 0, -393199, 0, 0, -393198, 0, 0, -393196, 0, 0, -393195, 0, 0, -393194, 0, 0, -393193, 0, 0, -393192, 0, 0, -393191, 0, 0, -327667, 0, 0, -327662, 0, 0, -327661, 0, 0, -327660, 0, 0, -327655, 0, 0, -327654, 0, 0, -262136, 0, 0, -262135, 0, 0, -262131, 0, 0, -262130, 0, 0, -262117, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -196581, 0, 0, -196580, 0, 0, -131070, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131054, 0, 0, -131053, 0, 0, -131045, 0, 0, -131044, 0, 0, -65534, 0, 0, -65525, 0, 0, -65524, 0, 0, -65518, 0, 0, -65517, 0, 0, -65510, 0, 0, -65509, 0, 0, 2, 0, 0, 12, 0, 0, 19, 0, 0, 20, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 65539, 0, 0, 65549, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65559, 0, 0, 65560, 0, 0, 131075, 0, 0, 131076, 0, 0, 131085, 0, 0, 131086, 0, 0, 131093, 0, 0, 131094, 0, 0, 196612, 0, 0, 196622, 0, 0, 196629, 0, 0, 262149, 0, 0, 262158, 0, 0, 262165, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327701, 0, 0, 327702, 0, 0, 393226, 0, 0, 393227, 0, 0, 393238, 0, 0, 458763, 0, 0, 458764, 0, 0, 458774, 0, 0, 524300, 0, 0, 524310, 0, 0, 589836, 0, 0, 589837, 0, 0, 589846, 0, 0, 655373, 0, 0, 655382, 0, 0, 720909, 0, 0, 720910, 0, 0, 720918, 0, 0, 786446, 0, 0, 786447, 0, 0, 786454, 0, 0, 851983, 0, 0, 851984, 0, 0, 851989, 0, 0, 851990, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 426, 333 )
+position = Vector2( 150, 106 )
 z_index = 1
 
 [node name="Critters" type="YSort" parent="YSort"]
 
 [node name="Critter" parent="YSort/Critters" instance=ExtResource( 7 )]
-position = Vector2( 313, 223 )
+position = Vector2( 815, 365 )
+
+[node name="Critter2" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 837, 339 )
+
+[node name="Critter3" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 858, 377 )
+
+[node name="Critter4" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 879, 353 )
+
+[node name="Critter5" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 909, 387 )
+
+[node name="Critter6" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 783, 336 )
+
+[node name="Critter7" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 775, 371 )
+
+[node name="Critter8" parent="YSort/Critters" instance=ExtResource( 7 )]
+position = Vector2( 824, 392 )
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
 position = Vector2( 765, 534 )
 next_scene = ExtResource( 4 )
 
 [node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]
+position = Vector2( 728, 87 )
 timeline = "timeline-1676112450.json"
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]

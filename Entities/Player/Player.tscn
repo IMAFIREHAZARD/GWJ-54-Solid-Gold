@@ -9,7 +9,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.0156
+radius = 23.0217
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
@@ -353,10 +353,10 @@ bullet_scene = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 31 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
+disabled = true
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 
@@ -365,7 +365,6 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleSouth"
-frame = 1
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
