@@ -76,6 +76,7 @@ text = "Play Game"
 target_scene = ExtResource( 4 )
 
 [node name="TestingMenuButton" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+unique_name_in_owner = true
 margin_left = 153.0
 margin_top = 224.0
 margin_right = 303.0
@@ -109,6 +110,7 @@ text = "Credits"
 target_scene = ExtResource( 7 )
 
 [node name="QuitButton" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+unique_name_in_owner = true
 margin_left = 153.0
 margin_top = 449.0
 margin_right = 303.0
