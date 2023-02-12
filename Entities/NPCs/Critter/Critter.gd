@@ -1,5 +1,7 @@
 class_name Critter extends "res://Entities/NPCs/BaseNPC.gd"
 onready var level = StageManager.current_map
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 export(PackedScene) var splat_scene
 
 func _ready() -> void:
@@ -11,11 +13,14 @@ func goto_random_pos() -> void:
 	go_to_location(targ)
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
-	goto_random_pos()
 	if level.current_bugs < level.max_bugs:
 		if randi() % 3 == 0:
+			animation_player.play("Wiggle")
+			yield(animation_player, "animation_finished")
 			var extra_critter = duplicate()
 			get_parent().add_child(extra_critter)
+	goto_random_pos()
+	
 
 func kill():
 	level.current_bugs -= 1

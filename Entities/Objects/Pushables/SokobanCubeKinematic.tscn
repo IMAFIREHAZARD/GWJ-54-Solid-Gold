@@ -26,10 +26,44 @@ position = Vector2( -0.799999, -16 )
 polygon = PoolVector2Array( 1, 32, -32, 16, 0, 0, 32, 16 )
 
 [node name="PlayerPushRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPushRadius"]
 scale = Vector2( 1, 0.67 )
 shape = SubResource( 1 )
 
+[node name="PollingTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="DetectorRays" type="Node2D" parent="."]
+
+[node name="RaySE" type="RayCast2D" parent="DetectorRays"]
+position = Vector2( 15, 7 )
+cast_to = Vector2( 29, 16 )
+collision_mask = 4
+
+[node name="RaySW" type="RayCast2D" parent="DetectorRays"]
+position = Vector2( -19, 8 )
+cast_to = Vector2( -31, 18 )
+collision_mask = 4
+
+[node name="RayNW" type="RayCast2D" parent="DetectorRays"]
+position = Vector2( -15, -10 )
+cast_to = Vector2( -31, -16 )
+collision_mask = 4
+
+[node name="RayNE" type="RayCast2D" parent="DetectorRays"]
+position = Vector2( 13, -9 )
+cast_to = Vector2( 30, -17 )
+collision_mask = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 5
+
+[node name="Line2D" type="Line2D" parent="."]
+
 [connection signal="body_entered" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_entered"]
 [connection signal="body_exited" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_exited"]
+[connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]

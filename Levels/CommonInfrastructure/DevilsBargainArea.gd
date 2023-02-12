@@ -13,3 +13,4 @@ func _on_DevilsBargainArea_body_entered(body):
 func _on_dialogic_signal(param):
 	if param == "accept":
 		emit_signal("accept_curse")
+		$AnimationPlayer.play("Disappear")

@@ -10,6 +10,9 @@ func _ready() -> void:
 
 func _on_bug_died(_v):
 	if current_bugs == 0:
+		if Dialogic.has_current_dialog_node():
+			yield(get_tree().get_meta('latest_dialogic_node'), "timeline_end")
+		
 		var dialog = Dialogic.start(success_timeline)
 		add_child(dialog)
 		dialog.connect("dialogic_signal", self, "reveal_exit")

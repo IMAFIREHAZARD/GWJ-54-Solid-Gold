@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-onready var colPol = get_node("CollisionPolygon2D")
+onready var colPol = get_node("Polygon2D")
 var player
 export var opacity = 0.5;
 func _ready():
