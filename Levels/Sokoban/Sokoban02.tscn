@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/CommonInfrastructure/MinimalLevel.gd" type="Script" id=2]
@@ -6,12 +6,13 @@
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Cooking/Cooking.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 
-[node name="Gardening" type="Node2D"]
+[node name="Sokoban" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 6 )]
@@ -49,6 +50,9 @@ disabled = true
 
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
+
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -211,7 +215,14 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
+frame = 1
 flip_v = true
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -22.0
+autoplay = true
+bus = "Music"
 
 [editable path="YSort/Player"]
 [editable path="Exit"]

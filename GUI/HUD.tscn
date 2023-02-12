@@ -26,17 +26,23 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="Header/HBox"]
-margin_left = 328.0
+margin_left = 208.0
 margin_top = 7.0
-margin_right = 456.0
+margin_right = 336.0
 margin_bottom = 21.0
 text = "Cursed by Hindsight"
 
 [node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 466.0
-margin_right = 685.0
+margin_left = 346.0
+margin_right = 565.0
 margin_bottom = 28.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
+
+[node name="ResetLevelButton" parent="Header/HBox" instance=ExtResource( 3 )]
+margin_left = 575.0
+margin_right = 805.0
+margin_bottom = 28.0
+text = "Restart Current Level"
 
 [node name="Footer" parent="." instance=ExtResource( 2 )]
