@@ -34,6 +34,7 @@ func pickup(body):
 	# make a noise, disappear and notify the consuming body
 	$PickupNoise.start()
 	if body.has_method("_on_pickable_picked_up"):
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("picked_up", body, "_on_pickable_picked_up")
 		emit_signal("picked_up")
 	$AnimationPlayer.play("picked_up")
