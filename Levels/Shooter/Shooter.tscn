@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/DevilsBargainArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Music/LEVEL_MUSIC_TEST.ogg" type="AudioStream" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 97, 99, 93, 97, 156, 63, 178, 97, 110, 118, 186, 78, 172, 257, 109, 152, 252, 145, 206, 284, 464, 470, 464, 485, 340, 540, 323, 367, 766, 301, 829, 313, 899, 330, 934, 371, 937, 409, 894, 433, 820, 434, 693, 404, 680, 370, 692, 340, 709, 314, 710, 268, 690, 297, 645, 187, 687, 215, 642, 277, 625, 216, 650, 136, 676, 96, 734, 64, 761, 80, 769, 112, 753, 152, 689, 191, 544, 248, 611, 285, 426, 254, 467, 228, 567, 310, 415, 318, 558, 352, 568, 383, 543, 413, 475, 446, 92, 217, 83, 180, 304, 152, 331, 163, 337, 189, 324, 257, 312, 308, 260, 338, 203, 333, 288, 577, 237, 571, 194, 362, 168, 406, 193, 563, 139, 522, 136, 479, 143, 433 )
@@ -89,5 +90,11 @@ timeline = "timeline-1676112450.json"
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 1 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -24.0
+autoplay = true
+bus = "Music"
 
 [connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]

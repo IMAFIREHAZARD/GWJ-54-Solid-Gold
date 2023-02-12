@@ -326,21 +326,23 @@ move_speed = 500
 bullet_scene = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 31 )
+position = Vector2( 0.200001, -1 )
 shape = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.200001, -32 )
 polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
 disabled = true
 
 [node name="SpriteRoot" type="Node2D" parent="."]
+position = Vector2( 0.200001, -32 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteRoot"]
 position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 1
+frame = 2
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
