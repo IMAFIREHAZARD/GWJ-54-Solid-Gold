@@ -24,7 +24,11 @@ HackNPlan Page:
 GitHub:
 	https://github.com/IMAFIREHAZARD/GWJ-54-Solid-Gold
 
+Game Page:
+	https://imafirehazard.itch.io/solid-gold-jam-54-project
 
+
+	
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 Level 1: Shoot the creeps. Gun is slow, creeps replicate quickly.

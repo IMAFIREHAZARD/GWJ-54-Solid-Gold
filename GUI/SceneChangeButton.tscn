@@ -8,3 +8,6 @@ text = "Next Scene"
 script = ExtResource( 2 )
 target_scene = null
 target_scene_path = ""
+
+[node name="HoverNoise" parent="." index="0"]
+pitch_shift = 0.05
