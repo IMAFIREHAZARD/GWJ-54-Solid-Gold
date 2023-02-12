@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 47.0
 
-[node name="SokobanCubeKinematic" type="KinematicBody2D"]
+[node name="SokobanCubeKinematic" type="KinematicBody2D" groups=["SokobanCubes"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
