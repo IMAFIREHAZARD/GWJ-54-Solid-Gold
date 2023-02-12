@@ -52,5 +52,10 @@ func _process(delta):
 #		print("elapsed: ", elapsed_time_sec, ", last_beat: ", time_at_last_beat, ", duration: ", beat_duration)
 
 
-
-
+func queue_music(streamPath:String):
+	var tempAudioNode = load("res://sfx/TemporarySound.tscn").instance()
+	# note: TemporarySound Nodes kill themselves after playthrough
+	get_tree().get_root().add_child(tempAudioNode)
+	tempAudioNode.stream = load(streamPath)
+	tempAudioNode.start_without_duplicate()
+	

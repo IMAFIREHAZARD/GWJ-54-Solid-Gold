@@ -27,6 +27,10 @@ func start_persistant():
 	if pitch_shift:
 		new_sound.set_pitch_scale(rand_range(0.9, 1.1))
 	new_sound.play()
+
+func start_without_duplicate():
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	self.connect("finished", self, "_on_finished")
 	
 	
 func _on_finished():
