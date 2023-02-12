@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/test_art/cube.png" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[node name="SokobanCube" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
+angular_damp = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.0999985, -16 )
+polygon = PoolVector2Array( -31, 17, 0, 1, 32, 16, 1, 32 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.0999985, -16 )
+texture = ExtResource( 1 )

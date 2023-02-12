@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -11,30 +11,30 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0217
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=58]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 194, 285 )
+region = Rect2( 0, 570, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=59]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 194, 0, 194, 285 )
+region = Rect2( 194, 570, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=60]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 388, 0, 194, 285 )
+region = Rect2( 388, 570, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=61]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 582, 0, 194, 285 )
+region = Rect2( 582, 570, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=62]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 776, 0, 194, 285 )
+region = Rect2( 776, 570, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
@@ -156,11 +156,6 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 582, 570, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=37]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 776, 570, 194, 285 )
-
 [sub_resource type="AtlasTexture" id=38]
 flags = 4
 atlas = ExtResource( 5 )
@@ -180,11 +175,6 @@ region = Rect2( 388, 285, 194, 285 )
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 582, 285, 194, 285 )
-
-[sub_resource type="AtlasTexture" id=42]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 776, 285, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=43]
 flags = 4
@@ -206,11 +196,6 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 582, 1140, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=47]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 776, 1140, 194, 285 )
-
 [sub_resource type="AtlasTexture" id=48]
 flags = 4
 atlas = ExtResource( 5 )
@@ -231,11 +216,6 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 582, 0, 194, 285 )
 
-[sub_resource type="AtlasTexture" id=52]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 776, 0, 194, 285 )
-
 [sub_resource type="AtlasTexture" id=53]
 flags = 4
 atlas = ExtResource( 5 )
@@ -255,11 +235,6 @@ region = Rect2( 388, 855, 194, 285 )
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 582, 855, 194, 285 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 776, 855, 194, 285 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -288,7 +263,7 @@ region = Rect2( 181, 0, 181, 254 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
 "loop": true,
 "name": "IdleNW",
 "speed": 5.0
@@ -313,27 +288,27 @@ animations = [ {
 "name": "IdleWest",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
 "loop": true,
 "name": "RunNW",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
 "name": "RunNorth",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
 "loop": true,
 "name": "RunSW",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
 "name": "RunSouth",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "RunWest",
 "speed": 5.0
@@ -364,7 +339,8 @@ disabled = true
 position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
-animation = "IdleSouth"
+animation = "RunWest"
+frame = 1
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
