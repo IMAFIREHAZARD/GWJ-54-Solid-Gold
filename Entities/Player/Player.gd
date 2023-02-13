@@ -5,6 +5,8 @@ onready var animated_sprite: AnimatedSprite = $SpriteRoot/AnimatedSprite
 onready var reload_timer: Timer = $ReloadTimer
 
 export(PackedScene) var bullet_scene
+export(SpriteFrames) var default_frames
+export(SpriteFrames) var gun_hands_frames
 
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
@@ -104,4 +106,5 @@ func shoot():
 	bullet.global_position = global_position
 
 func start_gun_curse():
+	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
