@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://Art/VFX/Light_map.png" type="Texture" id=12]
 [ext_resource path="res://Art/Big_background elements/forebreidge.png" type="Texture" id=13]
 [ext_resource path="res://Art/Big_background elements/Pillar.png" type="Texture" id=14]
+[ext_resource path="res://Art/Big_background elements/Blurred_platform.png" type="Texture" id=15]
+[ext_resource path="res://Art/Big_background elements/Pillar_blur.png" type="Texture" id=16]
+[ext_resource path="res://Entities/Objects/Big_Isometric items/Box.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Art/Big_background elements/Statue.png" type="Texture" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 78, 44, 77, 105, 13, 75, 16, 10 )
@@ -430,6 +434,46 @@ outlines = [ PoolVector2Array( -290, 168, 188, -73, 676, 171, 854, 87, 1002, 163
 script = ExtResource( 2 )
 success_timeline = "timeline-1676179945.json"
 
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 3
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2( 1.482, 1.931 )
+
+[node name="BlurredPlatform" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color( 0.407843, 0.87451, 1, 1 )
+position = Vector2( -580, 391 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 15 )
+
+[node name="BlurredPlatform2" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color( 0.407843, 0.87451, 1, 1 )
+position = Vector2( 2100, 602 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 15 )
+
+[node name="BlurredPlatform3" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color( 0.407843, 0.87451, 1, 1 )
+position = Vector2( 4358, 2052 )
+scale = Vector2( 0.760001, 0.760001 )
+texture = ExtResource( 15 )
+
+[node name="Pillar" type="Sprite" parent="ParallaxBackground2/ParallaxLayer/BlurredPlatform3"]
+self_modulate = Color( 0.443137, 0.580392, 0.635294, 1 )
+position = Vector2( -10.5254, -727.631 )
+scale = Vector2( 0.473685, 0.473685 )
+texture = ExtResource( 16 )
+
+[node name="Statue" type="Sprite" parent="ParallaxBackground2"]
+position = Vector2( 3784, -500 )
+scale = Vector2( 0.176783, 0.176783 )
+texture = ExtResource( 18 )
+
+[node name="Statue2" type="Sprite" parent="ParallaxBackground2"]
+position = Vector2( 3439, -682 )
+scale = Vector2( 0.176783, 0.176783 )
+texture = ExtResource( 18 )
+
 [node name="NPCParent" type="Node2D" parent="."]
 
 [node name="OtherParent" type="Node2D" parent="."]
@@ -539,6 +583,14 @@ position = Vector2( -10.7144, 10.7142 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Pillar/StaticBody2D"]
 polygon = PoolVector2Array( -471.431, 1153.58, -382.145, 1085.72, -403.573, 1050, -0.000244141, 682.146, 514.288, 1153.58, 21.4285, 1414.29 )
+
+[node name="Box" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 161, 543 )
+scale = Vector2( 0.11919, 0.11919 )
+
+[node name="Box2" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 322, 624 )
+scale = Vector2( 0.11919, 0.11919 )
 
 [node name="Bottoms" type="CanvasLayer" parent="."]
 layer = -2
