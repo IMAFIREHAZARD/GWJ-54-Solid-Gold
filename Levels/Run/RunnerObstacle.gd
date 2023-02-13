@@ -10,5 +10,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	move_and_slide(velocity)

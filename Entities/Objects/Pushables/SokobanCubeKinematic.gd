@@ -146,10 +146,11 @@ func _on_cube_pushed(direction): # signal from player/affordances
 func _on_cube_clicked(direction):
 	if is_clear(direction) and player_nearby:
 		var distance = 50.0 * speed
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		move_and_slide(direction * distance)
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 
 	if player_nearby and Input.is_action_just_pressed("push"):
 		print("clicked Sokoban Cube")

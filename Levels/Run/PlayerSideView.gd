@@ -13,7 +13,7 @@ func _ready():
 	$AnimationPlayer.play("run")
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("jump") and $GroundDetector.is_colliding():
 		$AnimationPlayer.play("jump")
 		State = States.JUMPING
@@ -29,6 +29,7 @@ func _process(delta):
 	velocity.y += gravity * delta
 	if is_on_floor() and velocity.y > 0.0:
 		velocity = Vector2.ZERO
+	#warning-ignore:RETURN_VALUE_DISCARDED
 	move_and_collide(velocity)
 
 
