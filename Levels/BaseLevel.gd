@@ -7,7 +7,7 @@ onready var tileMapGround : TileMap = find_node("TileMapGround")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	StageManager.current_map = self
-	#assign_player2passObjs()
+	assign_player2passObjs()
 
 func assign_player2passObjs():
 	for child in tileMapLevel1.get_children():
