@@ -49,6 +49,7 @@ playing = true
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
 margin_left = -30.8
 margin_top = -211.0
 margin_right = 33.2
@@ -73,6 +74,7 @@ texture = ExtResource( 8 )
 [node name="InteractWithSokobanCubes" parent="CustomAffordances" instance=ExtResource( 9 )]
 
 [node name="Debug" type="Node2D" parent="."]
+visible = false
 position = Vector2( -20, -146 )
 scale = Vector2( 3, 3 )
 
