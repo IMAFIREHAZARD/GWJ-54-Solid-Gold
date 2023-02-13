@@ -4,6 +4,9 @@ onready var ray_cast_2d: RayCast2D = $RayCast2D
 export var speed = 1000
 var active = true
 
+func _ready() -> void:
+	$AudioStreamPlayer.pitch_scale = rand_range(0.9, 1.1)
+
 func _physics_process(delta: float) -> void:
 	global_position += transform.x * speed * delta
 
