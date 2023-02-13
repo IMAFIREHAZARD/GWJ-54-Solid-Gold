@@ -37,6 +37,8 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	Dialogic.has_current_dialog_node()
+	if Global.gun_curse_taken:
+		start_gun_curse()
 
 func _physics_process(delta : float):
 	$Debug/StateLabel.text = States.keys()[State]
@@ -108,3 +110,4 @@ func shoot():
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
+	Global.gun_curse_taken = true

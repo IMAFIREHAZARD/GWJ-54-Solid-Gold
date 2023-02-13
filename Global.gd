@@ -2,7 +2,7 @@ extends Node
 
 
 var bpm : float = 90.0
-
+var gun_curse_taken = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
