@@ -52,9 +52,9 @@ func move_normally(delta : float):
 	
 
 func animate_movement(directionVector):
-	var vel = directionVector
 	var anim_array
-	if (vel.length() > 50):
+	var idle_speed_threshold = 50.0
+	if (directionVector.length_squared() > idle_speed_threshold * idle_speed_threshold):
 		anim_array = run_anim_names
 		dir_index = round(Vector2.DOWN.angle_to(vel)/deg2rad(45))
 	else:
