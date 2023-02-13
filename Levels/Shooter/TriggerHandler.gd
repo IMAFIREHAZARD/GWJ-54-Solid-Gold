@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body.
 
 func evaluate():
-	print(level.current_bugs)
+	print("TriggerHandler.gd - current_bugs == ", level.current_bugs)
 	if level.current_bugs == 0:
 		lvlComplete = true
 		win()

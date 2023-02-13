@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum States { IDLE, MOVING, FALLING }
+enum States { IDLE, MOVING, FALLING, DEAD }
 var State = States.IDLE
 
 var pusher : KinematicBody2D
@@ -45,10 +45,12 @@ func is_clear(direction):
 
 
 func fall(delta):
+	State = States.FALLING
 	var direction = Vector2.DOWN
 	falling_velocity += direction * delta * gravity
 	position += falling_velocity
 	if is_outside_frustum():
+		State = States.DEAD
 		queue_free()
 
 func is_outside_frustum():
