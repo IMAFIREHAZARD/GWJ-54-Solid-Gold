@@ -37,6 +37,8 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	Dialogic.has_current_dialog_node()
+	if Global.gun_curse_taken:
+		start_gun_curse()
 
 func _physics_process(delta : float):
 	$Debug/StateLabel.text = States.keys()[State]
@@ -101,14 +103,11 @@ func get_affordance(affordanceName : String):
 func shoot():
 	reload_timer.start()
 	var bullet = bullet_scene.instance() as Node2D
-	bullet.rotation = get_local_mouse_position().angle()
 	get_parent().add_child(bullet)
-	bullet.global_position = global_position
+	bullet.global_position = $BulletSpawnPoint.global_position
+	bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
 
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
-
-func fall_off_map():
-	State = States.DEAD
-	
+	Global.gun_curse_taken = true
