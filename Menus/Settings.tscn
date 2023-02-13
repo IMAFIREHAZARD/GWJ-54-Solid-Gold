@@ -53,6 +53,7 @@ self_modulate = Color( 2.89, 1.5625, 0.0100001, 1 )
 position = Vector2( 486, 621 )
 amount = 151
 lifetime = 1.1
+preprocess = 10.0
 speed_scale = 0.25
 explosiveness = 0.27
 randomness = 1.0
