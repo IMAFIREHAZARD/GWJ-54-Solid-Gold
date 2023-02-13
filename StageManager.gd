@@ -7,6 +7,7 @@ extends Control
 
 var current_map
 var current_packed_scene : PackedScene
+var player
 
 func _ready():
 	pass # Replace with function body.
