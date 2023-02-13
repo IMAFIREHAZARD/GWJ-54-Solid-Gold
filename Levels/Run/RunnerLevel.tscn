@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Run/RunnerLevel.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 518, 22.5 )
+
+[node name="RunnerLevel" type="Node2D"]
+script = ExtResource( 2 )
+next_scene = ExtResource( 3 )
+
+[node name="PlayerSideView" parent="." instance=ExtResource( 1 )]
+position = Vector2( 157, 420 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 514, 568 )
+scale = Vector2( 1.18178, 1.09371 )
+collision_layer = 4
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+polygon = PoolVector2Array( -513, -10, 510, -9, 508, 32, -515, 25, -515, 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( -2, 5 )
+shape = SubResource( 1 )
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ObstacleSpawns" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Position2D" parent="ObstacleSpawns"]
+position = Vector2( 1068, 523 )
+
+[node name="Spawn2" type="Position2D" parent="ObstacleSpawns"]
+position = Vector2( 1068, 352 )
+
+[node name="Timer" type="Node2D" parent="."]
+position = Vector2( 387, 53 )
+scale = Vector2( 5, 5 )
+
+[node name="Label" type="Label" parent="Timer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Time Left"
+
+[node name="ExitTimer" type="Timer" parent="Timer"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="ObstacleSpawnTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer/ExitTimer" to="." method="_on_ExitTimer_timeout"]
