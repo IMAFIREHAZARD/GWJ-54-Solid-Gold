@@ -4,6 +4,8 @@ onready var cam:Camera2D = get_node("Camera2D")
 onready var player:KinematicBody2D = find_node("Player")
 onready var tileMapLevel1:TileMap = find_node("TileMapLevel1")
 onready var tileMapGround : TileMap = find_node("TileMapGround")
+onready var tileMapGroundSidesL : TileMap = find_node("TileMapGroundSidesL")
+onready var tileMapGroundSidesR : TileMap = find_node("TileMapGroundSidesR")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	StageManager.current_map = self

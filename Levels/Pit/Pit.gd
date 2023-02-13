@@ -29,5 +29,8 @@ func destroy():
 		if dist<destruction_dist:
 			### DESTRUCTION ANIMATION OR SOMETHING
 			tileMapGround.set_cell(tile_coord[0],tile_coord[1],-1)
+			tileMapGroundSidesL.set_cell(tile_coord[0],tile_coord[1],-1)
+			tileMapGroundSidesR.set_cell(tile_coord[0],tile_coord[1],-1)
+			
 	## increment destruction dist
 	destruction_dist+=destruction_step
