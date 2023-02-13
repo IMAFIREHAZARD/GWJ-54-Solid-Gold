@@ -9,7 +9,7 @@ func _ready() -> void:
 	goto_random_pos()
 
 func goto_random_pos() -> void:
-	var targ = get_viewport_rect().size * Vector2(randf(), randf())
+	var targ = get_viewport_rect().size * Vector2(randf(), randf()) * 2.5
 	go_to_location(targ)
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
