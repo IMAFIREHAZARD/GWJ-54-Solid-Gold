@@ -43,12 +43,13 @@ func check_target_reachable():
 		##
 		print("A target location wasnt reachable. This is not intended!")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	## calc next move
 	var move = nav_agent.get_next_location()-global_position;
 	# set move speed
 	var target_vel = move.normalized() * move_speed  
 	# move
+	# warning-ignore:RETURN_VALUE_DISCARDED
 	move_and_slide(target_vel)
 	## adjust sprite frame dependend on move angle
 	var f = round(abs(Vector2.DOWN.angle_to(vel))/deg2rad(45))

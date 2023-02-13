@@ -10,7 +10,7 @@ func _ready():
 func set_player(player_):
 	player = player_
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# check if player assigned
 	if player == null: return
 	# check if player in polygon

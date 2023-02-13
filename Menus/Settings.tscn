@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/RemapControls.tscn" type="PackedScene" id=2]
@@ -6,14 +6,100 @@
 [ext_resource path="res://sfx/SFXAudioVolumeTest.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Menus/ControllerDeadZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=6]
-[ext_resource path="res://Menus/SettingsMenuBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI/Themes/SmokyBlackBackground.jpg" type="Texture" id=7]
+[ext_resource path="res://Art/smoke.png" type="Texture" id=8]
+[ext_resource path="res://Art/bgbg.jpg" type="Texture" id=9]
+[ext_resource path="res://Music/LEVEL_MUSIC_TEST.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+background_energy = 0.0
+fog_color = Color( 0.313726, 0.0627451, 0.141176, 1 )
+fog_sun_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+fog_depth_begin = 0.0
+fog_height_min = -3190.0
+glow_enabled = true
+glow_intensity = 0.88
+glow_strength = 1.02
+glow_bloom = 0.12
+glow_hdr_threshold = 4.0
+glow_hdr_luminance_cap = 256.0
+glow_hdr_scale = 4.0
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 
-[node name="SmokyTextureRect" parent="." instance=ExtResource( 7 )]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Bgbg" type="Sprite" parent="."]
+position = Vector2( 502, 313 )
+scale = Vector2( 0.365411, 0.365411 )
+texture = ExtResource( 9 )
+
+[node name="Embers" type="CPUParticles2D" parent="."]
+modulate = Color( 4, 1.5, 1.5, 1 )
+self_modulate = Color( 2.89, 1.5625, 0.0100001, 1 )
+position = Vector2( 486, 621 )
+amount = 151
+lifetime = 1.1
+preprocess = 10.0
+speed_scale = 0.25
+explosiveness = 0.27
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 600, 1.935 )
+direction = Vector2( -200, -200 )
+spread = 142.43
+gravity = Vector2( 0, -400 )
+initial_velocity = 91.74
+initial_velocity_random = 1.0
+angular_velocity_random = 0.97
+orbit_velocity_random = 0.2
+linear_accel = -72.4
+linear_accel_random = 0.85
+radial_accel = 9.17
+damping = 100.0
+damping_random = 0.29
+angle = 79.3
+angle_random = 0.89
+color = Color( 0.788235, 0.427451, 0.00392157, 1 )
+hue_variation = -0.29
+hue_variation_random = 0.5
+anim_speed = 7.05
+anim_speed_random = 0.17
+anim_offset = 0.83
+anim_offset_random = 0.34
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+modulate = Color( 0.607843, 0.607843, 0.607843, 1 )
+self_modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( 483, 598 )
+amount = 26
+lifetime = 0.5
+speed_scale = 0.15
+explosiveness = 0.27
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 200, 1.935 )
+direction = Vector2( -200, -200 )
+spread = 142.43
+gravity = Vector2( 0, -400 )
+initial_velocity = 605.5
+color = Color( 0.552941, 0.552941, 0.552941, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -98,6 +184,7 @@ margin_right = 261.0
 margin_bottom = 32.0
 
 [node name="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide/MusicVolumeSetting" index="2"]
+stream = ExtResource( 10 )
 bus = "Music"
 
 [node name="SFXVolumeSetting" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RightSide" instance=ExtResource( 3 )]

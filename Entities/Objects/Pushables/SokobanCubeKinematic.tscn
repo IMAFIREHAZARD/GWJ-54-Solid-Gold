@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/test_art/cube.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.gd" type="Script" id=2]
 [ext_resource path="res://assets/test_art/cube-white.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 47.0
+radius = 33.0337
 
 [node name="SokobanCubeKinematic" type="KinematicBody2D" groups=["SokobanCubes"]]
 collision_layer = 4
@@ -13,8 +12,9 @@ collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.8, 0.490196, 0.0941176, 1 )
 position = Vector2( -0.799999, -16 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="SpriteWhiteCube" type="Sprite" parent="."]
 visible = false
@@ -23,10 +23,9 @@ texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.799999, -16 )
-polygon = PoolVector2Array( 1, 32, -32, 16, 0, 0, 32, 16 )
+polygon = PoolVector2Array( 0.799999, 30, -27.5629, 16.764, -27.5078, 15.2103, 0.799999, 2, 26.5898, 14.8949, 26.6197, 17.0901 )
 
 [node name="PlayerPushRadius" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPushRadius"]
 scale = Vector2( 1, 0.67 )
@@ -36,34 +35,21 @@ shape = SubResource( 1 )
 wait_time = 0.5
 autostart = true
 
-[node name="DetectorRays" type="Node2D" parent="."]
-
-[node name="RaySE" type="RayCast2D" parent="DetectorRays"]
-position = Vector2( 15, 7 )
-cast_to = Vector2( 29, 16 )
-collision_mask = 4
-
-[node name="RaySW" type="RayCast2D" parent="DetectorRays"]
-position = Vector2( -19, 8 )
-cast_to = Vector2( -31, 18 )
-collision_mask = 4
-
-[node name="RayNW" type="RayCast2D" parent="DetectorRays"]
-position = Vector2( -15, -10 )
-cast_to = Vector2( -31, -16 )
-collision_mask = 4
-
-[node name="RayNE" type="RayCast2D" parent="DetectorRays"]
-position = Vector2( 13, -9 )
-cast_to = Vector2( 30, -17 )
-collision_mask = 4
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
-collision_mask = 5
+collision_mask = 4
 
 [node name="Line2D" type="Line2D" parent="."]
 
+[node name="Label" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+margin_bottom = -26.0
+text = "State"
+
+[connection signal="mouse_entered" from="." to="." method="_on_SokobanCubeKinematic_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_SokobanCubeKinematic_mouse_exited"]
 [connection signal="body_entered" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_entered"]
 [connection signal="body_exited" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_exited"]
 [connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]

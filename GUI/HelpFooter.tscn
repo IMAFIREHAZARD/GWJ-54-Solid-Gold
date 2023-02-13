@@ -25,9 +25,10 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="TogglePanelButton" type="Button" parent="Vbox"]
-margin_left = 484.0
-margin_right = 540.0
+margin_left = 437.0
+margin_right = 587.0
 margin_bottom = 28.0
+rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 4
 toggle_mode = true
 pressed = true
