@@ -7,6 +7,7 @@ onready var reload_timer: Timer = $ReloadTimer
 export(PackedScene) var bullet_scene
 
 var vel := Vector2()
+var last_direction : Vector2 = Vector2.ZERO
 
 const idle_anim_names = [
 	"IdleSouth",
@@ -59,6 +60,7 @@ func animate_movement(directionVector):
 	if (directionVector.length_squared() > idle_speed_threshold * idle_speed_threshold):
 		anim_array = run_anim_names
 		dir_index = round(Vector2.DOWN.angle_to(vel)/deg2rad(45))
+		last_direction = directionVector
 	else:
 		anim_array = idle_anim_names
 	

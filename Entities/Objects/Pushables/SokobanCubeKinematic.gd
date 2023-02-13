@@ -3,7 +3,7 @@ extends KinematicBody2D
 enum States { IDLE, ACTIVATED, MOVING, FALLING, DEAD }
 var State = States.IDLE
 
-var pusher : KinematicBody2D
+var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
 
 var falling_velocity : Vector2 = Vector2.ZERO
@@ -98,22 +98,31 @@ func get_tile_underneath():
 
 func _on_PlayerPushRadius_body_entered(body):
 	if State == States.IDLE:
-		var affordanceName = "InteractWithSokobanCubes"
-		if body.has_method("has_affordance") and body.has_affordance(affordanceName) != null:
-			#warning-ignore:UNUSED_VARIABLE
-			var affordance = body.get_affordance(affordanceName)
-			pass # TBD
-	
-			$SpriteWhiteCube.visible = true
-			State = States.ACTIVATED
-			# not moving until player presses interact key
-			pusher = body
+		if body.name == "Player":
+			wiggle()
 
+func wiggle():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", scale * 1.1, 0.25).set_ease(Tween.EASE_IN)
+	tween.tween_interval(0.15)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.25).set_ease(Tween.EASE_OUT)
+	
+func activate(requestingBody):
+	if State == States.IDLE:
+		$SpriteWhiteCube.visible = true
+		State = States.ACTIVATED
+		# not moving until player presses interact key
+		pusher = requestingBody # probably player
+		
+func deactivate(requestingBody):
+	if pusher == requestingBody:
+		State = States.IDLE
+		$SpriteWhiteCube.hide()
+		
 
 func _on_PlayerPushRadius_body_exited(body):
-	if body.name == "Player" and State == States.MOVING:
-		$SpriteWhiteCube.visible = false
-		State = States.IDLE
+	if body.name == "Player":
+		wiggle()
 
 
 func _on_PollingTimer_timeout():

@@ -101,18 +101,25 @@ func move_with_cube(delta):
 		
 func find_nearest_cube():
 	var cubes = get_tree().get_nodes_in_group("SokobanCubes")
-	var nearestCube = Global.get_nearest_object(cubes, self)
+	var lookahead_offset = 20.0
+	var probePosition = self.global_position + player.last_direction.rotated(PI/4.0).normalized() * lookahead_offset
+	$LookaheadProbeVisualizer.global_position = probePosition
+	var nearestCube = Global.get_nearest_object(cubes, probePosition)
 	if nearestCube != null:
 		return nearestCube
 
 func attach_to_sokoban_cube(cube):
 	current_cube = cube
+	if cube.has_method("activate"):
+		cube.activate(self.player) # the affordance or the player?
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("pushed_cube", current_cube, "_on_cube_pushed")
 	player.State = player.States.PUSHING_BLOCK
 	
 func detach_from_sokoban_cube(cube):
 	if current_cube == cube:
+		if cube.has_method("deactivate"):
+			cube.deactivate(self.player)
 		disconnect("pushed_cube", current_cube, "_on_cube_pushed")
 		current_cube = null
 	player.State = player.States.READY
