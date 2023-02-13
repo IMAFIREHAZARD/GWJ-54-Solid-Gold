@@ -4,6 +4,10 @@ export var SokobanCubeOffset = Vector2(0,75)
 var coord_list_cubes = []
 
 func _ready():
+	## prior stuff
+	StageManager.current_map = self
+	assign_player2passObjs()
+	## sokoban specific
 	SetupSokobanCubes()
 
 func SetupSokobanCubes():

@@ -108,3 +108,7 @@ func shoot():
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
+
+func fall_off_map():
+	State = States.DEAD
+	
