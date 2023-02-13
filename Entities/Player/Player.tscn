@@ -352,6 +352,9 @@ frame = 3
 speed_scale = 1.5
 playing = true
 
+[node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, -76 )
+
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
