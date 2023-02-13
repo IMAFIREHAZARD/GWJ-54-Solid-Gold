@@ -151,9 +151,15 @@ func _on_cube_clicked(direction):
 
 func _unhandled_input(event):
 
-	if player_nearby and Input.is_mouse_button_pressed(BUTTON_LEFT):
+	if player_nearby and Input.is_action_just_pressed("push"):
 		print("clicked Sokoban Cube")
 		_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+		get_tree().set_input_as_handled()
+
+#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+#		if $Sprite.get_rect().has_point($Sprite.to_local(event.position)):
+#			print("clicked Sokoban Cube")
+#			_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
 		
 
 func _on_SokobanCubeKinematic_mouse_entered():

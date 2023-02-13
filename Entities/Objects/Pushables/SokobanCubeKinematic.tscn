@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/test_art/cube-white.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 47.0
+radius = 33.0337
 
 [node name="SokobanCubeKinematic" type="KinematicBody2D" groups=["SokobanCubes"]]
 collision_layer = 4
