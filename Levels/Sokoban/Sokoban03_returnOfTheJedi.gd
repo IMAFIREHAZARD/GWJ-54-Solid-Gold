@@ -38,7 +38,7 @@ func cubeClicked(viewport_, event, shape_,cube):
 	# check direction player to cube
 	var player2cube = cube.global_position - player.global_position
 	## check if player close enough
-	if player2cube.length()>200: return
+	if player2cube.length()>150: return
 	# calc move direction dependend on player2cube angle
 	var coords = get_cube_coord(cube)
 	####
