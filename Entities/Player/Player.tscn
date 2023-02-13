@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Art/Shadow.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Player/Affordances/InteractWithSokobanCubes.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/NPCs/PlayerWithGunsAnimation.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://Entities/NPCs/PlayerAnimation.tres" type="SpriteFrames" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0217
@@ -326,6 +328,8 @@ collision_mask = 5
 script = ExtResource( 1 )
 move_speed = 650
 bullet_scene = ExtResource( 4 )
+default_frames = ExtResource( 11 )
+gun_hands_frames = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.200001, 0 )
@@ -344,7 +348,6 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 2
 speed_scale = 1.5
 playing = true
 
@@ -356,6 +359,7 @@ playing = true
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
 margin_left = -30.8
 margin_top = -211.0
 margin_right = 33.2
@@ -380,6 +384,7 @@ texture = ExtResource( 8 )
 [node name="InteractWithSokobanCubes" parent="CustomAffordances" instance=ExtResource( 9 )]
 
 [node name="Debug" type="Node2D" parent="."]
+visible = false
 position = Vector2( -20, -146 )
 scale = Vector2( 3, 3 )
 
