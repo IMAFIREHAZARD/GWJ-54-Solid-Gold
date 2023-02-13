@@ -318,7 +318,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -344,7 +344,8 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 1
+frame = 3
+speed_scale = 1.5
 playing = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
