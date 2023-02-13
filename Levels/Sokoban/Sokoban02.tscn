@@ -52,7 +52,7 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 0
+frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -73,7 +73,7 @@ ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic4" parent="YSort" instance=ExtResource( 8 )]
 material = SubResource( 1 )
-position = Vector2( 739, 125 )
+position = Vector2( 737, 127 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic5" parent="YSort" instance=ExtResource( 8 )]
@@ -172,7 +172,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 1
+frame = 3
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]

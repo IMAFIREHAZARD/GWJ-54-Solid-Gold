@@ -23,7 +23,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.799999, -16 )
-polygon = PoolVector2Array( 1, 32, -32, 16, 0, 0, 32, 16 )
+polygon = PoolVector2Array( 0.799999, 30, -27.5629, 16.764, -27.5078, 15.2103, 0.799999, 2, 26.5898, 14.8949, 26.6197, 17.0901 )
 
 [node name="PlayerPushRadius" type="Area2D" parent="."]
 
