@@ -33,6 +33,7 @@ func _ready() -> void:
 	Dialogic.has_current_dialog_node()
 
 func _physics_process(delta : float):
+	$Debug/StateLabel.text = States.keys()[State]
 	if State == States.READY:
 		move_normally(delta)
 	elif State == States.PUSHING_BLOCK:
@@ -44,6 +45,7 @@ func move_normally(delta : float):
 	var move = Vector2()
 	if !Dialogic.has_current_dialog_node():
 		move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		#move = move.rotated(PI/4.0) # isometric?
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
 	# warning-ignore:return_value_discarded

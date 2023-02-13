@@ -51,157 +51,117 @@ disabled = true
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
 
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 0
+
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 
 [node name="SokobanCubeKinematic" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
 position = Vector2( 838, 77 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic2" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 803, 91 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic3" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 737, 95 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic4" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 739, 125 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic5" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 800, 190 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic6" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 511, 111 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic7" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 449, 144 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic8" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 514, 144 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic9" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 544, 160 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic10" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 577, 176 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic13" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 577, 206 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic14" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 512, 206 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic15" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 481, 190 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic16" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 446, 174 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic17" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 383, 302 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic18" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 382, 335 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic19" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 445, 369 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic20" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 448, 335 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic21" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 482, 351 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic22" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 516, 367 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic11" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 577, 145 )
 ground_tilemap = NodePath("../TileMapGround")
 
 [node name="SokobanCubeKinematic12" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.254902, 0.47451, 0.282353, 1 )
-self_modulate = Color( 0.486275, 0.439216, 0.2, 1 )
 material = SubResource( 1 )
 position = Vector2( 610, 128 )
 ground_tilemap = NodePath("../TileMapGround")
@@ -212,6 +172,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
+frame = 1
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
