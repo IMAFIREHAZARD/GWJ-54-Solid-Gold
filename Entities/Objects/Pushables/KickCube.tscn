@@ -26,6 +26,11 @@ polygon = PoolVector2Array( 0, -48, 32, -32, 32, 0, 0, 16, -32, 0, -32, -32 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 4
 
+[node name="Arrow" type="Polygon2D" parent="."]
+position = Vector2( 0, -32 )
+color = Color( 0.231373, 0.231373, 0.231373, 1 )
+polygon = PoolVector2Array( -11, -4, 4, -4, 4, -9, 11, 0, 4, 8, 4, 4, -11, 4 )
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_ClickArea_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="." method="_on_ClickArea_mouse_exited"]
