@@ -344,7 +344,7 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 
@@ -378,5 +378,14 @@ texture = ExtResource( 8 )
 [node name="CustomAffordances" type="Node2D" parent="."]
 
 [node name="InteractWithSokobanCubes" parent="CustomAffordances" instance=ExtResource( 9 )]
+
+[node name="Debug" type="Node2D" parent="."]
+position = Vector2( -20, -146 )
+scale = Vector2( 3, 3 )
+
+[node name="StateLabel" type="Label" parent="Debug"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "State"
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]

@@ -7,6 +7,7 @@ onready var reload_timer: Timer = $ReloadTimer
 export(PackedScene) var bullet_scene
 
 var vel := Vector2()
+var last_direction : Vector2 = Vector2.ZERO
 
 const idle_anim_names = [
 	"IdleSouth",
@@ -33,6 +34,7 @@ func _ready() -> void:
 	Dialogic.has_current_dialog_node()
 
 func _physics_process(delta : float):
+	$Debug/StateLabel.text = States.keys()[State]
 	if State == States.READY:
 		move_normally(delta)
 	elif State == States.PUSHING_BLOCK:
@@ -44,6 +46,7 @@ func move_normally(delta : float):
 	var move = Vector2()
 	if !Dialogic.has_current_dialog_node():
 		move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		#move = move.rotated(PI/4.0) # isometric?
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
 	# warning-ignore:return_value_discarded
@@ -57,6 +60,7 @@ func animate_movement(directionVector):
 	if (directionVector.length_squared() > idle_speed_threshold * idle_speed_threshold):
 		anim_array = run_anim_names
 		dir_index = round(Vector2.DOWN.angle_to(vel)/deg2rad(45))
+		last_direction = directionVector
 	else:
 		anim_array = idle_anim_names
 	
