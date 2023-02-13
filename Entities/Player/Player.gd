@@ -36,7 +36,7 @@ func _enter_tree() -> void:
 	StageManager.player = self
 
 func _ready() -> void:
-	Dialogic.has_current_dialog_node()
+	#Dialogic.has_current_dialog_node()
 	if Global.gun_curse_taken:
 		start_gun_curse()
 
