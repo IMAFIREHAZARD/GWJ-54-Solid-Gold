@@ -39,11 +39,12 @@ tracks/0/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( -3, -107 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Fire_Shot = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="Fire1" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 78, 38 )
+position = Vector2( 60, -160 )
 texture = ExtResource( 5 )
