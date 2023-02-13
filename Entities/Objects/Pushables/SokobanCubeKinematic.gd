@@ -3,12 +3,17 @@ extends KinematicBody2D
 enum States { IDLE, ACTIVATED, MOVING, FALLING, DEAD }
 var State = States.IDLE
 
+var player
+var mouse_hovering : bool = false
+var player_nearby : bool = false
+
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
 	
+
 export var cardinal_directions_only : bool = true
 export var ground_tilemap : NodePath
 
@@ -100,6 +105,8 @@ func _on_PlayerPushRadius_body_entered(body):
 	if State == States.IDLE:
 		if body.name == "Player":
 			wiggle()
+			player = body
+			player_nearby = true
 
 func wiggle():
 	var tween = get_tree().create_tween()
@@ -123,6 +130,7 @@ func deactivate(requestingBody):
 func _on_PlayerPushRadius_body_exited(body):
 	if body.name == "Player":
 		wiggle()
+		player_nearby = false
 
 
 func _on_PollingTimer_timeout():
@@ -134,4 +142,23 @@ func _on_PollingTimer_timeout():
 func _on_cube_pushed(direction): # signal from player/affordances
 	if is_clear(direction) and State == States.ACTIVATED:
 		move_and_slide(direction * speed)
+	
+func _on_cube_clicked(direction):
+	if is_clear(direction) and player_nearby:
+		var distance = 50.0 * speed
+		move_and_slide(direction * distance)
+
+
+func _unhandled_input(event):
+
+	if player_nearby and Input.is_mouse_button_pressed(BUTTON_LEFT):
+		print("clicked Sokoban Cube")
+		_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+		
+
+func _on_SokobanCubeKinematic_mouse_entered():
+	mouse_hovering = true
+
+func _on_SokobanCubeKinematic_mouse_exited():
+	mouse_hovering = false
 	

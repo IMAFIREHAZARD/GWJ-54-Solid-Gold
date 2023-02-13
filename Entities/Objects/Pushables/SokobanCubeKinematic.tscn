@@ -48,6 +48,8 @@ margin_right = 20.0
 margin_bottom = -26.0
 text = "State"
 
+[connection signal="mouse_entered" from="." to="." method="_on_SokobanCubeKinematic_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_SokobanCubeKinematic_mouse_exited"]
 [connection signal="body_entered" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_entered"]
 [connection signal="body_exited" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_exited"]
 [connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]
