@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	$Timer/Label.text = str(round($Timer/ExitTimer.time_left))
 
 func introduce_obstacle():
