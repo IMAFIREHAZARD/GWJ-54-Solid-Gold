@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/NPCs/BaseNPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.gd" type="Script" id=2]
@@ -6,42 +6,37 @@
 [ext_resource path="res://Art/Enemy_sprite.png" type="Texture" id=4]
 [ext_resource path="res://Art/Shadow.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 800, 1173 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 800, 0, 800, 1173 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1600, 0, 800, 1173 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 2400, 0, 800, 1173 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3200, 0, 800, 1173 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "New Anim",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -76,52 +71,24 @@ tracks/0/keys = {
 "values": [ 0.0, -5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -5.0, 0.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 800, 1173 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 800, 0, 800, 1173 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1600, 0, 800, 1173 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 2400, 0, 800, 1173 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 3200, 0, 800, 1173 )
-
-[sub_resource type="SpriteFrames" id=15]
-animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="Critter" instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
+manual_animation = true
 splat_scene = ExtResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="0"]
-visible = false
 position = Vector2( 0, 4 )
-scale = Vector2( 0.0190625, 0.0171849 )
-frames = SubResource( 1 )
+scale = Vector2( 0.065, 0.065 )
+frames = SubResource( 15 )
 frame = 1
 playing = true
+
+[node name="Shadow" type="Sprite" parent="AnimatedSprite" index="0"]
+position = Vector2( 30.7692, 400 )
+scale = Vector2( 3.58316, 1.36097 )
+texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 disabled = true
@@ -139,17 +106,5 @@ wait_time = 0.5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 anims/RESET = SubResource( 4 )
 anims/Wiggle = SubResource( 3 )
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="." index="6"]
-position = Vector2( -1, 7 )
-scale = Vector2( 0.0800008, 0.0800008 )
-frames = SubResource( 15 )
-frame = 2
-playing = true
-
-[node name="Shadow" type="Sprite" parent="AnimatedSprite2" index="0"]
-position = Vector2( 37.4996, 312.497 )
-scale = Vector2( 2.91129, 1.10578 )
-texture = ExtResource( 5 )
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]

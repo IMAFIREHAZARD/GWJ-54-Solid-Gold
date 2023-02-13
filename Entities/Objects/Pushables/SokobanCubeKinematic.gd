@@ -1,14 +1,19 @@
 extends KinematicBody2D
 
-enum States { IDLE, MOVING, FALLING }
+enum States { IDLE, ACTIVATED, MOVING, FALLING, DEAD }
 var State = States.IDLE
 
-var pusher : KinematicBody2D
+var player
+var mouse_hovering : bool = false
+var player_nearby : bool = false
+
+var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
 	
+
 export var cardinal_directions_only : bool = true
 export var ground_tilemap : NodePath
 
@@ -19,6 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Label.text = States.keys()[State]
 	if State == States.MOVING:
 		# figure out which way the player is pushing you
 		# move away if the player gets closer
@@ -45,10 +51,12 @@ func is_clear(direction):
 
 
 func fall(delta):
+	State = States.FALLING
 	var direction = Vector2.DOWN
 	falling_velocity += direction * delta * gravity
 	position += falling_velocity
 	if is_outside_frustum():
+		State = States.DEAD
 		queue_free()
 
 func is_outside_frustum():
@@ -61,20 +69,24 @@ func is_outside_frustum():
 	
 
 func get_direction(pushingSource):
-	var direction
-	direction = pusher.global_position.direction_to(self.global_position)
+	
+	if is_instance_valid(self) and is_instance_valid(pushingSource):
+		var direction
+		direction = pushingSource.get_global_position().direction_to(self.global_position)
 
-	if cardinal_directions_only:
-		if direction.x < 0.0:
-			direction.x = -2.0
-		else:
-			direction.x = 2.0
-		if direction.y < 0.0:
-			direction.y = -1.0
-		else:
-			direction.y = 1.0
-			
-	return direction
+		#translate direction to cardinal directions on isometric grid, no diagonals
+		var aceptable_directions = [ Vector2(2, 1), Vector2(2, -1), Vector2(-2, -1), Vector2(-2, 1), Vector2.ZERO]
+		var closest_direction = Vector2.ZERO
+		var closest_distance = 1000000.0
+		for acceptable_direction in aceptable_directions:
+			var distance = direction.distance_squared_to(acceptable_direction)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_direction = acceptable_direction
+		return closest_direction
+
+
+
 
 
 func get_tile_underneath():
@@ -91,20 +103,34 @@ func get_tile_underneath():
 
 func _on_PlayerPushRadius_body_entered(body):
 	if State == States.IDLE:
-		var affordanceName = "InteractWithSokobanCubes"
-		if body.has_method("has_affordance") and body.has_affordance(affordanceName) != null:
-			var affordance = body.get_affordance(affordanceName)
-			pass # TBD
-	
-		$SpriteWhiteCube.visible = true
-		State = States.MOVING
-		pusher = body
+		if body.name == "Player":
+			wiggle()
+			player = body
+			player_nearby = true
 
+func wiggle():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", scale * 1.1, 0.25).set_ease(Tween.EASE_IN)
+	tween.tween_interval(0.15)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.25).set_ease(Tween.EASE_OUT)
+	
+func activate(requestingBody):
+	if State == States.IDLE:
+		$SpriteWhiteCube.visible = true
+		State = States.ACTIVATED
+		# not moving until player presses interact key
+		pusher = requestingBody # probably player
+		
+func deactivate(requestingBody):
+	if pusher == requestingBody:
+		State = States.IDLE
+		$SpriteWhiteCube.hide()
+		
 
 func _on_PlayerPushRadius_body_exited(body):
-	if body.name == "Player" and State == States.MOVING:
-		$SpriteWhiteCube.visible = false
-		State = States.IDLE
+	if body.name == "Player":
+		wiggle()
+		player_nearby = false
 
 
 func _on_PollingTimer_timeout():
@@ -112,3 +138,33 @@ func _on_PollingTimer_timeout():
 		var tileName = get_tile_underneath()
 		if tileName == "Void":
 			State = States.FALLING
+
+func _on_cube_pushed(direction): # signal from player/affordances
+	if is_clear(direction) and State == States.ACTIVATED:
+		move_and_slide(direction * speed)
+	
+func _on_cube_clicked(direction):
+	if is_clear(direction) and player_nearby:
+		var distance = 50.0 * speed
+		move_and_slide(direction * distance)
+
+
+func _unhandled_input(event):
+
+	if player_nearby and Input.is_action_just_pressed("push"):
+		print("clicked Sokoban Cube")
+		_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+		get_tree().set_input_as_handled()
+
+#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+#		if $Sprite.get_rect().has_point($Sprite.to_local(event.position)):
+#			print("clicked Sokoban Cube")
+#			_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+		
+
+func _on_SokobanCubeKinematic_mouse_entered():
+	mouse_hovering = true
+
+func _on_SokobanCubeKinematic_mouse_exited():
+	mouse_hovering = false
+	

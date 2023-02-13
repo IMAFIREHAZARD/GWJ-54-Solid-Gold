@@ -9,18 +9,18 @@
 			"volume": 0
 		},
 		{
-			"animation": "bouncing_in.gd",
+			"animation": "instant_in.gd",
 			"animation_length": 0.5,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_002",
-			"mirror_portrait": false,
+			"mirror_portrait": true,
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
 				"0": false,
-				"1": false,
+				"1": true,
 				"2": false,
 				"3": false,
 				"4": false
@@ -32,7 +32,7 @@
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oh thank heavens, the bugs are dead!"
+			"text": "We killed all those mother F***ing bugs! Lets f***ing go!"
 		},
 		{
 			"emit_signal": "",

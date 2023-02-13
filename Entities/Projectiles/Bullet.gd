@@ -1,23 +1,19 @@
-extends Node2D
+extends Area2D
 onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 export var speed = 1000
+var active = true
 
 func _physics_process(delta: float) -> void:
-	ray_cast_2d.cast_to = Vector2(-speed * delta, 0)
-	ray_cast_2d.force_raycast_update()
-	if ray_cast_2d.is_colliding():
-		var bounced = false
-		var collider = ray_cast_2d.get_collider()
-		if collider.has_method("kill"):
-			collider.kill()
-		elif "can_break" in collider:
-			if collider.can_break:
-				collider.break()
-			else:
-				pass
-				# bounce
-		if not bounced:
-			queue_free()
-	else:
-		global_position += transform.x * speed * delta
+	global_position += transform.x * speed * delta
+
+
+func _on_Bullet_body_entered(body: Node) -> void:
+	if not active: return
+	if body.has_method("kill"):
+		body.kill()
+	active = false
+	$AnimationPlayer.play("Hit")
+	speed = 0
+	yield($AnimationPlayer,"animation_finished")
+	queue_free()
