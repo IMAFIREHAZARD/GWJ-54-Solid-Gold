@@ -30,6 +30,9 @@ enum States { READY, PUSHING_BLOCK, PAUSED, DEAD }
 var State = States.READY
 
 
+func _enter_tree() -> void:
+	StageManager.player = self
+
 func _ready() -> void:
 	Dialogic.has_current_dialog_node()
 

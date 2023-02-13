@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/CommonInfrastructure/MinimalLevel.gd" type="Script" id=2]
@@ -7,10 +7,7 @@
 [ext_resource path="res://Levels/Cooking/Cooking.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.tscn" type="PackedScene" id=8]
-
-[sub_resource type="CanvasItemMaterial" id=1]
-light_mode = 1
+[ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=8]
 
 [node name="Sokoban" type="Node2D"]
 script = ExtResource( 2 )
@@ -52,119 +49,76 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 2
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 
-[node name="SokobanCubeKinematic" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 838, 77 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 832, 80 )
 
-[node name="SokobanCubeKinematic2" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 803, 91 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 800, 96 )
 
-[node name="SokobanCubeKinematic3" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 737, 95 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 736, 96 )
 
-[node name="SokobanCubeKinematic4" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 737, 127 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D4" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 736, 128 )
 
-[node name="SokobanCubeKinematic5" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 800, 190 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D5" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 800, 192 )
 
-[node name="SokobanCubeKinematic6" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 511, 111 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D6" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 208 )
 
-[node name="SokobanCubeKinematic7" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 449, 144 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D7" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 176 )
 
-[node name="SokobanCubeKinematic8" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 514, 144 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D8" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 144 )
 
-[node name="SokobanCubeKinematic9" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
+[node name="StaticBody2D9" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 608, 128 )
+
+[node name="StaticBody2D10" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 544, 160 )
-ground_tilemap = NodePath("../TileMapGround")
 
-[node name="SokobanCubeKinematic10" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 577, 176 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D11" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 144 )
 
-[node name="SokobanCubeKinematic13" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 577, 206 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D12" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 112 )
 
-[node name="SokobanCubeKinematic14" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 512, 206 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D13" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 144 )
 
-[node name="SokobanCubeKinematic15" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 481, 190 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D14" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 176 )
 
-[node name="SokobanCubeKinematic16" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 446, 174 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D15" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 480, 192 )
 
-[node name="SokobanCubeKinematic17" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 383, 302 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D16" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 208 )
 
-[node name="SokobanCubeKinematic18" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 382, 335 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D17" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 384, 304 )
 
-[node name="SokobanCubeKinematic19" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 445, 369 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D18" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 384, 336 )
 
-[node name="SokobanCubeKinematic20" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 448, 335 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D19" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 368 )
 
-[node name="SokobanCubeKinematic21" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 482, 351 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D20" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 480, 352 )
 
-[node name="SokobanCubeKinematic22" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 516, 367 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D21" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 336 )
 
-[node name="SokobanCubeKinematic11" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 577, 145 )
-ground_tilemap = NodePath("../TileMapGround")
-
-[node name="SokobanCubeKinematic12" parent="YSort" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 610, 128 )
-ground_tilemap = NodePath("../TileMapGround")
+[node name="StaticBody2D22" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 368 )
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 552, 302 )
@@ -172,7 +126,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 3
+frame = 2
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
