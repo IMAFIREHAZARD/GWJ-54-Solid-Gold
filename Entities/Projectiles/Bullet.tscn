@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/Projectiles/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Art/VFX/Fire_4.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/VFX/Fire_5.png" type="Texture" id=4]
 [ext_resource path="res://Art/VFX/Fire_3.png" type="Texture" id=5]
 [ext_resource path="res://Art/VFX/Fire_1.png" type="Texture" id=6]
+[ext_resource path="res://GUI/Buttons/UI_hover_03.wav" type="AudioStream" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -113,7 +114,7 @@ collision_mask = 6
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 offset = Vector2( -58, 3 )
 
@@ -134,5 +135,9 @@ scale = Vector2( 0.5, 0.5 )
 scale = Vector2( 1e-05, 1 )
 color = Color( 0.988235, 0.717647, 0, 1 )
 polygon = PoolVector2Array( -700000, -58, 500000, -11, 3.8e+06, -56, 1.5e+06, -6, 7.9e+06, -17, 2.8e+06, 9, 7e+06, 30, 1.3e+06, 16, 4.2e+06, 76, -200000, 19, -1.4e+06, 61, -800000, 13, -6.2e+06, 27, -1.5e+06, -5, -5.6e+06, -34, -1.9e+06, -22 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
