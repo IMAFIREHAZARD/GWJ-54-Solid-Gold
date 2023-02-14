@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
 [ext_resource path="res://Levels/TestLevels/Critters.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/BossFight/BossFight.tscn" type="PackedScene" id=11]
 
 [node name="TestingMenu" type="Control"]
 anchor_right = 1.0
@@ -106,6 +107,13 @@ margin_right = 300.0
 margin_bottom = 81.0
 text = "Critter Test Level"
 target_scene = ExtResource( 10 )
+
+[node name="CritterTestLevel3" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
+margin_top = 106.0
+margin_right = 300.0
+margin_bottom = 134.0
+text = "Boss Level"
+target_scene = ExtResource( 11 )
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 312.0
