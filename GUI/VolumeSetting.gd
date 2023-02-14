@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends BoxContainer
 
 export var bus = "Master"
 var bus_index : int
