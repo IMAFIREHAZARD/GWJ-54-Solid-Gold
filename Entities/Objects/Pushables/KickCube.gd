@@ -22,7 +22,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 			yield(tween, "finished")
 			moving = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if hovered:
 		if player.global_position.distance_to(global_position) < move_dist * 1.2 \
 		and level.hovered_block == null:
