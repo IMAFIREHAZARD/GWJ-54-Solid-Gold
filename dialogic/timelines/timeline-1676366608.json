@@ -1,0 +1,63 @@
+{
+	"events": [
+		{
+			"animation": "3-fade_in_up_big.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Merchant",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "I can make you faster. Would you like to speed up?"
+		},
+		{
+			"choice": "Yes",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"emit_signal": "speed_up",
+			"event_id": "dialogic_040"
+		},
+		{
+			"choice": "No",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"emit_signal": "do_not_speed_up",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1676366608.json",
+		"name": "SpeedUp"
+	}
+}

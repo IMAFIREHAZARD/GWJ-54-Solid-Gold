@@ -34,4 +34,5 @@ func get_tile_underneath(pos_global:Vector2):
 
 func _physics_process(_delta):
 	## check if player is falling
-	if get_tile_underneath(player.global_position)=="Void": player.fall_off_map()
+	if get_tile_underneath(player.global_position)=="Void" and player.has_method("fall_off_map"):
+		player.fall_off_map()

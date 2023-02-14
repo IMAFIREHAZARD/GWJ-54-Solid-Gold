@@ -15,6 +15,9 @@ func _ready():
 func change_scene(ScenePath : String):
 	var Scene = load(ScenePath)
 	change_scene_to(Scene)
+
+func restart_current_level():
+	change_scene_to(current_packed_scene)
 	
 func change_scene_to(Scene : PackedScene):
 	current_packed_scene = Scene
