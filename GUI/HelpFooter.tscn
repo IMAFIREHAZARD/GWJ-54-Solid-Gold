@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sfx/shh.wav" type="AudioStream" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://GUI/Help/Mouse.png" type="Texture" id=5]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/test_art/cube-blue.png" type="Texture" id=7]
+[ext_resource path="res://GUI/VolumeSetting.gd" type="Script" id=8]
+[ext_resource path="res://sfx/bgMusicAudioVolumeTest.ogg" type="AudioStream" id=9]
 
 [node name="Footer" type="MarginContainer"]
 anchor_top = 1.0
@@ -35,9 +37,9 @@ pressed = true
 text = "Help"
 
 [node name="PanelContents" type="HBoxContainer" parent="Vbox"]
-margin_left = 308.0
+margin_left = 231.0
 margin_top = 38.0
-margin_right = 715.0
+margin_right = 792.0
 margin_bottom = 128.0
 grow_horizontal = 2
 mouse_filter = 2
@@ -97,8 +99,36 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
+[node name="VolumeSetting" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_left = 411.0
+margin_right = 561.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Vbox/PanelContents/VolumeSetting"]
+margin_right = 150.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "VolumeBus"
+
+[node name="VolumeSlider" type="HSlider" parent="Vbox/PanelContents/VolumeSetting"]
+margin_top = 26.0
+margin_right = 150.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Vbox/PanelContents/VolumeSetting"]
+stream = ExtResource( 9 )
+
 [node name="PanelOpenNoise" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 2 )
 volume_db = -20.0
 
 [connection signal="toggled" from="Vbox/TogglePanelButton" to="." method="_on_InventoryButton_toggled"]
+[connection signal="drag_ended" from="Vbox/PanelContents/VolumeSetting/VolumeSlider" to="Vbox/PanelContents/VolumeSetting" method="_on_VolumeSlider_drag_ended"]
+[connection signal="drag_started" from="Vbox/PanelContents/VolumeSetting/VolumeSlider" to="Vbox/PanelContents/VolumeSetting" method="_on_VolumeSlider_drag_started"]
