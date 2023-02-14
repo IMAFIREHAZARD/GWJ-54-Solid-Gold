@@ -348,6 +348,7 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
+frame = 2
 speed_scale = 1.5
 playing = true
 
@@ -355,6 +356,7 @@ playing = true
 position = Vector2( 0, -76 )
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
+layer = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
