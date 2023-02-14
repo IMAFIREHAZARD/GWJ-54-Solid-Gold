@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Sokoban/Sokoban02.gd" type="Script" id=2]
 [ext_resource path="res://assets/test_art/test_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/Cooking/Cooking.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=8]
@@ -49,7 +49,7 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 3
+frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -126,7 +126,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 3
+frame = 1
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
