@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/TestLevels/BulletTurret.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Objects/Reflectors/BasicReflector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Objects/Reflectors/SpinningReflector.tscn" type="PackedScene" id=3]
+
+[node name="TestRicochet" type="Node2D"]
+
+[node name="BulletTurret" type="Position2D" parent="."]
+position = Vector2( 67, 136 )
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="BulletTurret"]
+points = PoolVector2Array( 1, 1, 64, 0 )
+
+[node name="BulletTurret2" type="Position2D" parent="."]
+position = Vector2( 69, 41 )
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="BulletTurret2"]
+points = PoolVector2Array( 1, 1, 64, 0 )
+
+[node name="SpinningReflector" parent="." instance=ExtResource( 3 )]
+position = Vector2( 466, 338 )
+rotation = -1.57276
+
+[node name="SpinningReflector3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 622, 409 )
+rotation = 2.53589
+
+[node name="SpinningReflector4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 328, 344 )
+rotation = 3.11334
+
+[node name="SpinningReflector2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 381, 239 )
+rotation = 0.00430746
+
+[node name="BasicReflector" parent="." instance=ExtResource( 2 )]
+position = Vector2( 744, 118 )
+rotation = -0.471505
+
+[node name="BasicReflector2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 490, 28 )
+rotation = -0.595892

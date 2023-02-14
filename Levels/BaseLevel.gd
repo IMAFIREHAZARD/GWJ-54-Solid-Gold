@@ -12,12 +12,16 @@ func _ready():
 	assign_player2passObjs()
 
 func assign_player2passObjs():
-	for child in tileMapLevel1.get_children():
-		if child.has_method("set_player"):
-			child.set_player(player)
-		pass
+	if tileMapLevel1 != null:
+		for child in tileMapLevel1.get_children():
+			if child.has_method("set_player"):
+				child.set_player(player)
+			pass
 
 func get_tile_underneath(pos_global:Vector2):
+	if tileMapGround == null:
+		return
+		
 	var local_position = tileMapGround.to_local(pos_global)
 	var map_position = tileMapGround.world_to_map(local_position)
 	var tileSet = tileMapGround.tile_set
@@ -28,6 +32,6 @@ func get_tile_underneath(pos_global:Vector2):
 	else:
 		return "Void"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	## check if player is falling
 	if get_tile_underneath(player.global_position)=="Void": player.fall_off_map()
