@@ -304,6 +304,30 @@ tracks/23/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/24/type = "value"
+tracks/24/path = NodePath("Wing right:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 61.8901, 193.821 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("WingSmall:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -49.7888, 172.607 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -317,7 +341,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 604, 448 ) ]
+"values": [ Vector2( 94.5115, 199.582 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Wing right:rotation_degrees")
@@ -353,7 +377,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -21.2446 ]
+"values": [ -6.7 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("WingSmall:scale")
@@ -377,7 +401,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 286, 441 ) ]
+"values": [ Vector2( -92.2979, 114.066 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Wing:rotation_degrees")
@@ -425,7 +449,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -16.751 ]
+"values": [ 1.06061 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Left_Arm/ForearmRight/HandRight:scale")
@@ -533,7 +557,7 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 122.16 ]
+"values": [ 27.5368 ]
 }
 tracks/19/type = "value"
 tracks/19/path = NodePath("Right_Arm/ForearmLeft/HandLeft:scale")
@@ -648,12 +672,9 @@ tracks/27/keys = {
 radius = 136.174
 height = 480.087
 
-[node name="Boss" type="KinematicBody2D"]
+[node name="Boss" type="Sprite"]
 position = Vector2( 83, -40 )
-rotation = -0.0790672
-__meta__ = {
-"_edit_ik_": true
-}
+rotation = -0.0790671
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
@@ -661,7 +682,7 @@ anims/RESET = SubResource( 2 )
 
 [node name="Wing Right" type="Sprite" parent="."]
 position = Vector2( 126.358, 8.59503 )
-rotation = -0.188945
+rotation = -0.188946
 scale = Vector2( 1.07259, 1.07259 )
 texture = ExtResource( 9 )
 offset = Vector2( 274.663, -58.1515 )
@@ -677,25 +698,25 @@ offset = Vector2( -168, -235 )
 position = Vector2( -339.598, -452.014 )
 
 [node name="WingSmall" type="Sprite" parent="."]
-position = Vector2( 286, 441 )
-rotation = -0.370788
+position = Vector2( -92.2979, 114.066 )
+rotation = -0.116937
 texture = ExtResource( 2 )
-offset = Vector2( -142, -50 )
+offset = Vector2( -150.856, -5.67188 )
 
 [node name="Position2D2" type="Position2D" parent="WingSmall"]
-position = Vector2( -235.422, -47.7339 )
-rotation = 0.0296899
+position = Vector2( -51.1471, 20.8319 )
+rotation = 0.372787
 scale = Vector2( 0.869352, 0.869352 )
 
 [node name="Wing right" type="Sprite" parent="."]
-position = Vector2( 604, 448 )
+position = Vector2( 94.5115, 199.582 )
 rotation = -3.03164
 scale = Vector2( 0.876, -1 )
 texture = ExtResource( 2 )
-offset = Vector2( -153.6, -32.0562 )
+offset = Vector2( -136.44, -38.0619 )
 
 [node name="Position2D3" type="Position2D" parent="Wing right"]
-position = Vector2( -207.838, -39.1085 )
+position = Vector2( 360.386, -192.414 )
 rotation = -2.97978
 scale = Vector2( 0.988529, -0.873763 )
 
@@ -735,7 +756,7 @@ __meta__ = {
 
 [node name="HandRight" type="Sprite" parent="Left_Arm/ForearmRight"]
 position = Vector2( -142, -29 )
-rotation = -0.29236
+rotation = 0.0185112
 scale = Vector2( 1, 1.00008 )
 texture = ExtResource( 3 )
 offset = Vector2( -54.808, -4.52039 )
@@ -825,7 +846,7 @@ __meta__ = {
 
 [node name="HandLeft" type="Sprite" parent="Right_Arm/ForearmLeft"]
 position = Vector2( -28.5, 45 )
-rotation = 2.1321
+rotation = 0.480608
 texture = ExtResource( 10 )
 offset = Vector2( 23.228, 40.5672 )
 __meta__ = {
@@ -841,5 +862,4 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 3 )
