@@ -16,7 +16,10 @@ func introduce_obstacle():
 	add_child(obstacle)
 	var randSpawner = $ObstacleSpawns.get_children()[randi()%$ObstacleSpawns.get_child_count()]
 	obstacle.global_position = randSpawner.global_position
-	
+	if randSpawner.name == "Walk" and obstacle.has_method("walk"):
+		obstacle.walk()
+	elif randSpawner.name == "Fly" and obstacle.has_method("fly"):
+		obstacle.fly()
 
 func _on_Timer_timeout():
 	introduce_obstacle()

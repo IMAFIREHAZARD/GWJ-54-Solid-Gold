@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Run/PaperCutouts.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Run/referenceRun.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Run/referenceRun2.jpg" type="Texture" id=3]
 [ext_resource path="res://Levels/Run/PlayerSideView.gd" type="Script" id=4]
+[ext_resource path="res://sfx/Footsteps/FOOTSTEPS_04.wav" type="AudioStream" id=5]
+[ext_resource path="res://Levels/Run/PlayRandomNoises.gd" type="Script" id=6]
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sfx/Footsteps/FOOTSTEPS_03.wav" type="AudioStream" id=8]
+[ext_resource path="res://sfx/Footsteps/FOOTSTEPS_01.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/Footsteps/FOOTSTEPS_02.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 33.3766
@@ -350,10 +356,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.15, 0.25, 0.5, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.25, 0.5, 0.8, 0.95, 1.05, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 37 ), Vector2( 0.999999, 71 ), Vector2( 3, 15 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1, -3 ), Vector2( 1, 35 ), Vector2( 3, 15 ), Vector2( 3.54545, 25.9091 ), Vector2( -6, 10 ), Vector2( 4, 35 ), Vector2( 0, 0 ) ]
 }
 tracks/14/type = "method"
 tracks/14/path = NodePath(".")
@@ -541,7 +547,24 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 0.15, 0.25, 0.3, 0.4, 0.5, 0.55 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, -13 ), Vector2( 0, 0 ), Vector2( 1, 11 ), Vector2( -5.96046e-08, -12 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 1, 10 ), Vector2( -2, -12 ), Vector2( 0, -13 ), Vector2( 0, 0 ), Vector2( -1, -11 ), Vector2( -5.96046e-08, -12 ), Vector2( 1, 10 ) ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("Noises")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.3, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_random_noise"
+}, {
+"args": [  ],
+"method": "play_random_noise"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -558,7 +581,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.8, 1.05, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 13.2195, -43.2572, -65.7839, -65.7839, 32.8687, 13.2195 ]
+"values": [ 13.2195, -43.2572, -69.84, -65.7839, 32.8687, 13.2195 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Node2D/Torso/Heads:rotation_degrees")
@@ -639,10 +662,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.8, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.8, 0.85, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 74.4537, 102.232, 136.612, 136.612, 74.4537 ]
+"values": [ 74.4537, 102.232, 136.612, 136.612, 91.4187, 74.4537 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Node2D/Torso/ArmURight/ArmLRight:rotation_degrees")
@@ -651,10 +674,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 0.85, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -48.5959, -136.207, -136.207, -48.5959 ]
+"values": [ -48.5959, -136.207, -136.207, -51.4488, -48.5959 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Node2D/Torso/LegULeft/LegLLeft:rotation_degrees")
@@ -711,17 +734,18 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.85, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.8, 0.85, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 2, 50 ), Vector2( 1, 87 ), Vector2( 1, 87 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1, 68 ), Vector2( 1, 106 ), Vector2( 2, 99 ), Vector2( 1, 87 ), Vector2( 0, 0 ) ]
 }
 
 [node name="PlayerSideView" type="KinematicBody2D"]
+position = Vector2( 2, -129 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 89 )
+position = Vector2( -1, 98 )
 shape = SubResource( 5 )
 
 [node name="Reference" type="Sprite" parent="."]
@@ -737,7 +761,7 @@ texture = ExtResource( 3 )
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Torso" type="Sprite" parent="Node2D"]
-rotation = 0.230723
+rotation = 0.230724
 texture = ExtResource( 1 )
 offset = Vector2( -1, -21 )
 region_enabled = true
@@ -780,7 +804,7 @@ region_rect = Rect2( 227.081, 9.81368, 49.5802, 76.642 )
 [node name="ArmULeft" type="Sprite" parent="Node2D/Torso"]
 show_behind_parent = true
 position = Vector2( 15.9125, -51.4637 )
-rotation = -0.568432
+rotation = -0.568433
 texture = ExtResource( 1 )
 offset = Vector2( -1.57419, 16.8925 )
 region_enabled = true
@@ -796,7 +820,7 @@ region_rect = Rect2( 70.5185, 154.815, 24, 44.4444 )
 
 [node name="LegULeft" type="Sprite" parent="Node2D/Torso"]
 position = Vector2( -6, 9 )
-rotation = -0.789731
+rotation = -0.78973
 texture = ExtResource( 1 )
 offset = Vector2( 3, 33 )
 region_enabled = true
@@ -829,7 +853,6 @@ region_rect = Rect2( 236, 246.627, 54, 88.2963 )
 [node name="ArmURight" type="Sprite" parent="Node2D/Torso"]
 position = Vector2( -0.371887, -46.7498 )
 rotation = 1.29946
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 offset = Vector2( -0.608183, 18.893 )
 region_enabled = true
@@ -837,7 +860,7 @@ region_rect = Rect2( 197.506, 90.3744, 26.6667, 58.4691 )
 
 [node name="ArmLRight" type="Sprite" parent="Node2D/Torso/ArmURight"]
 position = Vector2( 2.33214, 41.0912 )
-rotation = -0.848159
+rotation = -0.848158
 texture = ExtResource( 1 )
 offset = Vector2( 0.698578, 15.1885 )
 region_enabled = true
@@ -853,5 +876,21 @@ anims/slide = SubResource( 4 )
 enabled = true
 cast_to = Vector2( -1, 132 )
 collision_mask = 4
+
+[node name="Noises" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Footstep01" parent="Noises" instance=ExtResource( 7 )]
+stream = ExtResource( 9 )
+volume_db = -7.0
+
+[node name="Footstep02" parent="Noises" instance=ExtResource( 7 )]
+stream = ExtResource( 10 )
+
+[node name="Footstep03" parent="Noises" instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+
+[node name="Footstep04" parent="Noises" instance=ExtResource( 7 )]
+stream = ExtResource( 5 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

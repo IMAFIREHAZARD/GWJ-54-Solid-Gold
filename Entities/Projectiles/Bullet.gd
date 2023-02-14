@@ -16,7 +16,9 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	if body.has_method("kill"):
 		body.kill()
 	active = false
-	$AnimationPlayer.play("Hit")
+	$AnimatedSprite.hide()
+	$Explosion/AnimatedSprite.show()
+	$Explosion/AnimatedSprite.play("default")
 	speed = 0
-	yield($AnimationPlayer,"animation_finished")
+	yield($Explosion/AnimatedSprite,"animation_finished")
 	queue_free()

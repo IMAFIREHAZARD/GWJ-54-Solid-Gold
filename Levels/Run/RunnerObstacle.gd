@@ -13,3 +13,11 @@ func _ready():
 func _process(_delta):
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	move_and_slide(velocity)
+
+func fly():
+	$FlyingSprite.show()
+	$WalkingSprite.hide()
+
+func walk():
+	$WalkingSprite.show()
+	$FlyingSprite.hide()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Shoot.png" type="Texture" id=1]
+[ext_resource path="res://GUI/TemporaryPopup.gd" type="Script" id=2]
+
+[node name="TemporaryPopup" type="Sprite"]
+position = Vector2( 597, 289 )
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

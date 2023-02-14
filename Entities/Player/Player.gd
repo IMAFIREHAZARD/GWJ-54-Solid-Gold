@@ -7,6 +7,7 @@ onready var reload_timer: Timer = $ReloadTimer
 export(PackedScene) var bullet_scene
 export(SpriteFrames) var default_frames
 export(SpriteFrames) var gun_hands_frames
+export(bool) var debug_start_with_machine_gun = false
 
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
@@ -37,7 +38,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	#Dialogic.has_current_dialog_node()
-	if Global.gun_curse_taken:
+	if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
 
 func _physics_process(delta : float):

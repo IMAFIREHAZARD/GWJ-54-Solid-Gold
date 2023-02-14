@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"background": "",
+			"event_id": "dialogic_021"
+		},
+		{
+			"character": "character-1676353458.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The Little Devil wasn't supposed to be here."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1676353185.json",
+		"name": "Intro"
+	}
+}
