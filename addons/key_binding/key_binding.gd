@@ -18,7 +18,7 @@ func _ready():
 	if file.file_exists(keymaps_path):
 		# warning-ignore:return_value_discarded
 		file.open(keymaps_path, File.READ)
-		apply_keymaps(file.get_var(true))
+	
 	else:
 		apply_keymaps(default_keymaps)
 
