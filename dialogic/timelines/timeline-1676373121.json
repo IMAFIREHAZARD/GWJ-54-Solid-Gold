@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "3-fade_in_up_big.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Enjoy your new speed!"
+		},
+		{
+			"emit_signal": "complete_level",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1676373121.json",
+		"name": "EnjoySpeed"
+	}
+}

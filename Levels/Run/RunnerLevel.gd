@@ -2,7 +2,6 @@ extends Node2D
 
 export var next_scene : PackedScene
 export var duration : float = 5.0
-export (String, "TimelineDropdown") var timeline
 
 var bargain_offered : bool = false
 
@@ -16,12 +15,12 @@ func _ready():
 
 func offer_devils_bargain():
 	$ObstacleSpawnTimer.set_paused(true)
-	var new_dialog = Dialogic.start(timeline)
-	add_child(new_dialog)
-	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	spawn_dialog("SpeedUp")
 
 func _on_dialogic_signal(param):
-	if param == "restart_level":
+	if param == "complete_level":
+		StageManager.change_scene_to(next_scene)
+	elif param == "restart_level":
 		Global.reset_curses()
 		StageManager.restart_current_level()
 		
@@ -62,11 +61,24 @@ func _on_ExitTimer_timeout():
 		offer_devils_bargain()
 		bargain_offered = true
 	else:
-		StageManager.change_scene_to(next_scene)
+		$Timer/ExitTimer.stop()
+		$ObstacleSpawnTimer.stop()
 
-func _on_runner_died():
-	var new_dialog = Dialogic.start("PlayerDied")
+		if Global.speed_curse_taken:
+			spawn_dialog("EnjoySpeed")
+		else:
+			StageManager.change_scene_to(next_scene)
+		
+		
+
+
+func spawn_dialog(dialogName : String):
+	var new_dialog = Dialogic.start(dialogName)
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+
+func _on_runner_died():
+	spawn_dialog("PlayerDied")
 	$Timer/ExitTimer.stop()
 	$ObstacleSpawnTimer.stop()
