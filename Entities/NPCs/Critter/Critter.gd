@@ -31,5 +31,5 @@ func kill():
 		level.current_bugs -= 1
 	queue_free()
 	var splat = splat_scene.instance()
-	get_parent().add_child(splat)
+	get_parent().call_deferred("add_child", splat)
 	splat.global_position = global_position
