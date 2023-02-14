@@ -8,10 +8,11 @@ var velocity = Vector2.ZERO
 var gravity = 50.0
 var jump_speed = -18.0
 
+var run_animation_speed = 1.0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.speed_curse_taken:
-		speed_up()
 	$AnimationPlayer.play("run")
 
 
@@ -39,27 +40,24 @@ func _process(delta):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name in ["jump", "slide"]:
-		if Global.speed_curse_taken:
-			speed_up()
+		$AnimationPlayer.set_speed_scale(run_animation_speed)
 		$AnimationPlayer.play("run")
 
-func speed_up():
-	$AnimationPlayer.set_speed_scale(2.0)
+func speed_up(speedMultiplier : float = 1.0):
+	run_animation_speed = speedMultiplier
+	$AnimationPlayer.set_speed_scale(run_animation_speed)
 
 func slow_down():
 	$AnimationPlayer.set_speed_scale(1.0)
 	
 
-func remove_heart():
-	var hearts = $HUD/Control/HBoxContainer/GridContainer.get_children()
-	if hearts.size() > 0:
-		hearts.pop_back().queue_free()
+
 
 func _on_Hurtbox_body_entered(body):
 	if $iframes.is_stopped():
 		if body.has_method("hit"):
 			body.hit()
-			remove_heart()
+			
 			Global.player_health_remaining -= 1
 			if Global.player_health_remaining < 0:
 				print("Player Died")

@@ -7,7 +7,13 @@ func _ready():
 	pass # Replace with function body.
 
 func moveTo(position_):
-	
-	tween.interpolate_property(self,"position",position,position_,1)
-	tween.start()
+	if Global.strength_curse_taken:
+		explode_into_smithereens()
+	else:
+		tween.interpolate_property(self,"position",position,position_,1)
+		tween.start()
+
+func explode_into_smithereens():
+	print("Player is very strong. Box exploded.")
+	queue_free()
 

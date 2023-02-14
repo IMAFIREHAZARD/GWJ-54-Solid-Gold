@@ -15,12 +15,19 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		if modulate != Color.aquamarine: return
 		ray_cast.cast_to = push_dir * move_dist
 		ray_cast.force_raycast_update()
-		if not ray_cast.is_colliding():
-			moving = true
-			var tween = create_tween()
-			tween.tween_property(self, "position", position + push_dir * move_dist, 0.3)
-			yield(tween, "finished")
-			moving = false
+		
+		if Global.strength_curse_taken:
+			explode_into_smithereens()
+		elif not ray_cast.is_colliding():
+				moving = true
+				var tween = create_tween()
+				tween.tween_property(self, "position", position + push_dir * move_dist, 0.3)
+				yield(tween, "finished")
+				moving = false
+
+func explode_into_smithereens():
+	print("Player is very strong, box exploded.")
+	queue_free()
 
 func _physics_process(_delta: float) -> void:
 	if hovered:

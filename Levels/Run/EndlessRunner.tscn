@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Run/RunnerLevel.tscn" type="PackedScene" id=1]
+
+[node name="RunnerLevel" instance=ExtResource( 1 )]
+endless_runner = true
+
+[editable path="PlayerSideView"]

@@ -8,6 +8,7 @@ text = "Next Scene"
 script = ExtResource( 2 )
 target_scene = null
 target_scene_path = ""
+dialogic_timeline = ""
 
 [node name="HoverNoise" parent="." index="0"]
 pitch_shift = 0.05

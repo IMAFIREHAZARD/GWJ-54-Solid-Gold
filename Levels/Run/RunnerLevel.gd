@@ -1,10 +1,13 @@
 extends Node2D
 
+export var endless_runner : bool = false
+
 export var next_scene : PackedScene
 export var duration : float = 5.0
 
 var bargain_offered : bool = false
 
+var speed_multiplier = 1.0
 
 #signal accept_curse()
 
@@ -34,8 +37,14 @@ func _on_dialogic_signal(param):
 	
 func speed_up():
 	Global.speed_curse_taken = true
-	$Floor/Sprite.speed *= 2.0
-	# PlayerSideView will handle it's own speed
+	if endless_runner:
+		speed_multiplier += 0.25
+	else:
+		speed_multiplier += 1.0
+	$Floor/Sprite.speed_up(speed_multiplier)
+	$PlayerSideView.speed_up(speed_multiplier)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -47,20 +56,28 @@ func introduce_obstacle():
 	var randSpawner = $ObstacleSpawns.get_children()[randi()%$ObstacleSpawns.get_child_count()]
 	obstacle.global_position = randSpawner.global_position
 	if randSpawner.name == "Walk" and obstacle.has_method("walk"):
-		obstacle.walk()
+		obstacle.walk(speed_multiplier)
 	elif randSpawner.name == "Fly" and obstacle.has_method("fly"):
-		obstacle.fly()
+		obstacle.fly(speed_multiplier)
 
 func _on_Timer_timeout():
 	introduce_obstacle()
 
+
+func resume():
+	$Timer/ExitTimer.start()
+	$ObstacleSpawnTimer.set_paused(false)
 
 func _on_ExitTimer_timeout():
 	
 	if bargain_offered == false:
 		offer_devils_bargain()
 		bargain_offered = true
-	else:
+	elif endless_runner:
+		if Global.speed_curse_taken:
+			speed_up()
+		resume()
+	else: # exit
 		$Timer/ExitTimer.stop()
 		$ObstacleSpawnTimer.stop()
 
