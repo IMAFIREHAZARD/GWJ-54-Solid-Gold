@@ -71,7 +71,7 @@ func move_normally(delta : float):
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
-	if StageManager.current_map.has_method("get_tile_underneath"):
+	if StageManager.current_map != null and StageManager.current_map.has_method("get_tile_underneath"):
 		if StageManager.current_map.get_tile_underneath(global_position) == "Void":
 			fall_off_map()
 
