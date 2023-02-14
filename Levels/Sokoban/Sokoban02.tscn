@@ -51,6 +51,9 @@ disabled = false
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 frame = 1
 
+[node name="HUD" parent="YSort/Player" index="4"]
+visible = false
+
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
 

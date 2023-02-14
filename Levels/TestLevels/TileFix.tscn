@@ -141,12 +141,14 @@ texture = ExtResource( 3 )
 position = Vector2( -149, 521 )
 texture = ExtResource( 3 )
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 margin_top = 35.0
 margin_right = 323.0
-margin_bottom = 301.0
+margin_bottom = 420.0
 
-[node name="Label" type="Label" parent="PanelContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 316.0
