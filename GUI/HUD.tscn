@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HelpFooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/HUD/HealthContainer.tscn" type="PackedScene" id=4]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -20,29 +21,31 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1019.0
-margin_bottom = 33.0
+margin_bottom = 37.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="Header/HBox"]
-margin_left = 208.0
-margin_top = 7.0
-margin_right = 336.0
-margin_bottom = 21.0
+margin_left = 128.0
+margin_top = 9.0
+margin_right = 256.0
+margin_bottom = 23.0
 text = "Cursed by Hindsight"
 
 [node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 346.0
-margin_right = 565.0
-margin_bottom = 28.0
+margin_left = 266.0
+margin_right = 485.0
+margin_bottom = 32.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
 [node name="ResetLevelButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 575.0
-margin_right = 805.0
-margin_bottom = 28.0
+margin_left = 495.0
+margin_right = 725.0
+margin_bottom = 32.0
 text = "Restart Current Level"
+
+[node name="HealthContainer" parent="Header/HBox" instance=ExtResource( 4 )]
 
 [node name="Footer" parent="." instance=ExtResource( 2 )]

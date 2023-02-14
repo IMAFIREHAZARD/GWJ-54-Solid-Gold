@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export var move_speed := 650
+export var base_move_speed : float = 650.0
+var move_speed := base_move_speed
 onready var animated_sprite: AnimatedSprite = $SpriteRoot/AnimatedSprite
 onready var reload_timer: Timer = $ReloadTimer
 
@@ -43,7 +44,7 @@ func _ready() -> void:
 	if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
 	if Global.speed_curse_taken:
-		move_speed *= 1.5
+		move_speed += base_move_speed * 0.5
 	print("player speed = " , move_speed)
 
 func _physics_process(delta : float):

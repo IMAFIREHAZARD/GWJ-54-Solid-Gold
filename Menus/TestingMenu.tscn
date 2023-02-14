@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Sokoban/Sokoban02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Run/EndlessRunner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/TestLevels/TestLevel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
@@ -57,6 +58,7 @@ margin_right = 300.0
 margin_bottom = 28.0
 text = "Shooter Scene"
 target_scene = ExtResource( 8 )
+dialogic_timeline = ""
 
 [node name="TestScene01" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 53.0
@@ -64,6 +66,7 @@ margin_right = 300.0
 margin_bottom = 81.0
 disabled = true
 text = "Test Scene"
+dialogic_timeline = ""
 
 [node name="TestScene02" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 106.0
@@ -71,6 +74,7 @@ margin_right = 300.0
 margin_bottom = 134.0
 disabled = true
 text = "Test Scene"
+dialogic_timeline = ""
 
 [node name="Sokoban" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 159.0
@@ -78,6 +82,7 @@ margin_right = 300.0
 margin_bottom = 187.0
 text = "Sokoban"
 target_scene = ExtResource( 3 )
+dialogic_timeline = ""
 
 [node name="Test Scene03" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 212.0
@@ -85,6 +90,7 @@ margin_right = 300.0
 margin_bottom = 240.0
 disabled = true
 text = "Test Scene"
+dialogic_timeline = ""
 
 [node name="RightSide" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 margin_left = 350.0
@@ -98,6 +104,7 @@ margin_right = 300.0
 margin_bottom = 28.0
 text = "Eddy14 Test Level"
 target_scene = ExtResource( 7 )
+dialogic_timeline = ""
 
 [node name="CritterTestLevel2" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
 margin_top = 53.0
@@ -105,6 +112,7 @@ margin_right = 300.0
 margin_bottom = 81.0
 text = "Critter Test Level"
 target_scene = ExtResource( 10 )
+dialogic_timeline = ""
 
 [node name="CritterTestLevel3" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
 margin_top = 106.0
@@ -112,6 +120,7 @@ margin_right = 300.0
 margin_bottom = 134.0
 text = "Boss Level"
 target_scene = ExtResource( 11 )
+dialogic_timeline = ""
 
 [node name="ReflectingCrittersTest" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
 margin_top = 159.0
@@ -119,6 +128,15 @@ margin_right = 300.0
 margin_bottom = 187.0
 text = "Reflecting Critters"
 target_scene = ExtResource( 12 )
+dialogic_timeline = ""
+
+[node name="EndlessRunner" parent="CenterContainer/VBoxContainer/HBoxContainer/RightSide" instance=ExtResource( 1 )]
+margin_top = 212.0
+margin_right = 300.0
+margin_bottom = 240.0
+text = "Endless Runner"
+target_scene = ExtResource( 4 )
+dialogic_timeline = ""
 
 [node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 312.0
@@ -126,3 +144,4 @@ margin_right = 650.0
 margin_bottom = 340.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
+dialogic_timeline = ""

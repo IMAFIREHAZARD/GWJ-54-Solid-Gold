@@ -10,7 +10,7 @@
 [ext_resource path="res://sfx/Footsteps/FOOTSTEPS_03.wav" type="AudioStream" id=8]
 [ext_resource path="res://sfx/Footsteps/FOOTSTEPS_01.wav" type="AudioStream" id=9]
 [ext_resource path="res://sfx/Footsteps/FOOTSTEPS_02.wav" type="AudioStream" id=10]
-[ext_resource path="res://GUI/HUD/Heart.png" type="Texture" id=11]
+[ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 33.3766
@@ -898,54 +898,11 @@ stream = ExtResource( 8 )
 [node name="Footstep04" parent="Noises" instance=ExtResource( 7 )]
 stream = ExtResource( 5 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control"]
-anchor_right = 1.0
-
-[node name="Health" type="Label" parent="HUD/Control/HBoxContainer"]
-margin_top = 9.0
-margin_right = 42.0
-margin_bottom = 23.0
-text = "Health"
-
-[node name="GridContainer" type="GridContainer" parent="HUD/Control/HBoxContainer"]
-margin_left = 46.0
-margin_right = 150.0
-margin_bottom = 32.0
-columns = 3
-
-[node name="Heart" type="TextureRect" parent="HUD/Control/HBoxContainer/GridContainer"]
-margin_right = 32.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 11 )
-expand = true
-
-[node name="Heart2" type="TextureRect" parent="HUD/Control/HBoxContainer/GridContainer"]
-margin_left = 36.0
-margin_right = 68.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 11 )
-expand = true
-
-[node name="Heart3" type="TextureRect" parent="HUD/Control/HBoxContainer/GridContainer"]
-margin_left = 72.0
-margin_right = 104.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 11 )
-expand = true
-
 [node name="iframes" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="HUD2" parent="." instance=ExtResource( 12 )]
 
 [connection signal="body_entered" from="Node2D/Torso/Hurtbox" to="." method="_on_Hurtbox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

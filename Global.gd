@@ -2,8 +2,11 @@ extends Node
 
 
 var bpm : float = 90.0
+
 var gun_curse_taken = false
 var speed_curse_taken = false
+var strength_curse_taken = false
+
 var player_health_remaining : int = 3
 
 
@@ -14,6 +17,7 @@ func _ready():
 func reset_curses():
 	gun_curse_taken = false
 	speed_curse_taken = false
+	strength_curse_taken = false
 	player_health_remaining = 3
 	
 
