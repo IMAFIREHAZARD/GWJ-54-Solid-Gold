@@ -24,10 +24,10 @@
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Wall_Right.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Art/Big_background elements/forebreidge.png" type="Texture" id=23]
 
-[sub_resource type="NavigationPolygon" id=9]
-vertices = PoolVector2Array( 672, 838, 729, 800, 993, 679, 1818, 733, 2138, 877, 1615, 890, 1984, 969, 1680, 928, 1057, 647, 1630, 597, 1988, 643, 1250, 301, 1480, 245, 2142, 405, 1830, 563, 1657, 492, 216, 557, -290, 317, -130, 253, 368, 957, 200, 883, 360, 807, 1662, 1605, 1490, 1521, 1644, 1447, 1996, 1287, 2132, 1357, 38, 639, 1625, 957, 2300, 1125, 1486, 1369, -290, 168, 188, -73, 664, 1447, 200, 1207, 348, 1125, 826, 1365, 208, 1045, 1557, 918, 1168, 1369, 1004, 1453, 676, 171, 1002, 163, 1051, 299, 854, 87, 1318, 1445, 1666, 153, 1190, 81, 1166, 260, 1155, 356, 598, 799, 1738, 539, 664, 760, 932, 642, 1537, 544, 996, 607 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 4, 6, 7, 5 ), PoolIntArray( 8, 9, 10, 3, 2 ), PoolIntArray( 11, 12, 13, 14, 15 ), PoolIntArray( 16, 17, 18 ), PoolIntArray( 19, 20, 21 ), PoolIntArray( 22, 23, 24, 25, 26 ), PoolIntArray( 21, 27, 16 ), PoolIntArray( 28, 7, 6, 29, 25, 24, 30 ), PoolIntArray( 18, 31, 32 ), PoolIntArray( 33, 34, 35, 36 ), PoolIntArray( 36, 35, 37, 19, 0, 38, 39, 40 ), PoolIntArray( 16, 18, 32, 41 ), PoolIntArray( 42, 43, 21, 16, 41, 44 ), PoolIntArray( 38, 28, 30, 45, 39 ), PoolIntArray( 12, 46, 13 ), PoolIntArray( 47, 12, 11, 48, 42 ), PoolIntArray( 42, 48, 43 ), PoolIntArray( 19, 21, 43, 49, 50 ), PoolIntArray( 9, 51, 14, 10 ), PoolIntArray( 0, 5, 38 ), PoolIntArray( 50, 0, 19 ), PoolIntArray( 52, 50, 49 ), PoolIntArray( 1, 52, 49, 53 ), PoolIntArray( 54, 9, 8, 55, 49 ), PoolIntArray( 53, 2, 1 ), PoolIntArray( 55, 53, 49 ), PoolIntArray( 54, 49, 11, 15 ), PoolIntArray( 15, 14, 51 ) ]
-outlines = [ PoolVector2Array( -290, 168, 188, -73, 676, 171, 854, 87, 1002, 163, 1190, 81, 1480, 245, 1666, 153, 2142, 405, 1830, 563, 1988, 643, 1818, 733, 2138, 877, 1984, 969, 2300, 1125, 1996, 1287, 2132, 1357, 1662, 1605, 1490, 1521, 1644, 1447, 1486, 1369, 1318, 1445, 1168, 1369, 1004, 1453, 826, 1365, 664, 1447, 200, 1207, 348, 1125, 208, 1045, 368, 957, 200, 883, 360, 807, 38, 639, 216, 557, -290, 317, -130, 253 ), PoolVector2Array( 598, 799, 672, 838, 729, 800, 664, 760 ), PoolVector2Array( 932, 642, 993, 679, 1057, 647, 996, 607 ), PoolVector2Array( 1051, 299, 1155, 356, 1250, 301, 1166, 260 ), PoolVector2Array( 1630, 597, 1738, 539, 1657, 492, 1537, 544 ), PoolVector2Array( 1625, 957, 1680, 928, 1615, 890, 1557, 918 ) ]
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 4174, -503, 4214, -327, 4068, -417, 2087, 208, 1770, 92, 1936, 6, 4542, -1592, 5489, -1138, 2107, -342, 3775, -246, 656, -175, 1286, 142, 1135, 213, 495, 570, 318, 636, -327, 334, 1311, 323, 1160, 389, 636, 656, 832, 555, 1462, 858, 1437, 510, 1230, -427, 1548, -639, 2410, 409, 3876, -155, 3750, -90, 2591, 465 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 0, 8 ), PoolIntArray( 8, 0, 2, 9 ), PoolIntArray( 10, 11, 12 ), PoolIntArray( 13, 14, 15, 10, 12 ), PoolIntArray( 12, 16, 17 ), PoolIntArray( 18, 13, 12, 19 ), PoolIntArray( 19, 12, 17 ), PoolIntArray( 20, 19, 17, 21 ), PoolIntArray( 5, 22, 23, 8 ), PoolIntArray( 24, 20, 21, 3 ), PoolIntArray( 8, 9, 25, 26, 27, 24, 3, 5 ) ]
+outlines = [ PoolVector2Array( -327, 334, 656, -175, 1286, 142, 1135, 213, 1311, 323, 1160, 389, 1437, 510, 2087, 208, 1770, 92, 1936, 6, 1230, -427, 1548, -639, 2107, -342, 4542, -1592, 5489, -1138, 4174, -503, 4214, -327, 4068, -417, 3775, -246, 3876, -155, 3750, -90, 2591, 465, 2410, 409, 1462, 858, 832, 555, 636, 656, 495, 570, 318, 636 ) ]
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource( 2 )
@@ -53,7 +53,7 @@ texture = ExtResource( 15 )
 
 [node name="BlurredPlatform3" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
 self_modulate = Color( 0.407843, 0.87451, 1, 1 )
-position = Vector2( 2796, 1239 )
+position = Vector2( -455, 720 )
 scale = Vector2( 0.760001, 0.760001 )
 texture = ExtResource( 15 )
 
@@ -328,8 +328,7 @@ format = 1
 tile_data = PoolIntArray( -1245176, 22, 0, -1048565, 22, 0, -917496, 22, 0, -917491, 22, 0, -917490, 22, 0, -917489, 22, 0, -917488, 22, 0, -851956, 22, 0, -589826, 22, 0, -589825, 22, 0, -655360, 22, 0, -655359, 22, 0, -655348, 22, 0, -524286, 22, 0, -524285, 22, 0, -524284, 22, 0, -524283, 22, 0, -524275, 22, 0, -524274, 22, 0, -524273, 22, 0, -524272, 22, 0, -393209, 22, 0, -393208, 22, 0, -393205, 22, 0, -393191, 536870914, 0, -262142, 22, 0, -262141, 22, 0, -262140, 22, 0, -262139, 22, 0, 7, 22, 0, 8, 22, 0, 9, 22, 0, 10, 22, 0, 65542, 22, 0, 131074, 22, 0, 131075, 22, 0, 131076, 22, 0, 131077, 22, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-visible = false
-navpoly = SubResource( 9 )
+navpoly = SubResource( 1 )
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -379,30 +378,25 @@ texture = ExtResource( 21 )
 [node name="Tops2" type="Sprite" parent="Tops"]
 visible = false
 position = Vector2( -635.714, 325.001 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops3" type="Sprite" parent="Tops"]
 visible = false
 position = Vector2( -1289.29, 630.359 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops4" type="Sprite" parent="Tops"]
 visible = false
 position = Vector2( -1935.72, 953.574 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops5" type="Sprite" parent="Tops"]
 visible = false
 position = Vector2( -2589.29, 1276.79 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops7" type="Sprite" parent="Tops"]
 position = Vector2( -3242.86, 1600 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops14" type="Sprite" parent="Tops/Tops7"]
@@ -439,17 +433,14 @@ texture = ExtResource( 21 )
 
 [node name="Tops7" type="Sprite" parent="Tops/Tops7"]
 position = Vector2( 5841.08, 185.714 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops8" type="Sprite" parent="Tops/Tops7"]
 position = Vector2( 5203.58, 503.572 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops9" type="Sprite" parent="Tops/Tops7"]
 position = Vector2( 4594.65, 808.93 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 
 [node name="Tops10" type="Sprite" parent="Tops/Tops7"]
