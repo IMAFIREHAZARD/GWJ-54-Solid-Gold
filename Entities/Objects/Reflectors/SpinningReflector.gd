@@ -2,7 +2,7 @@ extends Node2D
 
 export var spin : bool = true
 
-export var ping_pong : bool = true
+export var ping_pong : bool = false
 
 
 

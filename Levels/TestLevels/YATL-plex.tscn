@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/NPCs/Critter/ReflectingCritter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/BaseLevel.gd" type="Script" id=3]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1025, 5, 1020, 597, -1, 595, 0, 1 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 1025, 5, 1020, 597, -1, 595, 0, 1 ) ]
+
+[node name="YATL" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ReflectingCritter" parent="." instance=ExtResource( 2 )]
+position = Vector2( 585, 263 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 202, 287 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )
