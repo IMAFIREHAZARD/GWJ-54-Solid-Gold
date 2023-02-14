@@ -3,9 +3,39 @@ extends Node2D
 export var next_scene : PackedScene
 export var duration : float = 5.0
 
+var bargain_offered : bool = false
+
+
+#signal accept_curse()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer/ExitTimer.set_wait_time(duration)
+	
+
+func offer_devils_bargain():
+	$ObstacleSpawnTimer.set_paused(true)
+	spawn_dialog("SpeedUp")
+
+func _on_dialogic_signal(param):
+	if param == "complete_level":
+		StageManager.change_scene_to(next_scene)
+	elif param == "restart_level":
+		Global.reset_curses()
+		StageManager.restart_current_level()
+		
+	elif param == "speed_up":
+		speed_up()
+	elif param == "do_not_speed_up":
+		Global.speed_curse_taken = false
+	$ObstacleSpawnTimer.set_paused(false)
+	$Timer/ExitTimer.start()
+	
+	
+func speed_up():
+	Global.speed_curse_taken = true
+	$Floor/Sprite.speed *= 2.0
+	# PlayerSideView will handle it's own speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -26,4 +56,29 @@ func _on_Timer_timeout():
 
 
 func _on_ExitTimer_timeout():
-	StageManager.change_scene_to(next_scene)
+	
+	if bargain_offered == false:
+		offer_devils_bargain()
+		bargain_offered = true
+	else:
+		$Timer/ExitTimer.stop()
+		$ObstacleSpawnTimer.stop()
+
+		if Global.speed_curse_taken:
+			spawn_dialog("EnjoySpeed")
+		else:
+			StageManager.change_scene_to(next_scene)
+		
+		
+
+
+func spawn_dialog(dialogName : String):
+	var new_dialog = Dialogic.start(dialogName)
+	add_child(new_dialog)
+	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+
+func _on_runner_died():
+	spawn_dialog("PlayerDied")
+	$Timer/ExitTimer.stop()
+	$ObstacleSpawnTimer.stop()

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var move_speed := 300
+export var move_speed := 650
 onready var animated_sprite: AnimatedSprite = $SpriteRoot/AnimatedSprite
 onready var reload_timer: Timer = $ReloadTimer
 
@@ -42,6 +42,9 @@ func _ready() -> void:
 	#Dialogic.has_current_dialog_node()
 	if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
+	if Global.speed_curse_taken:
+		move_speed *= 1.5
+	print("player speed = " , move_speed)
 
 func _physics_process(delta : float):
 	$Debug/StateLabel.text = States.keys()[State]
@@ -123,4 +126,7 @@ func _on_hit(damage):
 	health -= damage
 	if health <= 0:
 		begin_dying()
-		
+	
+func fall_off_map():
+	print("oh noes!")
+	print("Player fell off the map!")

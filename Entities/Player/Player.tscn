@@ -326,7 +326,6 @@ animations = [ {
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 5
 script = ExtResource( 1 )
-move_speed = 650
 bullet_scene = ExtResource( 4 )
 default_frames = ExtResource( 11 )
 gun_hands_frames = ExtResource( 10 )
@@ -348,7 +347,7 @@ position = Vector2( -2, -34 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 1
+frame = 3
 speed_scale = 1.5
 playing = true
 

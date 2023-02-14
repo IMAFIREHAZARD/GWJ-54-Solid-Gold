@@ -3,11 +3,19 @@ extends Node
 
 var bpm : float = 90.0
 var gun_curse_taken = false
+var speed_curse_taken = false
+var player_health_remaining : int = 3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func reset_curses():
+	gun_curse_taken = false
+	speed_curse_taken = false
+	player_health_remaining = 3
+	
 
 func is_paused():
 	# Wow, this gets called a lot.
