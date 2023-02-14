@@ -11,6 +11,8 @@ export(SpriteFrames) var gun_hands_frames
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
 
+var health : int = 3
+
 const idle_anim_names = [
 	"IdleSouth",
 	"IdleSW",
@@ -111,3 +113,13 @@ func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
 	Global.gun_curse_taken = true
+
+func begin_dying():
+	print("Oh noes!")
+	print("Player died!")
+	
+func _on_hit(damage):
+	health -= damage
+	if health <= 0:
+		begin_dying()
+		
