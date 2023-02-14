@@ -16,6 +16,7 @@ func assign_player2passObjs():
 		for child in tileMapLevel1.get_children():
 			if child.has_method("set_player"):
 				child.set_player(player)
+				
 			pass
 
 func get_tile_underneath(pos_global:Vector2):
@@ -34,5 +35,23 @@ func get_tile_underneath(pos_global:Vector2):
 
 func _physics_process(_delta):
 	## check if player is falling
-	if get_tile_underneath(player.global_position)=="Void" and player.has_method("fall_off_map"):
-		player.fall_off_map()
+	
+#	if get_tile_underneath(player.global_position)=="Void" and player.has_method("fall_off_map"):
+#		player.fall_off_map()
+	pass # let the player check this
+	
+func spawn_dialog(dialogName : String):
+	var new_dialog = Dialogic.start(dialogName)
+	add_child(new_dialog)
+	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+
+
+func _on_dialogic_signal(param):
+	if param == "complete_level":
+		var exit = find_node("Exit")
+		StageManager.change_scene_to(exit.next_scene)
+	elif param == "restart_level":
+		Global.reset_curses()
+		StageManager.restart_current_level()
+

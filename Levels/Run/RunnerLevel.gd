@@ -43,7 +43,9 @@ func speed_up():
 		speed_multiplier += 1.0
 	$Floor/Sprite.speed_up(speed_multiplier)
 	$PlayerSideView.speed_up(speed_multiplier)
-	
+	for layer in $Background.get_children():
+		if layer.has_method("speed_up"):
+			layer.speed_up(speed_multiplier)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

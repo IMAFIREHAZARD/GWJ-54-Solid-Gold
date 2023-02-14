@@ -7,7 +7,8 @@ var gun_curse_taken = false
 var speed_curse_taken = false
 var strength_curse_taken = false
 
-var player_health_remaining : int = 3
+var player_max_health : float = 5
+var player_health_remaining : float = player_max_health
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +19,7 @@ func reset_curses():
 	gun_curse_taken = false
 	speed_curse_taken = false
 	strength_curse_taken = false
-	player_health_remaining = 3
+	player_health_remaining = player_max_health
 	
 
 func is_paused():
