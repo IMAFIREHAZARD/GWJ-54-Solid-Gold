@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Run/RunnerLevel.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Run/floor.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 518, 22.5 )
+extents = Vector2( 518, 31.4499 )
 
 [node name="RunnerLevel" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,10 +24,14 @@ collision_layer = 4
 [node name="Sprite" type="Sprite" parent="Floor"]
 
 [node name="Polygon2D" type="Polygon2D" parent="Floor"]
+texture = ExtResource( 5 )
+texture_offset = Vector2( 0, 10 )
+texture_scale = Vector2( 1, 2.5 )
 polygon = PoolVector2Array( -513, -10, 510, -9, 508, 32, -515, 25, -515, 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( -2, 5 )
+position = Vector2( -2, 10.6967 )
+scale = Vector2( 1, 0.561122 )
 shape = SubResource( 1 )
 
 [node name="ObstacleSpawnTimer" type="Timer" parent="."]
@@ -35,10 +40,10 @@ autostart = true
 
 [node name="ObstacleSpawns" type="Node2D" parent="."]
 
-[node name="Spawn1" type="Position2D" parent="ObstacleSpawns"]
+[node name="Walk" type="Position2D" parent="ObstacleSpawns"]
 position = Vector2( 1068, 523 )
 
-[node name="Spawn2" type="Position2D" parent="ObstacleSpawns"]
+[node name="Fly" type="Position2D" parent="ObstacleSpawns"]
 position = Vector2( 1068, 352 )
 
 [node name="Timer" type="Node2D" parent="."]
