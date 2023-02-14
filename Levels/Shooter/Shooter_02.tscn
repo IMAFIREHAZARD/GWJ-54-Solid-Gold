@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -13,12 +13,11 @@
 [ext_resource path="res://Levels/Shooter/TriggerHandler.gd" type="Script" id=11]
 [ext_resource path="res://Art/VFX/Light_map.png" type="Texture" id=12]
 [ext_resource path="res://Art/Big_background elements/forebreidge.png" type="Texture" id=13]
-[ext_resource path="res://Art/Big_background elements/Pillar.png" type="Texture" id=14]
+[ext_resource path="res://Entities/Objects/Big_Isometric items/Pillar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Art/Big_background elements/Blurred_platform.png" type="Texture" id=15]
 [ext_resource path="res://Art/Big_background elements/Pillar_blur.png" type="Texture" id=16]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Box.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Art/Big_background elements/Statue.png" type="Texture" id=18]
-[ext_resource path="res://Levels/CommonInfrastructure/KyveriTileset02.tres" type="TileSet" id=19]
 
 [sub_resource type="NavigationPolygon" id=9]
 vertices = PoolVector2Array( 672, 838, 729, 800, 993, 679, 1818, 733, 2138, 877, 1615, 890, 1984, 969, 1680, 928, 1057, 647, 1630, 597, 1988, 643, 1250, 301, 1480, 245, 2142, 405, 1830, 563, 1657, 492, 216, 557, -290, 317, -130, 253, 368, 957, 200, 883, 360, 807, 1662, 1605, 1490, 1521, 1644, 1447, 1996, 1287, 2132, 1357, 38, 639, 1625, 957, 2300, 1125, 1486, 1369, -290, 168, 188, -73, 664, 1447, 200, 1207, 348, 1125, 826, 1365, 208, 1045, 1557, 918, 1168, 1369, 1004, 1453, 676, 171, 1002, 163, 1051, 299, 854, 87, 1318, 1445, 1666, 153, 1190, 81, 1166, 260, 1155, 356, 598, 799, 1738, 539, 664, 760, 932, 642, 1537, 544, 996, 607 )
@@ -29,45 +28,45 @@ outlines = [ PoolVector2Array( -290, 168, 188, -73, 676, 171, 854, 87, 1002, 163
 script = ExtResource( 2 )
 success_timeline = "timeline-1676179945.json"
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 3
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_scale = Vector2( 1.482, 1.931 )
 
-[node name="BlurredPlatform" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+[node name="Forebreidge" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2( 1117.94, 3137.94 )
+scale = Vector2( 0.747469, 0.747469 )
+texture = ExtResource( 13 )
+
+[node name="Forebreidge2" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2( 3660.94, 4435.94 )
+scale = Vector2( 0.747469, 0.747469 )
+texture = ExtResource( 13 )
+
+[node name="BlurredPlatform" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
 self_modulate = Color( 0.407843, 0.87451, 1, 1 )
 position = Vector2( -580, 391 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 15 )
 
-[node name="BlurredPlatform2" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+[node name="BlurredPlatform2" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
 self_modulate = Color( 0.407843, 0.87451, 1, 1 )
 position = Vector2( 2100, 602 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 15 )
 
-[node name="BlurredPlatform3" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+[node name="BlurredPlatform3" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
 self_modulate = Color( 0.407843, 0.87451, 1, 1 )
 position = Vector2( 4358, 2052 )
 scale = Vector2( 0.760001, 0.760001 )
 texture = ExtResource( 15 )
 
-[node name="Pillar" type="Sprite" parent="ParallaxBackground2/ParallaxLayer/BlurredPlatform3"]
+[node name="Pillar" type="Sprite" parent="ParallaxForeground/ParallaxLayer/BlurredPlatform3"]
 self_modulate = Color( 0.443137, 0.580392, 0.635294, 1 )
 position = Vector2( -10.5254, -727.631 )
 scale = Vector2( 0.473685, 0.473685 )
 texture = ExtResource( 16 )
-
-[node name="Statue" type="Sprite" parent="ParallaxBackground2"]
-position = Vector2( 3784, -500 )
-scale = Vector2( 0.176783, 0.176783 )
-texture = ExtResource( 18 )
-
-[node name="Statue2" type="Sprite" parent="ParallaxBackground2"]
-position = Vector2( 3439, -682 )
-scale = Vector2( 0.176783, 0.176783 )
-texture = ExtResource( 18 )
 
 [node name="NPCParent" type="Node2D" parent="."]
 
@@ -76,9 +75,25 @@ texture = ExtResource( 18 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -2
 
+[node name="CanvasLayer" type="CanvasLayer" parent="ParallaxBackground"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Ground" type="TileMap" parent="ParallaxBackground/CanvasLayer"]
+scale = Vector2( 2.5, 2.5 )
+mode = 1
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 130, 64 )
+cell_quadrant_size = 128
+cell_custom_transform = Transform2D( 66.757, 6.96, 0, 64, 0, 0 )
+cell_y_sort = true
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -917497, 536870936, 0, -917496, 536870935, 0, -917495, 536870936, 0, -851961, 536870936, 0, -851960, 536870935, 0, -851959, 536870936, 0, -786425, 536870936, 0, -786424, 536870935, 0, -786423, 536870936, 0, -720889, 24, 0, -720888, 23, 0, -720887, 24, 0, -655353, 24, 0, -655352, 23, 0, -655351, 24, 0, -589817, 23, 0, -589816, 23, 0, -589815, 23, 0, -589814, 23, 0, -589813, 23, 0, -589812, 23, 0, -524281, 23, 0, -524280, 23, 0, -524279, 23, 0, -524278, 23, 0, -524277, 23, 0, -524276, 23, 0, -458741, 23, 0, -458740, 23, 0, -393205, 23, 0, -393204, 23, 0, -393191, 536870914, 0, -327669, 23, 0, -327668, 23, 0, -262138, 536870914, 0, -262137, 24, 0, -262136, 24, 0, -262133, 23, 0, -262132, 23, 0, -196604, 24, 0, -196603, 24, 0, -196602, 24, 0, -196601, 23, 0, -196600, 24, 0, -196597, 23, 0, -196596, 23, 0, -131069, 24, 0, -131068, 23, 0, -131067, 23, 0, -131066, 23, 0, -131065, 23, 0, -131064, 23, 0, -131063, 24, 0, -131061, 23, 0, -131060, 23, 0, -65536, 24, 0, -65535, 24, 0, -65534, 24, 0, -65533, 23, 0, -65532, 23, 0, -65531, 23, 0, -65530, 23, 0, -65529, 23, 0, -65528, 23, 0, -65527, 24, 0, -65526, 24, 0, -65525, 24, 0, -65524, 24, 0, -65523, 24, 0, 0, 24, 0, 1, 23, 0, 2, 23, 0, 3, 23, 0, 4, 23, 0, 5, 23, 0, 6, 23, 0, 7, 23, 0, 8, 23, 0, 9, 23, 0, 10, 23, 0, 11, 23, 0, 12, 23, 0, 13, 24, 0, 65536, 24, 0, 65537, 24, 0, 65538, 23, 0, 65539, 23, 0, 65540, 23, 0, 65541, 23, 0, 65542, 23, 0, 65543, 23, 0, 65544, 23, 0, 65545, 23, 0, 65546, 23, 0, 65547, 23, 0, 65548, 23, 0, 65549, 24, 0, 131073, 24, 0, 131074, 24, 0, 131075, 24, 0, 131076, 24, 0, 131077, 23, 0, 131078, 23, 0, 131079, 23, 0, 131080, 23, 0, 131081, 23, 0, 131082, 23, 0, 131083, 23, 0, 131084, 23, 0, 131085, 24, 0, 131086, 536870914, 0, 196612, 24, 0, 196613, 24, 0, 196614, 24, 0, 196615, 23, 0, 196616, 23, 0, 196617, 23, 0, 196618, 23, 0, 196619, 24, 0, 196620, 24, 0, 196621, 24, 0, 196622, 536870914, 0, 262150, 24, 0, 262151, 24, 0, 262152, 23, 0, 262153, 23, 0, 262154, 23, 0, 262155, 24, 0, 262156, 24, 0, 262158, 536870914, 0, 327687, 24, 0, 327688, 24, 0, 327689, 23, 0, 327690, 24, 0, 327691, 24, 0, 393224, 24, 0, 393225, 24, 0, 393226, 24, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1114124, 536870914, 0, 1114126, 536870914, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
+
 [node name="Background" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 1447, -27.0534 )
-scale = Vector2( 5.05104, 3.77027 )
+position = Vector2( 1447, 257 )
+scale = Vector2( 6.71296, 5.01079 )
 z_index = -4
 texture = ExtResource( 9 )
 
@@ -110,16 +125,36 @@ texture = ExtResource( 8 )
 [node name="WallsAndObjects" type="TileMap" parent="YSort"]
 scale = Vector2( 2.5, 2.5 )
 mode = 1
-tile_set = ExtResource( 19 )
-cell_size = Vector2( 130, 64 )
-cell_quadrant_size = 128
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 64, 32 )
 cell_tile_origin = 2
 cell_y_sort = true
 show_collision = true
 collision_bounce = 0.05
 occluder_light_mask = 15
 format = 1
-tile_data = PoolIntArray( -983034, 536870937, 0, -983032, 536870937, 0, -917498, 536870937, 0, -917496, 536870937, 0, -851962, 536870937, 0, -851960, 536870937, 0, -786426, 536870937, 0, -786424, 536870937, 0, -720890, 536870937, 0, -720888, 536870937, 0, -589817, 6, 0, -524281, 6, 0, -458741, 6, 0, -393211, 536870922, 0, -393205, 6, 0, -393191, 536870914, 0, -327674, 536870922, 0, -327669, 6, 0, -262133, 6, 0, -196604, 3, 0, -196601, 536870915, 0, -196597, 6, 0, -131061, 6, 0, -1, 3, 0, -65532, 6, 0, -65523, 17, 0, 8, 25, 0, 13, 17, 0, 65536, 16, 0, 65542, 3, 0, 65546, 4, 0, 65549, 17, 0, 131073, 536870918, 0, 131074, 16, 0, 131080, 25, 0, 131085, 17, 0, 196621, 16, 0, 262156, 16, 0, 327691, 16, 0, 393224, 16, 0, 393225, 16, 0, 393226, 16, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
+tile_data = PoolIntArray( -1703921, 25, 0, -1703917, 25, 0, -1572849, 25, 0, -1572845, 25, 0, -1441777, 25, 0, -1441773, 25, 0, -1310705, 25, 0, -1310701, 25, 0, -917482, 6, 0, -917479, 6, 0, -786410, 6, 0, -786407, 6, 0, -655338, 6, 0, -655335, 6, 0, -524271, 17, 0, -524266, 6, 0, -524263, 6, 0, -393202, 3, 0, -393199, 17, 0, -393194, 6, 0, -393191, 6, 0, -327662, 16, 0, -262125, 17, 0, -262122, 6, 0, -262119, 6, 0, -196588, 16, 0, -196582, 16, 0, -65537, 17, 0, -131045, 17, 0, 65535, 17, 0, 27, 17, 0, 65546, 4, 0, 196607, 17, 0, 131083, 3, 0, 131088, 25, 0, 131099, 17, 0, 196608, 16, 0, 262145, 17, 0, 262171, 17, 0, 327682, 16, 0, 327684, 16, 0, 327686, 16, 0, 327696, 25, 0, 393243, 17, 0, 458760, 16, 0, 458762, 16, 0, 458778, 16, 0, 524299, 17, 0, 524313, 17, 0, 589836, 16, 0, 589848, 16, 0, 655373, 17, 0, 655380, 3, 0, 655383, 17, 0, 720910, 16, 0, 720918, 16, 0, 786447, 17, 0, 786453, 17, 0, 851984, 16, 0, 851986, 16, 0, 851988, 16, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
+
+[node name="Exit" parent="YSort/WallsAndObjects" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 1418.8, -154 )
+scale = Vector2( 2.1036, 2.1036 )
+monitoring = false
+next_scene = ExtResource( 4 )
+
+[node name="Sprite" parent="YSort/WallsAndObjects/Exit" index="1"]
+frame = 3
+flip_v = true
+
+[node name="ExitStatue01" type="Sprite" parent="YSort/WallsAndObjects"]
+position = Vector2( 1513.6, -200 )
+scale = Vector2( 0.0707132, 0.0707132 )
+texture = ExtResource( 18 )
+
+[node name="ExitStatue02" type="Sprite" parent="YSort/WallsAndObjects"]
+position = Vector2( 1375.6, -272.8 )
+scale = Vector2( 0.0707132, 0.0707132 )
+texture = ExtResource( 18 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 426, 333 )
@@ -128,22 +163,6 @@ position = Vector2( 426, 333 )
 position = Vector2( 16, -57 )
 current = true
 zoom = Vector2( 2, 2 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="YSort"]
-layer = -1
-follow_viewport_enable = true
-
-[node name="TileMap2" type="TileMap" parent="YSort/CanvasLayer"]
-scale = Vector2( 2.5, 2.5 )
-mode = 1
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 130, 64 )
-cell_quadrant_size = 128
-cell_custom_transform = Transform2D( 66.757, 6.96, 0, 64, 0, 0 )
-cell_y_sort = true
-centered_textures = true
-format = 1
-tile_data = PoolIntArray( -917497, 536870936, 0, -917496, 536870935, 0, -917495, 536870936, 0, -851961, 536870936, 0, -851960, 536870935, 0, -851959, 536870936, 0, -786425, 536870936, 0, -786424, 536870935, 0, -786423, 536870936, 0, -720889, 24, 0, -720888, 23, 0, -720887, 24, 0, -655353, 24, 0, -655352, 23, 0, -655351, 24, 0, -589817, 23, 0, -589816, 23, 0, -589815, 23, 0, -589814, 23, 0, -589813, 23, 0, -589812, 23, 0, -524281, 23, 0, -524280, 23, 0, -524279, 23, 0, -524278, 23, 0, -524277, 23, 0, -524276, 23, 0, -458741, 23, 0, -458740, 23, 0, -393205, 23, 0, -393204, 23, 0, -393191, 536870914, 0, -327669, 23, 0, -327668, 23, 0, -262138, 536870914, 0, -262137, 24, 0, -262136, 24, 0, -262133, 23, 0, -262132, 23, 0, -196604, 24, 0, -196603, 24, 0, -196602, 24, 0, -196601, 23, 0, -196600, 24, 0, -196597, 23, 0, -196596, 23, 0, -131069, 24, 0, -131068, 23, 0, -131067, 23, 0, -131066, 23, 0, -131065, 23, 0, -131064, 23, 0, -131063, 24, 0, -131061, 23, 0, -131060, 23, 0, -65536, 24, 0, -65535, 24, 0, -65534, 24, 0, -65533, 23, 0, -65532, 23, 0, -65531, 23, 0, -65530, 23, 0, -65529, 23, 0, -65528, 23, 0, -65527, 24, 0, -65526, 24, 0, -65525, 24, 0, -65524, 24, 0, -65523, 24, 0, 0, 24, 0, 1, 23, 0, 2, 23, 0, 3, 23, 0, 4, 23, 0, 5, 23, 0, 6, 23, 0, 7, 23, 0, 8, 23, 0, 9, 23, 0, 10, 23, 0, 11, 23, 0, 12, 23, 0, 13, 24, 0, 65536, 24, 0, 65537, 24, 0, 65538, 23, 0, 65539, 23, 0, 65540, 23, 0, 65541, 23, 0, 65542, 23, 0, 65543, 23, 0, 65544, 23, 0, 65545, 23, 0, 65546, 23, 0, 65547, 23, 0, 65548, 23, 0, 65549, 24, 0, 131073, 24, 0, 131074, 24, 0, 131075, 24, 0, 131076, 24, 0, 131077, 23, 0, 131078, 23, 0, 131079, 23, 0, 131080, 23, 0, 131081, 23, 0, 131082, 23, 0, 131083, 23, 0, 131084, 23, 0, 131085, 24, 0, 131086, 536870914, 0, 196612, 24, 0, 196613, 24, 0, 196614, 24, 0, 196615, 23, 0, 196616, 23, 0, 196617, 23, 0, 196618, 23, 0, 196619, 24, 0, 196620, 24, 0, 196621, 24, 0, 196622, 536870914, 0, 262150, 24, 0, 262151, 24, 0, 262152, 23, 0, 262153, 23, 0, 262154, 23, 0, 262155, 24, 0, 262156, 24, 0, 262158, 536870914, 0, 327687, 24, 0, 327688, 24, 0, 327689, 23, 0, 327690, 24, 0, 327691, 24, 0, 393224, 24, 0, 393225, 24, 0, 393226, 24, 0, 983047, 0, 0, 983054, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1114124, 536870914, 0, 1114126, 536870914, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0 )
 
 [node name="Critters" type="YSort" parent="YSort"]
 
@@ -168,24 +187,18 @@ position = Vector2( 1127, 887 )
 [node name="DevilsBargainArea" parent="YSort" instance=ExtResource( 6 )]
 timeline = "timeline-1676112450.json"
 
-[node name="Pillar" type="Sprite" parent="YSort"]
-position = Vector2( 1020, 313 )
-scale = Vector2( 0.279999, 0.279999 )
-texture = ExtResource( 14 )
+[node name="Obstacles" type="YSort" parent="YSort"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Pillar"]
-position = Vector2( -10.7144, 10.7142 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Pillar/StaticBody2D"]
-polygon = PoolVector2Array( -471.431, 1153.58, -382.145, 1085.72, -403.573, 1050, -0.000244141, 682.146, 514.288, 1153.58, 21.4285, 1414.29 )
-
-[node name="Box" parent="YSort" instance=ExtResource( 17 )]
+[node name="Box" parent="YSort/Obstacles" instance=ExtResource( 17 )]
 position = Vector2( 161, 543 )
 scale = Vector2( 0.11919, 0.11919 )
 
-[node name="Box2" parent="YSort" instance=ExtResource( 17 )]
+[node name="Box2" parent="YSort/Obstacles" instance=ExtResource( 17 )]
 position = Vector2( 322, 624 )
 scale = Vector2( 0.11919, 0.11919 )
+
+[node name="BigPillar" parent="YSort/Obstacles" instance=ExtResource( 14 )]
+position = Vector2( 1051, 600 )
 
 [node name="Bottoms" type="CanvasLayer" parent="."]
 layer = -2
@@ -225,12 +238,6 @@ tile_data = PoolIntArray( -524280, 22, 0, -524279, 22, 0, -524278, 22, 0, -52427
 visible = false
 navpoly = SubResource( 9 )
 
-[node name="Exit" parent="." instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 765, 534 )
-monitoring = false
-next_scene = ExtResource( 4 )
-
 [node name="TriggerHandler" type="Node" parent="."]
 script = ExtResource( 11 )
 
@@ -253,11 +260,8 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_filter = 4
 shadow_item_cull_mask = 31
 
-[node name="Forebreidge" type="Sprite" parent="."]
-position = Vector2( 276, 1445 )
-scale = Vector2( 0.679999, 0.679999 )
-texture = ExtResource( 13 )
-
+[connection signal="body_entered" from="YSort/WallsAndObjects/Exit" to="TriggerHandler" method="_on_Exit_body_entered"]
 [connection signal="child_exiting_tree" from="YSort/Critters" to="TriggerHandler" method="_on_Critters_child_exiting_tree"]
 [connection signal="accept_curse" from="YSort/DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
-[connection signal="body_entered" from="Exit" to="TriggerHandler" method="_on_Exit_body_entered"]
+
+[editable path="YSort/WallsAndObjects/Exit"]
