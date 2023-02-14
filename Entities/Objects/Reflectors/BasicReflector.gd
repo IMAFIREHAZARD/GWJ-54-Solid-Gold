@@ -37,5 +37,8 @@ func reflect(object):
 	
 	object.rotate(reflectionVector.angle())
 	
+	# let the bullets hit the player
+	object.set_collision_mask_bit(0, true)
+
 	
 	

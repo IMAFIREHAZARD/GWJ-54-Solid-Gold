@@ -13,8 +13,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_Bullet_body_entered(body: Node) -> void:
 	if not active: return
-	if body.has_method("kill"):
+	if body.has_method("kill") and body.name != "Player":
 		body.kill()
+	elif body.name == "Player" and body.has_method("_on_hit"):
+		body._on_hit(1) # 1 damage
 	active = false
 	$AnimatedSprite.hide()
 	$Explosion/AnimatedSprite.show()

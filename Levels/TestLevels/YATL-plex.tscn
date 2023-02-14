@@ -15,6 +15,21 @@ script = ExtResource( 3 )
 [node name="ReflectingCritter" parent="." instance=ExtResource( 2 )]
 position = Vector2( 585, 263 )
 
+[node name="ReflectingCritter2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 465, 124 )
+
+[node name="ReflectingCritter3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 387, 407 )
+
+[node name="ReflectingCritter4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 454, 249 )
+
+[node name="ReflectingCritter5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 235, 413 )
+
+[node name="ReflectingCritter6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 296, 145 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 202, 287 )
 
