@@ -5,7 +5,8 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 export(PackedScene) var splat_scene
 
 func _ready() -> void:
-	level.current_bugs += 1
+	if level != null and level.get("current_bugs") != null:
+		level.current_bugs += 1
 	goto_random_pos()
 
 func goto_random_pos() -> void:
@@ -13,6 +14,9 @@ func goto_random_pos() -> void:
 	go_to_location(targ)
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
+	if level == null:
+		return
+		
 	if level.current_bugs < level.max_bugs:
 		if randi() % 3 == 0:
 			animation_player.play("Wiggle")
@@ -23,7 +27,8 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 	
 
 func kill():
-	level.current_bugs -= 1
+	if level != null:
+		level.current_bugs -= 1
 	queue_free()
 	var splat = splat_scene.instance()
 	get_parent().add_child(splat)
