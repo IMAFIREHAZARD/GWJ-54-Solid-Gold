@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Projectiles/EnemyBullet.gd" type="Script" id=1]
+[ext_resource path="res://Art/VFX/Boss_P_1.png" type="Texture" id=2]
+[ext_resource path="res://Art/VFX/Boss_P_4.png" type="Texture" id=3]
+[ext_resource path="res://Art/VFX/Boss_P_2.png" type="Texture" id=4]
+[ext_resource path="res://Art/VFX/Boss_P_3.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 35.0571
+radius = 55.0091
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="EnemyProjectile" type="Area2D"]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource( 1 )
@@ -14,9 +26,11 @@ script = ExtResource( 1 )
 position = Vector2( -2, -79 )
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 2, -85 )
-color = Color( 0.392157, 0.223529, 0.490196, 1 )
-polygon = PoolVector2Array( -4, -37, 40, -5, 31, 35, -35, 43, -54, 4 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -85, -82 )
+scale = Vector2( -1, 1 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
