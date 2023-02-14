@@ -1,14 +1,12 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
-[ext_resource path="res://Levels/Shooter/ParallaxLayer.gd" type="Script" id=3]
+[ext_resource path="res://Levels/CommonInfrastructure/LevelBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Glass/GlassLevel01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/DevilsBargainArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/CommonInfrastructure/KyveriTileset01.tres" type="TileSet" id=7]
-[ext_resource path="res://Art/Clouds.png" type="Texture" id=8]
-[ext_resource path="res://Art/Background.png" type="Texture" id=9]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Shooter/TriggerHandler.gd" type="Script" id=11]
 [ext_resource path="res://Art/VFX/Light_map.png" type="Texture" id=12]
@@ -85,37 +83,7 @@ texture = ExtResource( 23 )
 
 [node name="OtherParent" type="Node2D" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -2
-
-[node name="Background" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 1447, -27.0534 )
-scale = Vector2( 5.05104, 3.77027 )
-z_index = -4
-texture = ExtResource( 9 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-script = ExtResource( 3 )
-
-[node name="Clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 627, 102 )
-scale = Vector2( 1.67131, 2.21462 )
-texture = ExtResource( 8 )
-
-[node name="Clouds2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -1352, 704 )
-scale = Vector2( 1.67131, 2.21462 )
-texture = ExtResource( 8 )
-
-[node name="Clouds3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1140, 730 )
-scale = Vector2( 3.19252, 2.21462 )
-texture = ExtResource( 8 )
-
-[node name="Clouds4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 655, 1364 )
-scale = Vector2( 3.19252, 2.21462 )
-texture = ExtResource( 8 )
+[node name="LevelBackground" parent="." instance=ExtResource( 3 )]
 
 [node name="YSort" type="YSort" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Art/Boss_Parts/Forearm_Right.png" type="Texture" id=1]
 [ext_resource path="res://Art/Boss_Parts/Wing_small.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Art/Boss_Parts/Upper_arm.png" type="Texture" id=11]
 [ext_resource path="res://Entities/NPCs/Boss.gd" type="Script" id=12]
 [ext_resource path="res://Levels/BossFight/BossSummonAttack.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Projectiles/EnemyBullet.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -679,6 +680,7 @@ position = Vector2( 83, -40 )
 rotation = -0.0790671
 script = ExtResource( 12 )
 summon_attack_scene = ExtResource( 13 )
+projectile_scene = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -886,4 +888,4 @@ position = Vector2( -423.412, 621.499 )
 wait_time = 3.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="do_summon_attack"]
+[connection signal="timeout" from="Timer" to="." method="do_next_attack"]
