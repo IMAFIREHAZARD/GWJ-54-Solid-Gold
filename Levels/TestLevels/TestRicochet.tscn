@@ -21,16 +21,19 @@ script = ExtResource( 1 )
 points = PoolVector2Array( 1, 1, 64, 0 )
 
 [node name="SpinningReflector" parent="." instance=ExtResource( 3 )]
-position = Vector2( 515, 409 )
+position = Vector2( 466, 338 )
+rotation = -1.57276
 
 [node name="SpinningReflector3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 622, 409 )
+rotation = 2.53589
 
 [node name="SpinningReflector4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 372, 254 )
+position = Vector2( 328, 344 )
+rotation = 3.11334
 
 [node name="SpinningReflector2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 399, 405 )
+position = Vector2( 381, 239 )
 rotation = 0.00430746
 
 [node name="BasicReflector" parent="." instance=ExtResource( 2 )]

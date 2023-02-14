@@ -22,11 +22,18 @@ func _on_BasicReflector_area_entered(area):
 
 
 func reflect(object):
+	# This works great for static reflectors,
+	# but it's unreliable when the reflection surface is moving???
+	
 	var incomingVector = object.transform.x.normalized()
+	
+	
 	#var normalVector = self.transform.x.normalized()
 	var normalVector = Vector2.RIGHT.rotated(self.global_rotation)
-	print("normalVector = " , normalVector)
-	var reflectionVector = incomingVector - 2 * normalVector * incomingVector.dot(normalVector)
+	
+	var mirrorLine = normalVector.rotated(PI/2.0)
+	var reflectionVector = incomingVector.reflect(mirrorLine.normalized())
+	#var reflectionVector = incomingVector - 2 * normalVector * incomingVector.dot(normalVector)
 	
 	object.rotate(reflectionVector.angle())
 	
