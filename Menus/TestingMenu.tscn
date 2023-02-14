@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Levels/TestLevels/Critters.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/BossFight/BossFight.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/TestLevels/YATL-plex.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Catwalks/Catwalks.tscn" type="PackedScene" id=13]
 
 [node name="TestingMenu" type="Control"]
 anchor_right = 1.0
@@ -71,8 +72,8 @@ target_scene = ExtResource( 8 )
 margin_top = 53.0
 margin_right = 250.0
 margin_bottom = 81.0
-disabled = true
-text = "Test Scene"
+text = "Catwalks"
+target_scene = ExtResource( 13 )
 
 [node name="TestScene02" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 106.0
