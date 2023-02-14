@@ -153,10 +153,10 @@ margin_right = 316.0
 margin_bottom = 378.0
 text = "My learning from this experiment:
 
-The tile origin property of the tilemap is the ysort origin of the tile with respect to the ornange diamond you see when placing the tiles.
+The tile origin property of the tilemap is the ysort origin of the tile with respect to the orange diamond you see when placing the tiles.
 What we want is origin = center.
 
-The top of the texture for each tile is aligned with the top of the orange placement diamonds by default. This can be adjusted per tile in the TileSet with Tex Offset
+The top of the texture for each tile is aligned with the top of the orange placement diamonds by default. This can be adjusted per tile in the TileSet with Tex Offset (useful for anything taller than a flat panel)
 
 You don't want to ysort the floor unless the player is going to drop through it.
 
