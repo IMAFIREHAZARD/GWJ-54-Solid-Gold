@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Run/BrokenCherub.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Run/RunnerObstacle.gd" type="Script" id=2]
@@ -93,6 +93,48 @@ tracks/6/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ouch:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ouch:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "walk"
@@ -183,6 +225,7 @@ tracks/6/keys = {
 }
 
 [node name="RunnerObstacle" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -283,4 +326,10 @@ text = "W"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
 anims/RESET = SubResource( 2 )
+anims/hit = SubResource( 4 )
 anims/walk = SubResource( 3 )
+
+[node name="Ouch" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.960784, 0.882353, 0.0431373, 1 )
+polygon = PoolVector2Array( -54, -35, -19, -14, -19, -44, -4, -29, 28, -56, 24, -20, 62, -16, 29, 2, 67, 13, 22, 22, 28, 49, 3, 19, -23, 35, -22, 2, -48, 12, -39, -5 )
