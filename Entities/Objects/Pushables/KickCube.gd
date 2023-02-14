@@ -7,7 +7,7 @@ onready var arrow: Polygon2D = $Arrow
 const directions = [ Vector2(2, 1), Vector2(2, -1), Vector2(-2, -1), Vector2(-2, 1)]
 const move_dist = 35.7771
 var moving = false
-var hovered = true
+var hovered = false
 var push_dir : Vector2
 
 func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -24,7 +24,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 
 func _physics_process(_delta: float) -> void:
 	if hovered:
-		if player.global_position.distance_to(global_position) < move_dist * 1.2 \
+		if player in $PlayerArea.get_overlapping_bodies()\
 		and level.hovered_block == null:
 			level.hovered_block = self
 			modulate = Color.aquamarine
@@ -35,7 +35,8 @@ func _physics_process(_delta: float) -> void:
 			arrow.hide()
 
 func update_push_dir():
-	var raw_push_dir = player.global_position.direction_to(global_position)
+	
+	var raw_push_dir = (player.global_position + Vector2(0, 16)).direction_to(global_position)
 	var dist = INF
 	for dir in directions:
 		dir = dir.normalized()

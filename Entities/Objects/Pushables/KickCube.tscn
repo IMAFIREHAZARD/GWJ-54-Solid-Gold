@@ -21,15 +21,23 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickArea"]
-polygon = PoolVector2Array( 0, -48, 32, -32, 32, 0, 0, 16, -32, 0, -32, -32 )
+polygon = PoolVector2Array( 0, -48, 32, -32, 0, -16, -32, -32 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 4
 
 [node name="Arrow" type="Polygon2D" parent="."]
+visible = false
 position = Vector2( 0, -32 )
 color = Color( 0.231373, 0.231373, 0.231373, 1 )
 polygon = PoolVector2Array( -11, -4, 4, -4, 4, -9, 11, 0, 4, 8, 4, 4, -11, 4 )
+
+[node name="PlayerArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerArea"]
+polygon = PoolVector2Array( 0, 8, 32, 24, 48, 16, 16, 0, 48, -16, 32, -24, 0, -8, -32, -24, -48, -16, -16, 0, -48, 16, -32, 24 )
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_ClickArea_mouse_entered"]
