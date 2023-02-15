@@ -55,6 +55,8 @@ func is_any_movement_key_pressed():
 		
 func move_with_cube(delta):
 	if is_instance_valid(current_cube) == false:
+		detach_from_sokoban_cube(current_cube)
+		
 		printerr("InteractWithSokobanCubes error - deal with previously freed instances better. TBD")
 		return
 	
@@ -122,7 +124,7 @@ func attach_to_sokoban_cube(cube):
 	
 func detach_from_sokoban_cube(cube):
 	if current_cube == cube:
-		if cube.has_method("deactivate"):
+		if is_instance_valid(cube) and cube.has_method("deactivate"):
 			cube.deactivate(self.player)
 		disconnect("pushed_cube", current_cube, "_on_cube_pushed")
 		current_cube = null

@@ -5,7 +5,7 @@ onready var level = StageManager.current_map
 onready var ray_cast: RayCast2D = $RayCast2D
 onready var arrow: Polygon2D = $Arrow
 const directions = [ Vector2(2, 1), Vector2(2, -1), Vector2(-2, -1), Vector2(-2, 1)]
-const move_dist = 35.7771
+var move_dist = 35.7771 * scale.x
 var moving = false
 var hovered = false
 var push_dir : Vector2

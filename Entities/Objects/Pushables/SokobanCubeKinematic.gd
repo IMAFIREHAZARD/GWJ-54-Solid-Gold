@@ -9,23 +9,39 @@ var player_nearby : bool = false
 
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
-const move_dist = 35.7771 # Good old Pythagoras ... sqrt((2xrect.w)^2 + (rect.h)^2)
+var move_dist = 35.7771 # Good old Pythagoras ... sqrt((2xrect.w)^2 + (rect.h)^2)
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
 	
 
 export var cardinal_directions_only : bool = true
-export var ground_tilemap : NodePath
+var ground_tilemap : TileMap
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	set_move_dist()
+	var timer = get_tree().create_timer(0.5)
+	yield(timer, "timeout")
+	if ground_tilemap == null:
+		ground_tilemap = find_node("*Groun*")
+	if ground_tilemap == null:
+		printerr("SokobanCubeKinematic.gd needs a tilemap set. Defaulting to get_parent()")
+		if get_parent().is_class("TileMap"):
+			ground_tilemap = get_parent()
+	
+func set_move_dist():
+	# pythagoras
+	var x = $Sprite.get_rect().size.x / 2.0 #* global_scale.x 
+	var y = $Sprite.get_rect().size.y / 2.0 #* global_scale.y
+	var hypoteneuse = sqrt(x*x + y*y)
+	move_dist = hypoteneuse
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Label.text = States.keys()[State]
+	$PlayerPushRadius/Label.text = States.keys()[State]
 	if State == States.MOVING:
 		# figure out which way the player is pushing you
 		# move away if the player gets closer
@@ -42,7 +58,7 @@ func _process(delta):
 
 
 func is_clear(direction):
-	var distance = 12.0
+	var distance = move_dist
 	$RayCast2D.cast_to = direction * distance
 	$Line2D.points = [$RayCast2D.position, $RayCast2D.position + $RayCast2D.cast_to]
 	if $RayCast2D.is_colliding():
@@ -50,6 +66,8 @@ func is_clear(direction):
 	else:
 		return true
 
+func set_tilemap(groundTilemap):
+	ground_tilemap = groundTilemap
 
 func fall(delta):
 	State = States.FALLING
@@ -89,13 +107,13 @@ func get_direction(pushingSource):
 
 
 
-	
+
 
 func get_tile_underneath():
-	var my_tilemap : TileMap = get_node(ground_tilemap)
-	if my_tilemap == null:
-		my_tilemap = find_node("*Ground")
-
+	var my_tilemap = ground_tilemap
+	if ground_tilemap == null:
+		return
+		
 	var local_position = my_tilemap.to_local(global_position)
 	var map_position = my_tilemap.world_to_map(local_position)
 	var tileSet = my_tilemap.tile_set
@@ -142,6 +160,7 @@ func _on_PollingTimer_timeout():
 	if State == States.MOVING:
 		var tileName = get_tile_underneath()
 		if tileName == "Void":
+			print("cube is falling. Why?")
 			State = States.FALLING
 
 func move_to(destination):
@@ -153,6 +172,7 @@ func move_to(destination):
 
 func _on_cube_pushed(direction): # signal from player/affordances
 	if is_clear(direction) and State == States.ACTIVATED:
+		
 		move_to(direction * move_dist)
 		#move_and_slide(direction * speed)
 	
