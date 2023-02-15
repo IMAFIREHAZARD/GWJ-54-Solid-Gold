@@ -46,6 +46,9 @@ disabled = true
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
 
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 2
+
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
 

@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 #		else:
 #			modulate = Color.white
 #			arrow.hide()
+	update()
 
 func update_push_dir():
 	
@@ -58,6 +59,10 @@ func update_push_dir():
 			push_dir = dir
 	arrow.rotation = push_dir.angle()
 	
+
+func _draw():
+	draw_circle(player.global_position, 5, Color.red)
+	draw_circle(global_position, 5, Color.blue)
 
 func _on_ClickArea_mouse_entered() -> void:
 	SokobanSelector.hovered_blocks.append(self)

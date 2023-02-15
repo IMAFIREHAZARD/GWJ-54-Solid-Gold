@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 197, 198 )
+
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 2
+
+[node name="HUD" parent="YSort/Player" index="4"]
+visible = false
+
+[node name="PushBlock" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 501, 245 )
+scale = Vector2( 4, 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 157.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 150, 200 )
+text = "(from plex)
+Here, I draw a blue circle at the Cube global_origin and a red circle at the player global_origin.
+
+Press shift-z to zoom out, z to return
+
+Results seem strange to me."
+autowrap = true
+
+[editable path="YSort/Player"]
