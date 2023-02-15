@@ -1,7 +1,7 @@
 """
 Convert tilemap images into objects from a scene.
 The objects are sokoban blocks which the player can push around.
-This node must be a child of another tilemap representing solid ground.
+This node must be provided with another tilemap representing solid ground.
 
 """
 
@@ -9,9 +9,7 @@ tool
 extends TileMap
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var ground_tilemap : NodePath
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,10 +29,11 @@ func _ready():
 		spawn_objects_from_tilemap(tileName, tiles[tileName])
 	
 func _get_configuration_warning():
-	if get_parent().is_class("TileMap"):
-		return ""
+	if ground_tilemap.is_empty():
+		return "BigBlockWalls tilemap must be provided with another tilemap representing the ground. This allows blocks to fall when they're over an empty tile."
 	else:
-		return "BigBlockWalls tilemap must be a child of another tilemap representing the ground. This allows blocks to fall when they're over an empty tile."
+		return ""
+		
 
 func spawn_objects_from_tilemap(tileName : String, scenePath : String):
 	if scenePath != "":
@@ -45,7 +44,7 @@ func spawn_objects_from_tilemap(tileName : String, scenePath : String):
 				var newCube = load(scenePath).instance()
 				set_cellv(cellPos, -1) # remove the tile
 				if newCube.has_method("set_tilemap"):
-					newCube.set_tilemap(get_parent()) # must be a child of another tilemap representing the ground
+					newCube.set_tilemap(get_node(ground_tilemap)) # must be a child of another tilemap representing the ground
 				add_child(newCube)
 				newCube.position = map_to_world(cellPos) * scale
 
