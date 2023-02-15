@@ -36,4 +36,6 @@ func hit():
 	$AnimationPlayer.play("hit")
 	# animation player will call queue_free() directly
 
-
+func explode():
+	$CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
