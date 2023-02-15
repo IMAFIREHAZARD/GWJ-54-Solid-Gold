@@ -19,7 +19,7 @@ text = "Health"
 margin_left = 46.0
 margin_right = 46.0
 margin_bottom = 32.0
-columns = 3
+columns = 5
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
