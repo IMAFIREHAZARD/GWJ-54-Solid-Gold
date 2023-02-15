@@ -9,7 +9,7 @@
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Sokoban/PrototypeLevel-iso.png" type="Texture" id=9]
-[ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=10]
+[ext_resource path="res://Levels/CommonInfrastructure/SokobanTileset.tres" type="TileSet" id=10]
 [ext_resource path="res://Levels/Sokoban/BigBlockWalls.gd" type="Script" id=11]
 
 [node name="Sokoban" type="Node2D"]
@@ -256,7 +256,7 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 1
+frame = 0
 
 [node name="HUD" parent="YSort/Player" index="4"]
 visible = false
@@ -273,7 +273,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 0
+frame = 2
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
