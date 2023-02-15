@@ -48,7 +48,7 @@ func spawn_objects_from_tilemap(tileName : String, scenePath : String):
 				if newCube.has_method("set_tilemap"):
 					newCube.set_tilemap(get_node(ground_tilemap)) # must be a child of another tilemap representing the ground
 				add_child(newCube)
-				newCube.position = map_to_world(cellPos) * scale
+				newCube.set_global_position( map_to_world(cellPos) ) # * scale
 
 func get_tile_underneath(pos_global:Vector2):
 		
