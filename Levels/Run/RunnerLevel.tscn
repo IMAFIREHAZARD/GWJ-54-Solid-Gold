@@ -30,7 +30,8 @@ texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( -2261.38, 0, 4897.12, 97.942 )
 script = ExtResource( 7 )
-speed = 1200.0
+base_speed = 600.0
+z_parallax = 2.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Floor"]
 visible = false

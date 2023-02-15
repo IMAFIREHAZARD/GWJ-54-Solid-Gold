@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Run/RunnerLevel.tscn" type="PackedScene" id=1]
+
+[node name="RunnerLevel" instance=ExtResource( 1 )]
+endless_runner = true
+
+[node name="Sprite" parent="Floor" index="0"]
+base_speed = 800.0
+z_parallax = 2.0
+
+[editable path="PlayerSideView"]
+[editable path="Background"]

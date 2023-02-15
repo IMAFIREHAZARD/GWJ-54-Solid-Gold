@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export var move_speed := 650
+export var base_move_speed : float = 650.0
+var move_speed := base_move_speed
 onready var animated_sprite: AnimatedSprite = $SpriteRoot/AnimatedSprite
 onready var reload_timer: Timer = $ReloadTimer
 
@@ -13,6 +14,9 @@ var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
 
 var health : int = 3
+var gravity : float = 9.8
+export var levitate : bool = false
+
 
 const idle_anim_names = [
 	"IdleSouth",
@@ -31,7 +35,7 @@ const run_anim_names = [
 ]
 var dir_index = 0
 
-enum States { READY, PUSHING_BLOCK, PAUSED, DEAD }
+enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD }
 var State = States.READY
 
 
@@ -43,8 +47,9 @@ func _ready() -> void:
 	if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
 	if Global.speed_curse_taken:
-		move_speed *= 1.5
+		move_speed += base_move_speed * 0.5
 	print("player speed = " , move_speed)
+	
 
 func _physics_process(delta : float):
 	$Debug/StateLabel.text = States.keys()[State]
@@ -52,8 +57,8 @@ func _physics_process(delta : float):
 		move_normally(delta)
 	elif State == States.PUSHING_BLOCK:
 		pass # let the customAffordance move you?
-		
-		
+	elif State == States.FALLING:
+		fall(delta)
 
 func move_normally(delta : float):
 	var move = Vector2()
@@ -65,7 +70,26 @@ func move_normally(delta : float):
 	# warning-ignore:return_value_discarded
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
+
+	if StageManager.current_map != null and StageManager.current_map.has_method("get_tile_underneath"):
+		if StageManager.current_map.get_tile_underneath(global_position) == "Void":
+			fall_off_map()
+
 	
+func fall(delta : float):
+	vel += Vector2.DOWN * gravity * delta
+	position += vel
+	if is_outside_frustum():
+		begin_dying()
+
+func is_outside_frustum():
+	var screen_size = get_viewport_rect().size
+	var my_position = global_position
+	if my_position.x < 0 or my_position.x > screen_size.x or my_position.y < 0 or my_position.y > screen_size.y:
+		return true
+	else:
+		return false
+
 
 func animate_movement(directionVector):
 	var anim_array
@@ -119,14 +143,30 @@ func start_gun_curse():
 	Global.gun_curse_taken = true
 
 func begin_dying():
+	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
+	StageManager.current_map.spawn_dialog("PlayerDied")
+
+		
 	
 func _on_hit(damage):
 	health -= damage
 	if health <= 0:
 		begin_dying()
-	
+
+func detach_camera():
+	var camera = find_node("*Camera*")
+	if camera != null:
+		remove_child(camera)
+		get_parent().add_child(camera)
+		camera.global_position = global_position
+		
+		
 func fall_off_map():
-	print("oh noes!")
-	print("Player fell off the map!")
+	if !levitate:
+		detach_camera()
+		vel = Vector2.ZERO
+		State = States.FALLING
+		print("oh noes!")
+		print("Player fell off the map!")

@@ -2,9 +2,13 @@ extends Node
 
 
 var bpm : float = 90.0
+
 var gun_curse_taken = false
 var speed_curse_taken = false
-var player_health_remaining : int = 3
+var strength_curse_taken = false
+
+var player_max_health : float = 5
+var player_health_remaining : float = player_max_health
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +18,8 @@ func _ready():
 func reset_curses():
 	gun_curse_taken = false
 	speed_curse_taken = false
-	player_health_remaining = 3
+	strength_curse_taken = false
+	player_health_remaining = player_max_health
 	
 
 func is_paused():

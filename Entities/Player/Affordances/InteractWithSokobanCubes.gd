@@ -54,6 +54,10 @@ func is_any_movement_key_pressed():
 	
 		
 func move_with_cube(delta):
+	if is_instance_valid(current_cube) == false:
+		printerr("InteractWithSokobanCubes error - deal with previously freed instances better. TBD")
+		return
+	
 	var printNow : bool = false
 	if Time.get_ticks_msec() > last_print_time + polling_interval:
 		printNow = true

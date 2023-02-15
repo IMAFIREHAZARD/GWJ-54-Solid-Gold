@@ -9,6 +9,7 @@ var player_nearby : bool = false
 
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
+const move_dist = 35.7771 # Good old Pythagoras ... sqrt((2xrect.w)^2 + (rect.h)^2)
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
@@ -88,9 +89,13 @@ func get_direction(pushingSource):
 
 
 
+	
 
 func get_tile_underneath():
 	var my_tilemap : TileMap = get_node(ground_tilemap)
+	if my_tilemap == null:
+		my_tilemap = find_node("*Ground")
+
 	var local_position = my_tilemap.to_local(global_position)
 	var map_position = my_tilemap.world_to_map(local_position)
 	var tileSet = my_tilemap.tile_set
@@ -139,23 +144,34 @@ func _on_PollingTimer_timeout():
 		if tileName == "Void":
 			State = States.FALLING
 
+func move_to(destination):
+	State = States.MOVING
+	var tween = create_tween()
+	tween.tween_property(self, "position", position + destination, 0.3)
+	yield(tween, "finished")
+	State = States.ACTIVATED
+
 func _on_cube_pushed(direction): # signal from player/affordances
 	if is_clear(direction) and State == States.ACTIVATED:
-		move_and_slide(direction * speed)
+		move_to(direction * move_dist)
+		#move_and_slide(direction * speed)
 	
 func _on_cube_clicked(direction):
 	if is_clear(direction) and player_nearby:
-		var distance = 50.0 * speed
+		move_to(direction * move_dist)
+		
+		#var distance = 50.0 * speed
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		move_and_slide(direction * distance)
+		#move_and_slide(direction * distance)
 
 
 func _unhandled_input(_event):
 
 	if player_nearby and Input.is_action_just_pressed("push"):
-		print("clicked Sokoban Cube")
-		_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
-		get_tree().set_input_as_handled()
+		if State == States.ACTIVATED:
+			print("clicked Sokoban Cube")
+			_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+			get_tree().set_input_as_handled()
 
 #	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 #		if $Sprite.get_rect().has_point($Sprite.to_local(event.position)):
@@ -169,3 +185,13 @@ func _on_SokobanCubeKinematic_mouse_entered():
 func _on_SokobanCubeKinematic_mouse_exited():
 	mouse_hovering = false
 	
+
+
+func _on_PlayerOccludedArea_body_entered(body):
+	if body.name == "Player":
+		set_self_modulate(Color(1,1,1,0.5))
+
+
+func _on_PlayerOccludedArea_body_exited(body):
+	if body.name == "Player":
+		set_self_modulate(Color.white)

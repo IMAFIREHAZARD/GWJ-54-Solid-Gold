@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/CommonInfrastructure/MinimalLevel.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Levels/Glass/GlassLevel02.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/DevilsBargainArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.tscn" type="PackedScene" id=7]
 
 [node name="Glass01" type="Node2D"]
 script = ExtResource( 2 )
@@ -31,6 +32,14 @@ collision_layer = 4
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -655349, 0, 0, -655348, 0, 0, -655347, 0, 0, -655346, 0, 0, -589813, 0, 0, -589809, 0, 0, -589808, 0, 0, -524280, 0, 0, -524279, 0, 0, -524278, 0, 0, -524277, 0, 0, -524272, 0, 0, -524271, 0, 0, -458745, 0, 0, -458744, 0, 0, -458735, 0, 0, -393209, 0, 0, -393198, 0, 0, -327673, 0, 0, -327662, 0, 0, -262138, 0, 0, -262137, 0, 0, -262126, 0, 0, -262125, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196589, 0, 0, -131068, 0, 0, -131053, 0, 0, -131052, 0, 0, -131047, 0, 0, -65533, 0, 0, -65532, 0, 0, -65516, 0, 0, -65515, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, 3, 0, 0, 4, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 26, 0, 0, 27, 0, 0, 65540, 0, 0, 65558, 0, 0, 65559, 0, 0, 65564, 0, 0, 131077, 0, 0, 131100, 0, 0, 131101, 0, 0, 196613, 0, 0, 196614, 0, 0, 196637, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262173, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327709, 0, 0, 393228, 0, 0, 393244, 0, 0, 393245, 0, 0, 458764, 0, 0, 458765, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 524301, 0, 0, 524310, 0, 0, 524311, 0, 0, 589837, 0, 0, 589838, 0, 0, 589846, 0, 0, 655374, 0, 0, 655382, 0, 0, 720910, 0, 0, 720911, 0, 0, 720917, 0, 0, 720918, 0, 0, 786447, 0, 0, 786448, 0, 0, 786452, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0 )
+
+[node name="SokobanCubeKinematic" parent="YSort/TileMapLevel1" instance=ExtResource( 7 )]
+position = Vector2( 320, 272 )
+ground_tilemap = NodePath("../../TileMapGround")
+
+[node name="SokobanCubeKinematic2" parent="YSort/TileMapLevel1" instance=ExtResource( 7 )]
+position = Vector2( 288, 352 )
+ground_tilemap = NodePath("../../TileMapGround")
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 426, 333 )
