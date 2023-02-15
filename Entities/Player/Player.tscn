@@ -347,7 +347,7 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 
@@ -404,4 +404,3 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
