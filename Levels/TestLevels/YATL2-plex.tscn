@@ -1,24 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Objects/Pushables/KickCube128.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 197, 198 )
-
-[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 2
-
-[node name="HUD" parent="YSort/Player" index="4"]
-visible = false
-
-[node name="PushBlock" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 501, 245 )
-scale = Vector2( 4, 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -40,4 +29,23 @@ Press shift-z to zoom out, z to return
 Results seem strange to me."
 autowrap = true
 
-[editable path="YSort/Player"]
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 197, 198 )
+
+[node name="AnimatedSprite" parent="Player/SpriteRoot" index="0"]
+frame = 0
+
+[node name="HUD" parent="Player" index="4"]
+visible = false
+
+[node name="PushBlock" parent="." instance=ExtResource( 2 )]
+position = Vector2( 501, 245 )
+scale = Vector2( 4, 4 )
+
+[node name="SokobanCubeKinematic" parent="." instance=ExtResource( 4 )]
+position = Vector2( 258, 459 )
+
+[node name="PushBlock128" parent="." instance=ExtResource( 3 )]
+position = Vector2( 860, 417 )
+
+[editable path="Player"]

@@ -22,7 +22,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		elif not ray_cast.is_colliding():
 				moving = true
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.3)
+				tween.tween_property(self, "position", global_position + push_dir * move_dist * scale, 0.3)
 				yield(tween, "finished")
 				moving = false
 
@@ -45,11 +45,11 @@ func _physics_process(_delta: float) -> void:
 #		else:
 #			modulate = Color.white
 #			arrow.hide()
-	update()
+	#update()
 
 func update_push_dir():
-	
-	var raw_push_dir = player.global_position.direction_to(global_position)
+	var feet_to_hands = Vector2.UP * 32.0
+	var raw_push_dir = (player.global_position + feet_to_hands).direction_to(global_position)
 	var dist = INF
 	for dir in directions:
 		dir = dir.normalized()
@@ -60,9 +60,9 @@ func update_push_dir():
 	arrow.rotation = push_dir.angle()
 	
 
-func _draw():
-	draw_circle(player.global_position, 5, Color.red)
-	draw_circle(global_position, 5, Color.blue)
+#func _draw():
+#	draw_circle(to_local(player.global_position), 5, Color.red)
+#	draw_circle(to_local(global_position), 5, Color.blue)
 
 func _on_ClickArea_mouse_entered() -> void:
 	SokobanSelector.hovered_blocks.append(self)

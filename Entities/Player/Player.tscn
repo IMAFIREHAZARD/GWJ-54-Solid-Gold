@@ -348,7 +348,7 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 
@@ -402,7 +402,6 @@ text = "State"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
 script = ExtResource( 12 )
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
