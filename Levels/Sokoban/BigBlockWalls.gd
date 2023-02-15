@@ -21,8 +21,9 @@ func _ready():
 		
 	var tiles = {
 		"FixedWall":"res://Levels/Sokoban/TranslucentWall.tscn",
+		#"PushBlock":"res://Entities/Objects/Pushables/KickCube128.tscn",
 		"PushBlock":"res://Entities/Objects/Pushables/SokobanCubeKinematic.tscn",
-		"RedBlock":"",
+		"RedBlock":"res://Entities/Objects/Pickables/RedCube_Pickable.tscn",
 	}
 
 	for tileName in tiles.keys():
