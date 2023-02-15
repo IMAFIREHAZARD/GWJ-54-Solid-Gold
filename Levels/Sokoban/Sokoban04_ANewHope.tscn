@@ -47,10 +47,13 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 2
+frame = 1
 
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
+
+[node name="Camera2D" parent="YSort/Player" index="13"]
+zoom = Vector2( 1, 1 )
 
 [node name="BigBlockWalls" type="TileMap" parent="YSort"]
 modulate = Color( 0.294118, 0.733333, 1, 1 )
@@ -85,7 +88,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 0
+frame = 2
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
