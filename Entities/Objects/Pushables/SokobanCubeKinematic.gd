@@ -185,3 +185,13 @@ func _on_SokobanCubeKinematic_mouse_entered():
 func _on_SokobanCubeKinematic_mouse_exited():
 	mouse_hovering = false
 	
+
+
+func _on_PlayerOccludedArea_body_entered(body):
+	if body.name == "Player":
+		set_self_modulate(Color(1,1,1,0.5))
+
+
+func _on_PlayerOccludedArea_body_exited(body):
+	if body.name == "Player":
+		set_self_modulate(Color.white)

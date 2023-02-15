@@ -48,8 +48,15 @@ margin_right = 20.0
 margin_bottom = -26.0
 text = "State"
 
+[node name="PlayerOccludedArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerOccludedArea"]
+polygon = PoolVector2Array( -32, 0, -32, -32, -1, -48, 31, -32, 31, 0 )
+
 [connection signal="mouse_entered" from="." to="." method="_on_SokobanCubeKinematic_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_SokobanCubeKinematic_mouse_exited"]
 [connection signal="body_entered" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_entered"]
 [connection signal="body_exited" from="PlayerPushRadius" to="." method="_on_PlayerPushRadius_body_exited"]
 [connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]
+[connection signal="body_entered" from="PlayerOccludedArea" to="." method="_on_PlayerOccludedArea_body_entered"]
+[connection signal="body_exited" from="PlayerOccludedArea" to="." method="_on_PlayerOccludedArea_body_exited"]
