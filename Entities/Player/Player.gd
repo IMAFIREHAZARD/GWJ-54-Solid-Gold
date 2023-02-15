@@ -44,9 +44,10 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	#Dialogic.has_current_dialog_node()
-	if Global.gun_curse_taken or debug_start_with_machine_gun:
+	if Global.curses_taken["gun_hands"] == true or debug_start_with_machine_gun:
+	#if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
-	if Global.speed_curse_taken:
+	if Global.curses_taken["speed"] == true:
 		move_speed += base_move_speed * 0.5
 	print("player speed = " , move_speed)
 	
@@ -145,7 +146,8 @@ func shoot():
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
-	Global.gun_curse_taken = true
+	Global.curses_taken["gun_hands"] = true
+	#Global.gun_curse_taken = true
 
 func begin_dying():
 	State = States.DEAD

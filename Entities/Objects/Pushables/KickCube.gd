@@ -17,7 +17,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		ray_cast.cast_to = push_dir * move_dist
 		ray_cast.force_raycast_update()
 		
-		if Global.strength_curse_taken:
+		if Global.curses_taken["strength"]:
 			explode_into_smithereens()
 		elif not ray_cast.is_colliding():
 				moving = true

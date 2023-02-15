@@ -17,32 +17,17 @@ text = "Health"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 46.0
-margin_right = 114.0
+margin_right = 46.0
 margin_bottom = 32.0
 columns = 3
-
-[node name="Heart2" type="TextureRect" parent="GridContainer"]
-margin_right = 32.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 1 )
-expand = true
-
-[node name="Heart3" type="TextureRect" parent="GridContainer"]
-margin_left = 36.0
-margin_right = 68.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 1 )
-expand = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
 [node name="HeartTemplate" type="TextureRect" parent="."]
-margin_left = 118.0
-margin_right = 150.0
+margin_left = 50.0
+margin_right = 82.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 1 )
