@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Exit_door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Sokoban/Sokoban04_ANewHope.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/CommonInfrastructure/LevelBackground.tscn" type="PackedScene" id=5]
 
 [node name="Catwalks" instance=ExtResource( 1 )]
 
@@ -23,7 +24,7 @@ next_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="Exit" index="1"]
 scale = Vector2( 1.5, 1.5 )
-frame = 1
+frame = 2
 flip_v = true
 
 [node name="StaticBody2D" parent="Exit/Sprite" index="0" instance=ExtResource( 3 )]
@@ -31,5 +32,7 @@ flip_v = true
 [node name="Camera2D" parent="." index="5"]
 visible = false
 current = false
+
+[node name="LevelBackground" parent="." index="6" instance=ExtResource( 5 )]
 
 [editable path="Exit"]
