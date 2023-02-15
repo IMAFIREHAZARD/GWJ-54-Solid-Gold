@@ -3,7 +3,7 @@
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Exit_door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/Sokoban/Sokoban02.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Sokoban/Sokoban04_ANewHope.tscn" type="PackedScene" id=4]
 
 [node name="Catwalks" instance=ExtResource( 1 )]
 
@@ -11,6 +11,7 @@
 tile_data = PoolIntArray( -983036, 4, 0, -983035, 4, 0, -327673, 4, 0, -327672, 4, 0, -196603, 4, 0, -196602, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0 )
 
 [node name="TileMapGroundSidesR" parent="." index="1"]
+z_index = -20
 tile_data = PoolIntArray( -1310716, 0, 0, -1245180, 0, 0, -1179643, 0, 0, -1114107, 0, 0, -1048573, 0, 0, -1048571, 0, 0, -983035, 0, 0, -917501, 0, 0, -851964, 0, 0, -786428, 0, 0, -720892, 0, 0, -655353, 0, 0, -589817, 0, 0, -524281, 0, 0, -458744, 0, 0, -393208, 0, 0, -327672, 0, 0, -262138, 0, 0, -196602, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0 )
 
 [node name="TileMapGround" parent="." index="2"]
@@ -27,7 +28,7 @@ next_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="Exit" index="1"]
 scale = Vector2( 1.5, 1.5 )
-frame = 1
+frame = 2
 flip_v = true
 
 [node name="StaticBody2D" parent="Exit/Sprite" index="0" instance=ExtResource( 3 )]

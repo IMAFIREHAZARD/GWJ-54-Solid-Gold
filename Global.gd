@@ -3,11 +3,18 @@ extends Node
 
 var bpm : float = 90.0
 
-var gun_curse_taken = false
-var speed_curse_taken = false
-var strength_curse_taken = false
+#var gun_curse_taken = false
+#var speed_curse_taken = false
+#var strength_curse_taken = false
 
-var player_health_remaining : int = 3
+var curses_taken = {
+	"gun_hands":false,
+	"speed":false,
+	"strength":false,
+}
+
+var player_max_health : float = 5.0
+var player_health_remaining : float = player_max_health
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,10 +22,14 @@ func _ready():
 	pass # Replace with function body.
 
 func reset_curses():
-	gun_curse_taken = false
-	speed_curse_taken = false
-	strength_curse_taken = false
-	player_health_remaining = 3
+	for curse in curses_taken.keys():
+		curses_taken[curse] = false
+	
+#	gun_curse_taken = false
+#	speed_curse_taken = false
+#	strength_curse_taken = false
+	
+	player_health_remaining = player_max_health
 	
 
 func is_paused():
@@ -26,6 +37,14 @@ func is_paused():
 	return false
 	#return get_tree().paused
 
+func get_num_curses():
+#	var count = 0
+#	for curse in curses_taken:
+#		if curses_taken[curse] == true:
+#			count += 1
+	var count = curses_taken.values().count(true)
+	return count
+		
 
 func get_nearest_object(objArray, refObject): # can take a Vector2 or Object2D
 	var refPos

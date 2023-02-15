@@ -9,22 +9,41 @@ var player_nearby : bool = false
 
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
+var move_dist = 71
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
 	
 
 export var cardinal_directions_only : bool = true
-export var ground_tilemap : NodePath
+var ground_tilemap : TileMap
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$SpriteWhiteCube.hide()
+	set_move_dist()
+	var timer = get_tree().create_timer(0.5)
+	yield(timer, "timeout")
+	if ground_tilemap == null:
+		ground_tilemap = find_node("*Groun*")
+	if ground_tilemap == null:
+		printerr("SokobanCubeKinematic.gd needs a tilemap set. Defaulting to get_parent()")
+		if get_parent().is_class("TileMap"):
+			ground_tilemap = get_parent()
+	
+func set_move_dist():
+	# pythagoras
+	var x = $Sprite.get_rect().size.x / 2.0 * global_scale.x 
+	var y = $Sprite.get_rect().size.y / 4.0 * global_scale.y
+	var hypoteneuse = sqrt(x*x + y*y)
+	print("pythagoras says: ", hypoteneuse, " but we're setting it to 71 because the ruler tool measured that.")
+	move_dist = 71.0 / 2.0 # why /2???
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Label.text = States.keys()[State]
+	$PlayerPushRadius/Label.text = States.keys()[State]
 	if State == States.MOVING:
 		# figure out which way the player is pushing you
 		# move away if the player gets closer
@@ -41,7 +60,7 @@ func _process(delta):
 
 
 func is_clear(direction):
-	var distance = 12.0
+	var distance = move_dist
 	$RayCast2D.cast_to = direction * distance
 	$Line2D.points = [$RayCast2D.position, $RayCast2D.position + $RayCast2D.cast_to]
 	if $RayCast2D.is_colliding():
@@ -49,6 +68,8 @@ func is_clear(direction):
 	else:
 		return true
 
+func set_tilemap(groundTilemap):
+	ground_tilemap = groundTilemap
 
 func fall(delta):
 	State = States.FALLING
@@ -89,8 +110,12 @@ func get_direction(pushingSource):
 
 
 
+
 func get_tile_underneath():
-	var my_tilemap : TileMap = get_node(ground_tilemap)
+	var my_tilemap = ground_tilemap
+	if ground_tilemap == null:
+		return
+		
 	var local_position = my_tilemap.to_local(global_position)
 	var map_position = my_tilemap.world_to_map(local_position)
 	var tileSet = my_tilemap.tile_set
@@ -137,25 +162,38 @@ func _on_PollingTimer_timeout():
 	if State == States.MOVING:
 		var tileName = get_tile_underneath()
 		if tileName == "Void":
+			print("cube is falling. Why?")
 			State = States.FALLING
+
+func move_to(destination):
+	State = States.MOVING
+	var tween = create_tween()
+	tween.tween_property(self, "position", position + destination, 0.3)
+	yield(tween, "finished")
+	State = States.ACTIVATED
 
 func _on_cube_pushed(direction): # signal from player/affordances
 	if is_clear(direction) and State == States.ACTIVATED:
-		move_and_slide(direction * speed)
+		
+		move_to(direction * move_dist)
+		#move_and_slide(direction * speed)
 	
 func _on_cube_clicked(direction):
 	if is_clear(direction) and player_nearby:
-		var distance = 50.0 * speed
+		move_to(direction * move_dist)
+		
+		#var distance = 50.0 * speed
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		move_and_slide(direction * distance)
+		#move_and_slide(direction * distance)
 
 
 func _unhandled_input(_event):
 
 	if player_nearby and Input.is_action_just_pressed("push"):
-		print("clicked Sokoban Cube")
-		_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
-		get_tree().set_input_as_handled()
+		if State == States.ACTIVATED:
+			print("clicked Sokoban Cube")
+			_on_cube_clicked(player.get_global_position().direction_to(self.global_position))
+			get_tree().set_input_as_handled()
 
 #	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 #		if $Sprite.get_rect().has_point($Sprite.to_local(event.position)):
@@ -169,3 +207,13 @@ func _on_SokobanCubeKinematic_mouse_entered():
 func _on_SokobanCubeKinematic_mouse_exited():
 	mouse_hovering = false
 	
+
+
+func _on_PlayerOccludedArea_body_entered(body):
+	if body.name == "Player":
+		set_self_modulate(Color(1,1,1,0.5))
+
+
+func _on_PlayerOccludedArea_body_exited(body):
+	if body.name == "Player":
+		set_self_modulate(Color.white)

@@ -24,3 +24,7 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	speed = 0
 	yield($Explosion/AnimatedSprite,"animation_finished")
 	queue_free()
+
+
+func _on_Timer_timeout() -> void:
+	queue_free()

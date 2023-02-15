@@ -5,15 +5,15 @@
 [node name="Sprite" type="Sprite"]
 z_index = -5
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-color = Color( 0.662745, 1, 0, 1 )
-texture_offset = Vector2( 10.271, 12.425 )
-polygon = PoolVector2Array( -11, -1, -6, -6, -2, -4, 2, -7, 6, -9, 13, -7, 13, 0, 9, 5, 14, 9, 5, 13, 0, 9, -5, 11, -10, 11, -9, 5, -9, 1 )
-
 [node name="EnemySpriteDead" type="Sprite" parent="."]
 position = Vector2( -5, 8 )
 scale = Vector2( 0.0765626, 0.0765626 )
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

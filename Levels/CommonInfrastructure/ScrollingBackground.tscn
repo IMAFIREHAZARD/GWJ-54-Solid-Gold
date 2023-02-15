@@ -7,23 +7,22 @@
 [node name="Background" type="CanvasLayer"]
 layer = -100
 
-[node name="Clouds01" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.552941 )
+[node name="NearClouds" type="Sprite" parent="."]
 position = Vector2( 480, 316 )
 scale = Vector2( 4.56655, 4.56655 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 134, 159, 244, 175 )
 script = ExtResource( 3 )
-speed = 10.0
+z_parallax = 3.0
 
-[node name="Clouds02" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.513726 )
-position = Vector2( 962, 630 )
-scale = Vector2( 9.20602, 9.20602 )
+[node name="FarClouds" type="Sprite" parent="."]
+self_modulate = Color( 0.792157, 0.372549, 0.372549, 0.513726 )
+position = Vector2( 493, 324 )
+scale = Vector2( 4.74425, 4.74425 )
 z_index = -100
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 134, 159, 244, 175 )
 script = ExtResource( 3 )
-speed = 15.0
+z_parallax = 1.25
