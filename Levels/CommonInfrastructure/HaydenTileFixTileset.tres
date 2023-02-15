@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Sokoban/OrnateBox128.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 67.5226, 125.126, 4.26632, 93.7673, 63.2158, 69.6761, 123.242, 97.4012 )
+points = PoolVector2Array( 64, 128, 0, 96, 64, 64, 128, 96 )
 
 [resource]
 0/name = "Modular tileset_IN_engine.png 0"
