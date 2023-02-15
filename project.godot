@@ -70,7 +70,7 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "SokobanBlock",
+"class": "PushBlock",
 "language": "GDScript",
 "path": "res://Entities/Objects/Pushables/KickCube.gd"
 } ]
@@ -87,7 +87,7 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "HistoryRow": "",
-"SokobanBlock": ""
+"PushBlock": ""
 }
 
 [application]
@@ -103,6 +103,7 @@ KeyBinding="*res://addons/key_binding/key_binding.gd"
 Global="*res://Global.gd"
 StageManager="*res://StageManager.gd"
 AudioSystem="*res://Music/AudioSystem.gd"
+SokobanSelector="*res://Levels/Sokoban/SokobanSelector.gd"
 
 [display]
 
@@ -213,6 +214,7 @@ slide={
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="InivisibleWalls"
+2d_physics/layer_6="Reflector"
 
 [mono]
 

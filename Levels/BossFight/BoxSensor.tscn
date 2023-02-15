@@ -3,7 +3,7 @@
 [ext_resource path="res://Levels/BossFight/BoxSensor.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 40.0
+radius = 8.0
 
 [node name="BoxSensor" type="Area2D"]
 collision_layer = 0
