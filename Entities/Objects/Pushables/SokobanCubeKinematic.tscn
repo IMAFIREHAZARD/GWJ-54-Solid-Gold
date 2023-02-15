@@ -11,27 +11,26 @@ blend_mode = 1
 radius = 33.0337
 
 [node name="SokobanCubeKinematic" type="KinematicBody2D" groups=["SokobanCubes"]]
-position = Vector2( -1, -17 )
+position = Vector2( 0, -34 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 self_modulate = Color( 0.8, 0.490196, 0.0941176, 1 )
-position = Vector2( 2, 18 )
+position = Vector2( 1, -1 )
 texture = ExtResource( 1 )
-offset = Vector2( -2.8, -34 )
+offset = Vector2( -3.8, 2 )
 
 [node name="SpriteWhiteCube" type="Sprite" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.647059 )
 material = SubResource( 2 )
-position = Vector2( -0.799999, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -0.799999, -16 )
+position = Vector2( -1, 1 )
 scale = Vector2( 2, 2 )
 polygon = PoolVector2Array( 0.799999, 30, -27.5629, 16.764, -27.5078, 15.2103, 0.799999, 2, 26.5898, 14.8949, 26.6197, 17.0901 )
 
@@ -56,15 +55,16 @@ wait_time = 0.5
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 1, 17 )
+position = Vector2( 0, 34 )
 enabled = true
 collision_mask = 4
 
 [node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 15, 14 )
+points = PoolVector2Array( -15, 20, -15, 68 )
 
 [node name="PlayerOccludedArea" type="Area2D" parent="."]
-visible = false
-position = Vector2( 2, 17 )
+position = Vector2( -2, 34 )
 scale = Vector2( 2, 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerOccludedArea"]

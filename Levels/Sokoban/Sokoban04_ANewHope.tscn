@@ -138,9 +138,6 @@ disabled = true
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
 
-[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 2
-
 [node name="HUD" parent="YSort/Player" index="4"]
 visible = false
 
@@ -183,7 +180,6 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 0
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
