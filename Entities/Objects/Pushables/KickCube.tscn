@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Levels/Sokoban/OrnateBox64.png" type="Texture" id=1]
+[ext_resource path="res://Art/Big_background elements/Box.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.gd" type="Script" id=2]
 
 [node name="PushBlock" type="KinematicBody2D"]
@@ -9,8 +9,10 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Cube-white" type="Sprite" parent="."]
-position = Vector2( 1, -16 )
+position = Vector2( 5.96046e-08, 22 )
+scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 1 )
+offset = Vector2( 20, -760 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -32, 0, 0, 16, 32, 0, 0, -16 )

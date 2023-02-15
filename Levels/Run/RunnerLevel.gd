@@ -18,6 +18,7 @@ func _ready():
 
 func offer_devils_bargain():
 	$ObstacleSpawnTimer.set_paused(true)
+	destroy_obstacles()
 	spawn_dialog("SpeedUp")
 
 func _on_dialogic_signal(param):
@@ -46,7 +47,7 @@ func speed_up():
 	for layer in $Background.get_children():
 		if layer.has_method("speed_up"):
 			layer.speed_up(speed_multiplier)
-	
+	$Camera2D.speed_up()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -54,13 +55,20 @@ func _process(_delta):
 
 func introduce_obstacle():
 	var obstacle = preload("res://Levels/Run/RunnerObstacle.tscn").instance()
-	add_child(obstacle)
+	
 	var randSpawner = $ObstacleSpawns.get_children()[randi()%$ObstacleSpawns.get_child_count()]
+	randSpawner.add_child(obstacle)
 	obstacle.global_position = randSpawner.global_position
 	if randSpawner.name == "Walk" and obstacle.has_method("walk"):
 		obstacle.walk(speed_multiplier)
 	elif randSpawner.name == "Fly" and obstacle.has_method("fly"):
 		obstacle.fly(speed_multiplier)
+
+func destroy_obstacles():
+	for spawner in $ObstacleSpawns.get_children():
+		for active_obstacle in spawner.get_children():
+			if active_obstacle.has_method("explode"):
+				active_obstacle.explode()
 
 func _on_Timer_timeout():
 	introduce_obstacle()
