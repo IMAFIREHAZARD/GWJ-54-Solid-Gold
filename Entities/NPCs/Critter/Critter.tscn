@@ -82,7 +82,7 @@ splat_scene = ExtResource( 3 )
 position = Vector2( 0, 4 )
 scale = Vector2( 0.065, 0.065 )
 frames = SubResource( 15 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Shadow" type="Sprite" parent="AnimatedSprite" index="0"]

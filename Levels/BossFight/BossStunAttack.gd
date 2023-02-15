@@ -1,12 +1,10 @@
-extends Area2D
-
-var slowing = false
+class_name SlowAttack extends Area2D
+export var speed_mulitplier = 0.3
 
 func _on_BurstDelay_timeout() -> void:
 	$AnimationPlayer.play("Burst")
-	if StageManager.player in get_overlapping_bodies():
-		pass
-		#TODO stun player
+	if overlaps_body(StageManager.player):
+		StageManager.player.stun(2)
 	yield($AnimationPlayer, "animation_finished")
 	queue_free()
 
@@ -15,9 +13,3 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Warn":
 		$AnimationPlayer.play("Slow")
 		$BurstDelay.start()
-		slowing = true
-
-func _physics_process(delta: float) -> void:
-	if slowing and StageManager.player in get_overlapping_bodies():
-		pass
-		#TODO slow player
