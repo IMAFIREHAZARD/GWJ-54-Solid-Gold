@@ -17,7 +17,7 @@ animations = [ {
 } ]
 
 [node name="SheildTower" type="StaticBody2D"]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 script = ExtResource( 6 )
 
@@ -35,7 +35,7 @@ polygon = PoolVector2Array( 0, 16, 32, 0, 0, -16, -32, 0 )
 position = Vector2( 0, -84.64 )
 scale = Vector2( 0.746667, 0.624905 )
 frames = SubResource( 1 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Reflector" parent="." instance=ExtResource( 7 )]
