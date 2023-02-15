@@ -47,24 +47,10 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 3
-
-[node name="Label" parent="YSort/Player/HUD/Header/HBox" index="0"]
-margin_left = 162.0
-margin_right = 290.0
-
-[node name="MainMenuButton" parent="YSort/Player/HUD/Header/HBox" index="1"]
-margin_left = 300.0
-margin_right = 519.0
+frame = 1
 
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
-margin_left = 529.0
-margin_right = 759.0
 dialogic_timeline = "timeline-1676377628.json"
-
-[node name="HealthContainer" parent="YSort/Player/HUD/Header/HBox" index="3"]
-margin_left = 769.0
-margin_right = 851.0
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -102,7 +88,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 2
+frame = 0
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]

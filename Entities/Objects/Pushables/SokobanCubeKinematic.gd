@@ -10,6 +10,7 @@ var player_nearby : bool = false
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
 var move_dist = 71
+var current_direction : Vector2
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
@@ -22,6 +23,8 @@ var ground_tilemap : TileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setup_push_zones()
+	
 	$SpriteWhiteCube.hide()
 	set_move_dist()
 	var timer = get_tree().create_timer(0.5)
@@ -32,6 +35,10 @@ func _ready():
 		printerr("SokobanCubeKinematic.gd needs a tilemap set. Defaulting to get_parent()")
 		if get_parent().is_class("TileMap"):
 			ground_tilemap = get_parent()
+
+func setup_push_zones():
+	for zone in $PushZones.get_children():
+		zone.connect("player_entered", self, "_on_push_zone_player_entered")
 	
 func set_move_dist():
 	# pythagoras
@@ -43,11 +50,10 @@ func set_move_dist():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$PlayerPushRadius/Label.text = States.keys()[State]
 	if State == States.MOVING:
 		# figure out which way the player is pushing you
 		# move away if the player gets closer
-		var direction = get_direction(pusher)
+		var direction = current_direction
 	
 		var separation_required = 50.0
 		if pusher.global_position.distance_squared_to(self.global_position) < separation_required * separation_required:
@@ -89,22 +95,22 @@ func is_outside_frustum():
 		return false
 	
 
-func get_direction(pushingSource):
-	
-	if is_instance_valid(self) and is_instance_valid(pushingSource):
-		var direction
-		direction = pushingSource.get_global_position().direction_to(self.global_position)
-
-		#translate direction to cardinal directions on isometric grid, no diagonals
-		var aceptable_directions = [ Vector2(2, 1), Vector2(2, -1), Vector2(-2, -1), Vector2(-2, 1), Vector2.ZERO]
-		var closest_direction = Vector2.ZERO
-		var closest_distance = 1000000.0
-		for acceptable_direction in aceptable_directions:
-			var distance = direction.distance_squared_to(acceptable_direction)
-			if distance < closest_distance:
-				closest_distance = distance
-				closest_direction = acceptable_direction
-		return closest_direction
+#func get_direction(pushingSource):
+#
+#	if is_instance_valid(self) and is_instance_valid(pushingSource):
+#		var direction
+#		direction = pushingSource.get_global_position().direction_to(self.global_position)
+#
+#		#translate direction to cardinal directions on isometric grid, no diagonals
+#		var aceptable_directions = [ Vector2(2, 1), Vector2(2, -1), Vector2(-2, -1), Vector2(-2, 1), Vector2.ZERO]
+#		var closest_direction = Vector2.ZERO
+#		var closest_distance = 1000000.0
+#		for acceptable_direction in aceptable_directions:
+#			var distance = direction.distance_squared_to(acceptable_direction)
+#			if distance < closest_distance:
+#				closest_distance = distance
+#				closest_direction = acceptable_direction
+#		return closest_direction
 
 
 
@@ -217,3 +223,6 @@ func _on_PlayerOccludedArea_body_entered(body):
 func _on_PlayerOccludedArea_body_exited(body):
 	if body.name == "Player":
 		set_self_modulate(Color.white)
+
+func _on_push_zone_player_entered(directionVector):
+	current_direction = directionVector
