@@ -1,16 +1,14 @@
-extends Area2D
+class_name BoxSensor extends Area2D
 
-signal block_entered(block)
-signal block_exited(block)
+signal block_entered()
+signal block_exited()
 
 func _on_BoxSensor_body_entered(body: Node) -> void:
 	print(body)
 	if body is PushBlock:
-		emit_signal("block_entered", body)
-		$Line2D.default_color = Color.greenyellow
+		emit_signal("block_entered")
 
 
 func _on_BoxSensor_body_exited(body: Node) -> void:
 	if body is PushBlock:
-		emit_signal("block_exited", body)
-		$Line2D.default_color = Color.cornflower
+		emit_signal("block_exited")

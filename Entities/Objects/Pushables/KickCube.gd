@@ -13,7 +13,7 @@ var push_dir : Vector2
 
 func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("shoot") and not moving\
-	and SokobanSelector.front_hovered_block == self:
+	and is_highlighted:
 		ray_cast.cast_to = push_dir * move_dist
 		ray_cast.force_raycast_update()
 		

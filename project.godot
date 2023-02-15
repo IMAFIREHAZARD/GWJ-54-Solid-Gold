@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "BoxSensor",
+"language": "GDScript",
+"path": "res://Levels/BossFight/BoxSensor.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Critter",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_classes=[ {
 "path": "res://Entities/Objects/Pushables/KickCube.gd"
 } ]
 _global_script_class_icons={
+"BoxSensor": "",
 "Critter": "",
 "DTS": "",
 "Dialogic": "",
