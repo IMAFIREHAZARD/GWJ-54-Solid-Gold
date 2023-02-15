@@ -12,12 +12,12 @@ export(bool) var debug_start_with_machine_gun = false
 
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
-
+var last_known_position : Vector2 # used for falling off the map.
 var health : int = 3
 var gravity : float = 9.8
 export var levitate : bool = false
 
-
+var outside_frustum
 
 const idle_anim_names = [
 	"IdleSouth",
@@ -91,9 +91,10 @@ func fall(delta : float):
 	if State == States.FALLING:
 		vel += Vector2.DOWN * gravity * delta
 		position += vel
-# moved to visibility notifier node
-#		if is_outside_frustum():
-#			begin_dying()
+		var fall_distance = 300.0
+		if global_position.distance_to(last_known_position) > fall_distance:
+			begin_dying()
+		
 
 
 
@@ -197,7 +198,10 @@ func resume():
 
 		
 func fall_off_map():
+	
 	if !levitate and Global.curses_taken["levitation"] == false:
+		last_known_position = global_position
+		
 		Global.player_events["falls"] += 1
 		
 		if Global.player_events["falls"] > 1 and Global.curses_offered["levitation"] == false:
@@ -222,6 +226,4 @@ func stun(time:float) -> void:
 	State = States.READY
 
 
-func _on_VisibilityNotifier2D_screen_exited():
-	#fell out of the frustum
-	begin_dying()
+
