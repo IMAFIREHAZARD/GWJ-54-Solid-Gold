@@ -3,7 +3,7 @@ extends Sprite
 export(PackedScene) var summon_attack_scene
 export(PackedScene) var projectile_scene
 export(PackedScene) var slow_attack_scene
-const attacks = ["do_summon_attack", "do_projectile_attack", "do_curse_attack"]
+const attacks = ["do_summon_attack", "do_curse_attack", "do_projectile_attack"]
 
 var attack_index = 0
 
@@ -15,7 +15,7 @@ func do_next_attack():
 func do_summon_attack():
 	for attack_pos in $SummonAttackPositions.get_children():
 		var attack = summon_attack_scene.instance()
-		find_parent("BossRoot").get_parent().add_child(attack)
+		find_parent("YSort").add_child(attack)
 		attack.global_position = attack_pos.global_position
 		yield(get_tree().create_timer(0.3), "timeout")
 
@@ -25,12 +25,12 @@ func do_projectile_attack():
 		attack_dir = attack_dir.rotated(phi)
 		var proj = projectile_scene.instance()
 		proj.travel_dir = attack_dir
-		find_parent("BossRoot").get_parent().add_child(proj)
+		find_parent("YSort").add_child(proj)
 		proj.global_position = global_position
 
 func do_curse_attack():
 	for attack_pos in $SummonAttackPositions.get_children():
 		var attack = slow_attack_scene.instance()
-		find_parent("BossRoot").get_parent().add_child(attack)
+		find_parent("YSort").add_child(attack)
 		attack.global_position = attack_pos.global_position
 		yield(get_tree().create_timer(0.3), "timeout")

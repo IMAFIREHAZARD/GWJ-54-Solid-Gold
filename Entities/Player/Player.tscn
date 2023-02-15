@@ -336,17 +336,18 @@ shape = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0.200001, -31 )
-polygon = PoolVector2Array( 0, 64, 32, 48, 0, 32, -32, 48 )
+polygon = PoolVector2Array( -0.200001, 47, 31.8, 31, -0.200001, 15, -32.2, 31 )
 disabled = true
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0.200001, -31 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteRoot"]
-position = Vector2( -2, -34 )
+position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "RunWest"
+frame = 2
 speed_scale = 1.5
 playing = true
 
@@ -378,7 +379,7 @@ wait_time = 0.1
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0.0627451, 0.0117647, 0.0117647, 1 )
-position = Vector2( -0.799999, -24 )
+position = Vector2( 0, -48 )
 scale = Vector2( 0.52, 0.52 )
 texture = ExtResource( 8 )
 
@@ -395,5 +396,11 @@ scale = Vector2( 3, 3 )
 margin_right = 40.0
 margin_bottom = 14.0
 text = "State"
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]

@@ -7,7 +7,7 @@ func _ready():
 	pass # Replace with function body.
 
 func moveTo(position_):
-	if Global.strength_curse_taken:
+	if Global.curses_taken["strength"]:
 		explode_into_smithereens()
 	else:
 		tween.interpolate_property(self,"position",position,position_,1)

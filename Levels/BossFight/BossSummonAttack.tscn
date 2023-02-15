@@ -141,11 +141,14 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "spawn_enemy"
+}, {
+"args": [  ],
+"method": "queue_free"
 } ]
 }
 tracks/6/type = "value"

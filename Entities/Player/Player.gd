@@ -12,11 +12,12 @@ export(bool) var debug_start_with_machine_gun = false
 
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
-
+var last_known_position : Vector2 # used for falling off the map.
 var health : int = 3
 var gravity : float = 9.8
 export var levitate : bool = false
 
+var outside_frustum
 
 const idle_anim_names = [
 	"IdleSouth",
@@ -35,19 +36,22 @@ const run_anim_names = [
 ]
 var dir_index = 0
 
-enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD }
+enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD, STUNNED }
 var State = States.READY
-
+var previous_state # so we can resume from pause with no assumptions
 
 func _enter_tree() -> void:
 	StageManager.player = self
 
 func _ready() -> void:
 	#Dialogic.has_current_dialog_node()
-	if Global.gun_curse_taken or debug_start_with_machine_gun:
+	if Global.curses_taken["gun_hands"] == true or debug_start_with_machine_gun:
+	#if Global.gun_curse_taken or debug_start_with_machine_gun:
 		start_gun_curse()
-	if Global.speed_curse_taken:
+	if Global.curses_taken["speed"] == true:
 		move_speed += base_move_speed * 0.5
+	if Global.curses_taken["levitation"] == true:
+		levitate = true
 	print("player speed = " , move_speed)
 	
 
@@ -59,6 +63,8 @@ func _physics_process(delta : float):
 		pass # let the customAffordance move you?
 	elif State == States.FALLING:
 		fall(delta)
+	elif State == States.PAUSED:
+		pass
 
 func move_normally(delta : float):
 	var move = Vector2()
@@ -68,6 +74,11 @@ func move_normally(delta : float):
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
 	# warning-ignore:return_value_discarded
+	for zone in get_tree().get_nodes_in_group("SlowZones"):
+		zone = zone as SlowAttack
+		if zone.overlaps_body(self):
+			vel *= zone.speed_mulitplier
+	
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
@@ -77,12 +88,20 @@ func move_normally(delta : float):
 
 	
 func fall(delta : float):
-	vel += Vector2.DOWN * gravity * delta
-	position += vel
-	if is_outside_frustum():
-		begin_dying()
+	if State == States.FALLING:
+		vel += Vector2.DOWN * gravity * delta
+		position += vel
+		var fall_distance = 300.0
+		if global_position.distance_to(last_known_position) > fall_distance:
+			begin_dying()
+		
+
+
+
+
 
 func is_outside_frustum():
+
 	var screen_size = get_viewport_rect().size
 	var my_position = global_position
 	if my_position.x < 0 or my_position.x > screen_size.x or my_position.y < 0 or my_position.y > screen_size.y:
@@ -140,7 +159,8 @@ func shoot():
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
 	$GunCurse.start()
-	Global.gun_curse_taken = true
+	Global.curses_taken["gun_hands"] = true
+	#Global.gun_curse_taken = true
 
 func begin_dying():
 	State = States.DEAD
@@ -161,12 +181,49 @@ func detach_camera():
 		remove_child(camera)
 		get_parent().add_child(camera)
 		camera.global_position = global_position
-		
+
+func reattach_camera():
+	var camera = get_parent().get_node("Camera2D")
+	get_parent().remove_child(camera)
+	add_child(camera)
+	camera.set_global_position(global_position)
+
+func pause():
+	if State != States.PAUSED:
+		previous_state = State
+		State = States.PAUSED
+
+func resume():
+	State = previous_state
+
 		
 func fall_off_map():
-	if !levitate:
-		detach_camera()
-		vel = Vector2.ZERO
-		State = States.FALLING
-		print("oh noes!")
-		print("Player fell off the map!")
+	
+	if !levitate and Global.curses_taken["levitation"] == false:
+		last_known_position = global_position
+		
+		Global.player_events["falls"] += 1
+		
+		if Global.player_events["falls"] > 1 and Global.curses_offered["levitation"] == false:
+			pause()
+			if StageManager.current_map.has_method("spawn_dialog"):
+				
+				StageManager.current_map.spawn_dialog("LevitationCurse")
+				Global.curses_offered["levitation"] = true
+
+		if Global.curses_taken["levitation"] == false:
+			detach_camera()
+			vel = Vector2.ZERO
+			if State != States.PAUSED:
+				State = States.FALLING
+				print("oh noes!")
+				print("Player fell off the map!")
+
+
+func stun(time:float) -> void:
+	State = States.STUNNED
+	yield(get_tree().create_timer(time), "timeout")
+	State = States.READY
+
+
+

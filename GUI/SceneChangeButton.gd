@@ -31,7 +31,7 @@ func spawn_dialog():
 
 func _on_dialogic_signal(signalName):
 	if signalName == "strength_curse_accepted":
-		Global.strength_curse_taken = true
+		Global.curses_taken["strength"] = true
 	change_scene()
 	
 func change_scene():
