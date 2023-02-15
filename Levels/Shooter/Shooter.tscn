@@ -187,11 +187,6 @@ polygon = PoolVector2Array( -471.431, 1153.58, -382.145, 1085.72, -403.573, 1050
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 426, 333 )
 
-[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-position = Vector2( 16, -57 )
-current = true
-zoom = Vector2( 2, 2 )
-
 [node name="Floor" type="CanvasLayer" parent="YSort"]
 layer = -1
 follow_viewport_enable = true

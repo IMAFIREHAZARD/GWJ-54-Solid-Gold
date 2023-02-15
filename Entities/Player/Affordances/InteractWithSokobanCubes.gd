@@ -8,6 +8,7 @@ var vel = Vector2.ZERO
 
 var last_print_time : float = 0.0
 var polling_interval : float = 1000.0 #milliseconds between print statements
+var lookahead_offset = 60.0
 
 #warning-ignore:UNUSED_SIGNAL
 signal pushed_cube(cube)
@@ -40,6 +41,10 @@ func _unhandled_input(_event):
 	
 			
 func _physics_process(delta):
+#	if AudioSystem.pulse_frame:
+#		print("InteractWithSokobanCubes.gd says player.last_direction = ", player.last_direction)
+		
+	$LookaheadProbeVisualizer.position = player.last_direction.normalized().rotated(0.78) * lookahead_offset + Vector2(0,-16)
 	if current_cube != null:
 		if is_any_movement_key_pressed():
 			move_with_cube(delta)
@@ -107,7 +112,7 @@ func move_with_cube(delta):
 		
 func find_nearest_cube():
 	var cubes = get_tree().get_nodes_in_group("SokobanCubes")
-	var lookahead_offset = 20.0
+	
 	var probePosition = self.global_position + player.last_direction.rotated(PI/4.0).normalized() * lookahead_offset
 	$LookaheadProbeVisualizer.global_position = probePosition
 	var nearestCube = Global.get_nearest_object(cubes, probePosition)

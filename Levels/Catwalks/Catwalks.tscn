@@ -17,18 +17,13 @@ tile_data = PoolIntArray( -1310716, 0, 0, -1245180, 0, 0, -1179643, 0, 0, -11141
 [node name="TileMapGround" parent="." index="2"]
 tile_data = PoolIntArray( -1310716, 1, 0, -1245180, 0, 0, -1179644, 1, 0, -1179643, 1, 0, -1114107, 2, 0, -1048573, 1, 0, -1048571, 0, 0, -983037, 1, 0, -983036, 1, 0, -983035, 1, 0, -917501, 1, 0, -851965, 1, 0, -851964, 2, 0, -786428, 1, 0, -720892, 1, 0, -655356, 1, 0, -655355, 1, 0, -655354, 2, 0, -655353, 1, 0, -589817, 0, 0, -524281, 1, 0, -458745, 2, 0, -458744, 1, 0, -393210, 1, 0, -393208, 1, 0, -327674, 2, 0, -327673, 1, 0, -327672, 1, 0, -262138, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 0, 0, -196602, 1, 0, -131068, 1, 0, -65532, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 0, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="TileMapLevel1/Player" index="12"]
-position = Vector2( 16, -57 )
-current = true
-zoom = Vector2( 2, 2 )
-
 [node name="Exit" parent="." index="4" instance=ExtResource( 2 )]
 position = Vector2( 3073, -956 )
 next_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="Exit" index="1"]
 scale = Vector2( 1.5, 1.5 )
-frame = 2
+frame = 1
 flip_v = true
 
 [node name="StaticBody2D" parent="Exit/Sprite" index="0" instance=ExtResource( 3 )]

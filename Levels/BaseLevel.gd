@@ -52,6 +52,11 @@ func _on_dialogic_signal(param):
 		var exit = find_node("Exit")
 		StageManager.change_scene_to(exit.next_scene)
 	elif param == "restart_level":
-		Global.reset_curses()
+		#Global.reset_curses()
 		StageManager.restart_current_level()
-
+	elif param == "accepted_levitation_curse":
+		Global.curses_taken["levitation"] = true
+		StageManager.player.resume()
+		StageManager.player.reattach_camera()
+	elif param == "refused_levitation_curse":
+		StageManager.player.resume()

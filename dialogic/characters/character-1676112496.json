@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://Art/Devil_Bargin.png"
 		},
 		{
 			"name": "Merchant",

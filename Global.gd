@@ -7,14 +7,28 @@ var bpm : float = 90.0
 #var speed_curse_taken = false
 #var strength_curse_taken = false
 
+var curses_offered = {
+	"gun_hands":false,
+	"speed":false,
+	"strength":false,
+	"levitation":false,
+}
+
 var curses_taken = {
 	"gun_hands":false,
 	"speed":false,
 	"strength":false,
+	"levitation":false,
 }
 
 var player_max_health : float = 5.0
 var player_health_remaining : float = player_max_health
+
+var player_events = {
+	"falls":0,
+
+}
+
 
 
 # Called when the node enters the scene tree for the first time.
