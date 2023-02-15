@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name SokobanBlock extends KinematicBody2D
 
 onready var player : KinematicBody2D = StageManager.player
 onready var level = StageManager.current_map
