@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Entities/Player/Affordances/InteractWithSokobanCubes.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/NPCs/PlayerWithGunsAnimation.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Entities/NPCs/PlayerAnimation.tres" type="SpriteFrames" id=11]
+[ext_resource path="res://Entities/Player/Camera2D.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0217
@@ -396,5 +397,12 @@ scale = Vector2( 3, 3 )
 margin_right = 40.0
 margin_bottom = 14.0
 text = "State"
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+script = ExtResource( 12 )
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
