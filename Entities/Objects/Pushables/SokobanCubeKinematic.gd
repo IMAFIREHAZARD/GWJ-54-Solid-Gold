@@ -9,7 +9,7 @@ var player_nearby : bool = false
 
 var pusher : KinematicBody2D # the player object, not the player's affordance node
 var speed : float = 100.0
-var move_dist = 35.7771 # Good old Pythagoras ... sqrt((2xrect.w)^2 + (rect.h)^2)
+var move_dist = 71
 
 var falling_velocity : Vector2 = Vector2.ZERO
 var gravity = 98.0
@@ -22,6 +22,7 @@ var ground_tilemap : TileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SpriteWhiteCube.hide()
 	set_move_dist()
 	var timer = get_tree().create_timer(0.5)
 	yield(timer, "timeout")

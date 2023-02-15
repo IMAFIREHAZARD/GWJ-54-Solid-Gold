@@ -30,13 +30,13 @@ func _on_dialogic_signal(param):
 	elif param == "speed_up":
 		speed_up()
 	elif param == "do_not_speed_up":
-		Global.speed_curse_taken = false
+		Global.curses_taken["speed"] = false
 	$ObstacleSpawnTimer.set_paused(false)
 	$Timer/ExitTimer.start()
 	
 	
 func speed_up():
-	Global.speed_curse_taken = true
+	Global.curses_taken["speed"] = true
 	if endless_runner:
 		speed_multiplier += 0.25
 	else:
@@ -76,14 +76,14 @@ func _on_ExitTimer_timeout():
 		offer_devils_bargain()
 		bargain_offered = true
 	elif endless_runner:
-		if Global.speed_curse_taken:
+		if Global.curses_taken["speed"] == true:
 			speed_up()
 		resume()
 	else: # exit
 		$Timer/ExitTimer.stop()
 		$ObstacleSpawnTimer.stop()
 
-		if Global.speed_curse_taken:
+		if Global.curses_taken["speed"] == true:
 			spawn_dialog("EnjoySpeed")
 		else:
 			StageManager.change_scene_to(next_scene)
