@@ -15,7 +15,7 @@ var last_direction : Vector2 = Vector2.ZERO
 
 var health : int = 3
 var gravity : float = 9.8
-
+export var levitate : bool = false
 
 
 const idle_anim_names = [
@@ -164,8 +164,9 @@ func detach_camera():
 		
 		
 func fall_off_map():
-	detach_camera()
-	vel = Vector2.ZERO
-	State = States.FALLING
-	print("oh noes!")
-	print("Player fell off the map!")
+	if !levitate:
+		detach_camera()
+		vel = Vector2.ZERO
+		State = States.FALLING
+		print("oh noes!")
+		print("Player fell off the map!")
