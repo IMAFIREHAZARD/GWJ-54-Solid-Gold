@@ -1,0 +1,167 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Sokoban/Sokoban02.gd" type="Script" id=2]
+[ext_resource path="res://assets/test_art/test_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Sokoban/PrototypeLevel-iso.png" type="Texture" id=9]
+[ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=10]
+
+[node name="Sokoban" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 6 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="ReferenceSprite" type="Sprite" parent="YSort"]
+position = Vector2( -249, 1 )
+scale = Vector2( 2.413, 2 )
+texture = ExtResource( 9 )
+
+[node name="TileMapGround" type="TileMap" parent="YSort"]
+modulate = Color( 0.65098, 0.65098, 0.65098, 1 )
+z_index = -10
+mode = 1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 128, 64 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -524285, 0, 0, -524284, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -524280, 0, 0, -524279, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -393210, 0, 0, -393209, 0, 0, -393208, 0, 0, -393207, 0, 0, -393206, 0, 0, -393205, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -327671, 0, 0, -327670, 0, 0, -327669, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -262135, 0, 0, -262134, 0, 0, -262133, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196591, 0, 0, -196590, 0, 0, -196589, 0, 0, -196588, 0, 0, -196587, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65519, 0, 0, -65517, 0, 0, -65515, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="YSort"]
+visible = false
+mode = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 32 )
+cell_tile_origin = 2
+cell_y_sort = true
+collision_layer = 4
+collision_mask = 4
+format = 1
+tile_data = PoolIntArray( -1048578, 0, 0, -1048577, 0, 0, -1114112, 0, 0, -1114111, 0, 0, -1114110, 0, 0, -1114109, 0, 0, -1114108, 0, 0, -1114107, 0, 0, -1114106, 0, 0, -1114105, 0, 0, -1114104, 0, 0, -1114103, 0, 0, -1114102, 0, 0, -1114101, 0, 0, -1114100, 0, 0, -1114099, 0, 0, -1114098, 0, 0, -1114097, 0, 0, -1114096, 0, 0, -1114095, 0, 0, -1114094, 0, 0, -1114093, 0, 0, -1114092, 0, 0, -1114091, 0, 0, -1114090, 0, 0, -1114089, 0, 0, -1114088, 0, 0, -1114087, 0, 0, -1114086, 0, 0, -1114085, 0, 0, -1114084, 0, 0, -1114083, 0, 0, -1114082, 0, 0, -1114081, 0, 0, -1114080, 0, 0, -983042, 0, 0, -917506, 0, 0, -851970, 0, 0, -917492, 2, 0, -917491, 2, 0, -917490, 2, 0, -917489, 2, 0, -917488, 2, 0, -786434, 0, 0, -851956, 2, 0, -851952, 2, 0, -720898, 0, 0, -786421, 2, 0, -786420, 2, 0, -786416, 2, 0, -655362, 0, 0, -720885, 2, 0, -720884, 2, 0, -720880, 2, 0, -589826, 0, 0, -655351, 2, 0, -655350, 2, 0, -655349, 2, 0, -655345, 2, 0, -655344, 2, 0, -655343, 2, 0, -655342, 2, 0, -524290, 0, 0, -589815, 2, 0, -589813, 2, 0, -589812, 2, 0, -589805, 2, 0, -458754, 0, 0, -524279, 2, 0, -524276, 2, 0, -524275, 2, 0, -524274, 0, 0, -524273, 2, 0, -524272, 2, 0, -524270, 2, 0, -393218, 0, 0, -458743, 2, 0, -458738, 2, 0, -458734, 2, 0, -327682, 0, 0, -393208, 2, 0, -393200, 2, 0, -393198, 2, 0, -262146, 0, 0, -327671, 2, 0, -327665, 2, 0, -327664, 2, 0, -327663, 2, 0, -196610, 0, 0, -262135, 2, 0, -262128, 2, 0, -131074, 0, 0, -196599, 2, 0, -196594, 0, 0, -196593, 2, 0, -196592, 2, 0, -65538, 0, 0, -131063, 2, 0, -131060, 0, 0, -131058, 2, 0, -2, 0, 0, -65533, 0, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65522, 2, 0, 65534, 0, 0, 3, 0, 0, 12, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 18, 2, 0, 19, 2, 0, 131070, 0, 0, 65548, 2, 0, 65551, 2, 0, 65555, 2, 0, 196606, 0, 0, 131084, 2, 0, 131085, 2, 0, 131087, 0, 0, 131091, 2, 0, 262142, 0, 0, 196620, 2, 0, 196621, 2, 0, 196627, 2, 0, 327678, 0, 0, 262156, 2, 0, 262157, 2, 0, 262163, 2, 0, 393214, 0, 0, 327693, 2, 0, 327695, 2, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 458750, 0, 0, 393230, 2, 0, 524286, 0, 0, 589822, 0, 0, 655358, 0, 0, 720894, 0, 0, 786430, 0, 0, 851966, 0, 0, 917502, 0, 0, 983038, 0, 0, 1048574, 0, 0, 1114110, 0, 0, 1179646, 0, 0 )
+
+[node name="BigBlockWalls" type="TileMap" parent="YSort"]
+modulate = Color( 0.294118, 0.733333, 1, 1 )
+mode = 1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 128, 64 )
+cell_tile_origin = 2
+cell_y_sort = true
+collision_layer = 4
+collision_mask = 4
+format = 1
+tile_data = PoolIntArray( -655355, 7, 0, -655354, 7, 0, -655353, 7, 0, -655352, 7, 0, -589820, 7, 0, -589816, 7, 0, -524285, 7, 0, -524284, 7, 0, -524280, 7, 0, -458749, 7, 0, -458748, 7, 0, -458744, 7, 0, -393215, 7, 0, -393214, 7, 0, -393213, 7, 0, -393208, 7, 0, -393207, 7, 0, -393206, 7, 0, -327679, 7, 0, -327677, 7, 0, -327669, 7, 0, -327668, 7, 0, -262143, 7, 0, -262134, 7, 0, -196607, 7, 0, -196598, 7, 0, -131072, 7, 0, -131062, 7, 0 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 873, 92 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" parent="YSort/Player" index="0"]
+visible = false
+disabled = true
+
+[node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
+disabled = false
+
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 3
+
+[node name="HUD" parent="YSort/Player" index="4"]
+visible = false
+
+[node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
+dialogic_timeline = "timeline-1676377628.json"
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+
+[node name="StaticBody2D" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 832, 80 )
+
+[node name="StaticBody2D2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 800, 96 )
+
+[node name="StaticBody2D3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 736, 96 )
+
+[node name="StaticBody2D4" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 736, 128 )
+
+[node name="StaticBody2D5" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 800, 192 )
+
+[node name="StaticBody2D6" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 208 )
+
+[node name="StaticBody2D7" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 176 )
+
+[node name="StaticBody2D8" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 144 )
+
+[node name="StaticBody2D9" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 608, 128 )
+
+[node name="StaticBody2D10" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 544, 160 )
+
+[node name="StaticBody2D11" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 144 )
+
+[node name="StaticBody2D12" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 112 )
+
+[node name="StaticBody2D13" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 144 )
+
+[node name="StaticBody2D14" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 176 )
+
+[node name="StaticBody2D15" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 480, 192 )
+
+[node name="StaticBody2D16" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 208 )
+
+[node name="StaticBody2D17" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 384, 304 )
+
+[node name="StaticBody2D18" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 384, 336 )
+
+[node name="StaticBody2D19" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 368 )
+
+[node name="StaticBody2D20" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 480, 352 )
+
+[node name="StaticBody2D21" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 336 )
+
+[node name="StaticBody2D22" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 368 )
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( 552, 302 )
+next_scene = ExtResource( 5 )
+
+[node name="Sprite" parent="Exit" index="1"]
+position = Vector2( -9, 12 )
+frame = 1
+flip_v = true
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -22.0
+autoplay = true
+bus = "Music"
+
+[editable path="YSort/Player"]
+[editable path="YSort/Player/HUD"]
+[editable path="Exit"]
