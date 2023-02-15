@@ -94,7 +94,7 @@ func get_direction(pushingSource):
 func get_tile_underneath():
 	var my_tilemap : TileMap = get_node(ground_tilemap)
 	if my_tilemap == null:
-		my_tilemap = find_node("*Ground*")
+		my_tilemap = find_node("*Ground")
 
 	var local_position = my_tilemap.to_local(global_position)
 	var map_position = my_tilemap.world_to_map(local_position)

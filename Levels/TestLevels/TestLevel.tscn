@@ -60,6 +60,9 @@ position = Vector2( -138, -412 )
 [node name="NPCParent@PatrollingUnit@PatrollingPath@Position2D5" type="Position2D" parent="TileMapLevel1/PatrollingUnit/PatrollingPath" index="3"]
 position = Vector2( 537, -381 )
 
+[node name="Player" parent="TileMapLevel1" index="2"]
+levitate = true
+
 [node name="Camera2D" parent="." index="6"]
 position = Vector2( 471, -279 )
 zoom = Vector2( 2, 2 )
