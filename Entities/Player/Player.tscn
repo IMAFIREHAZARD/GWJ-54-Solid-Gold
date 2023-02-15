@@ -397,4 +397,11 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "State"
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

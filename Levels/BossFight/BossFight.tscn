@@ -113,11 +113,6 @@ box_sensors = [ NodePath("../PushBlocks/BoxSensor5"), NodePath("../PushBlocks/Bo
 position = Vector2( -1280, 1408 )
 debug_start_with_machine_gun = true
 
-[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-
 [node name="PushBlocks" type="YSort" parent="YSort"]
 
 [node name="PushBlock" parent="YSort/PushBlocks" instance=ExtResource( 2 )]

@@ -14,6 +14,8 @@ var time_at_last_bar : float = 0.0
 
 var elapsed_time_sec : float = 0.0
 
+var pulse_frame : bool = false
+
 signal pulse_beat()
 
 
@@ -46,10 +48,11 @@ func _process(delta):
 	var beat_duration = 60.0 / bpm
 
 	if elapsed_time_sec - time_at_last_beat > beat_duration:
+		pulse_frame = true
 		emit_signal("pulse_beat")
 		time_at_last_beat = elapsed_time_sec
-#	else:
-#		print("elapsed: ", elapsed_time_sec, ", last_beat: ", time_at_last_beat, ", duration: ", beat_duration)
+	else:
+		pulse_frame = false
 
 
 func queue_music(streamPath:String):

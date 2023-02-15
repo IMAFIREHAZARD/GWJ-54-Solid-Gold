@@ -45,7 +45,7 @@ func set_move_dist():
 	var x = $Sprite.get_rect().size.x / 2.0 * global_scale.x 
 	var y = $Sprite.get_rect().size.y / 4.0 * global_scale.y
 	var hypoteneuse = sqrt(x*x + y*y)
-	print("pythagoras says: ", hypoteneuse, " but we're setting it to 71 because the ruler tool measured that.")
+	#print("pythagoras says: ", hypoteneuse, " but we're setting it to 71 because the ruler tool measured that.")
 	move_dist = 71.0 / 2.0 # why /2???
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
