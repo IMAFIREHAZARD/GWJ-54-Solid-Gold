@@ -35,7 +35,7 @@ const run_anim_names = [
 ]
 var dir_index = 0
 
-enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD }
+enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD, STUNNED }
 var State = States.READY
 
 
@@ -68,6 +68,11 @@ func move_normally(delta : float):
 	var target_vel = move.normalized() * move_speed
 	vel = vel.linear_interpolate(target_vel, delta * 30)
 	# warning-ignore:return_value_discarded
+	for zone in get_tree().get_nodes_in_group("SlowZones"):
+		zone = zone as SlowAttack
+		if zone.overlaps_body(self):
+			vel *= zone.speed_mulitplier
+	
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
@@ -170,3 +175,9 @@ func fall_off_map():
 		State = States.FALLING
 		print("oh noes!")
 		print("Player fell off the map!")
+
+
+func stun(time:float) -> void:
+	State = States.STUNNED
+	yield(get_tree().create_timer(time), "timeout")
+	State = States.READY

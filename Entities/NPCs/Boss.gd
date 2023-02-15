@@ -3,7 +3,7 @@ extends Sprite
 export(PackedScene) var summon_attack_scene
 export(PackedScene) var projectile_scene
 export(PackedScene) var slow_attack_scene
-const attacks = ["do_summon_attack", "do_projectile_attack", "do_curse_attack"]
+const attacks = ["do_summon_attack", "do_curse_attack", "do_projectile_attack"]
 
 var attack_index = 0
 

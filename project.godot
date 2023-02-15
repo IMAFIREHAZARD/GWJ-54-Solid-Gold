@@ -78,6 +78,11 @@ _global_script_classes=[ {
 "class": "PushBlock",
 "language": "GDScript",
 "path": "res://Entities/Objects/Pushables/KickCube.gd"
+}, {
+"base": "Area2D",
+"class": "SlowAttack",
+"language": "GDScript",
+"path": "res://Levels/BossFight/BossStunAttack.gd"
 } ]
 _global_script_class_icons={
 "BoxSensor": "",
@@ -93,7 +98,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "HistoryRow": "",
-"PushBlock": ""
+"PushBlock": "",
+"SlowAttack": ""
 }
 
 [application]
