@@ -4,12 +4,16 @@
 [ext_resource path="res://Levels/Sokoban/TranslucentWall.gd" type="Script" id=2]
 
 [node name="TranslucentWall" type="Node2D"]
+position = Vector2( 1, -34 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 35 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -35 )
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
+position = Vector2( -1, -35 )
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Area2D"]
