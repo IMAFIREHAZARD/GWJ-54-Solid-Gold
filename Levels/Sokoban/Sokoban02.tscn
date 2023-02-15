@@ -21,6 +21,7 @@ modulate = Color( 0.65098, 0.65098, 0.65098, 1 )
 mode = 1
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 32 )
+cell_tile_origin = 1
 collision_layer = 0
 collision_mask = 0
 format = 1
@@ -30,7 +31,7 @@ tile_data = PoolIntArray( -983041, 0, 0, -1048576, 0, 0, -1048575, 0, 0, -104857
 mode = 1
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 32 )
-cell_tile_origin = 2
+cell_tile_origin = 1
 cell_y_sort = true
 collision_layer = 4
 collision_mask = 4
@@ -38,7 +39,7 @@ format = 1
 tile_data = PoolIntArray( -1048578, 0, 0, -1048577, 0, 0, -1114112, 0, 0, -1114111, 0, 0, -1114110, 0, 0, -1114109, 0, 0, -1114108, 0, 0, -1114107, 0, 0, -1114106, 0, 0, -1114105, 0, 0, -1114104, 0, 0, -1114103, 0, 0, -1114102, 0, 0, -1114101, 0, 0, -1114100, 0, 0, -1114099, 0, 0, -1114098, 0, 0, -1114097, 0, 0, -1114096, 0, 0, -1114095, 0, 0, -1114094, 0, 0, -1114093, 0, 0, -1114092, 0, 0, -1114091, 0, 0, -1114090, 0, 0, -1114089, 0, 0, -1114088, 0, 0, -1114087, 0, 0, -1114086, 0, 0, -1114085, 0, 0, -1114084, 0, 0, -1114083, 0, 0, -1114082, 0, 0, -1114081, 0, 0, -1114080, 0, 0, -983042, 0, 0, -917506, 0, 0, -851970, 0, 0, -917492, 0, 0, -917491, 0, 0, -917490, 0, 0, -917489, 0, 0, -917488, 0, 0, -786434, 0, 0, -851956, 0, 0, -851952, 0, 0, -720898, 0, 0, -786421, 0, 0, -786420, 0, 0, -786416, 0, 0, -655362, 0, 0, -720885, 0, 0, -720884, 0, 0, -720880, 0, 0, -589826, 0, 0, -655351, 0, 0, -655350, 0, 0, -655349, 0, 0, -655345, 0, 0, -655344, 0, 0, -655343, 0, 0, -655342, 0, 0, -524290, 0, 0, -589815, 0, 0, -589813, 0, 0, -589812, 0, 0, -589805, 0, 0, -458754, 0, 0, -524279, 0, 0, -524276, 0, 0, -524275, 0, 0, -524274, 0, 0, -524273, 0, 0, -524272, 0, 0, -524270, 0, 0, -393218, 0, 0, -458743, 0, 0, -458738, 0, 0, -458734, 0, 0, -327682, 0, 0, -393208, 0, 0, -393200, 0, 0, -393198, 0, 0, -262146, 0, 0, -327671, 0, 0, -327665, 0, 0, -327664, 0, 0, -327663, 0, 0, -196610, 0, 0, -262135, 0, 0, -262128, 0, 0, -131074, 0, 0, -196599, 0, 0, -196594, 0, 0, -196593, 0, 0, -196592, 0, 0, -65538, 0, 0, -131063, 0, 0, -131060, 0, 0, -131058, 0, 0, -2, 0, 0, -65533, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65522, 0, 0, 65534, 0, 0, 3, 0, 0, 12, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 18, 0, 0, 19, 0, 0, 131070, 0, 0, 65548, 0, 0, 65551, 0, 0, 65555, 0, 0, 196606, 0, 0, 131084, 0, 0, 131087, 0, 0, 131091, 0, 0, 262142, 0, 0, 196620, 0, 0, 196621, 0, 0, 196627, 0, 0, 327678, 0, 0, 262156, 0, 0, 262157, 0, 0, 262163, 0, 0, 393214, 0, 0, 327693, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 458750, 0, 0, 393230, 0, 0, 524286, 0, 0, 589822, 0, 0, 655358, 0, 0, 720894, 0, 0, 786430, 0, 0, 851966, 0, 0, 917502, 0, 0, 983038, 0, 0, 1048574, 0, 0, 1114110, 0, 0, 1179646, 0, 0 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 873, 92 )
+position = Vector2( 896, 48 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" parent="YSort/Player" index="0"]
@@ -49,10 +50,7 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 1
-
-[node name="HUD" parent="YSort/Player" index="4"]
-visible = false
+frame = 2
 
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
@@ -61,70 +59,70 @@ dialogic_timeline = "timeline-1676377628.json"
 current = true
 
 [node name="StaticBody2D" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 832, 80 )
+position = Vector2( 832, 48 )
 
 [node name="StaticBody2D2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 800, 96 )
+position = Vector2( 800, 64 )
 
 [node name="StaticBody2D3" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 736, 96 )
+position = Vector2( 736, 64 )
 
 [node name="StaticBody2D4" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 736, 128 )
+position = Vector2( 736, 96 )
 
 [node name="StaticBody2D5" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 800, 192 )
+position = Vector2( 800, 160 )
 
 [node name="StaticBody2D6" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 576, 208 )
-
-[node name="StaticBody2D7" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 576, 176 )
 
-[node name="StaticBody2D8" parent="YSort" instance=ExtResource( 8 )]
+[node name="StaticBody2D7" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 576, 144 )
 
+[node name="StaticBody2D8" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 112 )
+
 [node name="StaticBody2D9" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 608, 128 )
+position = Vector2( 608, 96 )
 
 [node name="StaticBody2D10" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 544, 160 )
+position = Vector2( 544, 128 )
 
 [node name="StaticBody2D11" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 512, 144 )
-
-[node name="StaticBody2D12" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 512, 112 )
 
+[node name="StaticBody2D12" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 512, 80 )
+
 [node name="StaticBody2D13" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 448, 144 )
+position = Vector2( 448, 112 )
 
 [node name="StaticBody2D14" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 448, 176 )
+position = Vector2( 448, 144 )
 
 [node name="StaticBody2D15" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 480, 192 )
+position = Vector2( 480, 160 )
 
 [node name="StaticBody2D16" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 512, 208 )
+position = Vector2( 512, 176 )
 
 [node name="StaticBody2D17" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 384, 304 )
+position = Vector2( 384, 272 )
 
 [node name="StaticBody2D18" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 384, 336 )
+position = Vector2( 384, 304 )
 
 [node name="StaticBody2D19" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 448, 368 )
-
-[node name="StaticBody2D20" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 480, 352 )
-
-[node name="StaticBody2D21" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 448, 336 )
 
+[node name="StaticBody2D20" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 480, 320 )
+
+[node name="StaticBody2D21" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 448, 304 )
+
 [node name="StaticBody2D22" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 512, 368 )
+position = Vector2( 512, 336 )
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 552, 302 )
@@ -132,7 +130,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 1
+frame = 0
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]

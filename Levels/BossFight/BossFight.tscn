@@ -53,12 +53,10 @@ tile_data = PoolIntArray( 196611, 8, 0, 262147, 8, 0, 327683, 8, 0, 393219, 8, 0
 
 [node name="ShieldTower" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 576, 384 )
-collision_layer = 4
-collision_mask = 0
 box_sensors = [ NodePath("../PushBlocks/BoxSensor2"), NodePath("../PushBlocks/BoxSensor3") ]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( -1024, 736 )
+position = Vector2( 256, 501 )
 debug_start_with_machine_gun = true
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]

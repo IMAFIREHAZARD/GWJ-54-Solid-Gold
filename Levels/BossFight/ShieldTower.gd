@@ -14,8 +14,10 @@ func decrease_shield_power():
 	shield_power -= 1
 	if shield_power <= 0:
 		$Shield.hide()
+		$Reflector.monitoring = false
 
 func increase_shield_power():
 	shield_power += 1
 	if shield_power > 0:
 		$Shield.show()
+		$Reflector.monitoring = true

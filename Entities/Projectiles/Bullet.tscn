@@ -65,7 +65,6 @@ collision_mask = 6
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
-frame = 4
 playing = true
 offset = Vector2( -58, 3 )
 
