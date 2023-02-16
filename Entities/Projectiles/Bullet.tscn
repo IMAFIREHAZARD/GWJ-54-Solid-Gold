@@ -138,7 +138,7 @@ visible = false
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( -58, 3 )
 
@@ -164,5 +164,6 @@ autoplay = true
 wait_time = 3.0
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

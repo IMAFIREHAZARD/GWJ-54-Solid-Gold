@@ -121,7 +121,7 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerArea"]
-polygon = PoolVector2Array( 0, 8, 11, 35, 59, 11, 16, 0, 59, -10, 14, -35, 0, -8, -11, -36, -59, -10, -16, 0, -59, 10, -15, 34 )
+polygon = PoolVector2Array( 0, 8, 16, 16, 32, 8, 16, 0, 32, -8, 16, -16, 0, -8, -16, -16, -32, -8, -16, 0, -32, 8, -16, 16 )
 
 [node name="PushAudio" type="Node2D" parent="."]
 
