@@ -70,6 +70,8 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 func kill():
 	if state == State.DEAD: return
 	state = State.DEAD
+	monitoring = false
+	monitorable = false
 	if level != null:
 		level.current_bugs -= 1
 	$AnimationPlayer.play("hit")
