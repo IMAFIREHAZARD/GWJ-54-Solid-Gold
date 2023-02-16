@@ -273,22 +273,22 @@ rect_scale = Vector2( 2, 2 )
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 314.0
-margin_bottom = 124.0
+margin_bottom = 141.0
 
 [node name="Label" type="Label" parent="PanelContainer3/VBoxContainer"]
 margin_right = 307.0
-margin_bottom = 65.0
-text = "This block puzzle is trivial if you don't have the strength upgrade. If you do, it becomes quite a bit more difficult to do while fighting the boss. Try it yourself:"
+margin_bottom = 82.0
+text = "This block puzzle is trivial if you don't have the strength upgrade. If you do, it becomes quite a bit more difficult to do while fighting the boss. Try it yourself with/without strength with this handy toggle:"
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer3/VBoxContainer"]
-margin_top = 69.0
+margin_top = 86.0
 margin_right = 307.0
-margin_bottom = 73.0
+margin_bottom = 90.0
 
 [node name="CheckButton" type="CheckButton" parent="PanelContainer3/VBoxContainer"]
-margin_top = 77.0
+margin_top = 94.0
 margin_right = 307.0
-margin_bottom = 117.0
+margin_bottom = 134.0
 text = "Strength curse"
 script = SubResource( 4 )
