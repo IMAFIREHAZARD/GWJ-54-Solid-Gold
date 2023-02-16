@@ -110,14 +110,14 @@ show_collision = true
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -1310707, 6, 0, -786430, 6, 0, -786424, 6, 0, -720894, 3, 0, -655358, 6, 0, -655352, 6, 0, -589822, 3, 0, -589816, 3, 0, -524286, 6, 0, -524280, 6, 0, -458750, 3, 0, -458744, 3, 0, -393214, 6, 0, -393208, 6, 0, -327678, 3, 0, -327672, 3, 0, -262142, 6, 0, -262136, 6, 0, 851972, 3, 0, 851974, 3, 0 )
+tile_data = PoolIntArray( -1310707, 6, 0, -786430, 6, 0, -786424, 6, 0, -720894, 3, 0, -655358, 6, 0, -655352, 6, 0, -589822, 3, 0, -589816, 3, 0, -524286, 6, 0, -524280, 6, 0, -458750, 3, 0, -458744, 3, 0, -393214, 6, 0, -393208, 6, 0, 851972, 3, 0, 851974, 3, 0 )
 
 [node name="ShieldTower" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1280, 448 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor2"), NodePath("../PushBlocks/BoxSensor3") ]
 
 [node name="ShieldTower2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 512, 64 )
+position = Vector2( 384, 128 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor5"), NodePath("../PushBlocks/BoxSensor6") ]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
@@ -175,14 +175,14 @@ box_sensor = NodePath("../BoxSensor3")
 
 [node name="Line2D5" type="Line2D" parent="YSort/PushBlocks"]
 position = Vector2( 1024, -1024 )
-points = PoolVector2Array( -512, 832, -256, 960, -512, 1088 )
+points = PoolVector2Array( -512, 832, -256, 960, -640, 1152 )
 default_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 script = ExtResource( 9 )
 box_sensor = NodePath("../BoxSensor6")
 
 [node name="Line2D6" type="Line2D" parent="YSort/PushBlocks"]
 position = Vector2( 1152, -960 )
-points = PoolVector2Array( -640, 1024, -768, 1088, -1024, 960 )
+points = PoolVector2Array( -768, 1088, -1024, 960 )
 default_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 script = ExtResource( 9 )
 box_sensor = NodePath("../BoxSensor5")
