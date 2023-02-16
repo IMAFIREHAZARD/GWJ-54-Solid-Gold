@@ -86,7 +86,7 @@ cell_y_sort = true
 collision_layer = 4
 collision_mask = 4
 format = 1
-tile_data = PoolIntArray( -524282, 8, 0, -458746, 8, 0, -393211, 8, 0, -327674, 8, 0, -262135, 8, 0, -196604, 8, 0, -131070, 8, 0, -131068, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, 2, 8, 0, 5, 9, 0, 6, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 393222, 8, 0, 393224, 8, 0, 393225, 8, 0, 393226, 8, 0, 458759, 8, 0, 458761, 8, 0 )
+tile_data = PoolIntArray( -524282, 8, 0, -458746, 8, 0, -393211, 8, 0, -327674, 8, 0, -262135, 8, 0, -196604, 8, 0, -131070, 8, 0, -131068, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, 2, 8, 0, 6, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 393222, 8, 0, 393224, 8, 0, 393225, 8, 0, 393226, 8, 0, 458759, 8, 0, 458761, 8, 0 )
 script = ExtResource( 11 )
 ground_tilemap = NodePath("../TileMapGround")
 
@@ -96,6 +96,7 @@ next_scene = ExtResource( 3 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
+frame = 1
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
@@ -103,6 +104,13 @@ stream = ExtResource( 7 )
 volume_db = -22.0
 autoplay = true
 bus = "Music"
+
+[node name="DevilsBargainTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DevilsBargainTimer" to="." method="_on_DevilsBargainTimer_timeout"]
 
 [editable path="Background"]
 [editable path="YSort/Player"]

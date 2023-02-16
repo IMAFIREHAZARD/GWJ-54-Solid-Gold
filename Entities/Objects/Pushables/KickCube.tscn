@@ -6,8 +6,8 @@
 [ext_resource path="res://sfx/STONE_part2_loopable.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Objects/Destructibles/BoxShrapnel.png" type="Texture" id=5]
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sfx/crunch01.wav" type="AudioStream" id=7]
-[ext_resource path="res://sfx/crunch02.wav" type="AudioStream" id=8]
+[ext_resource path="res://Entities/Objects/Destructibles/CRATE_smash_02.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Objects/Destructibles/CRATE_smash_01.wav" type="AudioStream" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -153,12 +153,16 @@ anim_speed_random = 1.0
 anims/RESET = SubResource( 2 )
 anims/explode = SubResource( 3 )
 
-[node name="ExplosionNoise" parent="." instance=ExtResource( 6 )]
-stream = ExtResource( 7 )
+[node name="ExplosionAudio" type="Node2D" parent="."]
+
+[node name="ExplosionNoise" parent="ExplosionAudio" instance=ExtResource( 6 )]
+stream = ExtResource( 8 )
+volume_db = -7.0
 pitch_shift = 0.1
 
-[node name="ExplosionNoise2" parent="." instance=ExtResource( 6 )]
-stream = ExtResource( 8 )
+[node name="ExplosionNoise2" parent="ExplosionAudio" instance=ExtResource( 6 )]
+stream = ExtResource( 7 )
+volume_db = -9.0
 pitch_shift = 0.05
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
