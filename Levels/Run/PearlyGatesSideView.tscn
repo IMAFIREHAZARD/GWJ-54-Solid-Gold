@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Run/gates1.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Run/PearlyGatesSideView.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 178, 556.5 )
+
+[node name="PearlyGatesSideView" type="Node2D"]
+position = Vector2( -2, -6 )
+script = ExtResource( 2 )
+next_scene = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 134.415, 34 )
+scale = Vector2( 0.803649, 0.803649 )
+texture = ExtResource( 1 )
+offset = Vector2( -7, -211 )
+flip_h = true
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 271.415, 104 )
+texture = ExtResource( 1 )
+offset = Vector2( -7, -211 )
+flip_h = true
+
+[node name="ExitZone" type="Area2D" parent="."]
+position = Vector2( 0, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
+position = Vector2( 175, -435.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="ExitZone" to="." method="_on_ExitZone_body_entered"]
