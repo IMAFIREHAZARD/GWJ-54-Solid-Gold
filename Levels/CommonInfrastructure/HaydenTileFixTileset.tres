@@ -9,23 +9,23 @@
 [sub_resource type="ConvexPolygonShape2D" id=16]
 points = PoolVector2Array( 27.2962, 93.2222, 27.2962, 77.0185, 95.0045, 78.7546, 90.9536, 111.162, 45.2361, 111.162 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 87.5879, 58.1158, 76.5926, 58.1158, 70.2268, 48.8565, 53.4444, 49.4352, 46.5, 55.8009, 39.5555, 53.4861, 43.6064, 50.2616, 48.8148, 46.7894, 65.0185, 41.0023, 80.6435, 49.1042, 86.4305, 52.5764, 92.7962, 51.75 )
+[sub_resource type="ConvexPolygonShape2D" id=18]
+points = PoolVector2Array( 42, 72.75, 88, 72.75, 88, 102.75, 42, 102.75 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 66.3889, 50.0139, 62.338, 43.6482, 57.1296, 43.0695, 49.0278, 39.5972, 46.713, 31.4954, 60.6018, 32.6528, 77.963, 39.0185, 77.3842, 47.1204 )
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( 46, 69, 80, 69, 80, 92, 46, 92 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 67.2268, 48.75, 56.8102, 47.5926, 54.4953, 39.4907, 70.699, 39.4907 )
+[sub_resource type="ConvexPolygonShape2D" id=19]
+points = PoolVector2Array( 55, 69.75, 68, 69.75, 68, 86.75, 55, 86.75 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 84.1157, 48.75, 75.4352, 47.5926, 70.8055, 41.8055, 67.912, 52.2222, 58.074, 53.3796, 54.6018, 49.3287, 52.287, 42.963, 43.0277, 40.0695, 41.2916, 35.4398, 87.0092, 36.5972 )
+[sub_resource type="ConvexPolygonShape2D" id=20]
+points = PoolVector2Array( 40, 69, 84, 69, 84, 90, 40, 90 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( 75.0694, 94.6389, 57.7083, 95.7963, 41.5046, 87.1158, 43.2407, 70.3333, 66.9676, 69.7546, 79.699, 73.8056 )
+[sub_resource type="ConvexPolygonShape2D" id=23]
+points = PoolVector2Array( 43, 69, 62, 66, 79, 72, 84, 86, 75, 108, 45, 109, 37, 92 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 36.5972, 36.7037, 38.3333, 42.4908, 32.5463, 48.8565, 21.5509, 50.5926, 19.2361, 42.4908, 21.5509, 39.0185 )
+[sub_resource type="ConvexPolygonShape2D" id=22]
+points = PoolVector2Array( 52, 73.75, 67, 73.75, 67, 89.75, 52, 89.75 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 44.9768, 82.6991, 113.264, 45.662, 121.944, 63.6018, 52.5, 100.639 )
@@ -246,7 +246,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 10/z_index = 0
 11/name = "Objects Spritesheet.png 11"
 11/texture = ExtResource( 3 )
-11/tex_offset = Vector2( 35.625, -21.568 )
+11/tex_offset = Vector2( 35.625, -59.036 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 256, 0, 128, 128 )
 11/tile_mode = 0
@@ -254,41 +254,41 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 11/navigation_offset = Vector2( 0, 0 )
 11/shape_offset = Vector2( 0, 0 )
 11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape = SubResource( 4 )
+11/shape = SubResource( 18 )
 11/shape_one_way = false
 11/shape_one_way_margin = 1.0
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 18 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 11/z_index = 0
 13/name = "Objects Spritesheet.png 13"
 13/texture = ExtResource( 3 )
-13/tex_offset = Vector2( 35.625, -21.568 )
+13/tex_offset = Vector2( 12.234, -59.036 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 128, 128 )
 13/tile_mode = 0
 13/occluder_offset = Vector2( 0, 0 )
 13/navigation_offset = Vector2( 0, 0 )
-13/shape_offset = Vector2( 0, 0 )
-13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-13/shape = SubResource( 5 )
+13/shape_offset = Vector2( -1.086, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, -1.086, 0 )
+13/shape = SubResource( 17 )
 13/shape_one_way = false
 13/shape_one_way_margin = 1.0
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+"shape": SubResource( 17 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, -1.086, 0 )
 } ]
 13/z_index = 0
 14/name = "Objects Spritesheet.png 14"
 14/texture = ExtResource( 3 )
-14/tex_offset = Vector2( 0, 0 )
+14/tex_offset = Vector2( 0, -59.036 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 384, 128, 128, 128 )
 14/tile_mode = 0
@@ -296,20 +296,20 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 14/navigation_offset = Vector2( 0, 0 )
 14/shape_offset = Vector2( 0, 0 )
 14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-14/shape = SubResource( 6 )
+14/shape = SubResource( 19 )
 14/shape_one_way = false
 14/shape_one_way_margin = 1.0
 14/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 19 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
 15/name = "Objects Spritesheet.png 15"
 15/texture = ExtResource( 3 )
-15/tex_offset = Vector2( 0, 0 )
+15/tex_offset = Vector2( 0, -59.036 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 256, 128, 128, 128 )
 15/tile_mode = 0
@@ -317,14 +317,14 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 15/navigation_offset = Vector2( 0, 0 )
 15/shape_offset = Vector2( 0, 0 )
 15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-15/shape = SubResource( 7 )
+15/shape = SubResource( 20 )
 15/shape_one_way = false
 15/shape_one_way_margin = 1.0
 15/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 20 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 15/z_index = 0
@@ -344,7 +344,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 16/z_index = 0
 17/name = "Objects Spritesheet.png 17"
 17/texture = ExtResource( 3 )
-17/tex_offset = Vector2( -8.548, -28.486 )
+17/tex_offset = Vector2( -8.548, -48.535 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 128, 128, 128 )
 17/tile_mode = 0
@@ -352,20 +352,20 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 17/navigation_offset = Vector2( 0, 0 )
 17/shape_offset = Vector2( 0, 0 )
 17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-17/shape = SubResource( 10 )
+17/shape = SubResource( 23 )
 17/shape_one_way = false
 17/shape_one_way_margin = 1.0
 17/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 17/z_index = 0
 18/name = "Objects Spritesheet.png 18"
 18/texture = ExtResource( 3 )
-18/tex_offset = Vector2( 35.625, -21.568 )
+18/tex_offset = Vector2( 35.625, -59.036 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 128, 0, 128, 128 )
 18/tile_mode = 0
@@ -373,14 +373,14 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 18/navigation_offset = Vector2( 0, 0 )
 18/shape_offset = Vector2( 0, 0 )
 18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-18/shape = SubResource( 9 )
+18/shape = SubResource( 22 )
 18/shape_one_way = false
 18/shape_one_way_margin = 1.0
 18/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 22 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 18/z_index = 0
@@ -441,17 +441,11 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 22/tile_mode = 0
 22/occluder_offset = Vector2( 0, 0 )
 22/navigation_offset = Vector2( 0, -0.174 )
-22/shape_offset = Vector2( -0.044, 0 )
-22/shape_transform = Transform2D( 1, 0, 0, 1, -0.044, 0 )
+22/shape_offset = Vector2( 0, 0 )
+22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 22/shape_one_way = false
-22/shape_one_way_margin = 1.0
-22/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, -0.044, 0 )
-} ]
+22/shape_one_way_margin = 0.0
+22/shapes = [  ]
 22/z_index = 0
 23/name = "Black Box"
 23/texture = ExtResource( 5 )
