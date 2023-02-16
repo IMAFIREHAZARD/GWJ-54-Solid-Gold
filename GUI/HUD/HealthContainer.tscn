@@ -21,10 +21,6 @@ margin_right = 46.0
 margin_bottom = 32.0
 columns = 5
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="HeartTemplate" type="TextureRect" parent="."]
 margin_left = 50.0
 margin_right = 82.0
@@ -32,5 +28,3 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 expand = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

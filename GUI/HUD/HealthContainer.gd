@@ -2,9 +2,9 @@ extends HBoxContainer
 
 
 var textures = {
-	"full":"res://GUI/HUD/Heart.png",
-	"empty":"res://GUI/HUD/HeartEmpty.png",
-	"locked":"res://GUI/HUD/lockedHeart02.png",
+	"full":preload("res://GUI/HUD/Heart.png"),
+	"empty":preload("res://GUI/HUD/HeartEmpty.png"),
+	"locked":preload("res://GUI/HUD/lockedHeart02.png"),
 }
 
 
@@ -17,13 +17,7 @@ func _ready():
 		newHeart.show()
 		
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_Timer_timeout():
+func _physics_process(delta: float) -> void:
 	if Global.get_num_curses() > 0:
 		pass
 	
@@ -31,13 +25,9 @@ func _on_Timer_timeout():
 	while hearts.size() > 0:
 		var current_heart = hearts.pop_back()
 		if Global.player_max_health - current_heart.get_position_in_parent() <= Global.get_num_curses():
-			current_heart.texture = load(textures["locked"])
+			current_heart.texture = textures["locked"]
 		elif Global.player_health_remaining <= current_heart.get_position_in_parent():
-			current_heart.texture = load(textures["empty"])
+			current_heart.texture = textures["empty"]
 		else:
-			current_heart.texture = load(textures["full"])
-		
-		
-			
-			
-			
+			current_heart.texture = textures["full"]
+
