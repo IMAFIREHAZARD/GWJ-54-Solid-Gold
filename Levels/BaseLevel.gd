@@ -54,6 +54,7 @@ func _on_dialogic_signal(param):
 	elif param == "restart_level":
 		#Global.reset_curses()
 		StageManager.restart_current_level()
+		Global.player_health_remaining = Global.player_max_health - Global.get_num_curses()
 	elif param == "accepted_levitation_curse":
 		Global.curses_taken["levitation"] = true
 		StageManager.player.resume()

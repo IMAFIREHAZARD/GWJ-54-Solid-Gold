@@ -21,34 +21,34 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1019.0
-margin_bottom = 37.0
+margin_bottom = 51.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="Header/HBox"]
-margin_top = 9.0
-margin_right = 128.0
-margin_bottom = 23.0
+margin_left = 173.0
+margin_top = 16.0
+margin_right = 301.0
+margin_bottom = 30.0
 text = "Cursed by Hindsight"
 
 [node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 138.0
-margin_right = 357.0
-margin_bottom = 32.0
+margin_left = 311.0
+margin_right = 530.0
+margin_bottom = 46.0
 text = "Return to Main Menu"
 target_scene_path = "res://Main.tscn"
 
 [node name="ResetLevelButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 367.0
-margin_right = 597.0
-margin_bottom = 32.0
+margin_left = 540.0
+margin_right = 770.0
+margin_bottom = 46.0
 text = "Restart Current Level"
 
 [node name="HealthContainer" parent="Header/HBox" instance=ExtResource( 4 )]
-margin_left = 607.0
-margin_right = 1014.0
-size_flags_horizontal = 3
-alignment = 2
+margin_left = 780.0
+margin_right = 840.0
+margin_bottom = 46.0
 
 [node name="Footer" parent="." instance=ExtResource( 2 )]
