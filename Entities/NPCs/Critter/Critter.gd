@@ -29,7 +29,25 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 func kill():
 	if level != null:
 		level.current_bugs -= 1
-	queue_free()
+	$AnimationPlayer.play("hit")
+	play_death_sound()
+	# see also: _on_AnimationPlayer_animation_finished()
+
+
+func leave_splat():
 	var splat = splat_scene.instance()
 	get_parent().call_deferred("add_child", splat)
 	splat.global_position = global_position
+	splat.global_scale = Vector2(5,5)
+
+func play_death_sound():
+	var sounds = $Audio.get_children()
+	var randSound = sounds[randi()%sounds.size()]
+	randSound.start_persistant()
+	
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "hit":
+		leave_splat()
+		call_deferred("queue_free")
