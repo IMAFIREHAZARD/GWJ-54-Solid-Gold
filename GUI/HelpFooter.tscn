@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sfx/shh.wav" type="AudioStream" id=2]
@@ -6,9 +6,14 @@
 [ext_resource path="res://GUI/HelpFooter.gd" type="Script" id=4]
 [ext_resource path="res://GUI/Help/Mouse.png" type="Texture" id=5]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=6]
-[ext_resource path="res://assets/test_art/cube-blue.png" type="Texture" id=7]
+[ext_resource path="res://Art/Objects/Boxes sheet2.png" type="Texture" id=7]
 [ext_resource path="res://GUI/VolumeSetting.gd" type="Script" id=8]
 [ext_resource path="res://sfx/bgMusicAudioVolumeTest.ogg" type="AudioStream" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 126.657, 130.623, 130.222, 124 )
 
 [node name="Footer" type="MarginContainer"]
 anchor_top = 1.0
@@ -37,9 +42,9 @@ pressed = true
 text = "Help"
 
 [node name="PanelContents" type="HBoxContainer" parent="Vbox"]
-margin_left = 302.0
+margin_left = 294.0
 margin_top = 38.0
-margin_right = 722.0
+margin_right = 730.0
 margin_bottom = 153.0
 grow_horizontal = 2
 mouse_filter = 2
@@ -54,6 +59,7 @@ margin_right = 64.0
 margin_bottom = 47.0
 text = "WASD
 Move"
+align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/WASDMove"]
 margin_top = 51.0
@@ -73,6 +79,7 @@ margin_right = 99.0
 margin_bottom = 47.0
 text = "Left Click 
 Shoot"
+align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/MouseShoot"]
 margin_top = 51.0
@@ -82,29 +89,30 @@ rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="F_Interact" type="VBoxContainer" parent="Vbox/PanelContents"]
+[node name="Boxes" type="VBoxContainer" parent="Vbox/PanelContents"]
 margin_left = 171.0
-margin_right = 266.0
+margin_right = 282.0
 margin_bottom = 115.0
 
-[node name="F_Interact" type="Label" parent="Vbox/PanelContents/F_Interact"]
-margin_right = 95.0
+[node name="Click" type="Label" parent="Vbox/PanelContents/Boxes"]
+margin_right = 111.0
 margin_bottom = 47.0
 text = "Left Click
- Interact"
+Move Boxes"
+align = 1
 
-[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/F_Interact"]
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/Boxes"]
 margin_top = 51.0
-margin_right = 95.0
+margin_right = 111.0
 margin_bottom = 115.0
 rect_min_size = Vector2( 64, 64 )
-texture = ExtResource( 7 )
+texture = SubResource( 1 )
 expand = true
 stretch_mode = 6
 
 [node name="VolumeSetting" type="VBoxContainer" parent="Vbox/PanelContents"]
-margin_left = 270.0
-margin_right = 420.0
+margin_left = 286.0
+margin_right = 436.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
 script = ExtResource( 8 )

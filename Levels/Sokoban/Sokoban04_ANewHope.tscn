@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Sokoban/Sokoban02.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Run/RunnerLevel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Clouds.png" type="Texture" id=5]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Levels/Sokoban/PrototypeLevel-iso.png" type="Texture" id=9]
@@ -14,6 +15,13 @@
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 6 )]
+
+[node name="NearClouds" parent="Background" index="0"]
+texture = ExtResource( 5 )
+region_rect = Rect2( 14.875, -174.125, 1724.62, 604.125 )
+
+[node name="FarClouds" parent="Background" index="1"]
+region_rect = Rect2( 38.5, 38.5, 580.5, 307.125 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -45,6 +53,9 @@ disabled = true
 
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
+
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+frame = 2
 
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
@@ -85,7 +96,6 @@ next_scene = ExtResource( 3 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 1
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
@@ -94,6 +104,7 @@ volume_db = -22.0
 autoplay = true
 bus = "Music"
 
+[editable path="Background"]
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HUD"]
 [editable path="Exit"]
