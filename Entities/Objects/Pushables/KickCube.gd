@@ -15,18 +15,25 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 	if event.is_action_pressed("shoot") and not moving\
 	and is_highlighted:
 		ray_cast.cast_to = push_dir * move_dist
-		ray_cast.force_raycast_update()
 		
+		var num_tiles = 1
 		if Global.curses_taken["strength"]:
-			explode_into_smithereens()
-		elif not ray_cast.is_colliding():
+			num_tiles = 2
+		for i in num_tiles:
+			ray_cast.force_raycast_update()
+			if ray_cast.is_colliding():
+				if Global.curses_taken["strength"]:
+					explode_into_smithereens()
+					break
+			else:
 				moving = true
 				play_audio()
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.5)
+				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.5 / num_tiles)
 				yield(tween, "finished")
-				moving = false
-				stop_audio()
+		
+		moving = false
+		stop_audio()
 
 func play_audio():
 	for noise in $Audio.get_children():
