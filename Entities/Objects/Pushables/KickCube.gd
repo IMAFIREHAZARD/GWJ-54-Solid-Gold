@@ -21,10 +21,21 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 			explode_into_smithereens()
 		elif not ray_cast.is_colliding():
 				moving = true
+				play_audio()
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.3)
+				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.5)
 				yield(tween, "finished")
 				moving = false
+				stop_audio()
+
+func play_audio():
+	for noise in $Audio.get_children():
+		noise.set_pitch_scale(rand_range(0.95,1.05))
+		noise.play()
+
+func stop_audio():
+	for noise in $Audio.get_children():
+		noise.stop()
 
 func explode_into_smithereens():
 	print("Player is very strong, box exploded.")
