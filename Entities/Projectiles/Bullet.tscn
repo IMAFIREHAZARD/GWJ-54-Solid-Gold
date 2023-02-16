@@ -129,7 +129,7 @@ collision_mask = 6
 position = Vector2( -32, 1 )
 scale = Vector2( 0.29142, 0.29142 )
 frames = SubResource( 14 )
-frame = 3
+frame = 4
 speed_scale = 2.615
 playing = true
 
@@ -138,7 +138,7 @@ visible = false
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( -58, 3 )
 
