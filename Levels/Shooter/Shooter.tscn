@@ -241,17 +241,18 @@ position = Vector2( 2611, -674 )
 scale = Vector2( 0.11919, 0.11919 )
 
 [node name="StaticBody2D" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 4966, -1378 )
+position = Vector2( 4913, -1351 )
 scale = Vector2( 1.92, 1.92 )
+z_index = -2
 
 [node name="Statues" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 4558, -1594 )
-scale = Vector2( 0.399999, 0.399999 )
+position = Vector2( 4484, -1574 )
+scale = Vector2( 0.261648, 0.261648 )
 z_index = 1
 
 [node name="Statues2" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 5206, -1292 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 5476, -1079 )
+scale = Vector2( 0.279998, 0.279998 )
 
 [node name="Bottoms" type="CanvasLayer" parent="."]
 layer = -2

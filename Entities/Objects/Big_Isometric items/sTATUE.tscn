@@ -11,9 +11,9 @@ scale = Vector2( 0.32, 0.32 )
 
 [node name="Statue" type="Sprite" parent="."]
 position = Vector2( 160, -631 )
+scale = Vector2( 3.68231, 3.68231 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 312.5, -570.312 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
