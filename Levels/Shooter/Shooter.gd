@@ -23,3 +23,7 @@ func _on_bug_died(_v):
 func reveal_exit(_v):
 	$Exit.show()
 	$Exit.monitoring = true
+
+func _on_curse_accepted(curseName):
+	if curseName == "gun_hands":
+		StageManager.player.start_gun_curse()
