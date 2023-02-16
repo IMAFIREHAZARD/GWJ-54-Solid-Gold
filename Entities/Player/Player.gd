@@ -82,7 +82,7 @@ func move_normally(delta : float):
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
-	if StageManager.current_map != null and StageManager.current_map.has_method("get_tile_underneath"):
+	if StageManager.current_map != null and is_instance_valid(StageManager.current_map) and StageManager.current_map.has_method("get_tile_underneath"):
 		if StageManager.current_map.get_tile_underneath(global_position) == "Void":
 			fall_off_map()
 
@@ -163,6 +163,7 @@ func start_gun_curse():
 	#Global.gun_curse_taken = true
 
 func begin_dying():
+	
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
@@ -171,9 +172,10 @@ func begin_dying():
 		
 	
 func _on_hit(damage):
-	health -= damage
-	if health <= 0:
-		begin_dying()
+	if State != States.DEAD:
+		health -= damage
+		if health <= 0:
+			begin_dying()
 
 func detach_camera():
 	var camera = find_node("*Camera*")

@@ -10,7 +10,8 @@ extends CanvasLayer
 func _ready():
 	var timer = get_tree().create_timer(0.5)
 	yield(timer, "timeout")
-	delayed_ready()
+	if is_instance_valid(self):
+		delayed_ready()
 
 func delayed_ready():
 	# call this after ancestors have loaded
