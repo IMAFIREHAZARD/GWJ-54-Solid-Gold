@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 
 export var duration : float = 3.5

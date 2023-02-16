@@ -141,6 +141,8 @@ z_index = -2
 collision_layer = 5
 
 [node name="ShootInstructions" parent="YSort/Floor" instance=ExtResource( 24 )]
+position = Vector2( 552, 162 )
+rotation = -0.0400444
 
 [node name="Critters" type="YSort" parent="YSort"]
 position = Vector2( 1422, -873 )
@@ -342,11 +344,6 @@ next_scene = ExtResource( 4 )
 
 [node name="StaticBody2D" parent="Exit" instance=ExtResource( 13 )]
 position = Vector2( -3553.31, -3403.26 )
-
-[node name="Secret Exit" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1101, 289 )
-z_index = -1
-next_scene = ExtResource( 4 )
 
 [node name="TriggerHandler" type="Node" parent="."]
 script = ExtResource( 11 )
