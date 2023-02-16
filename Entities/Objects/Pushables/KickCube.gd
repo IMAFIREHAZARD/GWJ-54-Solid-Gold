@@ -36,17 +36,25 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		stop_audio()
 
 func play_audio():
-	for noise in $Audio.get_children():
+	for noise in $PushAudio.get_children():
 		noise.set_pitch_scale(rand_range(0.95,1.05))
 		noise.play()
 
 func stop_audio():
-	for noise in $Audio.get_children():
+	for noise in $PushAudio.get_children():
 		noise.stop()
 
 func explode_into_smithereens():
 	print("Player is very strong, box exploded.")
-	queue_free()
+	
+	var noises = $ExplosionAudio.get_children()
+	var randNoise = noises[randi()%noises.size()]
+	randNoise.start_persistent()
+	
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("explode"):
+		$AnimationPlayer.play("explode")
+	else:
+		queue_free()
 
 func _physics_process(_delta: float) -> void:
 	if SokobanSelector.front_hovered_block == self:
