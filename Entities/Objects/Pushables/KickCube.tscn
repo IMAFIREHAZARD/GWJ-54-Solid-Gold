@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Art/Big_background elements/Box.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.gd" type="Script" id=2]
+[ext_resource path="res://sfx/STONE_part1_loopable.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/STONE_part2_loopable.wav" type="AudioStream" id=4]
 
 [node name="PushBlock" type="KinematicBody2D"]
 collision_layer = 4
@@ -41,6 +43,14 @@ monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerArea"]
 polygon = PoolVector2Array( 0, 8, 11, 35, 59, 11, 16, 0, 59, -10, 14, -35, 0, -8, -11, -36, -59, -10, -16, 0, -59, 10, -15, 34 )
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Grind" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 3 )
+
+[node name="Rattle" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 4 )
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_ClickArea_mouse_entered"]

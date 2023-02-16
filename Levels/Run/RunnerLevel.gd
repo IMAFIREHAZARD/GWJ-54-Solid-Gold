@@ -92,6 +92,7 @@ func _on_ExitTimer_timeout():
 		$ObstacleSpawnTimer.stop()
 
 		if Global.curses_taken["speed"] == true:
+			destroy_obstacles()
 			spawn_dialog("EnjoySpeed")
 		else:
 			StageManager.change_scene_to(next_scene)
