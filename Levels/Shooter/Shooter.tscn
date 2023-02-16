@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Levels/CommonInfrastructure/DevilsBargainArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Art/Big_background elements/Wall_Half.png" type="Texture" id=7]
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=8]
+[ext_resource path="res://Levels/CommonInfrastructure/TimedDevilsBargain.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Shooter/TriggerHandler.gd" type="Script" id=11]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Exit_door.tscn" type="PackedScene" id=13]
@@ -349,8 +350,15 @@ position = Vector2( -3553.31, -3403.26 )
 script = ExtResource( 11 )
 
 [node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 2490, -41 )
 timeline = "timeline-1676112450.json"
+
+[node name="TimedDevilsBargain" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1060, -36 )
+dialogic_timeline = "timeline-1676112450.json"
+curse = "gun_hands"
+wait_time = 5.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
