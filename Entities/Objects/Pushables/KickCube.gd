@@ -59,8 +59,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func update_push_dir():
-	var feet_to_hands = Vector2.UP * 50 * player.global_scale # measured from player.tscn	
-	var raw_push_dir = (player.global_position + feet_to_hands).direction_to(global_position)
+	#var feet_to_hands = Vector2.UP * 25.0 * player.global_scale # measured from player.tscn	
+	var raw_push_dir = (player.global_position ).direction_to(global_position)
 	var dist = INF
 	for dir in directions:
 		dir = dir.normalized()

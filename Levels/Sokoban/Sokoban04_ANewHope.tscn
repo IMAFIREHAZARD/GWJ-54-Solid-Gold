@@ -47,7 +47,7 @@ disabled = true
 disabled = false
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 2
+frame = 3
 
 [node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
 dialogic_timeline = "timeline-1676377628.json"
@@ -88,7 +88,7 @@ next_scene = ExtResource( 5 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
-frame = 1
+frame = 2
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
