@@ -62,9 +62,7 @@ position = Vector2( 2203, 352 )
 position = Vector2( 12, 581 )
 
 [node name="ExitTimer" type="Timer" parent="Timer"]
-wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="Label" type="Label" parent="Timer"]
 anchor_top = 1.0

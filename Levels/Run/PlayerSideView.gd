@@ -51,7 +51,11 @@ func slow_down():
 	$AnimationPlayer.set_speed_scale(1.0)
 	
 
+func stop():
+	$AnimationPlayer.play("idle")
 
+func start():
+	$AnimationPlayer.play("run")
 
 func _on_Hurtbox_body_entered(body):
 	if $iframes.is_stopped():

@@ -46,8 +46,10 @@ func stop_audio():
 
 func explode_into_smithereens():
 	print("Player is very strong, box exploded.")
-	$ExplosionNoise.start_persistant()
-	$ExplosionNoise2.start_persistant()
+	
+	var noises = $ExplosionAudio.get_children()
+	var randNoise = noises[randi()%noises.size()]
+	randNoise.start_persistent()
 	
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("explode"):
 		$AnimationPlayer.play("explode")
