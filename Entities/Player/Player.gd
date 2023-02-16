@@ -163,6 +163,7 @@ func start_gun_curse():
 	#Global.gun_curse_taken = true
 
 func begin_dying():
+	
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
@@ -171,9 +172,10 @@ func begin_dying():
 		
 	
 func _on_hit(damage):
-	health -= damage
-	if health <= 0:
-		begin_dying()
+	if State != States.DEAD:
+		health -= damage
+		if health <= 0:
+			begin_dying()
 
 func detach_camera():
 	var camera = find_node("*Camera*")
