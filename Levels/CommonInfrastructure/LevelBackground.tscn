@@ -21,6 +21,71 @@ position = Vector2( 627, 102 )
 scale = Vector2( 1.67131, 2.21462 )
 texture = ExtResource( 1 )
 
+[node name="Clouds5" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 3788, -140 )
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds6" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1444, -804 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds7" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 4066, -1154 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds8" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 204.999, -1280 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds9" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1848, -265 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds10" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 3770, -615 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds11" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 204.999, -534 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds12" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1974, -1432 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds13" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 4462, 565 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds14" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 4953, -183 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
+[node name="Clouds15" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( -643.001, -87 )
+rotation = 0.0331148
+scale = Vector2( 1.67131, 2.21462 )
+texture = ExtResource( 1 )
+
 [node name="Clouds2" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( -1352, 704 )
 scale = Vector2( 1.67131, 2.21462 )
