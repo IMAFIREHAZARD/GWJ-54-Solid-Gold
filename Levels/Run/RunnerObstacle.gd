@@ -39,3 +39,8 @@ func hit():
 func explode():
 	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
+
+
+func _on_ExitZone_body_entered(body):
+	print("Pearly Gates Exit Reached")
+	

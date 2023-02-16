@@ -16,7 +16,7 @@ extents = Vector2( 518, 31.4499 )
 script = ExtResource( 2 )
 next_scene = ExtResource( 3 )
 
-[node name="PlayerSideView" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157, 420 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -59,18 +59,21 @@ position = Vector2( 2203, 523 )
 position = Vector2( 2203, 352 )
 
 [node name="Timer" type="Node2D" parent="."]
-position = Vector2( 387, 53 )
-scale = Vector2( 5, 5 )
-
-[node name="Label" type="Label" parent="Timer"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Time Left"
+position = Vector2( 12, 581 )
 
 [node name="ExitTimer" type="Timer" parent="Timer"]
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="Label" type="Label" parent="Timer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -5.0
+margin_right = 67.0
+margin_bottom = 9.0
+text = "Time Left"
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 
@@ -94,5 +97,5 @@ script = ExtResource( 8 )
 [connection signal="timeout" from="ObstacleSpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer/ExitTimer" to="." method="_on_ExitTimer_timeout"]
 
-[editable path="PlayerSideView"]
+[editable path="Player"]
 [editable path="Background"]
