@@ -71,7 +71,7 @@ func kill():
 	if state == State.DEAD: return
 	state = State.DEAD
 	monitoring = false
-	monitorable = false
+	set_deferred("monitorable", false)
 	if level != null:
 		level.current_bugs -= 1
 	$AnimationPlayer.play("hit")

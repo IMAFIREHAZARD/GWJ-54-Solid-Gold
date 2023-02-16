@@ -45,7 +45,7 @@ func stop_audio():
 		noise.stop()
 
 func explode_into_smithereens():
-	print("Player is very strong, box exploded.")
+	#print("Player is very strong, box exploded.")
 	
 	var noises = $ExplosionAudio.get_children()
 	var randNoise = noises[randi()%noises.size()]
