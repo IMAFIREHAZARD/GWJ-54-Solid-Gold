@@ -13,7 +13,6 @@ export(bool) var debug_start_with_machine_gun = false
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
 var last_known_position : Vector2 # used for falling off the map.
-var health : int = 3
 var gravity : float = 9.8
 export var levitate : bool = false
 
@@ -173,8 +172,8 @@ func begin_dying():
 	
 func _on_hit(damage):
 	if State != States.DEAD:
-		health -= damage
-		if health <= 0:
+		Global.player_health_remaining -= damage
+		if Global.player_health_remaining <= 0:
 			begin_dying()
 
 func detach_camera():
