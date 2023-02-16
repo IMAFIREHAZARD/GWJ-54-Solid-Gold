@@ -113,6 +113,7 @@ follow_viewport_enable = true
 
 [node name="FloorTilemap" type="TileMap" parent="YSort/Floor"]
 scale = Vector2( 2.5, 2.5 )
+z_index = -1
 mode = 1
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 128, 64 )

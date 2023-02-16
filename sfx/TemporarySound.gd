@@ -18,8 +18,10 @@ func start():
 	new_sound.set_pitch_scale(rand_range(1.0-pitch_shift, 1.0+pitch_shift))
 	new_sound.play()
 	
-
 func start_persistant():
+	start_persistent() # damn tricky spellings
+
+func start_persistent():
 	var new_sound = self.duplicate()
 	new_sound.connect("finished", new_sound, "_on_finished")
 	get_tree().get_root().add_child(new_sound)
