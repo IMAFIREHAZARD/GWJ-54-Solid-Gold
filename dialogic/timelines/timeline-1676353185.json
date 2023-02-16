@@ -8,7 +8,33 @@
 			"character": "character-1676353458.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "The Little Devil wasn't supposed to be here."
+			"text": "The Little Devil wasn't supposed to be here. But here they are, in \"paradise\"."
+		},
+		{
+			"animation": "3-fade_in_up_big.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112471.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676353458.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Lost, and trying desperately to escape."
 		}
 	],
 	"metadata": {
