@@ -9,7 +9,9 @@ func _ready() -> void:
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	$YSort/Critters.connect("child_exiting_tree", self, "_on_bug_died", [], CONNECT_DEFERRED)
 
-func _on_bug_died(_v):
+func _on_bug_died(bug):
+	if not bug is Critter:
+		return
 	if current_bugs == 0:
 		if Dialogic.has_current_dialog_node():
 			yield(get_tree().get_meta('latest_dialogic_node'), "timeline_end")
