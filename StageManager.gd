@@ -10,7 +10,8 @@ var current_packed_scene : PackedScene
 var player
 
 func _ready():
-	current_packed_scene = load(current_map.filename)
+	
+	current_packed_scene = load(get_tree().current_scene.filename)
 
 func change_scene(ScenePath : String):
 	var Scene = load(ScenePath)
