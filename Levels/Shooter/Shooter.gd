@@ -1,4 +1,4 @@
-extends "res://Levels/CommonInfrastructure/MinimalLevel.gd"
+extends "res://Levels/BaseLevel.gd"
 
 export var max_bugs = 8
 var current_bugs = 0
