@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Run/RunnerLevel.gd" type="Script" id=2]
-[ext_resource path="res://Levels/Catwalks/Catwalks.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Run/floor.png" type="Texture" id=5]
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingSprite.gd" type="Script" id=7]
+[ext_resource path="res://Levels/Run/RunnerCamera2D.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 518, 31.4499 )
@@ -15,12 +16,12 @@ extents = Vector2( 518, 31.4499 )
 script = ExtResource( 2 )
 next_scene = ExtResource( 3 )
 
-[node name="PlayerSideView" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157, 420 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 514, 568 )
-scale = Vector2( 1.18178, 1.09371 )
+position = Vector2( 1137, 568 )
+scale = Vector2( 2, 1.094 )
 collision_layer = 4
 
 [node name="Sprite" type="Sprite" parent="Floor"]
@@ -52,33 +53,49 @@ autostart = true
 [node name="ObstacleSpawns" type="Node2D" parent="."]
 
 [node name="Walk" type="Position2D" parent="ObstacleSpawns"]
-position = Vector2( 1068, 523 )
+position = Vector2( 2203, 523 )
 
 [node name="Fly" type="Position2D" parent="ObstacleSpawns"]
-position = Vector2( 1068, 352 )
+position = Vector2( 2203, 352 )
 
 [node name="Timer" type="Node2D" parent="."]
-position = Vector2( 387, 53 )
-scale = Vector2( 5, 5 )
-
-[node name="Label" type="Label" parent="Timer"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Time Left"
+position = Vector2( 12, 581 )
 
 [node name="ExitTimer" type="Timer" parent="Timer"]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Label" type="Label" parent="Timer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -5.0
+margin_right = 67.0
+margin_bottom = 9.0
+text = "Time Left"
+
 [node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="NearClouds" parent="Background" index="0"]
+position = Vector2( 1183, 298 )
+scale = Vector2( 10, 10 )
+
+[node name="FarClouds" parent="Background" index="1"]
+position = Vector2( 1196, 306 )
+scale = Vector2( 10, 10 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -24.0
 autoplay = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource( 8 )
+
 [connection signal="timeout" from="ObstacleSpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer/ExitTimer" to="." method="_on_ExitTimer_timeout"]
 
-[editable path="PlayerSideView"]
+[editable path="Player"]
+[editable path="Background"]

@@ -13,7 +13,6 @@ export(bool) var debug_start_with_machine_gun = false
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
 var last_known_position : Vector2 # used for falling off the map.
-var health : int = 3
 var gravity : float = 9.8
 export var levitate : bool = false
 
@@ -82,7 +81,7 @@ func move_normally(delta : float):
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
-	if StageManager.current_map != null and StageManager.current_map.has_method("get_tile_underneath"):
+	if StageManager.current_map != null and is_instance_valid(StageManager.current_map) and StageManager.current_map.has_method("get_tile_underneath"):
 		if StageManager.current_map.get_tile_underneath(global_position) == "Void":
 			fall_off_map()
 
@@ -163,6 +162,7 @@ func start_gun_curse():
 	#Global.gun_curse_taken = true
 
 func begin_dying():
+	
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
@@ -171,9 +171,10 @@ func begin_dying():
 		
 	
 func _on_hit(damage):
-	health -= damage
-	if health <= 0:
-		begin_dying()
+	if State != States.DEAD:
+		Global.player_health_remaining -= damage
+		if Global.player_health_remaining <= 0:
+			begin_dying()
 
 func detach_camera():
 	var camera = find_node("*Camera*")

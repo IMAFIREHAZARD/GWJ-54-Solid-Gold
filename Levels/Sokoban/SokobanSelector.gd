@@ -12,7 +12,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_INTERNAL_PHYSICS_PROCESS:
 		
 		if hovered_blocks.empty():
-			if front_hovered_block:
+			if front_hovered_block and is_instance_valid(front_hovered_block):
 				front_hovered_block.set_highlighted(false)
 			front_hovered_block = null
 			return
@@ -22,5 +22,6 @@ func _notification(what: int) -> void:
 			if block.global_position.y > front_block.global_position.y:
 				front_block = block
 		if front_hovered_block and front_block != front_hovered_block:
-			front_hovered_block.set_highlighted(false)
+			if is_instance_valid(front_hovered_block):
+				front_hovered_block.set_highlighted(false)
 		front_hovered_block = front_block

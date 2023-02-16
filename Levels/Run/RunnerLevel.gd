@@ -3,7 +3,10 @@ extends Node2D
 export var endless_runner : bool = false
 
 export var next_scene : PackedScene
-export var duration : float = 5.0
+export var distance_to_run : float = 400.0
+export var time_to_cover_distance : float = 30.0
+
+var distance_remaining := distance_to_run
 
 var bargain_offered : bool = false
 
@@ -13,11 +16,12 @@ var speed_multiplier = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer/ExitTimer.set_wait_time(duration)
+	$Timer/ExitTimer.set_wait_time(time_to_cover_distance / speed_multiplier / 2)
 	
 
 func offer_devils_bargain():
 	$ObstacleSpawnTimer.set_paused(true)
+	destroy_obstacles()
 	spawn_dialog("SpeedUp")
 
 func _on_dialogic_signal(param):
@@ -42,25 +46,32 @@ func speed_up():
 	else:
 		speed_multiplier += 1.0
 	$Floor/Sprite.speed_up(speed_multiplier)
-	$PlayerSideView.speed_up(speed_multiplier)
+	$Player.speed_up(speed_multiplier)
 	for layer in $Background.get_children():
 		if layer.has_method("speed_up"):
 			layer.speed_up(speed_multiplier)
-	
+	$Camera2D.speed_up()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$Timer/Label.text = str(round($Timer/ExitTimer.time_left))
+	$Timer/Label.text = "Distance Remaining: " + str(distance_remaining/time_to_cover_distance * ($Timer/ExitTimer.time_left)).pad_decimals(2) + "m "
 
 func introduce_obstacle():
 	var obstacle = preload("res://Levels/Run/RunnerObstacle.tscn").instance()
-	add_child(obstacle)
+	
 	var randSpawner = $ObstacleSpawns.get_children()[randi()%$ObstacleSpawns.get_child_count()]
+	randSpawner.add_child(obstacle)
 	obstacle.global_position = randSpawner.global_position
 	if randSpawner.name == "Walk" and obstacle.has_method("walk"):
 		obstacle.walk(speed_multiplier)
 	elif randSpawner.name == "Fly" and obstacle.has_method("fly"):
 		obstacle.fly(speed_multiplier)
+
+func destroy_obstacles():
+	for spawner in $ObstacleSpawns.get_children():
+		for active_obstacle in spawner.get_children():
+			if active_obstacle.has_method("explode"):
+				active_obstacle.explode()
 
 func _on_Timer_timeout():
 	introduce_obstacle()
@@ -82,12 +93,23 @@ func _on_ExitTimer_timeout():
 	else: # exit
 		$Timer/ExitTimer.stop()
 		$ObstacleSpawnTimer.stop()
-
-		if Global.curses_taken["speed"] == true:
-			spawn_dialog("EnjoySpeed")
-		else:
-			StageManager.change_scene_to(next_scene)
+		spawn_exit()
 		
+
+
+#func unnecessary_leftover():
+#		if Global.curses_taken["speed"] == true:
+#			destroy_obstacles()
+#			spawn_dialog("EnjoySpeed")
+#		else:
+#			StageManager.change_scene_to(next_scene)
+
+func spawn_exit():
+	var exit = load("res://Levels/Run/PearlyGatesSideView.tscn").instance()
+	
+	add_child(exit)
+	exit.set_global_position($ObstacleSpawns/Walk.global_position)
+	exit.set_velocity(speed_multiplier)
 		
 
 

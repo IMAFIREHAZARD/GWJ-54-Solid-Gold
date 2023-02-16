@@ -15,16 +15,34 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 	if event.is_action_pressed("shoot") and not moving\
 	and is_highlighted:
 		ray_cast.cast_to = push_dir * move_dist
-		ray_cast.force_raycast_update()
 		
+		var num_tiles = 1
 		if Global.curses_taken["strength"]:
-			explode_into_smithereens()
-		elif not ray_cast.is_colliding():
+			num_tiles = 2
+		for i in num_tiles:
+			ray_cast.force_raycast_update()
+			if ray_cast.is_colliding():
+				if Global.curses_taken["strength"]:
+					explode_into_smithereens()
+					break
+			else:
 				moving = true
+				play_audio()
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.3)
+				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.5 / num_tiles)
 				yield(tween, "finished")
-				moving = false
+		
+		moving = false
+		stop_audio()
+
+func play_audio():
+	for noise in $Audio.get_children():
+		noise.set_pitch_scale(rand_range(0.95,1.05))
+		noise.play()
+
+func stop_audio():
+	for noise in $Audio.get_children():
+		noise.stop()
 
 func explode_into_smithereens():
 	print("Player is very strong, box exploded.")
@@ -45,11 +63,11 @@ func _physics_process(_delta: float) -> void:
 #		else:
 #			modulate = Color.white
 #			arrow.hide()
-	update()
+
 
 func update_push_dir():
-	
-	var raw_push_dir = player.global_position.direction_to(global_position)
+	#var feet_to_hands = Vector2.UP * 25.0 * player.global_scale # measured from player.tscn	
+	var raw_push_dir = (player.global_position ).direction_to(global_position)
 	var dist = INF
 	for dir in directions:
 		dir = dir.normalized()
@@ -59,10 +77,6 @@ func update_push_dir():
 			push_dir = dir
 	arrow.rotation = push_dir.angle()
 	
-
-func _draw():
-	draw_circle(player.global_position, 5, Color.red)
-	draw_circle(global_position, 5, Color.blue)
 
 func _on_ClickArea_mouse_entered() -> void:
 	SokobanSelector.hovered_blocks.append(self)

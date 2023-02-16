@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Levels/Catwalks/Catwalks.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/Sokoban/Sokoban04_ANewHope.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/TestLevels/YATL2-plex.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/Run/RunnerLevel.tscn" type="PackedScene" id=16]
 
 [node name="TestingMenu" type="Control"]
 anchor_right = 1.0
@@ -81,8 +82,8 @@ target_scene = ExtResource( 13 )
 margin_top = 106.0
 margin_right = 250.0
 margin_bottom = 134.0
-disabled = true
-text = "Test Scene"
+text = "Runner"
+target_scene = ExtResource( 16 )
 
 [node name="Sokoban" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
 margin_top = 159.0

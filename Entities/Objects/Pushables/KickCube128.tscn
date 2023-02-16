@@ -1,25 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/Sokoban/PushBlockOrnate128.png" type="Texture" id=2]
+[ext_resource path="res://Art/Big_background elements/Boxes sheet.png" type="Texture" id=2]
 
 [node name="PushBlock" instance=ExtResource( 1 )]
-position = Vector2( 0, -34 )
 scale = Vector2( 2, 2 )
+collision_mask = 1
 
 [node name="Cube-white" parent="." index="0"]
 position = Vector2( 0, 0 )
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" parent="." index="1"]
-position = Vector2( 0, 14 )
-
-[node name="ClickArea" parent="." index="2"]
-position = Vector2( 0, 16 )
-
-[node name="RayCast2D" parent="." index="3"]
-position = Vector2( 0, 16.5 )
-
-[node name="PlayerArea" parent="." index="5"]
-position = Vector2( 0, 16.5 )
+offset = Vector2( -3, -132 )
+region_enabled = true
+region_rect = Rect2( 1019.56, 516.142, 519, 505 )
