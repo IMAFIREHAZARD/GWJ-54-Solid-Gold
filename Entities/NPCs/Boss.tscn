@@ -1223,7 +1223,6 @@ position = Vector2( -423.412, 621.499 )
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [node name="Health" type="Node2D" parent="."]
 position = Vector2( -111.717, 321.179 )
