@@ -13,6 +13,9 @@ export(bool) var debug_start_with_machine_gun = false
 var vel := Vector2()
 var last_direction : Vector2 = Vector2.ZERO
 var last_known_position : Vector2 # used for falling off the map.
+var last_footstep_time: float = 0.0
+var footstep_interval : float = 300 # milliseconds
+
 var gravity : float = 9.8
 export var levitate : bool = false
 
@@ -78,6 +81,7 @@ func move_normally(delta : float):
 		if zone.overlaps_body(self):
 			vel *= zone.speed_mulitplier
 	
+	
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
 
@@ -116,6 +120,12 @@ func animate_movement(directionVector):
 		anim_array = run_anim_names
 		dir_index = round(Vector2.DOWN.angle_to(vel)/deg2rad(45))
 		last_direction = directionVector
+		if $SpriteRoot/AnimatedSprite.frame in [1,3]:
+			# sprite frames extend more than 1 game frame. slow the noises down
+			if Time.get_ticks_msec() > last_footstep_time + footstep_interval:
+				last_footstep_time = Time.get_ticks_msec()
+				$FootstepNoises.play_random_noise()
+
 	else:
 		anim_array = idle_anim_names
 	
@@ -173,8 +183,10 @@ func begin_dying():
 func _on_hit(damage):
 	if State != States.DEAD:
 		Global.player_health_remaining -= damage
+		$HurtNoises.play_random_noise()
 		if Global.player_health_remaining <= 0:
 			begin_dying()
+		$AnimationPlayer.play("hit")
 
 func detach_camera():
 	var camera = find_node("*Camera*")
