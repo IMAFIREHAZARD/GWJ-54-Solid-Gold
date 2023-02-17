@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
@@ -11,6 +11,38 @@
 [ext_resource path="res://Levels/BossFight/LightUpLine.gd" type="Script" id=9]
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Art/Big_background elements/Exit.png" type="Texture" id=11]
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 7 )
+width = 75
+fill_from = Vector2( 0, 0.000558036 )
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+ambient_light_color = Color( 0.262745, 0.0627451, 0.0627451, 1 )
+fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ssao_radius = 0.1
+ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_intensity = 0.88
+glow_strength = 0.77
+glow_bloom = 0.03
+glow_blend_mode = 0
+glow_hdr_threshold = 1.23
+glow_hdr_luminance_cap = 14.44
+glow_hdr_scale = 0.17
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_saturation = 0.62
+adjustment_color_correction = SubResource( 6 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 576.0
@@ -38,6 +70,9 @@ func _toggled(button_pressed: bool) -> void:
 [node name="BossFight" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="BossRoot" type="Node2D" parent="YSort"]
@@ -50,6 +85,8 @@ __meta__ = {
 position = Vector2( -24, -364 )
 
 [node name="Boss" parent="YSort/BossRoot/pos" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1.5, 1 )
+self_modulate = Color( 0.27, 0.27, 1.65, 1 )
 
 [node name="Ground" type="TileMap" parent="YSort"]
 scale = Vector2( 2, 2 )
