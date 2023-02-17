@@ -148,6 +148,10 @@ tile_data = PoolIntArray( -1638394, 1, 0, -1638393, 1, 0, -1572860, 1, 0, -15728
 position = Vector2( 552, 162 )
 rotation = -0.0400444
 
+[node name="Label" parent="YSort/Floor/ShootInstructions" index="0"]
+text = "Shoot all
+the bugs"
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 426, 333 )
 
@@ -460,3 +464,5 @@ position = Vector2( 4613, -1228 )
 [connection signal="child_exiting_tree" from="YSort/Critters" to="TriggerHandler" method="_on_Critters_child_exiting_tree"]
 [connection signal="body_entered" from="Exit" to="TriggerHandler" method="_on_Exit_body_entered"]
 [connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
+
+[editable path="YSort/Floor/ShootInstructions"]
