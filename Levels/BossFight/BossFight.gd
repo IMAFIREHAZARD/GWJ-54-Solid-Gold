@@ -12,7 +12,7 @@ func _ready() -> void:
 	player.set_physics_process(false)
 	player.set_process_unhandled_input(false)
 	yield(do_cutscene(), "completed")
-	boss.get_node("Timer").start()
+	boss.find_node("AttackTimer").start()
 	player.set_physics_process(true)
 	player.set_process_unhandled_input(true)
 
