@@ -44,6 +44,7 @@ func spawn_dialog(dialogName : String):
 	var new_dialog = Dialogic.start(dialogName)
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	return new_dialog
 
 
 

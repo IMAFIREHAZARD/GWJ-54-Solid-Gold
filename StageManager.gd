@@ -19,6 +19,7 @@ func change_scene(ScenePath : String):
 	change_scene_to(Scene)
 
 func restart_current_level():
+	Global.reset_health()
 	change_scene_to(current_packed_scene)
 	
 func change_scene_to(Scene : PackedScene):

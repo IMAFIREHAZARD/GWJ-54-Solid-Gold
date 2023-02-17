@@ -16,8 +16,10 @@ var last_known_position : Vector2 # used for falling off the map.
 var last_footstep_time: float = 0.0
 var footstep_interval : float = 300 # milliseconds
 
+
 var gravity : float = 9.8
 export var levitate : bool = false
+export var shoot_disabled = false
 
 var outside_frustum
 
@@ -131,10 +133,7 @@ func animate_movement(directionVector):
 	
 	
 	animated_sprite.animation = anim_array[abs(dir_index)]
-	if dir_index > 0:
-		$SpriteRoot.scale.x = 1
-	else:
-		$SpriteRoot.scale.x = -1
+	animated_sprite.flip_h = dir_index <= 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
@@ -160,6 +159,7 @@ func get_affordance(affordanceName : String):
 	
 
 func shoot():
+	if shoot_disabled or Dialogic.has_current_dialog_node(): return
 	reload_timer.start()
 	var bullet = bullet_scene.instance() as Node2D
 	get_parent().add_child(bullet)

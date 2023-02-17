@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var speed = 550.0
+export var speed = 750.0
 
 var velocity : Vector2 = Vector2.ZERO
 var walking : bool = false
@@ -44,6 +44,6 @@ func explode():
 	queue_free()
 
 
-func _on_ExitZone_body_entered(body):
+func _on_ExitZone_body_entered(_body):
 	print("Pearly Gates Exit Reached")
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Entities/Objects/Big_Isometric items/sTATUE.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Music/BGM2-test.mp3" type="AudioStream" id=19]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Wall.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Objects/Big_Isometric items/Fence01.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Art/Big_background elements/forebreidge.png" type="Texture" id=23]
 [ext_resource path="res://GUI/TemporaryPopup.tscn" type="PackedScene" id=24]
 
@@ -57,9 +58,9 @@ adjustment_saturation = 0.62
 adjustment_color_correction = SubResource( 9 )
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 5462, -1122, 4515, -656, 4233, -851, 4506, -1620, 4158, -478, 4068, -417, 3561, -519, 3754, -609, 3974, -353, 3552, -357, 3424, -423, 360, 496, -193, 234, 660, -204, 496, 410, 1293, 122, 1135, 213, 2452, -279, 2153, -313, 2033, -373, 2141, -441, 3081, -595, 3591, -692, 3422, -604, 1056, 306, 835, 408, 4067, -929, 2948, -36, 3981, -178, 3533, 441, 3063, 234, 3997, 206, 2717, 384, 2583, 464, 2244, 296, 2157, 161, 2155, 59, 2162, -111, 669, 496, 1796, 856, 1152, 360, 1649, 605, 3247, -517 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 6, 5, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 13, 15, 16, 14 ), PoolIntArray( 17, 18, 19, 20, 21 ), PoolIntArray( 2, 1, 4, 7 ), PoolIntArray( 22, 7, 6, 23 ), PoolIntArray( 14, 16, 24, 25 ), PoolIntArray( 3, 2, 26 ), PoolIntArray( 20, 3, 26, 22, 21 ), PoolIntArray( 27, 9, 8, 28, 29, 30 ), PoolIntArray( 28, 31, 29 ), PoolIntArray( 27, 30, 32, 17 ), PoolIntArray( 17, 32, 33, 34, 35, 36, 37 ), PoolIntArray( 25, 38, 14 ), PoolIntArray( 39, 25, 24, 40 ), PoolIntArray( 39, 40, 41 ), PoolIntArray( 39, 41, 34, 33 ), PoolIntArray( 17, 37, 18 ), PoolIntArray( 21, 22, 23, 42 ) ]
-outlines = [ PoolVector2Array( -193, 234, 660, -204, 1293, 122, 1135, 213, 1056, 306, 1152, 360, 1649, 605, 2244, 296, 2157, 161, 2155, 59, 2162, -111, 2153, -313, 2033, -373, 2141, -441, 4506, -1620, 5462, -1122, 4515, -656, 4158, -478, 4068, -417, 3974, -353, 3981, -178, 3997, 206, 3533, 441, 3063, 234, 2717, 384, 2583, 464, 1796, 856, 835, 408, 669, 496, 496, 410, 360, 496 ), PoolVector2Array( 2452, -279, 2948, -36, 3552, -357, 3424, -423, 3561, -519, 3422, -604, 3247, -517, 3081, -595 ), PoolVector2Array( 3591, -692, 3754, -609, 4233, -851, 4067, -929 ) ]
+vertices = PoolVector2Array( 4511, -846, 5233, -1149, 5364, -1074, 4515, -656, 4326, -756.791, 352, 467, 19, 312, 86, 286, 2153, -313, 2065, -349, 2227, -430, 2366, -284, 315, 193, 531, 383, 4435, -1376, 4845, -1388, 5297, -1192, 4379, -909, 3986, -648, 4251, -784, 4158, -478, 3949, -575, 4068, -417, 3753, -544, 3974, -353, 3654, -348, 3597, -479, 3604, -544, 3495, -672, 3423, -644, 2947, 49, 3981, -178, 3533, 441, 3063, 234, 879, 91, 1113, 115, 1114, 227, 1056, 306, 835, 408, 4235, -1432, 4264, -868, 4062, -966, 3330, -783, 3278, -967, 3187, -717, 3203, -640, 3081, -659, 2924.19, -780.573, 2550, -582, 2397.92, -519.247, 2162, -111, 2417, -61, 2244, 296, 2157, 161, 2155, 59, 2714, 102, 2244, 331, 2717, 384, 2583, 464, 3997, 206, 1796, 856, 1642, 621, 1219, 484, 1047, 384, 555, -59, 659, 457, 336, 46 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 5, 7, 12, 13 ), PoolIntArray( 14, 15, 16, 1, 0, 17 ), PoolIntArray( 18, 19, 4, 3, 20, 21 ), PoolIntArray( 21, 20, 22 ), PoolIntArray( 23, 21, 22, 24, 25, 26 ), PoolIntArray( 23, 26, 27 ), PoolIntArray( 28, 23, 27, 29 ), PoolIntArray( 30, 25, 24, 31, 32, 33 ), PoolIntArray( 34, 35, 36, 37, 38 ), PoolIntArray( 39, 14, 17, 40, 41 ), PoolIntArray( 42, 43, 39, 41, 28, 29 ), PoolIntArray( 44, 42, 29, 45, 46 ), PoolIntArray( 47, 44, 46, 11, 48 ), PoolIntArray( 49, 48, 11, 10 ), PoolIntArray( 50, 8, 11, 51 ), PoolIntArray( 52, 53, 54, 50, 51, 55 ), PoolIntArray( 56, 52, 55, 30, 57, 58 ), PoolIntArray( 31, 59, 32 ), PoolIntArray( 30, 33, 57 ), PoolIntArray( 56, 58, 60, 61 ), PoolIntArray( 61, 60, 38, 62 ), PoolIntArray( 63, 62, 38 ), PoolIntArray( 37, 63, 38 ), PoolIntArray( 64, 34, 38, 65, 13, 12, 66 ) ]
+outlines = [ PoolVector2Array( 19, 312, 86, 286, 315, 193, 336, 46, 555, -59, 879, 91, 1113, 115, 1114, 227, 1056, 306, 1047, 384, 1219, 484, 1642, 621, 2244, 331, 2244, 296, 2157, 161, 2155, 59, 2162, -111, 2153, -313, 2065, -349, 2227, -430, 2397.92, -519.247, 2550, -582, 2924.19, -780.573, 3187, -717, 3330, -783, 3278, -967, 4235, -1432, 4435, -1376, 4845, -1388, 5297, -1192, 5233, -1149, 5364, -1074, 4515, -656, 4158, -478, 4068, -417, 3974, -353, 3981, -178, 3997, 206, 3533, 441, 3063, 234, 2717, 384, 2583, 464, 1796, 856, 835, 408, 659, 457, 531, 383, 352, 467 ), PoolVector2Array( 2366, -284, 2417, -61, 2714, 102, 2947, 49, 3654, -348, 3597, -479, 3604, -544, 3423, -644, 3203, -640, 3081, -659 ), PoolVector2Array( 3495, -672, 3753, -544, 3949, -575, 3986, -648, 4251, -784, 4326, -756.791, 4511, -846, 4379, -909, 4264, -868, 4062, -966 ) ]
 
 [sub_resource type="Shader" id=7]
 code = "/*
@@ -402,6 +403,48 @@ scale = Vector2( 0.423316, 0.423316 )
 
 [node name="Walls" type="YSort" parent="YSort"]
 
+[node name="Fences" type="YSort" parent="YSort/Walls"]
+
+[node name="Fence" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 2656, -82 )
+scale = Vector2( 2.4, 2.4 )
+
+[node name="Fence3" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 2487, -165 )
+scale = Vector2( 2.4, 2.4 )
+
+[node name="Fence4" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3279, -562 )
+scale = Vector2( 2.4, 2.4 )
+
+[node name="Fence5" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3451, -479 )
+scale = Vector2( 2.4, 2.4 )
+
+[node name="Fence8" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3784, -640 )
+scale = Vector2( 2.3, 2.4 )
+
+[node name="Fence9" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3597, -726 )
+scale = Vector2( 2.15, 2.4 )
+
+[node name="Fence10" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 4063, -887 )
+scale = Vector2( -2.15, 2.4 )
+
+[node name="Fence6" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3439, -398 )
+scale = Vector2( -2.4, 2.4 )
+
+[node name="Fence7" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 3122, -562 )
+scale = Vector2( -2.4, 2.4 )
+
+[node name="Fence2" parent="YSort/Walls/Fences" instance=ExtResource( 21 )]
+position = Vector2( 2957, -86 )
+scale = Vector2( 2, 2.3 )
+
 [node name="Decor" type="Node2D" parent="YSort/Walls"]
 
 [node name="WallDecor" type="Sprite" parent="YSort/Walls/Decor"]
@@ -541,7 +584,7 @@ timeline = "timeline-1676112450.json"
 position = Vector2( 1060, -36 )
 dialogic_timeline = "timeline-1676112450.json"
 curse = "gun_hands"
-wait_time = 45.0
+wait_time = 35.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
