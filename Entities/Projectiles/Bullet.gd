@@ -20,12 +20,22 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	elif body.has_method("explode_into_smithereens") and body.get("fragile") == true:
 		body.explode_into_smithereens()
 	active = false
-	$AnimatedSprite.hide()
+	$AnimatedSprite2.hide()
 	$Explosion/AnimatedSprite.show()
 	$Explosion/AnimatedSprite.play("default")
 	speed = 0
-	yield($Explosion/AnimatedSprite,"animation_finished")
-	queue_free()
+	$Explosion/AnimatedSprite.connect("animation_finished", self, "queue_free")
+	
+	var particles = $CPUParticles2D
+	var t = particles.global_transform
+	remove_child(particles)
+	get_parent().add_child(particles)
+	particles.global_transform = t
+	particles.emitting = false
+	var tween = create_tween()
+	print("tweening")
+	tween.tween_property(particles, "modulate", Color(1,1,1,0), 0.3)
+	tween.connect("finished", particles, "queue_free")
 
 
 func _on_Timer_timeout() -> void:
