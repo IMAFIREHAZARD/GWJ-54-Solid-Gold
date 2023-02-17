@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
+[ext_resource path="res://GUI/Fonts/CreditsRichTextFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Fonts/Cinzel28_dynamicfont.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=17]
@@ -67,5 +68,6 @@ RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = 1
 RichTextLabel/constants/table_hseparation = 3
 RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/normal_font = ExtResource( 1 )
 RichTextLabel/styles/focus = SubResource( 26 )
 RichTextLabel/styles/normal = SubResource( 27 )
