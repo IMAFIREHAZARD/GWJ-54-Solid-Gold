@@ -17,6 +17,8 @@ func _on_Bullet_body_entered(body: Node) -> void:
 		body.kill()
 	elif body.name == "Player" and body.has_method("_on_hit"):
 		body._on_hit(1) # 1 damage
+	elif body.has_method("explode_into_smithereens") and body.get("fragile") == true:
+		body.explode_into_smithereens()
 	active = false
 	$AnimatedSprite.hide()
 	$Explosion/AnimatedSprite.show()
@@ -28,3 +30,7 @@ func _on_Bullet_body_entered(body: Node) -> void:
 
 func _on_Timer_timeout() -> void:
 	queue_free()
+
+
+func _on_Bullet_area_entered(area: Area2D) -> void:
+	_on_Bullet_body_entered(area)

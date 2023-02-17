@@ -17,7 +17,10 @@ func _ready():
 func _on_GenericButton_pressed():
 	$ClickNoise.start_persistant()
 	if dialogic_timeline != null and dialogic_timeline != "":
-		spawn_dialog()
+		if dialogic_timeline == "timeline-1676377628.json" and Global.curses_taken["strength"] == false:
+			spawn_dialog()
+		else:
+			change_scene()
 	else:
 		change_scene()
 

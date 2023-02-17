@@ -33,7 +33,7 @@
 			"character": "character-1676112496.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Would you like some gun arms?"
+			"text": "Would you like some gun hands?"
 		},
 		{
 			"character": "character-1676112496.json",
@@ -52,7 +52,7 @@
 			"value": ""
 		},
 		{
-			"emit_signal": "accept",
+			"emit_signal": "curse_accepted",
 			"event_id": "dialogic_040"
 		},
 		{
@@ -69,6 +69,6 @@
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1676112450.json",
-		"name": "GunArms"
+		"name": "GunHands"
 	}
 }

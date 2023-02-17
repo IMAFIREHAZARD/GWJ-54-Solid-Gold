@@ -11,6 +11,11 @@ var is_highlighted = false
 var hovered = true
 var push_dir : Vector2
 
+export var num_critters : int = 0
+export var critter_scene : PackedScene
+export var fragile : bool = false # fragile boxes should explode when bullets hit them
+
+
 func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("shoot") and not moving\
 	and is_highlighted:
@@ -36,17 +41,36 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		stop_audio()
 
 func play_audio():
-	for noise in $Audio.get_children():
+	for noise in $PushAudio.get_children():
 		noise.set_pitch_scale(rand_range(0.95,1.05))
 		noise.play()
 
 func stop_audio():
-	for noise in $Audio.get_children():
+	for noise in $PushAudio.get_children():
 		noise.stop()
 
 func explode_into_smithereens():
-	print("Player is very strong, box exploded.")
-	queue_free()
+	#print("Player is very strong, box exploded.")
+	
+	var noises = $ExplosionAudio.get_children()
+	var randNoise = noises[randi()%noises.size()]
+	randNoise.start_persistent()
+
+	if num_critters > 0:
+		spawn_critters()
+	
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("explode"):
+		$AnimationPlayer.play("explode")
+	else:
+		queue_free()
+
+func spawn_critters():
+	for i in range(num_critters):
+		var newCritter = critter_scene.instance()
+		#newCritter.set_global_position(global_position)
+		get_parent().call_deferred("add_child", newCritter)
+		newCritter.set_global_position(global_position)
+
 
 func _physics_process(_delta: float) -> void:
 	if SokobanSelector.front_hovered_block == self:

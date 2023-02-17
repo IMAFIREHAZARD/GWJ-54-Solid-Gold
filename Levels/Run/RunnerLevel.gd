@@ -3,8 +3,8 @@ extends Node2D
 export var endless_runner : bool = false
 
 export var next_scene : PackedScene
-export var distance_to_run : float = 400.0
-export var time_to_cover_distance : float = 30.0
+export var distance_to_run : float = 800.0
+export var time_to_cover_distance : float = 60.0
 
 var distance_remaining := distance_to_run
 
@@ -16,13 +16,33 @@ var speed_multiplier = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer/ExitTimer.set_wait_time(time_to_cover_distance / speed_multiplier / 2)
-	
+	$Timer/ExitTimer.set_wait_time(time_to_cover_distance / speed_multiplier /2.0)
+	$Timer/ExitTimer.start()
 
 func offer_devils_bargain():
-	$ObstacleSpawnTimer.set_paused(true)
+	halt_movement()
 	destroy_obstacles()
 	spawn_dialog("SpeedUp")
+
+func halt_movement():
+	$ObstacleSpawnTimer.set_paused(true)
+	
+	$Floor/Sprite.speed_up(0)
+	$Player.stop()
+	for layer in $Background.get_children():
+		if layer.has_method("speed_up"):
+			layer.speed_up(0)
+
+func resume_movement():
+	$Floor/Sprite.speed_up(speed_multiplier)
+	$Player.start()
+	for layer in $Background.get_children():
+		if layer.has_method("speed_up"):
+			layer.speed_up(speed_multiplier)
+	$ObstacleSpawnTimer.set_paused(false)
+	$Timer/ExitTimer.start()
+	$Player.start()
+	
 
 func _on_dialogic_signal(param):
 	if param == "complete_level":
@@ -32,11 +52,11 @@ func _on_dialogic_signal(param):
 		StageManager.restart_current_level()
 		
 	elif param == "speed_up":
+		resume_movement()
 		speed_up()
 	elif param == "do_not_speed_up":
 		Global.curses_taken["speed"] = false
-	$ObstacleSpawnTimer.set_paused(false)
-	$Timer/ExitTimer.start()
+		resume_movement()
 	
 	
 func speed_up():
@@ -54,7 +74,7 @@ func speed_up():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$Timer/Label.text = "Distance Remaining: " + str(distance_remaining/time_to_cover_distance * ($Timer/ExitTimer.time_left)).pad_decimals(2) + "m "
+	$Timer/Label.text = "Distance Remaining: " + str(2.0 * distance_remaining/time_to_cover_distance * ($Timer/ExitTimer.time_left)).pad_decimals(2) + "m "
 
 func introduce_obstacle():
 	var obstacle = preload("res://Levels/Run/RunnerObstacle.tscn").instance()

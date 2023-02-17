@@ -1,4 +1,4 @@
-extends "res://Levels/CommonInfrastructure/MinimalLevel.gd"
+extends "res://Levels/BaseLevel.gd"
 
 export var max_bugs = 8
 var current_bugs = 0
@@ -23,3 +23,7 @@ func _on_bug_died(_v):
 func reveal_exit(_v):
 	$Exit.show()
 	$Exit.monitoring = true
+
+func _on_curse_accepted(curseName):
+	if curseName == "gun_hands":
+		StageManager.player.start_gun_curse()

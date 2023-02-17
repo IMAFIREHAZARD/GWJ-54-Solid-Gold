@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Entities/NPCs/BaseNPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPCs/Critter/Critter.gd" type="Script" id=2]
 [ext_resource path="res://Entities/NPCs/Critter/Splat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art/Enemy_sprite.png" type="Texture" id=4]
 [ext_resource path="res://Art/Shadow.png" type="Texture" id=5]
+[ext_resource path="res://Entities/NPCs/Critter/ENEMY_death_01.wav" type="AudioStream" id=6]
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/NPCs/Critter/ENEMY_death_02.wav" type="AudioStream" id=8]
+[ext_resource path="res://Entities/NPCs/Critter/ENEMY_death_03.wav" type="AudioStream" id=9]
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
@@ -31,15 +34,31 @@ flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3200, 0, 800, 1173 )
 
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2400, 0, 800, 733 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3200, 0, 800, 733 )
+
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "hit",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 29.0689
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -54,6 +73,54 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -71,40 +138,135 @@ tracks/0/keys = {
 "values": [ 0.0, -5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -5.0, 0.0 ]
 }
 
-[node name="Critter" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=16]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "hit" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.125, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( -1, -15 ), Vector2( -1, 8 ), Vector2( -1, 8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Gradient" id=19]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 172.114
+
+[node name="Critter" type="Area2D"]
 collision_layer = 2
-collision_mask = 0
 script = ExtResource( 2 )
-manual_animation = true
 splat_scene = ExtResource( 3 )
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4 )
 scale = Vector2( 0.065, 0.065 )
 frames = SubResource( 15 )
-frame = 2
 playing = true
 
-[node name="Shadow" type="Sprite" parent="AnimatedSprite" index="0"]
+[node name="Shadow" type="Sprite" parent="AnimatedSprite"]
 position = Vector2( 30.7692, 400 )
 scale = Vector2( 3.58316, 1.36097 )
 texture = ExtResource( 5 )
 
-[node name="CollisionPolygon2D" parent="." index="1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 disabled = true
 
-[node name="NavigationAgent2D" parent="." index="2"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 target_desired_distance = 8.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="Timer" type="Timer" parent="." index="4"]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/Wiggle = SubResource( 3 )
+anims/hit = SubResource( 16 )
 
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Death1" parent="Audio" instance=ExtResource( 7 )]
+stream = ExtResource( 6 )
+volume_db = -7.0
+pitch_shift = 0.05
+
+[node name="Death2" parent="Audio" instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+volume_db = -7.0
+pitch_shift = 0.05
+
+[node name="Death3" parent="Audio" instance=ExtResource( 7 )]
+stream = ExtResource( 9 )
+volume_db = -7.0
+pitch_shift = 0.05
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.75
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2( 0, -1 )
+initial_velocity = 80.0
+scale_amount = 8.0
+color_ramp = SubResource( 19 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+scale = Vector2( 1, 0.8 )
+shape = SubResource( 20 )
+
+[connection signal="body_entered" from="." to="." method="_on_Critter_body_entered"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
