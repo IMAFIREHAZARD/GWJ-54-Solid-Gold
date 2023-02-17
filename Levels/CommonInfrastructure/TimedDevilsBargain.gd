@@ -43,13 +43,4 @@ func _on_dialogic_signal(signalName):
 		emit_signal("curse_accepted", curse)
 	
 func _on_timer_timeout():
-	# the only other dialogs would be player death or victory.
-	# in either case, you don't need to offer the bargain ATM
-	if !Dialogic.has_current_dialog_node():
-		spawn_dialog()
-
-func pause():
-	$Timer.set_paused(true)
-	
-func resume():
-	$Timer.set_paused(false)
+	spawn_dialog()
