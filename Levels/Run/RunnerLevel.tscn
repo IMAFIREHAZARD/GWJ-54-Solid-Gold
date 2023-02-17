@@ -15,7 +15,7 @@ extents = Vector2( 518, 31.4499 )
 [node name="Runner" type="Node2D"]
 script = ExtResource( 2 )
 next_scene = ExtResource( 3 )
-time_to_cover_distance = 40.0
+time_to_cover_distance = 30.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157, 420 )
@@ -84,10 +84,11 @@ scale = Vector2( 10, 10 )
 position = Vector2( 1196, 306 )
 scale = Vector2( 10, 10 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -24.0
 autoplay = true
+bus = "Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
