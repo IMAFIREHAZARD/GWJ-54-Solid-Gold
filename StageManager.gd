@@ -8,6 +8,7 @@ extends Control
 var current_map
 var current_packed_scene : PackedScene
 var player
+var hud
 
 func _ready():
 	

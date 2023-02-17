@@ -12,14 +12,29 @@ func _ready() -> void:
 
 func _on_bug_died(_v):
 	if current_bugs == 0 and victory_popup_offered == false:
-		
+		$TimedDevilsBargain.pause()
 		if Dialogic.has_current_dialog_node():
 			yield(get_tree().get_meta('latest_dialogic_node'), "timeline_end")
 		victory_popup_offered = true
 		var dialog = Dialogic.start(success_timeline)
 		add_child(dialog)
-		dialog.connect("dialogic_signal", self, "reveal_exit")
+		#dialog.connect("dialogic_signal", self, "reveal_exit")
+		dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 
 func reveal_exit(_v):
 	$Exit.show()
 	$Exit.monitoring = true
+
+func _on_dialogic_signal(signal_params):
+	if signal_params == "BugsKilled":
+		teleport_to_bossfight()
+	elif signal_params == "restart_level":
+		StageManager.restart_current_level()
+
+
+func teleport_to_bossfight():
+	StageManager.change_scene("res://Levels/BossFight/BossFight.tscn")
+
+func _on_curse_accepted(curseName):
+	if curseName == "gun_hands":
+		StageManager.player.start_gun_curse()

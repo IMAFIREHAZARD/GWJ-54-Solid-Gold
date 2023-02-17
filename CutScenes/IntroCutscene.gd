@@ -10,7 +10,7 @@ export var target_scene_path : String
 func _ready():
 	pass
 
-func _on_dialogic_signal(signalName):
+func _on_dialogic_signal(_signalName):
 	# in case you have clever dialogs with questions and stuff
 	pass
 
@@ -27,5 +27,5 @@ func change_scene():
 
 
 
-func _on_Dialog_timeline_end(timeline_name):
+func _on_Dialog_timeline_end(_timeline_name):
 	change_scene()

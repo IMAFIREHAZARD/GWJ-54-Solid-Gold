@@ -1,5 +1,6 @@
 extends Area2D
 
+signal reflect()
 export var player_seeking_bias = 0.5
 
 func _on_Reflector_area_entered(bullet: Area2D) -> void:
@@ -10,3 +11,4 @@ func _on_Reflector_area_entered(bullet: Area2D) -> void:
 
 	bullet.global_rotation = travel_dir.angle()
 	bullet.set_collision_mask_bit(0, true)
+	emit_signal("reflect")

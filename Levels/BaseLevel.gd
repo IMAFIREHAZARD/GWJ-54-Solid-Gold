@@ -44,6 +44,7 @@ func spawn_dialog(dialogName : String):
 	var new_dialog = Dialogic.start(dialogName)
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	return new_dialog
 
 
 
@@ -54,7 +55,7 @@ func _on_dialogic_signal(param):
 	elif param == "restart_level":
 		#Global.reset_curses()
 		StageManager.restart_current_level()
-		Global.player_health_remaining = Global.player_max_health - Global.get_num_curses()
+		Global.player_health_remaining = Global.player_max_health #- Global.get_num_curses()
 	elif param == "accepted_levitation_curse":
 		Global.curses_taken["levitation"] = true
 		StageManager.player.resume()

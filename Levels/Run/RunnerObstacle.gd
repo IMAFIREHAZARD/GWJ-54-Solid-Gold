@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 
-export var speed = 550.0
+export var speed = 750.0
 
 var velocity : Vector2 = Vector2.ZERO
+var walking : bool = false
+var flying : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,12 +26,13 @@ func fly(speed_multiplier):
 	$FlyingSprite.show()
 	$WalkingSprite.hide()
 	set_velocity(speed_multiplier)
-	
+	flying = true
 
 func walk(speed_multiplier):
 	$WalkingSprite.show()
 	$FlyingSprite.hide()
 	set_velocity(speed_multiplier)
+	walking = true
 
 func hit():
 	$CollisionShape2D.set_deferred("disabled", true)
