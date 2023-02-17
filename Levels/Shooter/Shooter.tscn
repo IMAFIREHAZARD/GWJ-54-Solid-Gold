@@ -148,6 +148,10 @@ collision_layer = 5
 position = Vector2( 552, 162 )
 rotation = -0.0400444
 
+[node name="Label" parent="YSort/Floor/ShootInstructions" index="0"]
+text = "Shoot all
+the bugs"
+
 [node name="Critters" type="YSort" parent="YSort"]
 position = Vector2( 1422, -873 )
 
@@ -353,9 +357,13 @@ navpoly = SubResource( 1 )
 [node name="Exit" parent="." instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 4984, -1324 )
-rotation = -1.67865
+scale = Vector2( 3, 3 )
 monitoring = false
 next_scene = ExtResource( 4 )
+
+[node name="Sprite" parent="Exit" index="1"]
+frame = 2
+flip_v = true
 
 [node name="StaticBody2D" parent="Exit" instance=ExtResource( 13 )]
 position = Vector2( -3553.31, -3403.26 )
@@ -544,3 +552,6 @@ position = Vector2( 4613, -1228 )
 [connection signal="child_exiting_tree" from="YSort/Critters" to="TriggerHandler" method="_on_Critters_child_exiting_tree"]
 [connection signal="body_entered" from="Exit" to="TriggerHandler" method="_on_Exit_body_entered"]
 [connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
+
+[editable path="YSort/Floor/ShootInstructions"]
+[editable path="Exit"]
