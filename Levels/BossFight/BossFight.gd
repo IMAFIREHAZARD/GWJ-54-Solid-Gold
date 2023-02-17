@@ -1,7 +1,9 @@
 extends "res://Levels/BaseLevel.gd"
 
 var current_bugs = 0
-var max_bugs = 3
+export var max_bugs = 3 # dictates when bugs stop duplicating
+export var max_tower_bugs = 10 # dictates when bugs stop spawning
+
 onready var shield_tower: StaticBody2D = $"%ShieldTower"
 onready var shield_tower_2: StaticBody2D = $"%ShieldTower2"
 onready var boss: Sprite = $YSort/BossRoot/pos/Boss
@@ -15,6 +17,8 @@ func _ready() -> void:
 	player.set_process_unhandled_input(true)
 
 func do_cutscene() -> void:
+	$YSort/Player/AnimationPlayer2.play("WalkIn")
+	yield($YSort/Player/AnimationPlayer2, "animation_finished")
 	yield(get_tree().create_timer(0.5), "timeout")
 	yield(pan_camera(boss.global_position), "completed")
 	var dialog = spawn_dialog("BossIntro")
@@ -22,6 +26,7 @@ func do_cutscene() -> void:
 	pan_camera(shield_tower_2.global_position)
 	yield(dialog, "dialogic_signal")
 	yield(pan_camera(player.global_position), "completed")
+	player.shoot_disabled = false
 	
 
 func pan_camera(target : Vector2, time := 1.0):
