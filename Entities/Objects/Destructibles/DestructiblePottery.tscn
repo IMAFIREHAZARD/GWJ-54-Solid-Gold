@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Art/Objects/Objects Spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Objects/Destructibles/PotteryShards.png" type="Texture" id=2]
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Objects/Destructibles/CRATE_smash_02.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/Objects/Destructibles/CRATE_smash_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/Objects/Destructibles/DestructiblePottery.gd" type="Script" id=6]
+[ext_resource path="res://Levels/Run/PlayRandomNoises.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 34, 31.5 )
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="DestructiblePottery" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16.5 )
+shape = SubResource( 2 )
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite01" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 45.0757, 32.1598, 38.8148, 53.3333 )
+
+[node name="Sprite02" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 173.076, 40.4561, 30.2222, 44.4444 )
+
+[node name="Sprite03" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 284.162, 29.6042, 69.037, 63.7037 )
+
+[node name="Sprite04" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 408.737, 28.9513, 71.1111, 66.6667 )
+
+[node name="Sprite05" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 41.8868, 163.695, 43.2593, 51.8519 )
+
+[node name="Sprite06" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 289.964, 161.745, 61.3333, 53.3333 )
+
+[node name="Sprite07" type="Sprite" parent="Sprites"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -16 )
+region_enabled = true
+region_rect = Rect2( 429.816, 167.967, 34.6667, 43.5556 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource( 1 )
+emitting = false
+amount = 4
+lifetime = 0.66
+one_shot = true
+explosiveness = 0.78
+lifetime_randomness = 0.3
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 200 )
+initial_velocity = 200.0
+initial_velocity_random = 0.25
+angular_velocity = 150.0
+angular_velocity_random = 0.67
+anim_speed = 0.25
+anim_speed_random = 0.25
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/explode = SubResource( 3 )
+
+[node name="SmashNoises" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Smash01" parent="SmashNoises" instance=ExtResource( 3 )]
+stream = ExtResource( 5 )
+volume_db = -7.0
+pitch_scale = 3.0
+pitch_shift = 0.1
+
+[node name="Smash02" parent="SmashNoises" instance=ExtResource( 3 )]
+stream = ExtResource( 4 )
+volume_db = -7.0
+pitch_scale = 3.0
+pitch_shift = 0.1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

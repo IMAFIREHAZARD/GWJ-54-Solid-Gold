@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Music/BGM2-test.mp3" type="AudioStream" id=19]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/Wall.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Art/Big_background elements/Tops.png" type="Texture" id=21]
+[ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=22]
 [ext_resource path="res://Art/Big_background elements/forebreidge.png" type="Texture" id=23]
 [ext_resource path="res://GUI/TemporaryPopup.tscn" type="PackedScene" id=24]
 
@@ -107,6 +108,7 @@ collision_layer = 4
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1572859, 16, 0, -1572855, 16, 0, -1507325, 12, 0, -1507324, 4, 0, -1507323, 16, 0, -1310713, 16, 0, -1245176, 6, 0, -1179642, 21, 0, -1179641, 21, 0, -1179640, 16, 0, -1114108, 536870925, 0, -1114106, 21, 0, -1114105, 21, 0, -1114104, 16, 0, -1048572, 10, 0, -1048569, 536870933, 0, -1048568, 6, 0, -983033, 536870933, 0, -917498, 536870933, 0, -917496, 536870933, 0, -851964, 10, 0, -851963, 21, 0, -851960, 21, 0, -851958, 21, 0, -851956, 15, 0, -851955, 15, 0, -851954, 14, 0, -851953, 13, 0, -786428, 536870925, 0, -786427, 21, 0, -786424, 21, 0, -720893, 12, 0, -720892, 13, 0, -720891, 21, 0, -720888, 21, 0, -720887, 536870927, 0, -720881, 28, 0, -655355, 21, 0, -655354, 536870933, 0, -655352, 536870933, 0, -655345, 29, 0, -589818, 22, 0, -589817, 536870933, 0, -589816, 19, 0, -589809, 26, 0, -524273, 26, 0, -458737, 4, 0, -196607, 15, 0, -131068, 6, 0, -65530, 10, 0, -65529, 10, 0, 1, 536870929, 0, 65537, 4, 0, 65540, 6, 0, 131074, 16, 0 )
+script = ExtResource( 22 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 426, 333 )
