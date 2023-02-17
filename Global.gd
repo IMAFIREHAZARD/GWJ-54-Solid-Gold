@@ -21,6 +21,15 @@ var curses_taken = {
 	"levitation":false,
 }
 
+# increment these values so we can offer curses as required
+var scene_attempts = {
+	"Shooter":0,
+	"BossFight":0,
+	"Runner":0,
+	"Sokoban":0,
+}
+
+
 var player_max_health : float = 5.0
 var player_health_remaining : float = player_max_health
 

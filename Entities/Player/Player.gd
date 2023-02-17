@@ -176,15 +176,10 @@ func begin_dying():
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
-	if !Global.curses_offered["gun_hands"]:
-		
-		# We need to offer the gun-hands curse, but then what?
-		# yield for the dialog to finish, and restart the level?
-		# or bring the player back to life in place?
-		StageManager.current_map.spawn_dialog("GunHands")
-		
-	else:
-		StageManager.current_map.spawn_dialog("PlayerDied")
+	
+	Global.scene_attempts[StageManager.current_map.name] += 1
+	
+	StageManager.current_map.spawn_dialog("PlayerDied")
 
 		
 	
