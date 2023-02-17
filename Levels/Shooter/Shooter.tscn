@@ -26,7 +26,7 @@
 [sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
 
-[sub_resource type="GradientTexture2D" id=6]
+[sub_resource type="GradientTexture2D" id=9]
 gradient = SubResource( 5 )
 width = 75
 fill_from = Vector2( 0, 0.000558036 )
@@ -35,6 +35,7 @@ fill_from = Vector2( 0, 0.000558036 )
 background_mode = 4
 ambient_light_color = Color( 0.262745, 0.0627451, 0.0627451, 1 )
 fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ss_reflections_enabled = true
 ssao_radius = 0.1
 ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
 glow_enabled = true
@@ -53,7 +54,7 @@ glow_high_quality = true
 adjustment_enabled = true
 adjustment_brightness = 1.15
 adjustment_saturation = 0.62
-adjustment_color_correction = SubResource( 6 )
+adjustment_color_correction = SubResource( 9 )
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 5462, -1122, 4515, -656, 4233, -851, 4506, -1620, 4158, -478, 4068, -417, 3561, -519, 3754, -609, 3974, -353, 3552, -357, 3424, -423, 360, 496, -193, 234, 660, -204, 496, 410, 1293, 122, 1135, 213, 2452, -279, 2153, -313, 2033, -373, 2141, -441, 3081, -595, 3591, -692, 3422, -604, 1056, 306, 835, 408, 4067, -929, 2948, -36, 3981, -178, 3533, 441, 3063, 234, 3997, 206, 2717, 384, 2583, 464, 2244, 296, 2157, 161, 2155, 59, 2162, -111, 669, 496, 1796, 856, 1152, 360, 1649, 605, 3247, -517 )

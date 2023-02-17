@@ -36,7 +36,8 @@ polygon = PoolVector2Array( 0, 16, 32, 0, 0, -16, -32, 0 )
 position = Vector2( 0, -160.64 )
 scale = Vector2( 1.12, 1.10289 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Reflector" parent="." instance=ExtResource( 7 )]
+modulate = Color( 11.56, 1, 20.24, 1 )
