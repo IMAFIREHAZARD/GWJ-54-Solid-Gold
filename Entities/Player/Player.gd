@@ -80,7 +80,7 @@ func move_normally(delta : float):
 		zone = zone as SlowAttack
 		if zone.overlaps_body(self):
 			vel *= zone.speed_mulitplier
-	
+	vel *= global_scale
 	
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
@@ -138,7 +138,8 @@ func animate_movement(directionVector):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		if reload_timer.is_stopped():
+		if reload_timer.is_stopped() and \
+		(SokobanSelector.front_hovered_block == null or not SokobanSelector.front_hovered_block.is_highlighted):
 			shoot()
 			var tween = create_tween()
 			var p = $TextureProgress
@@ -163,6 +164,7 @@ func shoot():
 	var bullet = bullet_scene.instance() as Node2D
 	get_parent().add_child(bullet)
 	bullet.global_position = $BulletSpawnPoint.global_position
+	bullet.scale *= scale
 	bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
 
 func start_gun_curse():
@@ -176,6 +178,9 @@ func begin_dying():
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
+	
+	Global.scene_attempts[StageManager.current_map.name] += 1
+	
 	StageManager.current_map.spawn_dialog("PlayerDied")
 
 		

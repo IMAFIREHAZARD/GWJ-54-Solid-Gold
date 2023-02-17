@@ -27,7 +27,7 @@ func start_persistent():
 	get_tree().get_root().add_child(new_sound)
 	
 	if pitch_shift:
-		new_sound.set_pitch_scale(rand_range(0.9, 1.1))
+		new_sound.set_pitch_scale(rand_range(1.0-pitch_shift, 1.0+pitch_shift) * pitch_scale)
 	new_sound.play()
 
 func start_without_duplicate():

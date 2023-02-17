@@ -271,7 +271,7 @@ scale = Vector2( 0.423316, 0.423316 )
 [node name="Decor" type="Node2D" parent="YSort/Walls"]
 
 [node name="WallDecor" type="Sprite" parent="YSort/Walls/Decor"]
-modulate = Color( 1, 1, 2.89, 1 )
+modulate = Color( 1.16, 2.32, 2.31, 1 )
 position = Vector2( 869, -394 )
 texture = ExtResource( 14 )
 
@@ -282,18 +282,17 @@ scale = Vector2( -1.06, 1 )
 texture = ExtResource( 14 )
 
 [node name="WallDecor3" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 2673, -987 )
+modulate = Color( 1, 1.16, 2.89, 1 )
+position = Vector2( 2043, -660 )
 scale = Vector2( -1.06, 1 )
 texture = ExtResource( 14 )
 
-[node name="WallDecor5" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 3282, -1330 )
-scale = Vector2( -1.06, 1 )
+[node name="WallDecor4" type="Sprite" parent="YSort/Walls/Decor/WallDecor3"]
+position = Vector2( -577.359, -302 )
 texture = ExtResource( 14 )
 
-[node name="WallDecor4" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 4071, -1693 )
-scale = Vector2( -1.06, 1 )
+[node name="WallDecor5" type="Sprite" parent="YSort/Walls/Decor/WallDecor3"]
+position = Vector2( -1802.83, -936 )
 texture = ExtResource( 14 )
 
 [node name="StaticBody2D8" parent="YSort/Walls" instance=ExtResource( 20 )]

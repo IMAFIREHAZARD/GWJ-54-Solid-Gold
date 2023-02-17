@@ -18,11 +18,19 @@ func _on_bug_died(_v):
 		victory_popup_offered = true
 		var dialog = Dialogic.start(success_timeline)
 		add_child(dialog)
-		dialog.connect("dialogic_signal", self, "reveal_exit")
+		#dialog.connect("dialogic_signal", self, "reveal_exit")
+		dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 
 func reveal_exit(_v):
 	$Exit.show()
 	$Exit.monitoring = true
+
+func _on_dialogic_signal(signal_params):
+	teleport_to_bossfight()
+
+
+func teleport_to_bossfight():
+	StageManager.change_scene("res://Levels/BossFight/BossFight.tscn")
 
 func _on_curse_accepted(curseName):
 	if curseName == "gun_hands":
