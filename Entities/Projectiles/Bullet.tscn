@@ -176,6 +176,7 @@ visible = false
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 offset = Vector2( -58, 3 )
 

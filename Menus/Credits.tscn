@@ -359,7 +359,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 bbcode_text = "Hayden -  [url]https://haydoggo.itch.io/[/url]"
-text = "Hayden Leete -  https://haydoggo.itch.io/"
+text = "Hayden -  https://haydoggo.itch.io/"
 
 [node name="Plex" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 160.0
@@ -391,8 +391,8 @@ rect_min_size = Vector2( 450, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "Eddy14 -  [url]...[/url]"
-text = "Eddy14 -  ..."
+bbcode_text = "Eddy14 -  [url]https://eddy14.itch.io[/url]"
+text = "Eddy14 -  https://eddy14.itch.io"
 
 [node name="BitGhost" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 322.0
