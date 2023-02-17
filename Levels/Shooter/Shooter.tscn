@@ -23,12 +23,13 @@
 [ext_resource path="res://GUI/TemporaryPopup.tscn" type="PackedScene" id=24]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 5655, -1056, 4587, -552, 4233, -851, 4506, -1620, 1135, 213, 486, 522, 315, 595, -308, 277, 660, -204, 1293, 122, 2095, 32, 1795, -116, 2154, -307, 2452, -279, 2033, -373, 2141, -441, 3081, -595, 650, 610, 1056, 306, 829, 510, 3552, -357, 3424, -423, 3561, -519, 3754, -609, 4068, -417, 3775, -246, 3885, -193, 3750, -90, 2705, 390, 2515, 330, 2156, 248, 1960, 121, 1482, 827, 1152, 360, 1537, 534, 4067, -929, 3591, -692, 3422, -604, 2948, -36, 3247, -517, 4232, -365 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9 ), PoolIntArray( 10, 11, 12 ), PoolIntArray( 13, 12, 14, 15, 16 ), PoolIntArray( 17, 5, 4, 18, 19 ), PoolIntArray( 20, 21, 22, 23, 1, 24 ), PoolIntArray( 25, 26, 27, 28, 29 ), PoolIntArray( 30, 31, 10, 29 ), PoolIntArray( 32, 19, 18, 33 ), PoolIntArray( 32, 33, 34 ), PoolIntArray( 29, 32, 34, 30 ), PoolIntArray( 3, 2, 35 ), PoolIntArray( 15, 3, 35, 36, 16 ), PoolIntArray( 23, 2, 1 ), PoolIntArray( 36, 23, 22, 37 ), PoolIntArray( 29, 10, 12, 13, 38 ), PoolIntArray( 37, 39, 16, 36 ), PoolIntArray( 1, 40, 24 ), PoolIntArray( 20, 24, 25, 29, 38 ) ]
-outlines = [ PoolVector2Array( -308, 277, 660, -204, 1293, 122, 1135, 213, 1056, 306, 1152, 360, 1537, 534, 2156, 248, 1960, 121, 2095, 32, 1795, -116, 2154, -307, 2033, -373, 2141, -441, 4506, -1620, 5655, -1056, 4587, -552, 4232, -365, 4068, -417, 3775, -246, 3885, -193, 3750, -90, 2705, 390, 2515, 330, 1482, 827, 829, 510, 650, 610, 486, 522, 315, 595 ), PoolVector2Array( 2452, -279, 2948, -36, 3552, -357, 3424, -423, 3561, -519, 3422, -604, 3247, -517, 3081, -595 ), PoolVector2Array( 3591, -692, 3754, -609, 4233, -851, 4067, -929 ) ]
+vertices = PoolVector2Array( 5462, -1122, 4515, -656, 4233, -851, 4506, -1620, 3561, -519, 3754, -609, 4158, -478, 4068, -417, 3775, -246, 3552, -357, 3424, -423, 1135, 213, 486, 522, 315, 595, -308, 277, 660, -204, 1293, 122, 2452, -279, 2153, -313, 2033, -373, 2141, -441, 3081, -595, 3591, -692, 3422, -604, 639, 545, 1056, 306, 830, 467, 1517, 817, 1152, 360, 1537, 534, 2515, 330, 2156, 248, 3885, -193, 3750, -90, 4067, -929, 2157, 161, 2705, 390, 2948, -36, 2155, 59, 2162, -111, 3247, -517 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14, 15, 16 ), PoolIntArray( 17, 18, 19, 20, 21 ), PoolIntArray( 2, 1, 6, 5 ), PoolIntArray( 22, 5, 4, 23 ), PoolIntArray( 24, 12, 11, 25, 26 ), PoolIntArray( 27, 26, 25, 28 ), PoolIntArray( 27, 28, 29 ), PoolIntArray( 30, 27, 29, 31 ), PoolIntArray( 8, 32, 33 ), PoolIntArray( 3, 2, 34 ), PoolIntArray( 20, 3, 34, 22, 21 ), PoolIntArray( 30, 31, 35, 17 ), PoolIntArray( 9, 8, 33, 36, 37 ), PoolIntArray( 17, 37, 36, 30 ), PoolIntArray( 17, 35, 38, 39 ), PoolIntArray( 17, 39, 18 ), PoolIntArray( 21, 22, 23, 40 ) ]
+outlines = [ PoolVector2Array( -308, 277, 660, -204, 1293, 122, 1135, 213, 1056, 306, 1152, 360, 1537, 534, 2156, 248, 2157, 161, 2155, 59, 2162, -111, 2153, -313, 2033, -373, 2141, -441, 4506, -1620, 5462, -1122, 4515, -656, 4158, -478, 4068, -417, 3775, -246, 3885, -193, 3750, -90, 2705, 390, 2515, 330, 1517, 817, 830, 467, 639, 545, 486, 522, 315, 595 ), PoolVector2Array( 2452, -279, 2948, -36, 3552, -357, 3424, -423, 3561, -519, 3422, -604, 3247, -517, 3081, -595 ), PoolVector2Array( 3591, -692, 3754, -609, 4233, -851, 4067, -929 ) ]
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource( 2 )
+max_bugs = 30
 success_timeline = "timeline-1676179945.json"
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -138,25 +139,73 @@ collision_layer = 5
 [node name="ShootInstructions" parent="YSort/Floor" instance=ExtResource( 24 )]
 
 [node name="Critters" type="YSort" parent="YSort"]
-position = Vector2( 1422, -873 )
+position = Vector2( 3661, -2248 )
 
 [node name="Critter" parent="YSort/Critters" instance=ExtResource( 10 )]
 position = Vector2( 1127, 887 )
 
 [node name="Critter2" parent="YSort/Critters" instance=ExtResource( 10 )]
-position = Vector2( 1127, 887 )
+position = Vector2( 1089, 876 )
 
 [node name="Critter3" parent="YSort/Critters" instance=ExtResource( 10 )]
 position = Vector2( 1127, 887 )
 
 [node name="Critter4" parent="YSort/Critters" instance=ExtResource( 10 )]
-position = Vector2( 1127, 887 )
+position = Vector2( 1218, 938 )
 
 [node name="Critter5" parent="YSort/Critters" instance=ExtResource( 10 )]
 position = Vector2( 1127, 887 )
 
 [node name="Critter6" parent="YSort/Critters" instance=ExtResource( 10 )]
-position = Vector2( 1127, 887 )
+position = Vector2( 1042, 852 )
+
+[node name="Critter7" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter8" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter9" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter10" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter11" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter12" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter13" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter14" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter15" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter16" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter17" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter18" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter19" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter20" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter21" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
+
+[node name="Critter22" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( 1042, 852 )
 
 [node name="Pillars" type="YSort" parent="YSort"]
 z_index = 3
