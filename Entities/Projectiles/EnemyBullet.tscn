@@ -30,7 +30,6 @@ shape = SubResource( 1 )
 position = Vector2( -85, -82 )
 scale = Vector2( -1, 1 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

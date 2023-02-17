@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ConcreteCracks.png-728ad51663b2a3ef5208e49bb98b4e12.stex"
+path="res://.import/Plants_decal.png-ddb6984aa7078db7883da2bf9cca0fd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Objects/Destructibles/ConcreteCracks.png"
-dest_files=[ "res://.import/ConcreteCracks.png-728ad51663b2a3ef5208e49bb98b4e12.stex" ]
+source_file="res://Art/Objects/Plants_decal.png"
+dest_files=[ "res://.import/Plants_decal.png-ddb6984aa7078db7883da2bf9cca0fd5.stex" ]
 
 [params]
 

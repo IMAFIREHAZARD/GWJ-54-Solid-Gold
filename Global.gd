@@ -44,9 +44,6 @@ var player_events = {
 func _ready():
 	pass # Replace with function body.
 
-func reset_health():
-	player_health_remaining = player_max_health
-
 func reset_curses():
 	for curse in curses_taken.keys():
 		curses_taken[curse] = false
