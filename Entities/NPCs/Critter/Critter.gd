@@ -18,6 +18,8 @@ enum State {
 }
 var state = State.ROAM
 
+signal died
+
 func _ready() -> void:
 	for target in get_tree().get_nodes_in_group("BugTargets"):
 		targets.append(target.global_position)
@@ -75,6 +77,8 @@ func kill():
 	set_deferred("monitorable", false)
 	if level != null:
 		level.current_bugs -= 1
+		connect("died", StageManager.hud, "_on_bug_died")
+		emit_signal("died")
 	$AnimationPlayer.play("hit")
 	play_death_sound()
 	# see also: _on_AnimationPlayer_animation_finished()
