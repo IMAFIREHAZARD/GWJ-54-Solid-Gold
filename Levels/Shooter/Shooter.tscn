@@ -362,7 +362,6 @@ monitoring = false
 next_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="Exit" index="1"]
-frame = 2
 flip_v = true
 
 [node name="StaticBody2D" parent="Exit" instance=ExtResource( 13 )]
