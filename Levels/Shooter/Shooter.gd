@@ -26,11 +26,7 @@ func reveal_exit(_v):
 	$Exit.monitoring = true
 
 func _on_dialogic_signal(signal_params):
-	if signal_params == "BugsKilled":
-		
-		teleport_to_bossfight()
-	elif signal_params == "restart_level":
-		pass
+	teleport_to_bossfight()
 
 
 func teleport_to_bossfight():
