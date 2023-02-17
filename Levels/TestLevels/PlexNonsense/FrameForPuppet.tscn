@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 4, 595 )
+
+[node name="PlayerSideView" parent="." instance=ExtResource( 1 )]
+position = Vector2( 183, -228 )
+
+[node name="Torso" parent="PlayerSideView/Node2D" index="0"]
+position = Vector2( 0, -2.02218 )
+
+[node name="ArmULeft" parent="PlayerSideView/Node2D/Torso" index="2"]
+rotation = 1.16166
+
+[node name="ArmLLeft" parent="PlayerSideView/Node2D/Torso/ArmULeft" index="0"]
+rotation = -0.921193
+
+[node name="LegULeft" parent="PlayerSideView/Node2D/Torso" index="3"]
+rotation = -0.860984
+
+[node name="LegLLeft" parent="PlayerSideView/Node2D/Torso/LegULeft" index="0"]
+rotation = 0.0829826
+
+[node name="LegURight" parent="PlayerSideView/Node2D/Torso" index="4"]
+rotation = 0.490347
+
+[node name="LegLRight" parent="PlayerSideView/Node2D/Torso/LegURight" index="0"]
+rotation = 1.25898
+
+[node name="ArmURight" parent="PlayerSideView/Node2D/Torso" index="5"]
+rotation = -0.781729
+
+[node name="ArmLRight" parent="PlayerSideView/Node2D/Torso/ArmURight" index="0"]
+rotation = -1.40479
+
+[node name="AnimationPlayer" parent="PlayerSideView" index="4"]
+reset_on_save = false
+
+[node name="HUD2" parent="PlayerSideView" index="11"]
+visible = false
+
+[editable path="PlayerSideView"]

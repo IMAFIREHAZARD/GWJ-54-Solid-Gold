@@ -15,6 +15,8 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	if not active: return
 	if body.has_method("kill") and body.name != "Player":
 		body.kill()
+	elif body.has_method("_on_hit") and "Boss" in body.name:
+		body._on_hit(1) # gonna need a lot of hits to kill the boss
 	elif body.name == "Player" and body.has_method("_on_hit"):
 		body._on_hit(1) # 1 damage
 	elif body.has_method("explode_into_smithereens") and body.get("fragile") == true:
