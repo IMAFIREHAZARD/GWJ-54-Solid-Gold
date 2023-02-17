@@ -80,7 +80,7 @@ func move_normally(delta : float):
 		zone = zone as SlowAttack
 		if zone.overlaps_body(self):
 			vel *= zone.speed_mulitplier
-	
+	vel *= global_scale
 	
 	move_and_slide(vel * Vector2(1,0.5))
 	animate_movement(vel)
@@ -163,6 +163,7 @@ func shoot():
 	var bullet = bullet_scene.instance() as Node2D
 	get_parent().add_child(bullet)
 	bullet.global_position = $BulletSpawnPoint.global_position
+	bullet.scale *= scale
 	bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
 
 func start_gun_curse():
