@@ -18,6 +18,8 @@ enum State {
 }
 var state = State.ROAM
 
+signal died
+
 func _ready() -> void:
 	for target in get_tree().get_nodes_in_group("BugTargets"):
 		targets.append(target.global_position)
@@ -50,6 +52,7 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 			state = State.PAUSED
 			animation_player.play("Wiggle")
 			yield(animation_player, "animation_finished")
+			if state == State.DEAD: return
 			var extra_critter = duplicate()
 			get_parent().add_child(extra_critter)
 			state = State.ROAM
@@ -74,6 +77,8 @@ func kill():
 	set_deferred("monitorable", false)
 	if level != null:
 		level.current_bugs -= 1
+		connect("died", StageManager.hud, "_on_bug_died")
+		emit_signal("died")
 	$AnimationPlayer.play("hit")
 	play_death_sound()
 	# see also: _on_AnimationPlayer_animation_finished()
@@ -105,8 +110,10 @@ func _on_AttackArea_body_entered(body: Node2D) -> void:
 		tween.tween_interval(0.5)
 		tween.tween_property(self, "global_position", player_pos, 0.2)
 		tween.tween_property(self, "global_position", start_pos, 0.2)
-		tween.tween_callback(self, "set", ["state", State.ROAM])
-		tween.tween_callback(self, "goto_random_pos")
+		yield(tween,"finished")
+		if state == State.DEAD: return
+		state = State.ROAM
+		goto_random_pos()
 
 # hit player
 func _on_Critter_body_entered(body: Node) -> void:

@@ -246,7 +246,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 9/shape_one_way_margin = 0.0
 9/shapes = [  ]
 9/z_index = 0
-10/name = "Objects Spritesheet.png 10"
+10/name = "Pottery 4"
 10/texture = ExtResource( 3 )
 10/tex_offset = Vector2( 0, -81.745 )
 10/modulate = Color( 1, 1, 1, 1 )
@@ -267,7 +267,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 10/z_index = 0
-11/name = "Objects Spritesheet.png 11"
+11/name = "Pottery 3"
 11/texture = ExtResource( 3 )
 11/tex_offset = Vector2( 35.625, -59.036 )
 11/modulate = Color( 1, 1, 1, 1 )
@@ -288,7 +288,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 11/z_index = 0
-13/name = "Objects Spritesheet.png 13"
+13/name = "Pottery 1"
 13/texture = ExtResource( 3 )
 13/tex_offset = Vector2( 12.234, -59.036 )
 13/modulate = Color( 1, 1, 1, 1 )
@@ -309,7 +309,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, -1.086, 0 )
 } ]
 13/z_index = 0
-14/name = "Objects Spritesheet.png 14"
+14/name = "Pottery 7"
 14/texture = ExtResource( 3 )
 14/tex_offset = Vector2( 0, -59.036 )
 14/modulate = Color( 1, 1, 1, 1 )
@@ -330,7 +330,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
-15/name = "Objects Spritesheet.png 15"
+15/name = "Pottery 6"
 15/texture = ExtResource( 3 )
 15/tex_offset = Vector2( 0, -59.036 )
 15/modulate = Color( 1, 1, 1, 1 )
@@ -365,7 +365,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 16/shape_one_way_margin = 0.0
 16/shapes = [  ]
 16/z_index = 0
-17/name = "Objects Spritesheet.png 17"
+17/name = "Pottery 5"
 17/texture = ExtResource( 3 )
 17/tex_offset = Vector2( -8.548, -48.535 )
 17/modulate = Color( 1, 1, 1, 1 )
@@ -386,7 +386,7 @@ points = PoolVector2Array( 64, 0, 128, 32, 64, 64, 0, 32, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 17/z_index = 0
-18/name = "Objects Spritesheet.png 18"
+18/name = "Pottery 2"
 18/texture = ExtResource( 3 )
 18/tex_offset = Vector2( 35.625, -59.036 )
 18/modulate = Color( 1, 1, 1, 1 )

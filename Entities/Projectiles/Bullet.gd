@@ -33,4 +33,5 @@ func _on_Timer_timeout() -> void:
 
 
 func _on_Bullet_area_entered(area: Area2D) -> void:
-	_on_Bullet_body_entered(area)
+	if area is Critter:
+		_on_Bullet_body_entered(area)

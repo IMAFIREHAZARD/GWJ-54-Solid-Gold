@@ -9,7 +9,7 @@ func _ready():
 	default_zoom = zoom
 	distant_zoom = 3.0 * zoom
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom = distant_zoom
 	elif Input.is_action_just_pressed("zoom_in"):

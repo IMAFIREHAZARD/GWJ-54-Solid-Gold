@@ -24,10 +24,12 @@ func _unhandled_input(_event):
 	elif Input.is_action_just_pressed("slide"):
 		slow_down()
 		$AnimationPlayer.play("slide")
+		$CPUParticles2D.emitting = true
 		State = States.SLIDING
 		
 func launch():
 	velocity.y = jump_speed
+	$CPUParticles2D.emitting = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,21 +44,26 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name in ["jump", "slide", "stumble", "recoil"]:
 		$AnimationPlayer.set_speed_scale(run_animation_speed)
 		$AnimationPlayer.play("run")
-	
+		if run_animation_speed > 1.0:
+			$CPUParticles2D.emitting = true
 
 func speed_up(speedMultiplier : float = 1.0):
 	run_animation_speed = speedMultiplier
 	$AnimationPlayer.set_speed_scale(run_animation_speed)
-
+	$CPUParticles2D.emitting = true
+	
 func slow_down():
 	$AnimationPlayer.set_speed_scale(1.0)
 	
 
 func stop():
 	$AnimationPlayer.play("idle")
-
+	$CPUParticles2D.emitting = false
+	
 func start():
 	$AnimationPlayer.play("run")
+	if run_animation_speed > 1.0:
+		$CPUParticles2D.emitting = true
 
 func _on_hit(body):
 	if body.get("walking") == true:
