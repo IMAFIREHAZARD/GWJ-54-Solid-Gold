@@ -35,7 +35,7 @@
 			"text": "We killed all those mother F***ing bugs! Lets f***ing go!"
 		},
 		{
-			"emit_signal": "",
+			"emit_signal": "BugsKilled",
 			"event_id": "dialogic_040"
 		}
 	],
