@@ -39,9 +39,10 @@ func _process(delta):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name in ["jump", "slide"]:
+	if anim_name in ["jump", "slide", "stumble", "recoil"]:
 		$AnimationPlayer.set_speed_scale(run_animation_speed)
 		$AnimationPlayer.play("run")
+	
 
 func speed_up(speedMultiplier : float = 1.0):
 	run_animation_speed = speedMultiplier
@@ -57,16 +58,23 @@ func stop():
 func start():
 	$AnimationPlayer.play("run")
 
+func _on_hit(body):
+	if body.get("walking") == true:
+		$AnimationPlayer.play("stumble")
+	elif body.get("flying") == true:
+		$AnimationPlayer.play("recoil")
+
+	Global.player_health_remaining -= 1
+	if Global.player_health_remaining < 0:
+		print("Player Died")
+		
+		get_parent()._on_runner_died()
+		call_deferred("queue_free")
+
 func _on_Hurtbox_body_entered(body):
 	if $iframes.is_stopped():
 		if body.has_method("hit"):
 			body.hit()
-			
-			Global.player_health_remaining -= 1
-			if Global.player_health_remaining < 0:
-				print("Player Died")
-				
-				get_parent()._on_runner_died()
-				call_deferred("queue_free")
+			self._on_hit(body)
 		else:
 			$iframes.start()
