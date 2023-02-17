@@ -138,7 +138,8 @@ func animate_movement(directionVector):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		if reload_timer.is_stopped():
+		if reload_timer.is_stopped() and \
+		(SokobanSelector.front_hovered_block == null or not SokobanSelector.front_hovered_block.is_highlighted):
 			shoot()
 			var tween = create_tween()
 			var p = $TextureProgress
