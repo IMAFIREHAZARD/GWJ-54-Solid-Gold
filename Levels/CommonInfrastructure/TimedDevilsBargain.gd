@@ -9,7 +9,10 @@ signal curse_accepted
 func _ready():
 	
 	if !Global.curses_taken[curse]:
-		$Timer.set_wait_time(wait_time)
+		if Global.scene_attempts[StageManager.current_map.name] > 0:
+			$Timer.set_wait_time(1.0)
+		else:
+			$Timer.set_wait_time(wait_time)
 		#warning-ignore:RETURN_VALUE_DISCARDED
 		$Timer.connect("timeout", self, "_on_timer_timeout")
 		$Timer.start()
