@@ -21,12 +21,12 @@ func _ready() -> void:
 func decrease_shield_power():
 	shield_power -= 1
 	if shield_power <= 0:
-		self.state = SPAWN
+		self.state = REFLECT
 
 func increase_shield_power():
 	shield_power += 1
 	if shield_power > 0:
-		self.state = REFLECT
+		self.state = SPAWN
 
 func _set_state(value):
 	state = value
