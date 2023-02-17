@@ -166,7 +166,10 @@ collision_layer = 4
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1572859, 16, 0, -1572855, 16, 0, -1507325, 12, 0, -1507324, 4, 0, -1507323, 16, 0, -1441788, 536870928, 0, -1441787, 536870928, 0, -1376252, 536870928, 0, -1376251, 536870928, 0, -1310715, 536870928, 0, -1310713, 16, 0, -1245177, 536870928, 0, -1245176, 6, 0, -1179642, 21, 0, -1179641, 21, 0, -1179640, 16, 0, -1114108, 536870925, 0, -1114106, 21, 0, -1114105, 21, 0, -1114104, 16, 0, -1048569, 536870933, 0, -1048568, 6, 0, -983033, 536870933, 0, -917498, 17, 0, -917496, 17, 0, -851963, 21, 0, -851960, 21, 0, -851958, 21, 0, -786428, 536870925, 0, -786427, 21, 0, -786424, 21, 0, -786420, 536870928, 0, -720893, 12, 0, -720892, 13, 0, -720891, 21, 0, -720888, 21, 0, -720887, 536870927, 0, -720884, 536870928, 0, -720883, 536870928, 0, -720881, 28, 0, -655355, 21, 0, -655354, 536870933, 0, -655352, 536870933, 0, -655351, 17, 0, -655345, 29, 0, -589818, 536870928, 0, -589817, 536870933, 0, -589816, 19, 0, -589809, 26, 0, -524273, 26, 0, -458737, 4, 0, -196607, 15, 0, -196605, 536870930, 0, -131068, 6, 0, -65530, 10, 0, -65529, 10, 0, 1, 536870929, 0, 65537, 4, 0, 65540, 6, 0, 131074, 16, 0 )
+<<<<<<< HEAD
+=======
 script = ExtResource( 17 )
+>>>>>>> 04b836eb58bdf598e3175f25802849b1610f1c0e
 
 [node name="Critters" type="YSort" parent="YSort"]
 position = Vector2( 3661, -2248 )
@@ -273,7 +276,7 @@ scale = Vector2( 0.423316, 0.423316 )
 [node name="Decor" type="Node2D" parent="YSort/Walls"]
 
 [node name="WallDecor" type="Sprite" parent="YSort/Walls/Decor"]
-modulate = Color( 1, 1, 2.89, 1 )
+modulate = Color( 1.16, 2.32, 2.31, 1 )
 position = Vector2( 869, -394 )
 texture = ExtResource( 14 )
 
@@ -284,18 +287,17 @@ scale = Vector2( -1.06, 1 )
 texture = ExtResource( 14 )
 
 [node name="WallDecor3" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 2673, -987 )
+modulate = Color( 1, 1.16, 2.89, 1 )
+position = Vector2( 2043, -660 )
 scale = Vector2( -1.06, 1 )
 texture = ExtResource( 14 )
 
-[node name="WallDecor5" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 3282, -1330 )
-scale = Vector2( -1.06, 1 )
+[node name="WallDecor4" type="Sprite" parent="YSort/Walls/Decor/WallDecor3"]
+position = Vector2( -577.359, -302 )
 texture = ExtResource( 14 )
 
-[node name="WallDecor4" type="Sprite" parent="YSort/Walls/Decor"]
-position = Vector2( 4071, -1693 )
-scale = Vector2( -1.06, 1 )
+[node name="WallDecor5" type="Sprite" parent="YSort/Walls/Decor/WallDecor3"]
+position = Vector2( -1802.83, -936 )
 texture = ExtResource( 14 )
 
 [node name="StaticBody2D8" parent="YSort/Walls" instance=ExtResource( 20 )]
