@@ -102,7 +102,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_AttackArea_body_entered(body: Node2D) -> void:
-	if state in [State.TRACK_PLAYER, State.ROAM]:
+	if Dialogic.has_current_dialog_node():
+		return # don't attack the player when they're reading, it's not polite.
+	elif state in [State.TRACK_PLAYER, State.ROAM]:
 		state = State.ATTACKING
 		var start_pos = global_position
 		var player_pos = body.global_position
