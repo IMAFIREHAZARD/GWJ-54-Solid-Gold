@@ -188,11 +188,13 @@ func begin_dying():
 	
 func _on_hit(damage):
 	if State != States.DEAD:
-		Global.player_health_remaining -= damage
-		$HurtNoises.play_random_noise()
-		if Global.player_health_remaining <= 0:
-			begin_dying()
-		$AnimationPlayer.play("hit")
+		if $IFramesTimer.is_stopped():
+			Global.player_health_remaining -= damage
+			$HurtNoises.play_random_noise()
+			if Global.player_health_remaining <= 0:
+				begin_dying()
+			$AnimationPlayer.play("hit")
+			$IFramesTimer.start()
 
 func detach_camera():
 	var camera = find_node("*Camera*")
