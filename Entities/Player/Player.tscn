@@ -6,7 +6,7 @@
 [ext_resource path="res://Entities/Projectiles/Bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Player/chracter_run_spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Player/Player_base_spritesheet.png" type="Texture" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Art/Relaod.png" type="Texture" id=7]
 [ext_resource path="res://Art/Shadow.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Player/Affordances/InteractWithSokobanCubes.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/NPCs/PlayerWithGunsAnimation.tres" type="SpriteFrames" id=10]
@@ -435,7 +435,7 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleNW"
-frame = 1
+frame = 2
 speed_scale = 1.5
 playing = true
 
