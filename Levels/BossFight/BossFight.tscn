@@ -23,36 +23,12 @@ _data = {
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteRoot/AnimatedSprite:animation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ "RunNW" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteRoot/AnimatedSprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -62,36 +38,12 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "WalkIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteRoot/AnimatedSprite:animation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "RunNW", "IdleNW" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteRoot/AnimatedSprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -200,18 +152,6 @@ unique_name_in_owner = true
 position = Vector2( 384, 128 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor5"), NodePath("../PushBlocks/BoxSensor6") ]
 
-[node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( -1454, 1428 )
-
-[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-animation = "RunNW"
-frame = 0
-flip_h = true
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
-anims/RESET = SubResource( 5 )
-anims/WalkIn = SubResource( 6 )
-
 [node name="PushBlocks" type="YSort" parent="YSort"]
 
 [node name="PushBlock" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
@@ -313,6 +253,17 @@ position = Vector2( 11.5565, 32.0343 )
 rotation = -0.523599
 scale = Vector2( 3.16574, 2.81439 )
 texture = ExtResource( 10 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -1454, 1428 )
+
+[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
+animation = "RunSouth"
+frame = 3
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
+anims/RESET = SubResource( 5 )
+anims/WalkIn = SubResource( 6 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 visible = false
