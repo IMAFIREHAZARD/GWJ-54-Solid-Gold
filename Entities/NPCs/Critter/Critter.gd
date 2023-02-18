@@ -4,6 +4,7 @@ onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 var targets : Array
+var velocity : Vector2
 
 export(PackedScene) var splat_scene
 
@@ -21,6 +22,8 @@ var state = State.ROAM
 signal died
 
 func _ready() -> void:
+	velocity = Vector2.RIGHT.rotated(randf()*TAU)
+
 	for target in get_tree().get_nodes_in_group("BugTargets"):
 		targets.append(target.global_position)
 	if level != null and level.get("current_bugs") != null:
@@ -42,7 +45,42 @@ func goto_player() -> void:
 func _physics_process(delta : float):
 	if state in [State.ROAM, State.TRACK_PLAYER]:
 		if not nav_agent.is_navigation_finished():
-			global_position = global_position.move_toward(nav_agent.get_next_location(), move_speed*delta)
+			var navigationVector = global_position.direction_to(nav_agent.get_next_location())
+			var flockingVector = get_flocking_vector()
+			velocity = navigationVector + flockingVector
+			global_position = global_position.move_toward(global_position + velocity, move_speed*delta)
+
+func get_flocking_vector():
+	var cutoff_distance = 200.0
+	var critters = get_tree().get_nodes_in_group("critters")
+	var nearby_critters = []
+	for critter in critters:
+		if critter.get_global_position().distance_squared_to(global_position) < cutoff_distance * cutoff_distance:
+			nearby_critters.push_back(critter)
+	
+	var avoidance_vector = Vector2.ZERO
+	var avoidance_distance = 150.0
+	var collision_count = 0.0
+	for critter in nearby_critters:
+		if critter.get_global_position().distance_squared_to(global_position) < avoidance_distance * avoidance_distance:
+			avoidance_vector += global_position - critter.global_position
+			collision_count += 1.0
+	if collision_count > 0:
+		avoidance_vector /= 	collision_count
+	
+	var cohesion_vector = Vector2.ZERO
+	for critter in nearby_critters:
+		cohesion_vector += critter.global_position - global_position
+	cohesion_vector /= nearby_critters.size()
+	
+	var alignment_vector = Vector2.ZERO
+	for critter in nearby_critters:
+		alignment_vector += critter.velocity
+	alignment_vector /= nearby_critters.size()
+
+	return ( avoidance_vector.normalized() + 0.5 * cohesion_vector.normalized() + alignment_vector.normalized()).normalized()
+	
+			
 
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
