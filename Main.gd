@@ -5,3 +5,6 @@ func _ready() -> void:
 		$"%TestingMenuButton".hide()
 	if OS.get_name() == "HTML5":
 		$"%QuitButton".hide()
+
+	Global.reset_curses() # if player is here, they may have just restarted the game.
+	
