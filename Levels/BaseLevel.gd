@@ -61,3 +61,6 @@ func _on_dialogic_signal(param):
 		StageManager.player.reattach_camera()
 	elif param == "refused_levitation_curse":
 		StageManager.player.resume()
+		
+
+
