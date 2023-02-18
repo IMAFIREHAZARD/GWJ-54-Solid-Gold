@@ -18,6 +18,8 @@ func _ready() -> void:
 	
 
 func do_cutscene() -> void:
+	player.shoot_disabled = true
+	player.pause()
 	$YSort/Player/AnimationPlayer2.play("WalkIn")
 	yield($YSort/Player/AnimationPlayer2, "animation_finished")
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -28,6 +30,7 @@ func do_cutscene() -> void:
 	yield(dialog, "dialogic_signal")
 	yield(pan_camera(player.global_position), "completed")
 	player.shoot_disabled = false
+	player.resume()
 	
 
 func pan_camera(target : Vector2, time := 1.0):
