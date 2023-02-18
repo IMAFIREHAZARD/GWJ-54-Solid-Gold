@@ -17,6 +17,7 @@ var speed_multiplier = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer/ExitTimer.set_wait_time(time_to_cover_distance / speed_multiplier /2.0)
+	$Timer/ExitTimer.start()
 	
 func offer_devils_bargain():
 	halt_movement()
@@ -64,12 +65,17 @@ func speed_up():
 		speed_multiplier += 0.25
 	else:
 		speed_multiplier += 1.0
-	$Floor/Sprite.speed_up(speed_multiplier)
+	for child in $Floor.get_children():
+		if child.has_method("speed_up"):
+			child.speed_up(speed_multiplier)
+	#$Floor/Sprite.speed_up(speed_multiplier)
 	$Player.speed_up(speed_multiplier)
 	for layer in $Background.get_children():
 		if layer.has_method("speed_up"):
 			layer.speed_up(speed_multiplier)
+	
 	$Camera2D.speed_up()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
