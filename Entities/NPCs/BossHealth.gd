@@ -9,7 +9,7 @@ onready var boss = get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var num_hearts_remaining = boss.health / boss.health_max * get_child_count()
 
 	for heart in get_children():
