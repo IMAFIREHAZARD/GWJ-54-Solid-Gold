@@ -44,6 +44,7 @@ func spawn_dialog(dialogName : String):
 	var new_dialog = Dialogic.start(dialogName)
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	return new_dialog
 
 
 
@@ -61,3 +62,6 @@ func _on_dialogic_signal(param):
 		StageManager.player.reattach_camera()
 	elif param == "refused_levitation_curse":
 		StageManager.player.resume()
+		
+
+

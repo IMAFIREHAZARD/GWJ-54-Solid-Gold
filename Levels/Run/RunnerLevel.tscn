@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Run/RunnerLevel.gd" type="Script" id=2]
@@ -8,6 +8,40 @@
 [ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Levels/CommonInfrastructure/ScrollingSprite.gd" type="Script" id=7]
 [ext_resource path="res://Levels/Run/RunnerCamera2D.gd" type="Script" id=8]
+[ext_resource path="res://Art/Wall_flat.png" type="Texture" id=9]
+[ext_resource path="res://Art/Wall_bottom.png" type="Texture" id=10]
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 10 )
+width = 75
+fill_from = Vector2( 0, 0.000558036 )
+
+[sub_resource type="Environment" id=11]
+background_mode = 4
+ambient_light_color = Color( 0.882353, 0.917647, 0.301961, 1 )
+fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ss_reflections_enabled = true
+ssao_radius = 0.1
+ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
+glow_enabled = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 6.2
+glow_strength = 0.5
+glow_bloom = 0.13
+glow_blend_mode = 0
+glow_hdr_threshold = 0.89
+glow_hdr_luminance_cap = 0.0
+glow_hdr_scale = 0.17
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_saturation = 0.62
+adjustment_color_correction = SubResource( 9 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 518, 31.4499 )
@@ -17,6 +51,9 @@ script = ExtResource( 2 )
 next_scene = ExtResource( 3 )
 time_to_cover_distance = 30.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157, 420 )
 
@@ -24,6 +61,30 @@ position = Vector2( 157, 420 )
 position = Vector2( 1137, 568 )
 scale = Vector2( 2, 1.094 )
 collision_layer = 4
+
+[node name="WallFlat" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.568627, 0.568627, 0.568627, 1 )
+position = Vector2( 13, -325.411 )
+scale = Vector2( 0.342433, 0.647691 )
+z_index = -1
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 22.1753, -3.14716, 4100.57, 1071.65 )
+script = ExtResource( 7 )
+base_speed = 300.0
+z_parallax = 2.0
+
+[node name="WallFlat2" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.568627, 0.568627, 0.568627, 1 )
+position = Vector2( 13, -325.411 )
+scale = Vector2( 0.342433, 0.647691 )
+z_index = -1
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 22.1753, -3.14716, 4100.57, 1071.65 )
+script = ExtResource( 7 )
+base_speed = 300.0
+z_parallax = 2.0
 
 [node name="Sprite" type="Sprite" parent="Floor"]
 position = Vector2( 0.846191, 11.8861 )
@@ -33,7 +94,26 @@ region_enabled = true
 region_rect = Rect2( -2261.38, 0, 4897.12, 97.942 )
 script = ExtResource( 7 )
 base_speed = 600.0
-z_parallax = 2.0
+
+[node name="WallBottom" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
+position = Vector2( -16, 142.596 )
+scale = Vector2( 0.395806, 0.421983 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 9.11786, 193.477, 4121.45, 633.766 )
+script = ExtResource( 7 )
+base_speed = 600.0
+
+[node name="WallBottom2" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
+position = Vector2( 7.5, -800.731 )
+scale = Vector2( 0.395806, 0.421983 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 9.11786, 193.477, 4121.45, 633.766 )
+script = ExtResource( 7 )
+base_speed = 600.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Floor"]
 visible = false
@@ -91,6 +171,7 @@ autoplay = true
 bus = "Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -3, 3 )
 anchor_mode = 0
 script = ExtResource( 8 )
 

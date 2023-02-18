@@ -20,6 +20,7 @@ var gravity : float = 9.8
 export var levitate : bool = false
 
 var outside_frustum
+export var shoot_disabled = false
 
 const idle_anim_names = [
 	"IdleSouth",

@@ -387,8 +387,7 @@ position = Vector2( 0.200001, -31 )
 position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
-animation = "RunWest"
-frame = 2
+animation = "IdleNW"
 speed_scale = 1.5
 playing = true
 
