@@ -438,7 +438,7 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleNW"
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 
@@ -499,7 +499,6 @@ texture = ExtResource( 8 )
 [node name="InteractWithSokobanCubes" parent="CustomAffordances" instance=ExtResource( 9 )]
 
 [node name="Debug" type="Node2D" parent="."]
-visible = false
 position = Vector2( -20, -146 )
 scale = Vector2( 3, 3 )
 

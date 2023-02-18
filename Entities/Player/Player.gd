@@ -41,7 +41,7 @@ var dir_index = 0
 
 enum States { READY, PUSHING_BLOCK, PAUSED, FALLING, DEAD, STUNNED }
 var State = States.READY
-var previous_state # so we can resume from pause with no assumptions
+var previous_state = State # so we can resume from pause with no assumptions
 
 func _enter_tree() -> void:
 	StageManager.player = self
@@ -59,7 +59,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta : float):
-	$Debug/StateLabel.text = States.keys()[State]
+	if State != null:
+		$Debug/StateLabel.text = States.keys()[State]
 	if State == States.READY:
 		move_normally(delta)
 	elif State == States.PUSHING_BLOCK:
@@ -227,7 +228,10 @@ func pause():
 		State = States.PAUSED
 
 func resume():
-	State = previous_state
+	if previous_state != null:
+		State = previous_state
+	else:
+		State = States.READY
 
 		
 func fall_off_map():
