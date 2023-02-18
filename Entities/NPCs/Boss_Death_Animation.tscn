@@ -1,0 +1,44 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Art/Boss_animation/Untitled-160020.png" type="Texture" id=1]
+[ext_resource path="res://Art/Boss_animation/Untitled-160009.png" type="Texture" id=2]
+[ext_resource path="res://Art/Boss_animation/Untitled-160013.png" type="Texture" id=3]
+[ext_resource path="res://Art/Boss_animation/Untitled-160026.png" type="Texture" id=4]
+[ext_resource path="res://Art/Boss_animation/Untitled-160027.png" type="Texture" id=5]
+[ext_resource path="res://Art/Boss_animation/Untitled-160008.png" type="Texture" id=6]
+[ext_resource path="res://Art/Boss_animation/Untitled-160011.png" type="Texture" id=7]
+[ext_resource path="res://Art/Boss_animation/Untitled-160022.png" type="Texture" id=8]
+[ext_resource path="res://Art/Boss_animation/Untitled-160015.png" type="Texture" id=9]
+[ext_resource path="res://Art/Boss_animation/Untitled-160024.png" type="Texture" id=10]
+[ext_resource path="res://Art/Boss_animation/Untitled-160010.png" type="Texture" id=11]
+[ext_resource path="res://Art/Boss_animation/Untitled-160000.png" type="Texture" id=12]
+[ext_resource path="res://Art/Boss_animation/Untitled-160004.png" type="Texture" id=13]
+[ext_resource path="res://Art/Boss_animation/Untitled-160007.png" type="Texture" id=14]
+[ext_resource path="res://Art/Boss_animation/Untitled-160012.png" type="Texture" id=15]
+[ext_resource path="res://Art/Boss_animation/Untitled-160006.png" type="Texture" id=16]
+[ext_resource path="res://Art/Boss_animation/Untitled-160018.png" type="Texture" id=17]
+[ext_resource path="res://Art/Boss_animation/Untitled-160002.png" type="Texture" id=18]
+[ext_resource path="res://Art/Boss_animation/Untitled-160017.png" type="Texture" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 1.908
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ), ExtResource( 18 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 5 ) ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+playback_speed = 0.8
+"anims/New Anim" = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
