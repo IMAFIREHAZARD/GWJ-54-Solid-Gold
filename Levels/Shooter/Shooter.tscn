@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Shooter/Shooter.gd" type="Script" id=2]
 [ext_resource path="res://Levels/CommonInfrastructure/LevelBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/BossFight/BossFight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/CommonInfrastructure/ExitArea2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/CommonInfrastructure/DevilsBargainArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Art/Big_background elements/Wall_Half.png" type="Texture" id=7]
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Levels/CommonInfrastructure/TimedDevilsBargain.tscn" type="PackedScene" id=9]
@@ -752,11 +751,6 @@ position = Vector2( -3553.31, -3403.26 )
 [node name="TriggerHandler" type="Node" parent="."]
 script = ExtResource( 11 )
 
-[node name="DevilsBargainArea" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 2490, -41 )
-timeline = "timeline-1676112450.json"
-
 [node name="TimedDevilsBargain" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1060, -36 )
 dialogic_timeline = "timeline-1676112450.json"
@@ -813,6 +807,7 @@ margin_left = 1947.0
 margin_top = -765.0
 margin_right = 2352.0
 margin_bottom = -337.0
+mouse_filter = 2
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1.73, 1 )
@@ -821,6 +816,7 @@ margin_left = 2573.0
 margin_top = -1057.0
 margin_right = 2978.0
 margin_bottom = -629.0
+mouse_filter = 2
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1.73, 1 )
@@ -829,9 +825,9 @@ margin_left = 3872.0
 margin_top = -1722.0
 margin_right = 4277.0
 margin_bottom = -1294.0
+mouse_filter = 2
 
 [connection signal="child_exiting_tree" from="YSort/Critters" to="TriggerHandler" method="_on_Critters_child_exiting_tree"]
 [connection signal="body_entered" from="Exit" to="TriggerHandler" method="_on_Exit_body_entered"]
-[connection signal="accept_curse" from="DevilsBargainArea" to="YSort/Player" method="start_gun_curse"]
 
 [editable path="YSort/Floor/ShootInstructions"]

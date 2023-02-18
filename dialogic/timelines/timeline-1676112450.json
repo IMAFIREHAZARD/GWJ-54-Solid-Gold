@@ -9,7 +9,7 @@
 			"volume": -12
 		},
 		{
-			"animation": "instant_in.gd",
+			"animation": "3-fade_in_up_big.gd",
 			"animation_length": 0.5,
 			"animation_wait": false,
 			"change_mirror_portrait": false,
@@ -23,7 +23,27 @@
 				"0": false,
 				"1": false,
 				"2": false,
-				"3": true,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 1
+		},
+		{
+			"animation": "slide_in_left.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": true,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
 				"4": false
 			},
 			"type": 0,
@@ -33,37 +53,35 @@
 			"character": "character-1676112496.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Would you like some gun hands?"
+			"text": "It's my good friend, the Little Devil and your trusty scarf, Ragnok. Long time no see. "
 		},
 		{
 			"character": "character-1676112496.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
+			"event_id": "dialogic_001",
 			"portrait": "",
-			"question": ""
+			"text": "Wouldn't you like to have guns for hands?"
 		},
 		{
-			"choice": "Yes",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We don't have a choice, do we?"
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not really, no."
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Fine. B8st4rd."
 		},
 		{
 			"emit_signal": "curse_accepted",
 			"event_id": "dialogic_040"
-		},
-		{
-			"choice": "No",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"event_id": "dialogic_013"
 		}
 	],
 	"metadata": {

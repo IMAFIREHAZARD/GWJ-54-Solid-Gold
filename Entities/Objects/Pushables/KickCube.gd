@@ -108,7 +108,7 @@ func _on_ClickArea_mouse_entered() -> void:
 
 
 func _on_ClickArea_mouse_exited() -> void:
-	print("mouse is gone mate")
+	#print("mouse is gone mate")
 	SokobanSelector.hovered_blocks.erase(self)
 	set_highlighted(false)
 

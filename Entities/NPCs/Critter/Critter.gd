@@ -115,6 +115,7 @@ func kill():
 	set_deferred("monitorable", false)
 	if level != null:
 		level.current_bugs -= 1
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("died", StageManager.hud, "_on_bug_died")
 		emit_signal("died")
 	$AnimationPlayer.play("hit")

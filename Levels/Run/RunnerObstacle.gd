@@ -44,6 +44,6 @@ func explode():
 	queue_free()
 
 
-func _on_ExitZone_body_entered(body):
-	print("Pearly Gates Exit Reached")
-	
+func _on_ExitZone_body_entered(_body):
+	#print("Pearly Gates Exit Reached")
+	pass
