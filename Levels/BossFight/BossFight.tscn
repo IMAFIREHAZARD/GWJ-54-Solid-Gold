@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Art/Big_background elements/Exit.png" type="Texture" id=11]
 [ext_resource path="res://Music/Boss_Fight_SOLID_GOLD.ogg" type="AudioStream" id=12]
+[ext_resource path="res://sfx/PlayRandomNoises2.gd" type="Script" id=13]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 576.0
@@ -296,6 +297,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
+frame = 0
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -371,6 +373,7 @@ text = "Strength curse"
 script = SubResource( 4 )
 
 [node name="BGMusic" type="Node2D" parent="."]
+script = ExtResource( 13 )
 
 [node name="SolidGold" type="AudioStreamPlayer" parent="BGMusic"]
 stream = ExtResource( 12 )

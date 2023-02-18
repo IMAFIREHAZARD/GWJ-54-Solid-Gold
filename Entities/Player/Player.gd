@@ -148,6 +148,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			p.value = 0
 			tween.tween_property(p, "value", 1.0, reload_timer.wait_time)
 			tween.tween_callback(p, "hide")
+	if Input.is_action_just_pressed("all_curses_cheat"):
+		start_gun_curse()
+		move_speed += base_move_speed * 0.5
+		Global.curses_taken["gun_hands"] = true
+		Global.curses_taken["strength"] = true
+		Global.curses_taken["speed"] = true
+
 
 func has_affordance(affordanceName : String):
 	if $CustomAffordances.get_node(affordanceName) != null:
@@ -162,11 +169,13 @@ func get_affordance(affordanceName : String):
 
 func shoot():
 	reload_timer.start()
-	var bullet = bullet_scene.instance() as Node2D
-	get_parent().add_child(bullet)
-	bullet.global_position = $BulletSpawnPoint.global_position
-	bullet.scale *= scale
-	bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
+	if not State in [ States.PAUSED, States.DEAD]:
+		var bullet = bullet_scene.instance() as Node2D
+		get_parent().add_child(bullet)
+		bullet.global_position = $BulletSpawnPoint.global_position
+		bullet.scale *= scale
+		bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
+	
 
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
