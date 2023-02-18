@@ -27,7 +27,9 @@ func offer_devils_bargain():
 func halt_movement():
 	$ObstacleSpawnTimer.set_paused(true)
 	
-	$Floor/Sprite.speed_up(0)
+	for child in $Floor.get_children():
+		if child.has_method("speed_up"):
+			child.speed_up(0)
 	$Player.stop()
 	for layer in $Background.get_children():
 		if layer.has_method("speed_up"):
