@@ -30,7 +30,7 @@ var scene_attempts = {
 }
 
 
-var player_max_health : float = 5.0
+var player_max_health : float = 10.0 # each heart represents 2 health
 var player_health_remaining : float = player_max_health
 
 var player_events = {

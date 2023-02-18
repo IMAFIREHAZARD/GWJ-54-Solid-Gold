@@ -4,6 +4,7 @@ extends Control
 var textures = {
 	"full":preload("res://GUI/HUD/Heart.png"),
 	"empty":preload("res://GUI/HUD/HeartEmpty.png"),
+	"half":preload("res://GUI/HUD/Heart.png"),
 	"locked":preload("res://GUI/HUD/lockedHeart02.png"),
 }
 var prev_health = Global.player_health_remaining
@@ -12,7 +13,7 @@ onready var grid_container: GridContainer = $"%GridContainer"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HeartTemplate.hide()
-	for i in range(Global.player_max_health):
+	for i in range(Global.player_max_health / 2):
 		var newHeart = $HeartTemplate.duplicate()
 		grid_container.add_child(newHeart)
 		newHeart.show()
@@ -26,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 		var current_heart = hearts.pop_back()
 #		if Global.player_max_health - current_heart.get_position_in_parent() <= Global.get_num_curses():
 #			current_heart.texture = textures["locked"]
-		if Global.player_health_remaining <= current_heart.get_position_in_parent():
+		if Global.player_health_remaining / 2.0 <= current_heart.get_position_in_parent():
 			current_heart.texture = textures["empty"]
 			if Global.player_health_remaining < prev_health:
 				current_heart.pop()

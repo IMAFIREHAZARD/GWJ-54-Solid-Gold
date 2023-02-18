@@ -1135,6 +1135,7 @@ margin_top = -164.489
 margin_right = -23.3028
 margin_bottom = -124.489
 rect_scale = Vector2( 5.80148, 8.75834 )
+mouse_filter = 2
 
 [node name="EyeArtifact" type="Sprite" parent="Visuals"]
 position = Vector2( 17.3536, -366.371 )
