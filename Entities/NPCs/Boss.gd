@@ -83,12 +83,20 @@ func _on_dialogic_signal(params):
 	pass
 
 func _on_dialogic_timeline_end(timeline_name):
-	if timeline_name == "BossDefeated":
+	
+	if timeline_name == "DefeatedBoss":
 		StageManager.change_scene("res://Menus/Credits.tscn")
 	
+func destroy_all_critters():
+	var critters = get_tree().get_nodes_in_group("critters")
+	for critter in critters:
+		if critter.has_method("kill"):
+			critter.kill()
+	StageManager.player.pause()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
+		destroy_all_critters()
 		State = States.DEAD
 		print("Boss is Dead. Now what?")
 		spawn_dialog("DefeatedBoss") # this should probably go in the current_map instead. 
