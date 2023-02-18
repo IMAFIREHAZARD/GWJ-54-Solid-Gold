@@ -297,6 +297,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
+frame = 0
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
