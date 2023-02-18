@@ -37,7 +37,7 @@ func _get_configuration_warning():
 	if ground_tilemap.is_empty():
 		return "TilemapToObject tilemap should be provided with another tilemap representing the ground. This allows blocks to fall when they're over an empty tile."
 	else:
-		return ""
+		return "Tiles Named 'Pottery 1' to 'Pottery 7' will be replaced with DestructiblePottery.tscn"
 		
 
 func spawn_objects_from_tilemap(tileName : String, scenePath : String):
