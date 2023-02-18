@@ -12,6 +12,7 @@ func _ready() -> void:
 	player.set_physics_process(false)
 	player.set_process_unhandled_input(false)
 	yield(do_cutscene(), "completed")
+	#start_active_play()
 	boss.find_node("AttackTimer").start()
 	player.set_physics_process(true)
 	player.set_process_unhandled_input(true)
@@ -29,6 +30,9 @@ func do_cutscene() -> void:
 	pan_camera(shield_tower_2.global_position)
 	yield(dialog, "dialogic_signal")
 	yield(pan_camera(player.global_position), "completed")
+	start_active_play()
+	
+func start_active_play():
 	player.shoot_disabled = false
 	player.resume()
 	
