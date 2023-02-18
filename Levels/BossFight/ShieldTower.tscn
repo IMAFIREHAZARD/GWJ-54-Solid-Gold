@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/VFX/Barrier_3.png" type="Texture" id=1]
 [ext_resource path="res://Art/VFX/Barrier_5.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Art/VFX/Barrier_2.png" type="Texture" id=5]
 [ext_resource path="res://Levels/BossFight/ShieldTower.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Objects/Reflectors/RoundReflector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/NPCs/Critter/Critter.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,6 +21,7 @@ animations = [ {
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 6 )
+bug_scene = ExtResource( 8 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2( 2, 2 )
@@ -36,8 +38,14 @@ polygon = PoolVector2Array( 0, 16, 32, 0, 0, -16, -32, 0 )
 position = Vector2( 0, -160.64 )
 scale = Vector2( 1.12, 1.10289 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Reflector" parent="." instance=ExtResource( 7 )]
-modulate = Color( 11.56, 1, 20.24, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="reflect" from="Reflector" to="." method="_on_Reflector_reflect"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
