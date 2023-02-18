@@ -65,12 +65,17 @@ func speed_up():
 		speed_multiplier += 0.25
 	else:
 		speed_multiplier += 1.0
-	$Floor/Sprite.speed_up(speed_multiplier)
+	for child in $Floor.get_children():
+		if child.has_method("speed_up"):
+			child.speed_up(speed_multiplier)
+	#$Floor/Sprite.speed_up(speed_multiplier)
 	$Player.speed_up(speed_multiplier)
 	for layer in $Background.get_children():
 		if layer.has_method("speed_up"):
 			layer.speed_up(speed_multiplier)
+	
 	$Camera2D.speed_up()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

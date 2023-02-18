@@ -5,7 +5,7 @@
 [node name="RunnerLevel" instance=ExtResource( 1 )]
 endless_runner = true
 
-[node name="Sprite" parent="Floor" index="0"]
+[node name="Sprite" parent="Floor" index="2"]
 base_speed = 800.0
 
 [editable path="Player"]
