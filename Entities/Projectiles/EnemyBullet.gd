@@ -11,8 +11,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body == StageManager.player:
+	if "Boss" in body.name:
+		return
+
+	elif body == StageManager.player:
 		StageManager.player._on_hit(1)
+		queue_free()
+	else: #walls and obstacles
+		print(body.name)
 		queue_free()
 
 
