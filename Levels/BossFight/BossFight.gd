@@ -15,6 +15,7 @@ func _ready() -> void:
 	boss.find_node("AttackTimer").start()
 	player.set_physics_process(true)
 	player.set_process_unhandled_input(true)
+	
 
 func do_cutscene() -> void:
 	$YSort/Player/AnimationPlayer2.play("WalkIn")
