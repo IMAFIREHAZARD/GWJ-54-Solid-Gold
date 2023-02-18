@@ -21,7 +21,7 @@ func _ready():
 			connect("curse_accepted", StageManager.current_map, "_on_curse_accepted")
 	else:
 		pass # player already has the boon/curse.
-
+	
 
 func _on_DevilsBargainTimer_timeout():
 	if curse == null or curse == "":

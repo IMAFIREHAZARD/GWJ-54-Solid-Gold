@@ -81,21 +81,23 @@ func get_flocking_vector():
 	return ( avoidance_vector.normalized() + 0.5 * cohesion_vector.normalized() + alignment_vector.normalized()).normalized()
 	
 			
+func reproduce():
+	state = State.PAUSED
+	animation_player.play("Wiggle")
+	yield(animation_player, "animation_finished")
+	if state == State.DEAD: return
+	var extra_critter = duplicate()
+	get_parent().add_child(extra_critter)
+	state = State.ROAM
 
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
 	if state == State.ROAM:
 		# 1 in 3 change of duplicating
 		if level.current_bugs < level.max_bugs and randi() % 3 == 0:
-			state = State.PAUSED
-			animation_player.play("Wiggle")
-			yield(animation_player, "animation_finished")
-			if state == State.DEAD: return
-			var extra_critter = duplicate()
-			get_parent().add_child(extra_critter)
-			state = State.ROAM
+			reproduce()
 		# 1 in 5 chance of hunting down the player
-		elif randi() % 5 == 0:
+		elif randi() % 5 == 0 and Dialogic.has_current_dialog_node():
 			state = State.TRACK_PLAYER
 			goto_player()
 			return
@@ -141,6 +143,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_AttackArea_body_entered(body: Node2D) -> void:
+	if Dialogic.has_current_dialog_node():
+		return
+
 	if state in [State.TRACK_PLAYER, State.ROAM]:
 		state = State.ATTACKING
 		var start_pos = global_position
@@ -156,5 +161,8 @@ func _on_AttackArea_body_entered(body: Node2D) -> void:
 
 # hit player
 func _on_Critter_body_entered(body: Node) -> void:
+	if Dialogic.has_current_dialog_node():
+		return
+	
 	if body == StageManager.player:
 		body._on_hit(1)

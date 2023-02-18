@@ -6,6 +6,8 @@ var victory_popup_offered : bool = false
 
 export(String, "TimelineDropdown") var success_timeline
 
+var paused
+
 func _ready() -> void:
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	$YSort/Critters.connect("child_exiting_tree", self, "_on_bug_died", [], CONNECT_DEFERRED)
