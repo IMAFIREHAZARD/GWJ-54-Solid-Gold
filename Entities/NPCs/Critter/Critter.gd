@@ -8,7 +8,7 @@ var velocity : Vector2
 
 export(PackedScene) var splat_scene
 
-export var move_speed := 200
+export var move_speed := 250
 
 enum State {
 	ROAM,
@@ -48,7 +48,7 @@ func _physics_process(delta : float):
 			var navigationVector = global_position.direction_to(nav_agent.get_next_location())
 			var flockingVector = get_flocking_vector()
 			velocity = navigationVector + flockingVector
-			global_position = global_position.move_toward(global_position + velocity, move_speed*delta)
+			global_position += velocity.normalized() * move_speed * delta
 
 func get_flocking_vector():
 	var cutoff_distance = 200.0
@@ -59,7 +59,7 @@ func get_flocking_vector():
 			nearby_critters.push_back(critter)
 	
 	var avoidance_vector = Vector2.ZERO
-	var avoidance_distance = 150.0
+	var avoidance_distance = 60.0
 	var collision_count = 0.0
 	for critter in nearby_critters:
 		if critter.get_global_position().distance_squared_to(global_position) < avoidance_distance * avoidance_distance:

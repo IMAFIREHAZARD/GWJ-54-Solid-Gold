@@ -206,7 +206,6 @@ self_modulate = Color( 1.16, 1.74, 1.73, 1 )
 position = Vector2( 0, 4 )
 scale = Vector2( 0.065, 0.065 )
 frames = SubResource( 15 )
-frame = 1
 playing = true
 
 [node name="Shadow" type="Sprite" parent="AnimatedSprite"]
@@ -218,8 +217,9 @@ texture = ExtResource( 5 )
 disabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 8.0
-target_desired_distance = 8.0
+path_desired_distance = 80.0
+target_desired_distance = 100.0
+path_max_distance = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
