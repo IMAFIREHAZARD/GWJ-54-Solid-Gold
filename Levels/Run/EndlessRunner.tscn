@@ -5,8 +5,13 @@
 [node name="RunnerLevel" instance=ExtResource( 1 )]
 endless_runner = true
 
-[node name="Sprite" parent="Floor" index="2"]
+[node name="WallFlat" parent="Floor" index="0"]
 base_speed = 800.0
+z_parallax = 0.8
+
+[node name="Sprite" parent="Floor" index="1"]
+base_speed = 1000.0
+z_parallax = 0.8
 
 [editable path="Player"]
 [editable path="Background"]
