@@ -16,7 +16,7 @@ export var critter_scene : PackedScene
 export var fragile : bool = false # fragile boxes should explode when bullets hit them
 
 
-func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("shoot") and not moving\
 	and is_highlighted:
 		ray_cast.cast_to = push_dir * move_dist
@@ -66,7 +66,7 @@ func explode_into_smithereens():
 		queue_free()
 
 func spawn_critters():
-	for i in range(num_critters):
+	for _i in range(num_critters):
 		var newCritter = critter_scene.instance()
 		#newCritter.set_global_position(global_position)
 		get_parent().call_deferred("add_child", newCritter)
