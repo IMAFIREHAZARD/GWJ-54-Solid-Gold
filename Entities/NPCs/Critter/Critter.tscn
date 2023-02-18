@@ -196,7 +196,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
 [sub_resource type="CircleShape2D" id=20]
 radius = 172.114
 
-[node name="Critter" type="Area2D"]
+[node name="Critter" type="Area2D" groups=["critters"]]
 collision_layer = 2
 script = ExtResource( 2 )
 splat_scene = ExtResource( 3 )
@@ -206,7 +206,7 @@ self_modulate = Color( 1.16, 1.74, 1.73, 1 )
 position = Vector2( 0, 4 )
 scale = Vector2( 0.065, 0.065 )
 frames = SubResource( 15 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Shadow" type="Sprite" parent="AnimatedSprite"]
