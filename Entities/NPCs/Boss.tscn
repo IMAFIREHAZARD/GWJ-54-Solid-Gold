@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Art/Boss_Parts/Forearm_Right.png" type="Texture" id=1]
 [ext_resource path="res://Art/Boss_Parts/Wing_small.png" type="Texture" id=2]
@@ -21,10 +21,15 @@
 [ext_resource path="res://Entities/NPCs/maltese_cross.png" type="Texture" id=19]
 [ext_resource path="res://Entities/NPCs/BossHurtbox.gd" type="Script" id=20]
 [ext_resource path="res://Art/Devil_Bargin.png" type="Texture" id=21]
-[ext_resource path="res://sfx/crunch01.wav" type="AudioStream" id=22]
-[ext_resource path="res://sfx/crunch02.wav" type="AudioStream" id=23]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_hurt_01.wav" type="AudioStream" id=22]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_shot_03.wav" type="AudioStream" id=23]
 [ext_resource path="res://sfx/PlayRandomNoises2.gd" type="Script" id=24]
 [ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_hurt_03.wav" type="AudioStream" id=26]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_shot_01.wav" type="AudioStream" id=27]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_hurt_02.wav" type="AudioStream" id=28]
+[ext_resource path="res://Entities/NPCs/Boss/BOSS_shot_02.wav" type="AudioStream" id=29]
+[ext_resource path="res://vfx/shaders/SolidWhite_shadermaterial.tres" type="Material" id=30]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -777,6 +782,18 @@ tracks/35/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/36/type = "value"
+tracks/36/path = NodePath("Visuals/BodyBase:material:shader_param/modifier")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "die"
@@ -986,6 +1003,46 @@ tracks/9/keys = {
 [sub_resource type="Animation" id=7]
 resource_name = "do_summon_attack"
 
+[sub_resource type="Animation" id=8]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visuals/BodyBase:material:shader_param/modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visuals/Wing:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -1.1415, 63.1168, -1.1415 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visuals/Wing Right:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -10.8258, -62.2126, -10.8258 ]
+}
+
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 137.661
 height = 73.9003
@@ -1006,6 +1063,7 @@ anims/die = SubResource( 4 )
 anims/do_curse_attack = SubResource( 5 )
 anims/do_projectile_attack = SubResource( 6 )
 anims/do_summon_attack = SubResource( 7 )
+anims/hit = SubResource( 8 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -1105,6 +1163,7 @@ __meta__ = {
 position = Vector2( -54.8829, 6.49515 )
 
 [node name="BodyBase" type="Sprite" parent="Visuals"]
+material = ExtResource( 30 )
 position = Vector2( -0.499992, -13 )
 texture = ExtResource( 8 )
 __meta__ = {
@@ -1281,9 +1340,34 @@ script = ExtResource( 24 )
 
 [node name="CrackNoise01" parent="CrackNoises" instance=ExtResource( 25 )]
 stream = ExtResource( 22 )
+bus = "sfx"
 
 [node name="CrackNoise02" parent="CrackNoises" instance=ExtResource( 25 )]
+stream = ExtResource( 28 )
+bus = "sfx"
+
+[node name="CrackNoise03" parent="CrackNoises" instance=ExtResource( 25 )]
+stream = ExtResource( 26 )
+bus = "sfx"
+
+[node name="ShotNoises" type="Node2D" parent="."]
+script = ExtResource( 24 )
+
+[node name="ShotNoise01" parent="ShotNoises" instance=ExtResource( 25 )]
+stream = ExtResource( 27 )
+bus = "sfx"
+
+[node name="ShotNoise02" parent="ShotNoises" instance=ExtResource( 25 )]
+stream = ExtResource( 29 )
+bus = "sfx"
+
+[node name="ShotNoise03" parent="ShotNoises" instance=ExtResource( 25 )]
 stream = ExtResource( 23 )
+bus = "sfx"
+
+[node name="IFramesTimer" type="Timer" parent="ShotNoises"]
+wait_time = 0.35
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="do_next_attack"]
