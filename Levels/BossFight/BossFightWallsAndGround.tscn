@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Art/Big_background elements/Exit.png" type="Texture" id=5]
 
 [node name="BossFightWallsAndGround" type="YSort"]
 
@@ -45,3 +47,27 @@ scale = Vector2( 2, 2 )
 [node name="DestructibleBoxOfCritters4" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( -120, 232 )
 scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters5" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( -508.5, 354.5 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters6" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1, 614.5 )
+scale = Vector2( 2, 2 )
+
+[node name="Exit" type="Sprite" parent="."]
+position = Vector2( 2494, -771 )
+scale = Vector2( 1.4436, 1.4436 )
+texture = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D" parent="Exit"]
+show_behind_parent = true
+rotation = 0.748746
+scale = Vector2( 2.031, 1 )
+
+[node name="Icon" type="Sprite" parent="Exit/Node2D"]
+position = Vector2( 11.5565, 32.0343 )
+rotation = -0.523599
+scale = Vector2( 3.16574, 2.81439 )
+texture = ExtResource( 4 )
