@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/maltese_cross.png-e288d5c163264d4cde65e62b37cdf2a4.stex"
+path="res://.import/Plants_decal.png-ddb6984aa7078db7883da2bf9cca0fd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/NPCs/maltese_cross.png"
-dest_files=[ "res://.import/maltese_cross.png-e288d5c163264d4cde65e62b37cdf2a4.stex" ]
+source_file="res://Art/Objects/Plants_decal.png"
+dest_files=[ "res://.import/Plants_decal.png-ddb6984aa7078db7883da2bf9cca0fd5.stex" ]
 
 [params]
 

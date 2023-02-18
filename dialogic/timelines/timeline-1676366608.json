@@ -27,10 +27,10 @@
 
 			],
 			"portrait": "",
-			"question": "I can make you faster. Would you like to speed up?"
+			"question": "It's a long journey Little Devil. I'll speed you up."
 		},
 		{
-			"choice": "Yes",
+			"choice": "That sounds great! I could use more speed.",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -41,14 +41,26 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"choice": "No",
+			"choice": "I really don't think that...",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"emit_signal": "do_not_speed_up",
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What's that, you want more speed? Enjoy your speed!"
+		},
+		{
+			"character": "character-1676112471.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "M*&^%@F*#ing sunuvab*#*^!"
+		},
+		{
+			"emit_signal": "speed_up",
 			"event_id": "dialogic_040"
 		},
 		{

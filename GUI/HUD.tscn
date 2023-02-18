@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HelpFooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/HUD/HealthContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/CurseTokensDisplay.gd" type="Script" id=5]
+[ext_resource path="res://GUI/HUD/CurseTokens/super_speed_boon128.png" type="Texture" id=6]
+[ext_resource path="res://GUI/HUD/CurseTokens/gun_hands_boon128.png" type="Texture" id=7]
+[ext_resource path="res://GUI/HUD/CurseTokens/super_strong_boon128.png" type="Texture" id=8]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -21,34 +25,73 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1019.0
-margin_bottom = 51.0
+margin_bottom = 69.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
-[node name="LevelInstructions" type="Label" parent="Header/HBox"]
-margin_left = 173.0
-margin_top = 16.0
-margin_right = 301.0
-margin_bottom = 30.0
-text = "Cursed by Hindsight"
-
-[node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 311.0
-margin_right = 530.0
+[node name="HealthContainer" parent="Header/HBox" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_right = 46.0
 margin_bottom = 46.0
-text = "Return to Main Menu"
-target_scene_path = "res://Main.tscn"
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="LevelInstructions" type="Label" parent="Header/HBox"]
+margin_left = 298.0
+margin_top = 25.0
+margin_right = 586.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+text = "Cursed by Hindsight"
+align = 1
+
+[node name="Curses" type="GridContainer" parent="Header/HBox"]
+margin_left = 596.0
+margin_right = 796.0
+margin_bottom = 64.0
+columns = 3
+script = ExtResource( 5 )
+
+[node name="strength" type="TextureRect" parent="Header/HBox/Curses"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="speed" type="TextureRect" parent="Header/HBox/Curses"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="gun_hands" type="TextureRect" parent="Header/HBox/Curses"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
 
 [node name="ResetLevelButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 540.0
-margin_right = 770.0
-margin_bottom = 46.0
-text = "Restart Current Level"
+margin_left = 806.0
+margin_right = 947.0
+margin_bottom = 28.0
+size_flags_vertical = 0
+text = "Restart Level"
 
-[node name="HealthContainer" parent="Header/HBox" instance=ExtResource( 4 )]
-margin_left = 780.0
-margin_right = 840.0
-margin_bottom = 46.0
+[node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
+margin_left = 957.0
+margin_right = 1014.0
+margin_bottom = 28.0
+size_flags_vertical = 0
+text = "Quit"
+target_scene_path = "res://Main.tscn"
 
 [node name="Footer" parent="." instance=ExtResource( 2 )]

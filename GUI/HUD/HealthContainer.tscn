@@ -81,6 +81,7 @@ margin_right = 143.0
 margin_bottom = 39.0
 
 [node name="HealthLabel" type="Label" parent="HBoxContainer"]
+visible = false
 margin_top = 9.0
 margin_right = 42.0
 margin_bottom = 23.0
@@ -88,8 +89,6 @@ text = "Health"
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 46.0
-margin_right = 46.0
 margin_bottom = 32.0
 columns = 5
 

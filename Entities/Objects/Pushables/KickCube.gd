@@ -10,7 +10,7 @@ var moving = false
 var is_highlighted = false
 var hovered = true
 var push_dir : Vector2
-
+var push_duration : float = 0.5
 export var num_critters : int = 0
 export var critter_scene : PackedScene
 export var fragile : bool = false # fragile boxes should explode when bullets hit them
@@ -24,6 +24,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		var num_tiles = 1
 		if Global.curses_taken["strength"]:
 			num_tiles = 2
+			push_duration = 0.25
 		for i in num_tiles:
 			ray_cast.force_raycast_update()
 			if ray_cast.is_colliding():
@@ -34,7 +35,7 @@ func _on_ClickArea_input_event(viewport: Node, event: InputEvent, shape_idx: int
 				moving = true
 				play_audio()
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + push_dir * move_dist * scale, 0.5 / num_tiles)
+				tween.tween_property(self, "position", position + push_dir * move_dist * scale, push_duration / num_tiles)
 				yield(tween, "finished")
 		
 		moving = false
