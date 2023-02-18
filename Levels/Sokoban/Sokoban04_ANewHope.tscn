@@ -299,13 +299,12 @@ disabled = true
 [node name="CollisionPolygon2D" parent="YSort/Player" index="1"]
 disabled = false
 
-[node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
-frame = 0
-
-[node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="2"]
+[node name="ResetLevelButton" parent="YSort/Player/HUD/Header/HBox" index="3"]
 dialogic_timeline = "timeline-1676377628.json"
 
 [node name="Camera2D" parent="YSort/Player" index="13"]
+position = Vector2( -2148, 1266 )
+current = false
 zoom = Vector2( 1, 1 )
 
 [node name="BigBlockWalls" type="TileMap" parent="YSort"]
@@ -351,6 +350,7 @@ next_scene = ExtResource( 3 )
 
 [node name="Sprite" parent="Exit" index="1"]
 position = Vector2( -9, 12 )
+frame = 0
 flip_v = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]

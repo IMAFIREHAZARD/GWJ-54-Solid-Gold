@@ -218,6 +218,9 @@ func reattach_camera():
 	add_child(camera)
 	camera.set_global_position(global_position)
 
+func activate_camera():
+	find_node("Camera2D").current = true
+	
 func pause():
 	if State != States.PAUSED:
 		previous_state = State

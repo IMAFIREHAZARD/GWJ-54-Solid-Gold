@@ -1,21 +1,15 @@
 {
 	"events": [
 		{
-			"background": "",
+			"background": "res://CutScenes/SmokyBackground.tscn",
 			"event_id": "dialogic_021"
 		},
 		{
-			"character": "character-1676353458.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "The Little Devil wasn't supposed to be here. But here they are, in \"paradise\"."
-		},
-		{
 			"animation": "3-fade_in_up_big.gd",
-			"animation_length": 0.5,
+			"animation_length": 0.67,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1676112471.json",
+			"character": "character-1676179918.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
@@ -23,18 +17,36 @@
 			"position": {
 				"0": false,
 				"1": false,
-				"2": true,
+				"2": false,
 				"3": false,
-				"4": false
+				"4": true
 			},
 			"type": 0,
 			"z_index": 0
 		},
 		{
-			"character": "character-1676353458.json",
+			"character": "character-1676179918.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Lost, and trying desperately to escape."
+			"text": "Hey there friend. Wake up!"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sh!t. We ain't supposed to be here, are we?"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Talking? Sorry friend, that’s a no-go. Sh&#, utter one word as a demon here and the forces of Paradise will locate you in an instant."
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Do you want to get bleeped out? No? Then we gotta go!"
 		}
 	],
 	"metadata": {

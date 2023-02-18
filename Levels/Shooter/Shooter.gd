@@ -11,7 +11,7 @@ func _ready() -> void:
 	$YSort/Critters.connect("child_exiting_tree", self, "_on_bug_died", [], CONNECT_DEFERRED)
 
 func _on_bug_died(_v):
-	if current_bugs == 0 and victory_popup_offered == false:
+	if current_bugs <= 3  and victory_popup_offered == false:
 		
 		if Dialogic.has_current_dialog_node():
 			yield(get_tree().get_meta('latest_dialogic_node'), "timeline_end")
