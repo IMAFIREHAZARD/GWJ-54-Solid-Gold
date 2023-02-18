@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -355,10 +355,13 @@ animations = [ {
 "speed": 1.0
 } ]
 
+[sub_resource type="Gradient" id=67]
+colors = PoolColorArray( 1.16, 0.1, 0.1, 1, 0.366211, 0.177383, 0.177383, 1 )
+
 [sub_resource type="Animation" id=64]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteRoot/OuchHitPolygon:visible")
+tracks/0/path = NodePath("SpriteRoot/AnimatedSprite:material:shader_param/modifier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -367,10 +370,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteRoot/AnimatedSprite:material:shader_param/modifier")
+tracks/1/path = NodePath("SpriteRoot/CPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -379,14 +382,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=63]
 resource_name = "hit"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteRoot/OuchHitPolygon:visible")
+tracks/0/path = NodePath("SpriteRoot/AnimatedSprite:material:shader_param/modifier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -394,20 +397,20 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ 1.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteRoot/AnimatedSprite:material:shader_param/modifier")
+tracks/1/path = NodePath("SpriteRoot/CPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -435,14 +438,26 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleNW"
-frame = 2
 speed_scale = 1.5
 playing = true
 
-[node name="OuchHitPolygon" type="Polygon2D" parent="SpriteRoot"]
-visible = false
-color = Color( 1, 0.964706, 0.611765, 1 )
-polygon = PoolVector2Array( -23.2, -66, -25.2, -122, -5.2, -79, 36.8, -111, 12.8, -65, 82.8, -64, 13.8, -47, 26.8, -25, -0.200001, -43, -29.2, -2, -26.2, -55, -59.2, -41 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SpriteRoot"]
+position = Vector2( 5.8, -49 )
+emitting = false
+amount = 132
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.58
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 126.4
+angular_velocity = -369.91
+scale_amount = 9.18
+scale_amount_random = 0.91
+color = Color( 1.16, 0.21, 0.21, 1 )
+color_ramp = SubResource( 67 )
 
 [node name="BulletSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 0, -76 )
