@@ -15,27 +15,19 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	if not active: return
 	if body.has_method("kill") and body.name != "Player":
 		body.kill()
+	elif body.has_method("_on_hit") and "Boss" in body.name:
+		body._on_hit(1) # gonna need a lot of hits to kill the boss
 	elif body.name == "Player" and body.has_method("_on_hit"):
 		body._on_hit(1) # 1 damage
 	elif body.has_method("explode_into_smithereens") and body.get("fragile") == true:
 		body.explode_into_smithereens()
 	active = false
-	$AnimatedSprite2.hide()
+	$AnimatedSprite.hide()
 	$Explosion/AnimatedSprite.show()
 	$Explosion/AnimatedSprite.play("default")
 	speed = 0
-	$Explosion/AnimatedSprite.connect("animation_finished", self, "queue_free")
-	
-	var particles = $CPUParticles2D
-	var t = particles.global_transform
-	remove_child(particles)
-	get_parent().add_child(particles)
-	particles.global_transform = t
-	particles.emitting = false
-	var tween = create_tween()
-	print("tweening")
-	tween.tween_property(particles, "modulate", Color(1,1,1,0), 0.3)
-	tween.connect("finished", particles, "queue_free")
+	yield($Explosion/AnimatedSprite,"animation_finished")
+	queue_free()
 
 
 func _on_Timer_timeout() -> void:
