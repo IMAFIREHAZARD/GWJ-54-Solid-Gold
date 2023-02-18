@@ -17,6 +17,7 @@ var speed_multiplier = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer/ExitTimer.set_wait_time(time_to_cover_distance / speed_multiplier /2.0)
+	$Timer/ExitTimer.start()
 	
 func offer_devils_bargain():
 	halt_movement()
