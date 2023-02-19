@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://DesignNotes.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Title_screen54.png" type="Texture" id=10]
 [ext_resource path="res://Music/LEVEL_MUSIC_TEST.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Art/Logo blockin.png" type="Texture" id=12]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -90,3 +91,8 @@ stream = ExtResource( 11 )
 volume_db = -24.0
 autoplay = true
 bus = "Music"
+
+[node name="LogoBlockin" type="Sprite" parent="."]
+position = Vector2( 763, 132 )
+scale = Vector2( 0.619587, 0.602332 )
+texture = ExtResource( 12 )
