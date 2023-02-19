@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HelpFooter.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://GUI/HUD/CurseTokens/super_speed_boon128.png" type="Texture" id=6]
 [ext_resource path="res://GUI/HUD/CurseTokens/gun_hands_boon128.png" type="Texture" id=7]
 [ext_resource path="res://GUI/HUD/CurseTokens/super_strong_boon128.png" type="Texture" id=8]
+[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -39,11 +40,11 @@ size_flags_vertical = 0
 
 [node name="LevelInstructions" type="Label" parent="Header/HBox"]
 margin_left = 298.0
-margin_top = 25.0
+margin_top = 21.0
 margin_right = 586.0
-margin_bottom = 39.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
-text = "Cursed by Hindsight"
+theme = ExtResource( 9 )
 align = 1
 
 [node name="Curses" type="GridContainer" parent="Header/HBox"]
