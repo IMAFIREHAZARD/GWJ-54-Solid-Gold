@@ -21,7 +21,7 @@ position = Vector2( -4, -55.7927 )
 scale = Vector2( 1, 0.646341 )
 
 [node name="Shield" parent="." index="2"]
-frame = 0
+frame = 1
 
 [node name="Timer" parent="." index="4"]
 wait_time = 0.5
@@ -54,21 +54,21 @@ cell_size = Vector2( 128, 64 )
 format = 1
 tile_data = PoolIntArray( -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -131076, 0, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 0, 0, -65540, 0, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 0, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 0, 0, -4, 0, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 131068, 0, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 0, 0, 196604, 0, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 0, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 0, 0, 262140, 0, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 0, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0 )
 
-[node name="PushBlock" parent="YSort/TileMap" index="0" instance=ExtResource( 3 )]
-position = Vector2( -199.5, 129 )
-scale = Vector2( 2, 2 )
+[node name="PushBlock" parent="YSort" index="1" instance=ExtResource( 3 )]
+position = Vector2( 7, 262 )
+scale = Vector2( 4, 4 )
 
-[node name="PushBlock2" parent="YSort/TileMap" index="1" instance=ExtResource( 3 )]
-position = Vector2( 196, 131.5 )
-scale = Vector2( 2, 2 )
+[node name="PushBlock2" parent="YSort" index="2" instance=ExtResource( 3 )]
+position = Vector2( 515, 8 )
+scale = Vector2( 4, 4 )
 
-[node name="PushBlock3" parent="YSort/TileMap" index="2" instance=ExtResource( 3 )]
-position = Vector2( 191.5, -63.5 )
-scale = Vector2( 2, 2 )
+[node name="PushBlock3" parent="YSort" index="3" instance=ExtResource( 3 )]
+position = Vector2( 39, -238 )
+scale = Vector2( 4, 4 )
 
-[node name="PushBlock4" parent="YSort/TileMap" index="3" instance=ExtResource( 3 )]
-position = Vector2( -191.5, -62.5 )
-scale = Vector2( 2, 2 )
+[node name="PushBlock4" parent="YSort" index="4" instance=ExtResource( 3 )]
+position = Vector2( -560, 21 )
+scale = Vector2( 4, 4 )
 
 [node name="Wires" type="Node2D" parent="." index="8"]
 

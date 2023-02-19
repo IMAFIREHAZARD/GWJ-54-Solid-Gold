@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Art/Boss_Parts/Forearm_Right.png" type="Texture" id=1]
 [ext_resource path="res://Art/Boss_Parts/Wing_small.png" type="Texture" id=2]
@@ -1073,6 +1073,9 @@ tracks/2/keys = {
 radius = 137.661
 height = 73.9003
 
+[sub_resource type="CircleShape2D" id=9]
+radius = 99.3227
+
 [node name="Boss" type="Sprite"]
 position = Vector2( 83, -40 )
 rotation = -0.0790671
@@ -1352,6 +1355,16 @@ script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox"]
 shape = SubResource( 3 )
+
+[node name="BossHurtbox2" type="Area2D" parent="."]
+position = Vector2( -6.26138, 154.99 )
+collision_layer = 64
+collision_mask = 9
+script = ExtResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox2"]
+position = Vector2( 11.6348, -324.094 )
+shape = SubResource( 9 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
