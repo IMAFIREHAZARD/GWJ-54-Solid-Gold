@@ -45,4 +45,4 @@ func pan_camera(target : Vector2, time := 1.0):
 
 func _on_boss_died():
 	var boss = $YSort/BossRoot
-	yield(pan_camera(boss.global_position), "completed")
+	pan_camera(boss.global_position)

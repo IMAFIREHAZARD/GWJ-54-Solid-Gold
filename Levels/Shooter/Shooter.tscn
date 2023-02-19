@@ -191,7 +191,7 @@ shader_param/seed = 5.0
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource( 2 )
-max_bugs = 20
+max_bugs = 30
 success_timeline = "timeline-1676179945.json"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -513,6 +513,36 @@ position = Vector2( 1042, 852 )
 [node name="Critter15" parent="YSort/Critters" instance=ExtResource( 10 )]
 position = Vector2( 1042, 852 )
 
+[node name="Critter16" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1122, 2376 )
+
+[node name="Critter17" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1055, 2368 )
+
+[node name="Critter18" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -953, 2402 )
+
+[node name="Critter19" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1165, 2441 )
+
+[node name="Critter20" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1015, 2472 )
+
+[node name="Critter21" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1571, 1965 )
+
+[node name="Critter22" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1504, 1957 )
+
+[node name="Critter23" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1402, 1991 )
+
+[node name="Critter24" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1614, 2030 )
+
+[node name="Critter25" parent="YSort/Critters" instance=ExtResource( 10 )]
+position = Vector2( -1464, 2061 )
+
 [node name="BoxesOfCritters" type="YSort" parent="YSort"]
 
 [node name="DestructibleBoxOfCritters" parent="YSort/BoxesOfCritters" instance=ExtResource( 12 )]
@@ -692,7 +722,8 @@ scale = Vector2( 1.458, -1.432 )
 texture = ExtResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/Walls/WallHalf"]
-collision_layer = 5
+collision_layer = 4
+collision_mask = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls/WallHalf/StaticBody2D"]
 polygon = PoolVector2Array( 131.001, 103.352, -149.52, 258.38, -569.273, 57.9609, -172.154, -138.966, 210.563, 58.6586 )
@@ -734,6 +765,7 @@ script = ExtResource( 11 )
 position = Vector2( 1060, -36 )
 dialogic_timeline = "timeline-1676112450.json"
 curse = "gun_hands"
+wait_time = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )

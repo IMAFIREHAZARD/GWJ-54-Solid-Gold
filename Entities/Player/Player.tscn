@@ -438,7 +438,7 @@ position = Vector2( -0.200001, -49 )
 scale = Vector2( 0.587629, 0.587629 )
 frames = SubResource( 7 )
 animation = "IdleNW"
-frame = 4
+frame = 1
 speed_scale = 1.5
 playing = true
 
@@ -471,6 +471,7 @@ anims/RESET = SubResource( 64 )
 anims/hit = SubResource( 63 )
 
 [node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.66
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
@@ -486,7 +487,7 @@ texture_progress = ExtResource( 7 )
 fill_mode = 4
 
 [node name="GunCurse" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.25
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0.0627451, 0.0117647, 0.0117647, 1 )

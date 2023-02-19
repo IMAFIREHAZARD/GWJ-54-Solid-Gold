@@ -14,6 +14,8 @@ var num_cracks : int = 0
 enum States { READY, ATTACKING, DYING, DEAD }
 var State = States.READY
 
+signal died
+
 func do_next_attack():
 	if State in [States.DYING, States.DEAD]:
 		return
@@ -88,6 +90,7 @@ func die_horribly():
 	$AttackTimer.stop()
 	State = States.DYING
 	$AnimationPlayer.play("die")
+	# see more logic in _on_AnimationPlayer_animation_finished
 
 func spawn_dialog(timeline_name):
 	var new_dialog = Dialogic.start('DefeatedBoss')
@@ -113,8 +116,9 @@ func destroy_all_critters():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
-		
-		StageManager.current_map._on_boss_died()
+		connect("died", StageManager.current_map, "_on_boss_died")
+		emit_signal("died") # let the map pan the camera
+
 		destroy_all_critters()
 		State = States.DEAD
 

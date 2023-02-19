@@ -8,13 +8,15 @@ var velocity : Vector2
 
 export(PackedScene) var splat_scene
 
-export var move_speed := 250
+export var move_speed : float = 250.0
+export var knockback_speed : float = 2500.0
 export var random_start_location : bool = true
 
 enum State {
 	ROAM,
 	TRACK_PLAYER,
 	ATTACKING,
+	DYING,
 	DEAD,
 	PAUSED
 }
@@ -60,6 +62,9 @@ func _physics_process(delta : float):
 			var flockingVector = get_flocking_vector()
 			velocity = navigationVector + flockingVector
 			global_position += velocity.normalized() * move_speed * delta
+	elif state in [ State.DYING ]: # knockback
+		global_position += velocity.normalized() * knockback_speed * delta 
+
 
 func get_flocking_vector():
 	var cutoff_distance = 200.0
@@ -127,6 +132,11 @@ func choose_new_behaviour():
 	if level == null:
 		return
 
+func knockback(impactVector):
+	state = State.DYING
+	velocity = impactVector
+	$KnockbackTimer.start()
+
 
 func kill():
 	if state == State.DEAD: return
@@ -188,3 +198,12 @@ func _on_Critter_body_entered(body: Node) -> void:
 
 func _on_NavUpdateTimer_timeout():
 	pass # Replace with function body.
+
+
+func _on_hit(impactVector : Vector2 = Vector2.ZERO):
+	if impactVector == Vector2.ZERO:
+		impactVector = global_position.direction_to(StageManager.player.global_position)
+	knockback(impactVector)
+
+func _on_KnockbackTimer_timeout():
+	kill()

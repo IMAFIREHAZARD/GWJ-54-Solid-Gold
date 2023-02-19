@@ -34,16 +34,15 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 margin_bottom = 10.0
 mouse_filter = 2
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
+custom_constants/margin_right = 15
+custom_constants/margin_top = 10
+custom_constants/margin_left = 15
 
 [node name="HBox" type="HBoxContainer" parent="Header"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 1019.0
-margin_bottom = 69.0
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 1009.0
+margin_bottom = 74.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
@@ -52,13 +51,14 @@ alignment = 1
 margin_left = 0.0
 margin_right = 180.0
 margin_bottom = 36.0
+mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 
 [node name="LevelInstructions" type="Label" parent="Header/HBox"]
-margin_left = 298.0
+margin_left = 257.0
 margin_top = 21.0
-margin_right = 586.0
+margin_right = 504.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
@@ -68,12 +68,15 @@ align = 1
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="Curses" type="GridContainer" parent="Header/HBox"]
-margin_left = 596.0
-margin_right = 796.0
+margin_left = 514.0
+margin_right = 714.0
 margin_bottom = 64.0
+mouse_filter = 2
 columns = 3
 script = ExtResource( 5 )
 
@@ -81,6 +84,7 @@ script = ExtResource( 5 )
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
@@ -90,6 +94,7 @@ margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
@@ -99,21 +104,24 @@ margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
 [node name="ResetLevelButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 806.0
-margin_right = 947.0
+margin_left = 724.0
+margin_right = 884.0
 margin_bottom = 28.0
+rect_min_size = Vector2( 160, 0 )
 size_flags_vertical = 0
 text = "Restart Level"
 
 [node name="MainMenuButton" parent="Header/HBox" instance=ExtResource( 3 )]
-margin_left = 957.0
-margin_right = 1014.0
+margin_left = 894.0
+margin_right = 994.0
 margin_bottom = 28.0
+rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 0
 text = "Quit"
 target_scene_path = "res://Main.tscn"

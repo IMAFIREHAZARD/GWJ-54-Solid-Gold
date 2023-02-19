@@ -156,6 +156,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.curses_taken["gun_hands"] = true
 		Global.curses_taken["strength"] = true
 		Global.curses_taken["speed"] = true
+		
 
 
 func has_affordance(affordanceName : String):
