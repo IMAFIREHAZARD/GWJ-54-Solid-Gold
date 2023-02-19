@@ -19,6 +19,7 @@ enum State {
 	PAUSED
 }
 var state = State.ROAM
+var previous_state = state
 
 signal died
 
@@ -34,7 +35,13 @@ func _ready() -> void:
 	
 	set_random_navPos()
 	
+func pause():
+	if state != State.PAUSED:
+		previous_state = state
+		state = State.PAUSED
 
+func resume():
+	state = previous_state
 
 func set_random_navPos() -> void:
 	var target = Vector2(randf(), randf())* 200
