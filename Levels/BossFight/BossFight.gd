@@ -17,7 +17,8 @@ func _ready() -> void:
 	player.set_physics_process(true)
 	player.set_process_unhandled_input(true)
 	
-
+	tileMapGround = $YSort/WallsAndGround/Ground
+	
 func do_cutscene() -> void:
 	player.shoot_disabled = true
 	player.pause()
