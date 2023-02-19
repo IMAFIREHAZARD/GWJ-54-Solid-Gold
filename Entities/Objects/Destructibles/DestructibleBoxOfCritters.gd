@@ -1,6 +1,6 @@
 """
 Destructible box of critters, aka CritterCrate
-All the required code is in PushCube, so we don't really need this script.
+All the required code is in KickCube.gd, so we don't really need this script.
 """
 
 extends PushBlock

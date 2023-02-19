@@ -9,6 +9,7 @@ var velocity : Vector2
 export(PackedScene) var splat_scene
 
 export var move_speed := 250
+export var random_start_location : bool = true
 
 enum State {
 	ROAM,
@@ -28,7 +29,9 @@ func _ready() -> void:
 		targets.append(target.global_position)
 	if level != null and level.get("current_bugs") != null:
 		level.current_bugs += 1
-	goto_random_pos()
+	
+	if random_start_location:
+		goto_random_pos()
 	
 
 

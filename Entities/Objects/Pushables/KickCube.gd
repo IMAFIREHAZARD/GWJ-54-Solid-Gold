@@ -69,8 +69,9 @@ func spawn_critters():
 	for _i in range(num_critters):
 		var newCritter = critter_scene.instance()
 		#newCritter.set_global_position(global_position)
+		newCritter.random_start_location = false
 		get_parent().call_deferred("add_child", newCritter)
-		newCritter.set_global_position(global_position)
+		newCritter.set_global_position(global_position / global_scale.x)
 
 
 func _physics_process(_delta: float) -> void:
