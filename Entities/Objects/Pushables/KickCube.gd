@@ -45,13 +45,19 @@ func _on_ClickArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 		stop_audio()
 
 func play_audio():
-	for noise in $PushAudio.get_children():
-		noise.set_pitch_scale(rand_range(0.95,1.05))
-		noise.play()
+	if Global.curses_taken["strength"]:
+		$PushAudioFast.play_random_noise()
+	else:
+		for noise in $PushAudio.get_children():
+			noise.set_pitch_scale(rand_range(0.95,1.05))
+			noise.play()
 
 func stop_audio():
-	for noise in $PushAudio.get_children():
-		noise.stop()
+	if Global.curses_taken["strength"]:
+		pass
+	else:
+		for noise in $PushAudio.get_children():
+			noise.stop()
 
 func explode_into_smithereens():
 	$CollisionPolygon2D.set_deferred("disabled", true)

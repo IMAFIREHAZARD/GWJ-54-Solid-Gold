@@ -192,7 +192,8 @@ func begin_dying():
 	print("Oh noes!")
 	print("Player died!")
 	
-	Global.scene_attempts[StageManager.current_map.name] += 1
+	if StageManager.current_map.name in Global.scene_attempts.keys():
+		Global.scene_attempts[StageManager.current_map.name] += 1
 	
 	StageManager.current_map.spawn_dialog("PlayerDied")
 

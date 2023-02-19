@@ -26,6 +26,7 @@ var previous_state = state
 signal died
 
 func _ready() -> void:
+	#$SpawnSafetyTimer.start() # autostarts now
 	velocity = Vector2.RIGHT.rotated(randf()*TAU)
 
 	for target in get_tree().get_nodes_in_group("BugTargets"):
@@ -201,6 +202,8 @@ func _on_NavUpdateTimer_timeout():
 
 
 func _on_hit(impactVector : Vector2 = Vector2.ZERO):
+	if !$SpawnSafetyTimer.is_stopped():
+		return # geeze, let them out of their box. give them 1 second
 	if impactVector == Vector2.ZERO:
 		impactVector = global_position.direction_to(StageManager.player.global_position)
 	knockback(impactVector)
