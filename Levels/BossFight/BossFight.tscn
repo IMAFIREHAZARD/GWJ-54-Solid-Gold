@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
@@ -93,20 +93,28 @@ vertices = PoolVector2Array( 970, 424, 1300, 574, 635, 900, 431, 223, 1480, -268
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 0, 3 ), PoolIntArray( 2, 6, 7, 3 ) ]
 outlines = [ PoolVector2Array( -321, 412, 635, 900, 1300, 574, 970, 424, 1911, -73, 1480, -268, 431, 223, 263, 127 ) ]
 
-[sub_resource type="GDScript" id=4]
-script/source = "extends CheckButton
-
-func _ready() -> void:
-	pressed = Global.curses_taken[\"strength\"]
-
-func _toggled(button_pressed: bool) -> void:
-	Global.curses_taken[\"strength\"] = button_pressed
-"
-
 [node name="BossFight" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="DirectionalProjectileTower" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 1537, 1382 )
+
+[node name="DirectionalProjectileTower2" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( -1257, 185 )
+
+[node name="Shield" parent="YSort/DirectionalProjectileTower2" index="2"]
+frame = 0
+
+[node name="PushBlock" parent="YSort/DirectionalProjectileTower2/YSort" index="1"]
+position = Vector2( 265, 133 )
+
+[node name="PushBlock2" parent="YSort/DirectionalProjectileTower2/YSort" index="2"]
+position = Vector2( 258, -128 )
+
+[node name="PushBlock3" parent="YSort/DirectionalProjectileTower2/YSort" index="3"]
+position = Vector2( 0, 262 )
 
 [node name="BossRoot" type="Node2D" parent="YSort"]
 position = Vector2( 1444, 60 )
@@ -141,21 +149,6 @@ box_sensors = [ NodePath("../PushBlocks/BoxSensor2"), NodePath("../PushBlocks/Bo
 unique_name_in_owner = true
 position = Vector2( 384, 128 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor5"), NodePath("../PushBlocks/BoxSensor6") ]
-
-[node name="DirectionalProjectileTower" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( 1537, 1350 )
-
-[node name="DirectionalProjectileTower2" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( -1281, -71 )
-
-[node name="PushBlock" parent="YSort/DirectionalProjectileTower2/YSort/TileMap" index="0"]
-position = Vector2( -193.5, 126.5 )
-
-[node name="PushBlock2" parent="YSort/DirectionalProjectileTower2/YSort/TileMap" index="1"]
-position = Vector2( 128.5, 100 )
-
-[node name="PushBlock3" parent="YSort/DirectionalProjectileTower2/YSort/TileMap" index="2"]
-position = Vector2( 129, -31.5 )
 
 [node name="PushBlocks" type="YSort" parent="YSort"]
 
@@ -228,6 +221,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
+frame = 0
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -245,68 +239,6 @@ visible = false
 navpoly = SubResource( 1 )
 
 [node name="LevelBackground" parent="." instance=ExtResource( 6 )]
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-margin_left = -781.0
-margin_top = 440.0
-margin_right = -460.0
-margin_bottom = 507.0
-rect_scale = Vector2( 2, 2 )
-
-[node name="Label" type="Label" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 9.0
-margin_right = 314.0
-margin_bottom = 57.0
-text = "These Godot icon stripes are just me trying out how some curved tiles could look in this level to break up the big squareness of the tilemap"
-autowrap = true
-
-[node name="PanelContainer2" type="PanelContainer" parent="."]
-margin_left = -1536.0
-margin_top = 1536.0
-margin_right = -1215.0
-margin_bottom = 1666.0
-rect_scale = Vector2( 2, 2 )
-
-[node name="Label" type="Label" parent="PanelContainer2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 314.0
-margin_bottom = 123.0
-text = "This area is meant to let the player see how the boxes we've previously used for sokoban can be pushed onto buttons, in preperation for the boss fight.
-Might put a locked door here too to force the player to use the boxes before they try the battle"
-autowrap = true
-
-[node name="PanelContainer3" type="PanelContainer" parent="."]
-margin_left = 1664.0
-margin_top = 708.0
-margin_right = 1985.0
-margin_bottom = 770.0
-rect_scale = Vector2( 2, 2 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer3"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 314.0
-margin_bottom = 141.0
-
-[node name="Label" type="Label" parent="PanelContainer3/VBoxContainer"]
-margin_right = 307.0
-margin_bottom = 82.0
-text = "This block puzzle is trivial if you don't have the strength upgrade. If you do, it becomes quite a bit more difficult to do while fighting the boss. Try it yourself with/without strength with this handy toggle:"
-autowrap = true
-
-[node name="HSeparator" type="HSeparator" parent="PanelContainer3/VBoxContainer"]
-margin_top = 86.0
-margin_right = 307.0
-margin_bottom = 90.0
-
-[node name="CheckButton" type="CheckButton" parent="PanelContainer3/VBoxContainer"]
-margin_top = 94.0
-margin_right = 307.0
-margin_bottom = 134.0
-text = "Strength curse"
-script = SubResource( 4 )
 
 [node name="BGMusic" type="Node2D" parent="."]
 script = ExtResource( 13 )

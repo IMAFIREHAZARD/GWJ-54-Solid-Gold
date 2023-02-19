@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CollisionObject2D
 
 
 # Declare member variables here. Examples:
