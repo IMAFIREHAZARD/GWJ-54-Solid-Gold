@@ -79,7 +79,7 @@ texture = ExtResource( 5 )
 layer = -3
 
 [node name="Background" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 494, 683.5 )
+position = Vector2( 474, 684 )
 scale = Vector2( 6.47708, 5.58981 )
 z_index = -6
 texture = ExtResource( 8 )
