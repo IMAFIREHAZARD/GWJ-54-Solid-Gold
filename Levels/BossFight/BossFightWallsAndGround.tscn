@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Art/Big_background elements/Exit.png" type="Texture" id=5]
-[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=6]
 
 [node name="BossFightWallsAndGround" type="YSort"]
 
@@ -72,7 +71,3 @@ position = Vector2( 11.5565, 32.0343 )
 rotation = -0.523599
 scale = Vector2( 3.16574, 2.81439 )
 texture = ExtResource( 4 )
-
-[node name="Player" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 416, 408 )
