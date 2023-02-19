@@ -20,7 +20,7 @@ func _process(delta):
 
 	var full_hearts = floor(float(Global.player_health_remaining) / float(HP_per_heart))
 	var half_hearts = int(Global.player_health_remaining) % HP_per_heart
-	var empty_hearts = 5-full_hearts + half_hearts	
+	#var empty_hearts = 5-full_hearts + half_hearts	
 	
 	var pos = get_position_in_parent() # watch for divide by one errors when using positions
 	if pos < full_hearts:

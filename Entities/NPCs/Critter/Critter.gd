@@ -100,10 +100,10 @@ func get_flocking_vector():
 func reproduce():
 	animation_player.play("Wiggle")
 
-	return # wasn't clear to the player why the critter count is going up.
+	#return # wasn't clear to the player why the critter count is going up.
 	
 	state = State.PAUSED
-	
+
 	yield(animation_player, "animation_finished")
 	if state == State.DEAD: return
 	var extra_critter = duplicate()
@@ -117,14 +117,14 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 
 func choose_new_behaviour():
 	if state == State.ROAM:
-		if level.current_bugs < level.max_bugs and randf() < 0.0: # never ever
+		if level.current_bugs < level.max_bugs and randf() < 0.10: # 10%
 			reproduce()
-		elif randf() < 1.0 and !Dialogic.has_current_dialog_node(): # always
+		elif randf() <= 0.95 and !Dialogic.has_current_dialog_node(): # almost always
 			state = State.TRACK_PLAYER
 			goto_player()
 			return
-		
-		set_random_navPos()
+		else: # hardly ever
+			set_random_navPos()
 	elif state == State.TRACK_PLAYER:
 		goto_player()
 	

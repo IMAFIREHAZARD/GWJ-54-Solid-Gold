@@ -1,5 +1,6 @@
 class_name PushBlock extends KinematicBody2D
 
+#warning-ignore:UNUSED_SIGNAL
 signal bugs_spawned(bugs)
 
 onready var player : KinematicBody2D = StageManager.player
@@ -63,7 +64,7 @@ func explode_into_smithereens():
 
 	if num_critters > 0:
 		spawn_critters()
-	
+		
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("explode"):
 		$AnimationPlayer.play("explode")
 	else:

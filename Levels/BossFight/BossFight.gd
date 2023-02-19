@@ -43,6 +43,20 @@ func pan_camera(target : Vector2, time := 1.0):
 	tween.tween_property(cam, "global_position", target, time)
 	yield(tween, "finished")
 
+func destroy_all_critters():
+	var critters = get_tree().get_nodes_in_group("critters")
+	for critter in critters:
+		critter.queue_free()
+
 func _on_boss_died():
-	var boss = $YSort/BossRoot
-	pan_camera(boss.global_position)
+	destroy_all_critters()
+	var myBoss = $YSort/BossRoot
+	#pan_camera(myBoss.global_position)
+
+	var camera = find_node("*Camera*")
+	if camera != null:
+		remove_child(camera)
+		get_parent().add_child(camera)
+		var tween = get_tree().create_tween()
+		tween.tween_property(camera, "global_position", myBoss.global_position, 1.0 ).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+

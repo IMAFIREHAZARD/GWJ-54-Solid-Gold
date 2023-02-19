@@ -127,5 +127,5 @@ func top_to_iso(vector : Vector2):
 	return Vector2(vector.x, vector.y / 2.0)
 
 func _on_Reflector_reflect() -> void:
-	create_tween().tween_property($Shield, "modulate", Color.white, 0.2).from(Color(2,2,2))
+	var _tween = create_tween().tween_property($Shield, "modulate", Color.white, 0.2).from(Color(2,2,2))
 

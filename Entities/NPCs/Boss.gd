@@ -76,7 +76,7 @@ func _on_hit(damage):
 			#$AnimationPlayer.play("hit") # this interferes with attacks.
 			flash_white()
 			health -= damage
-			print("Boss health remaining " + str(health) + " out of " + str(health_max))
+			#print("Boss health remaining " + str(health) + " out of " + str(health_max))
 			if (health_max - health) / crack_threshold > num_cracks:
 				find_node("CrackDecals").spawn_crack()
 				$CrackNoises.play_random_noise()
@@ -92,13 +92,13 @@ func die_horribly():
 	$AnimationPlayer.play("die")
 	# see more logic in _on_AnimationPlayer_animation_finished
 
-func spawn_dialog(timeline_name):
+func spawn_dialog(_timeline_name):
 	var new_dialog = Dialogic.start('DefeatedBoss')
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 	new_dialog.connect("timeline_end", self, "_on_dialogic_timeline_end")
 
-func _on_dialogic_signal(params):
+func _on_dialogic_signal(_params):
 	pass
 
 func _on_dialogic_timeline_end(timeline_name):
@@ -116,16 +116,15 @@ func destroy_all_critters():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
+		#warning-ignore:RETURN_VALUE_DISCARDED
 		connect("died", StageManager.current_map, "_on_boss_died")
 		emit_signal("died") # let the map pan the camera
 
-		destroy_all_critters()
+		#destroy_all_critters() # current_map can do this
 		State = States.DEAD
 
 		var timer = get_tree().create_timer(3)
 		yield(timer, "timeout")
-		queue_free()
 		
-		print("Boss is Dead. Now what?")
 		spawn_dialog("DefeatedBoss") # this should probably go in the current_map instead. 
 

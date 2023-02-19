@@ -246,9 +246,9 @@ func fall_off_map():
 		if Global.player_events["falls"] > 1 and Global.curses_offered["levitation"] == false:
 			pause()
 			if StageManager.current_map.has_method("spawn_dialog"):
-				
-				StageManager.current_map.spawn_dialog("LevitationCurse")
-				Global.curses_offered["levitation"] = true
+				if !Dialogic.has_current_dialog_node():
+					StageManager.current_map.spawn_dialog("LevitationCurse")
+					Global.curses_offered["levitation"] = true
 
 		if Global.curses_taken["levitation"] == false:
 			detach_camera()
@@ -260,9 +260,13 @@ func fall_off_map():
 
 
 func stun(time:float) -> void:
-	State = States.STUNNED
-	yield(get_tree().create_timer(time), "timeout")
-	State = States.READY
+	#No slowing down the player
+	return
+	
+#	State = States.STUNNED
+#	yield(get_tree().create_timer(time), "timeout")
+#	State = States.READY
 
-
+func _on_stun_attack_hit(impactVector):
+	knockback(impactVector)
 

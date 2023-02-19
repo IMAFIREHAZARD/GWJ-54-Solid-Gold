@@ -24,10 +24,10 @@ func win():
 
 
 #signals
-func _on_Critters_child_exiting_tree(node):
+func _on_Critters_child_exiting_tree(_node):
 	evaluate()
 
 
-func _on_Exit_body_entered(body):
+func _on_Exit_body_entered(_body):
 	if lvlComplete == true:
 		print("exit stage")

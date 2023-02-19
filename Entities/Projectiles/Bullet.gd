@@ -46,6 +46,7 @@ func _on_Bullet_area_entered(area: Area2D) -> void:
 		for possibleCritter in $ExplosionHurtbox.get_overlapping_areas():
 			if possibleCritter is Critter:
 				if not is_connected("hit", possibleCritter, "_on_hit"):
+					#warning-ignore:RETURN_VALUE_DISCARDED
 					connect("hit", possibleCritter, "_on_hit")
 				var knockbackVector = transform.x + $ExplosionHurtbox.global_position.direction_to(possibleCritter.global_position)
 				emit_signal("hit", knockbackVector)
