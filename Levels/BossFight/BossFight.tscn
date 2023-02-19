@@ -220,12 +220,6 @@ texture = ExtResource( 15 )
 [node name="DirectionalTowerPlatform" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( -1253, -71 )
 
-[node name="PushBlock2" parent="YSort/DirectionalTowerPlatform/YSort" index="2"]
-position = Vector2( 260, 138 )
-
-[node name="PushBlock3" parent="YSort/DirectionalTowerPlatform/YSort" index="3"]
-position = Vector2( 255, -126 )
-
 [node name="DirectionalTowerPlatform2" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 1522, 1348 )
 
@@ -398,6 +392,8 @@ autoplay = true
 bus = "Music"
 
 [editable path="YSort/DirectionalTowerPlatform"]
+[editable path="YSort/DirectionalTowerPlatform/ReflectorSensors/ReflectorSensor01"]
 [editable path="YSort/DirectionalTowerPlatform2"]
+[editable path="YSort/DirectionalTowerPlatform2/ReflectorSensors/ReflectorSensor01"]
 [editable path="YSort/WallsAndGround"]
 [editable path="YSort/Player"]

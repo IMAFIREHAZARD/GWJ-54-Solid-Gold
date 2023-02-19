@@ -59,4 +59,4 @@ anims/Idle = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 14.125, -86.875 )
 scale = Vector2( 1.732, 1.76611 )
-texture = ExtResource( 12 )
+texture = ExtResource( 5 )

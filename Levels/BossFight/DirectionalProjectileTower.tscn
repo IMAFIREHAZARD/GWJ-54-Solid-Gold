@@ -20,6 +20,9 @@ scale = Vector2( 2, 3.28 )
 position = Vector2( -4, -55.7927 )
 scale = Vector2( 1, 0.646341 )
 
+[node name="Shield" parent="." index="5"]
+frame = 3
+
 [node name="DirectionSensors" type="Node2D" parent="." index="6"]
 
 [node name="BoxSensor01" parent="DirectionSensors" index="0" instance=ExtResource( 4 )]
