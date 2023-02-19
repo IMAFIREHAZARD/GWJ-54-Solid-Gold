@@ -51,6 +51,8 @@ func stop_audio():
 		noise.stop()
 
 func explode_into_smithereens():
+	$CollisionPolygon2D.set_deferred("disabled", true)
+	
 	#print("Player is very strong, box exploded.")
 	
 	var noises = $ExplosionAudio.get_children()
