@@ -10,9 +10,9 @@
 [ext_resource path="res://Levels/BossFight/BoxSensor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/BossFight/LightUpLine.gd" type="Script" id=9]
 [ext_resource path="res://Levels/BossFight/CritterBoxConveyor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/BossFight/DirectionalTowerPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Music/Boss_Fight_SOLID_GOLD.ogg" type="AudioStream" id=12]
 [ext_resource path="res://sfx/PlayRandomNoises2.gd" type="Script" id=13]
-[ext_resource path="res://Levels/BossFight/DirectionalProjectileTower.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 576.0
@@ -98,23 +98,11 @@ script = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="DirectionalProjectileTower" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( 1522, 1346 )
+[node name="DirectionalTowerPlatform" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -1253, -71 )
 
-[node name="DirectionalProjectileTower2" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( -1248, -66 )
-
-[node name="Shield" parent="YSort/DirectionalProjectileTower2" index="2"]
-frame = 3
-
-[node name="PushBlock" parent="YSort/DirectionalProjectileTower2/YSort" index="1"]
-position = Vector2( 265, 133 )
-
-[node name="PushBlock2" parent="YSort/DirectionalProjectileTower2/YSort" index="2"]
-position = Vector2( 258, -128 )
-
-[node name="PushBlock3" parent="YSort/DirectionalProjectileTower2/YSort" index="3"]
-position = Vector2( 0, 262 )
+[node name="DirectionalTowerPlatform2" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 1522, 1348 )
 
 [node name="BossRoot" type="Node2D" parent="YSort"]
 position = Vector2( 1444, 60 )
@@ -221,6 +209,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
+frame = 0
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -248,5 +237,4 @@ volume_db = -9.0
 autoplay = true
 bus = "Music"
 
-[editable path="YSort/DirectionalProjectileTower2"]
 [editable path="YSort/Player"]
