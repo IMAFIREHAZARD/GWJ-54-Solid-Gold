@@ -93,6 +93,7 @@ autoplay = true
 bus = "Music"
 
 [node name="LogoBlockin" type="Sprite" parent="."]
-position = Vector2( 763, 132 )
-scale = Vector2( 0.619587, 0.602332 )
+position = Vector2( 762, 122 )
+rotation = 0.0223251
+scale = Vector2( 0.367196, 0.35697 )
 texture = ExtResource( 12 )
