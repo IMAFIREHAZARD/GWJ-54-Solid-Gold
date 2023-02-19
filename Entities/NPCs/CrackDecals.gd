@@ -24,6 +24,6 @@ func spawn_crack():
 	newCrack.position = Vector2(xPos, yPos)
 	newCrack.rotation = randf()*TAU
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("test_cracks"):
 		spawn_crack()
