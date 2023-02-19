@@ -332,11 +332,44 @@ position = Vector2( 128, 0 )
 [node name="BoxSensor6" parent="YSort/PushBlocks" instance=ExtResource( 8 )]
 position = Vector2( 512, -192 )
 
+[node name="PushBlock7" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( -1243, 193 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock8" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( -990, 69 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock9" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( -995, -195 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock10" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( -1810, -48 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock11" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( 1534, 1603 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock12" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( 2042, 1349 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock13" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( 1566, 1103 )
+scale = Vector2( 4, 4 )
+
+[node name="PushBlock14" parent="YSort/PushBlocks" instance=ExtResource( 2 )]
+position = Vector2( 967, 1362 )
+scale = Vector2( 4, 4 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
+frame = 2
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -365,5 +398,6 @@ autoplay = true
 bus = "Music"
 
 [editable path="YSort/DirectionalTowerPlatform"]
+[editable path="YSort/DirectionalTowerPlatform2"]
 [editable path="YSort/WallsAndGround"]
 [editable path="YSort/Player"]
