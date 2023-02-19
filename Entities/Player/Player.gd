@@ -174,11 +174,20 @@ func shoot():
 	reload_timer.start()
 	if not State in [ States.PAUSED, States.DEAD]:
 		var bullet = bullet_scene.instance() as Node2D
+		bullet.set_shooter(self)
 		get_parent().add_child(bullet)
 		bullet.global_position = $BulletSpawnPoint.global_position
 		bullet.scale *= scale
 		bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
-	
+
+		# moved noises out of Bullet
+		if Global.curses_taken["gun_hands"]:
+			if randf()<0.67:
+				$Gun/ShootNoises.play_random_noise()
+			else:
+				$Gun/WoofShootNoises.play_random_noise()
+		else:
+			$Gun/ShootNoises.play_random_noise()
 
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames

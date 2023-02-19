@@ -147,7 +147,8 @@ func kill():
 	if level != null:
 		level.current_bugs -= 1
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		connect("died", StageManager.hud, "_on_bug_died")
+		if not is_connected("died", StageManager.hud, "_on_bug_died"):
+			connect("died", StageManager.hud, "_on_bug_died")
 		emit_signal("died")
 	$AnimationPlayer.play("hit")
 	play_death_sound()

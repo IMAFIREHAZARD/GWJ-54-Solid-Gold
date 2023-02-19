@@ -189,7 +189,7 @@ scale = Vector2( 10, 10 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -24.0
+volume_db = -22.0
 bus = "Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]

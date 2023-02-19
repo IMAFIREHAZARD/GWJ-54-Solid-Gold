@@ -3,10 +3,29 @@ onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 export var speed = 1000
 var active = true
+
+var quiet_launch : bool = true
+var shooter
+
 signal hit(impactVector)
 
 func _ready() -> void:
-	$ShootNoises.play_random_noise()
+	pass # moved launch noises into the gun
+#	if shooter != StageManager.player:
+#		$ShootNoises.play_random_noise()
+
+
+#func muffle_noises():
+#	var noiseContainers = [$ShootNoises, $WoofShootNoises, $ExplosionNoises]
+#	for container in noiseContainers:
+#		var noises = container.get_children()
+#		for noise in noises:
+#			noise.volume_db -= 7.0
+#
+
+func set_shooter(myShooter):
+	shooter = myShooter
+	
 
 func _physics_process(delta: float) -> void:
 	global_position += transform.x * speed * delta
