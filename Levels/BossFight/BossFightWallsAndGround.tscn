@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://Art/Background.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/sTATUE.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Light_Alpha.png" type="Texture" id=10]
-[ext_resource path="res://Art/Objects/Floor_decor1.png" type="Texture" id=11]
-[ext_resource path="res://Art/Objects/Plants_decal.png" type="Texture" id=12]
 [ext_resource path="res://Art/Big_background elements/Pillar.png" type="Texture" id=13]
 [ext_resource path="res://Art/Big_background elements/Blurred_platform.png" type="Texture" id=14]
 
@@ -68,12 +66,6 @@ occluder = SubResource( 12 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 11 )
-
-[node name="Clouds38" type="Sprite" parent="."]
-position = Vector2( 1311, -69 )
-scale = Vector2( -0.230251, 0.343631 )
-z_index = 2556
-texture = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -527,124 +519,7 @@ mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
 format = 1
-tile_data = PoolIntArray( -196609, 2, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -262133, 2, 0, -131073, 2, 0, -196608, 1, 0, -196607, 1, 0, -196606, 2, 0, -196605, 0, 0, -196604, 2, 0, -196603, 2, 0, -196602, 2, 0, -196601, 0, 0, -196600, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 2, 0, -65537, 2, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 0, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 0, 0, -131064, 1, 0, -131063, 1, 0, -131062, 1, 0, -131061, 2, 0, -1, 2, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 2, 0, 65534, 1, 0, 65535, 2, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 2, 0, 12, 1, 0, 131070, 1, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 1, 0, 131074, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 2, 0, 196610, 2, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 536870913, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 327684, 2, 0, 327685, 536870913, 0, 327686, 2, 0, 393220, 2, 0, 393221, 536870913, 0, 393222, 2, 0, 458756, 2, 0, 458757, 536870913, 0, 458758, 2, 0, 524292, 2, 0, 524293, 536870913, 0, 524294, 2, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 0, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 2, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 0, 0, 720897, 0, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 2, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 0, 0, 786433, 0, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 2, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 0, 0, 851969, 0, 0, 851970, 1, 0, 851971, 1, 0, 851972, 2, 0, 851973, 2, 0, 851974, 2, 0, 851975, 1, 0, 851976, 1, 0, 851977, 0, 0, 917505, 0, 0, 917506, 2, 0, 917507, 2, 0, 917508, 2, 0, 917509, 1, 0, 917510, 2, 0, 917511, 2, 0, 917512, 2, 0, 917513, 0, 0, 983041, 0, 0, 983042, 536870912, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 0, 0, 1048577, 536870912, 0, 1048578, 536870912, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 536870912, 0 )
-
-[node name="FloorDecor1" type="Sprite" parent="."]
-position = Vector2( 644, 292 )
-rotation = -0.041209
-scale = Vector2( 2.38027, 2.38027 )
-texture = ExtResource( 11 )
-
-[node name="PlantsDecal" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 113.847, 53.4696 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal2" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 59.5981, 63.8471 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal3" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 3.63538, 74.9949 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal4" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 99.4109, 77.2621 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal5" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -104.292, -40.4613 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal6" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -73.0133, -64.8207 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal7" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -149.146, -23.3892 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal19" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -660.258, 206.562 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal20" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -640.347, 223.361 )
-scale = Vector2( 0.471877, 0.471877 )
-z_index = 1
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal21" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -430.906, 344.685 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal22" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -403.4, 371.047 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal8" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -24.3256, -195.264 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal9" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 11.8348, -174.851 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal10" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 395.448, 46.1592 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal11" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 335.426, 12.9895 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal12" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 279.377, -14.5502 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal13" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 274.301, 16.7763 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal14" type="Sprite" parent="FloorDecor1"]
-position = Vector2( 325.101, 39.0538 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal15" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -56.0198, -160.83 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal16" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -152.916, -207.293 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal17" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -102.886, -186.73 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
-
-[node name="PlantsDecal18" type="Sprite" parent="FloorDecor1"]
-position = Vector2( -202.652, -194.207 )
-scale = Vector2( 0.471877, 0.471877 )
-texture = ExtResource( 12 )
+tile_data = PoolIntArray( -327681, 2, 0, -393216, 2, 0, -393215, 2, 0, -393214, 2, 0, -393213, 2, 0, -393212, 2, 0, -393211, 2, 0, -393210, 2, 0, -393209, 2, 0, -393208, 2, 0, -393207, 2, 0, -393206, 2, 0, -393205, 2, 0, -262145, 2, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -327672, 1, 0, -327671, 1, 0, -327670, 1, 0, -327669, 2, 0, -196609, 2, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -262133, 2, 0, -131073, 2, 0, -196608, 1, 0, -196607, 1, 0, -196606, 2, 0, -196605, 0, 0, -196604, 2, 0, -196603, 2, 0, -196602, 2, 0, -196601, 0, 0, -196600, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 2, 0, -65537, 2, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 0, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 0, 0, -131064, 1, 0, -131063, 1, 0, -131062, 1, 0, -131061, 2, 0, -1, 2, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 0, 0, -65532, 1, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 2, 0, 65534, 1, 0, 65535, 2, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 2, 0, 12, 1, 0, 131070, 1, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 1, 0, 131074, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 2, 0, 196610, 2, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 536870913, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 327684, 2, 0, 327685, 536870913, 0, 327686, 2, 0, 393220, 2, 0, 393221, 536870913, 0, 393222, 2, 0, 458756, 2, 0, 458757, 536870913, 0, 458758, 2, 0, 524292, 2, 0, 524293, 536870913, 0, 524294, 2, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 0, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 2, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 0, 0, 720897, 0, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 2, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 0, 0, 786433, 0, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 2, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 0, 0, 851969, 0, 0, 851970, 1, 0, 851971, 1, 0, 851972, 2, 0, 851973, 2, 0, 851974, 2, 0, 851975, 1, 0, 851976, 1, 0, 851977, 0, 0, 917505, 0, 0, 917506, 2, 0, 917507, 2, 0, 917508, 2, 0, 917509, 1, 0, 917510, 2, 0, 917511, 2, 0, 917512, 2, 0, 917513, 0, 0, 983041, 0, 0, 983042, 536870912, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 0, 0, 1048577, 536870912, 0, 1048578, 536870912, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 536870912, 0 )
 
 [node name="Boss placement" type="Node2D" parent="."]
 position = Vector2( 1189, -321 )

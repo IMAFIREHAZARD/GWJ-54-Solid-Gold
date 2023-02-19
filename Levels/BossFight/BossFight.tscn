@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Levels/BossFight/DirectionalTowerPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Music/Boss_Fight_SOLID_GOLD.ogg" type="AudioStream" id=12]
 [ext_resource path="res://sfx/PlayRandomNoises2.gd" type="Script" id=13]
+[ext_resource path="res://Art/Objects/Floor_decor1.png" type="Texture" id=14]
+[ext_resource path="res://Art/Objects/Plants_decal.png" type="Texture" id=15]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 576.0
@@ -95,6 +97,123 @@ outlines = [ PoolVector2Array( -321, 412, 635, 900, 1300, 574, 970, 424, 1911, -
 
 [node name="BossFight" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="FloorDecor1" type="Sprite" parent="."]
+position = Vector2( 644, 292 )
+rotation = -0.041209
+scale = Vector2( 2.38027, 2.38027 )
+texture = ExtResource( 14 )
+
+[node name="PlantsDecal" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 113.847, 53.4696 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal2" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 59.5981, 63.8471 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal3" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 3.63538, 74.9949 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal4" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 99.4109, 77.2621 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal5" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -104.292, -40.4613 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal6" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -73.0133, -64.8207 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal7" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -149.146, -23.3892 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal19" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -660.258, 206.562 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal20" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -640.347, 223.361 )
+scale = Vector2( 0.471877, 0.471877 )
+z_index = 1
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal21" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -430.906, 344.685 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal22" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -403.4, 371.047 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal8" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -24.3256, -195.264 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal9" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 11.8348, -174.851 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal10" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 395.448, 46.1592 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal11" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 335.426, 12.9895 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal12" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 279.377, -14.5502 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal13" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 274.301, 16.7763 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal14" type="Sprite" parent="FloorDecor1"]
+position = Vector2( 325.101, 39.0538 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal15" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -56.0198, -160.83 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal16" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -152.916, -207.293 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal17" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -102.886, -186.73 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
+
+[node name="PlantsDecal18" type="Sprite" parent="FloorDecor1"]
+position = Vector2( -202.652, -194.207 )
+scale = Vector2( 0.471877, 0.471877 )
+texture = ExtResource( 15 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -215,7 +334,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
-frame = 2
+frame = 3
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -244,4 +363,5 @@ autoplay = true
 bus = "Music"
 
 [editable path="YSort/DirectionalTowerPlatform"]
+[editable path="YSort/WallsAndGround"]
 [editable path="YSort/Player"]
