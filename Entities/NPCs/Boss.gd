@@ -14,6 +14,7 @@ var num_cracks : int = 0
 enum States { READY, ATTACKING, DYING, DEAD }
 var State = States.READY
 
+signal dying
 signal died
 
 func do_next_attack():
@@ -87,10 +88,15 @@ func _on_hit(damage):
 			die_horribly()
 		
 func die_horribly():
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("dying", StageManager.current_map, "_on_boss_dying")
+	#destroy_all_critters() # current map can do this
 	$AttackTimer.stop()
 	State = States.DYING
 	$AnimationPlayer.play("die")
 	# see more logic in _on_AnimationPlayer_animation_finished
+
+
 
 func spawn_dialog(_timeline_name):
 	var new_dialog = Dialogic.start('DefeatedBoss')

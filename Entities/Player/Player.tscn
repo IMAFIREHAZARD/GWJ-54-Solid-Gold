@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -21,6 +21,10 @@
 [ext_resource path="res://sfx/PlayerHurt/PLAYER_hurt-003.wav" type="AudioStream" id=19]
 [ext_resource path="res://sfx/PlayerHurt/PLAYER_hurt-002.wav" type="AudioStream" id=20]
 [ext_resource path="res://sfx/PlayerHurt/PLAYER_hurt-001.wav" type="AudioStream" id=21]
+[ext_resource path="res://sfx/shoot/SHOOT_better__02.wav" type="AudioStream" id=22]
+[ext_resource path="res://sfx/shoot/SHOOT_better__01.wav" type="AudioStream" id=23]
+[ext_resource path="res://GUI/Buttons/UI_hover_02.wav" type="AudioStream" id=24]
+[ext_resource path="res://GUI/Buttons/UI_hover_01.wav" type="AudioStream" id=25]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0217
@@ -549,5 +553,37 @@ volume_db = -12.0
 [node name="IFramesTimer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="ShootNoises" type="Node2D" parent="Gun"]
+script = ExtResource( 14 )
+
+[node name="Snap" parent="Gun/ShootNoises" instance=ExtResource( 13 )]
+stream = ExtResource( 23 )
+volume_db = -7.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Pop" parent="Gun/ShootNoises" instance=ExtResource( 13 )]
+stream = ExtResource( 22 )
+volume_db = -7.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="WoofShootNoises" type="Node2D" parent="Gun"]
+script = ExtResource( 14 )
+
+[node name="Woof01" parent="Gun/WoofShootNoises" instance=ExtResource( 13 )]
+stream = ExtResource( 25 )
+volume_db = -7.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Woof02" parent="Gun/WoofShootNoises" instance=ExtResource( 13 )]
+stream = ExtResource( 24 )
+volume_db = -7.0
+bus = "sfx"
+pitch_shift = 0.05
 
 [connection signal="timeout" from="GunCurse" to="." method="shoot"]
