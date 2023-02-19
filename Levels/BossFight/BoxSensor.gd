@@ -23,6 +23,8 @@ func _on_BoxSensor_body_entered(body: Node) -> void:
 	if body is PushBlock:
 		emit_signal("block_entered")
 		active = true
+		$RedSprite.hide()
+		$GreenSprite.show()
 
 
 func _on_BoxSensor_body_exited(body: Node) -> void:
@@ -30,6 +32,8 @@ func _on_BoxSensor_body_exited(body: Node) -> void:
 	if body is PushBlock:
 		emit_signal("block_exited")
 		active = false
+		$RedSprite.show()
+		$GreenSprite.hide()
 
 func _process(delta):
 	$StateLabel.text = "bit: " + str(get_position_in_parent() + 1) + " == " + str(active)
