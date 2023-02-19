@@ -57,6 +57,9 @@ func goto_player() -> void:
 	nav_agent.set_target_location(StageManager.player.global_position)
 
 func _physics_process(delta : float):
+	if StageManager.current_map.get("boss_dead") == true:
+		return
+
 	if state in [State.ROAM, State.TRACK_PLAYER]:
 		if not nav_agent.is_navigation_finished():
 			var navigationVector = global_position.direction_to(nav_agent.get_next_location())

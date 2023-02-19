@@ -726,7 +726,7 @@ collision_layer = 4
 collision_mask = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls/WallHalf/StaticBody2D"]
-polygon = PoolVector2Array( 131.001, 103.352, -149.52, 258.38, -569.273, 57.9609, -172.154, -138.966, 210.563, 58.6586 )
+polygon = PoolVector2Array( 131.001, 103.352, -149.52, 258.38, -481.132, 100.046, -482.167, 39.8057, -172.154, -138.966, 192.73, 32.8207, 194.102, 71.2285 )
 
 [node name="WallHalf4" type="Sprite" parent="YSort/Walls"]
 position = Vector2( 1290, 185 )

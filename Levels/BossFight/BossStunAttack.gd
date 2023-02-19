@@ -11,8 +11,9 @@ func _on_BurstDelay_timeout() -> void:
 		var impactMagnitude = 20.0
 		
 		if not is_connected("stun", StageManager.player, "_on_stun_attack_hit"):
+			#warning-ignore:RETURN_VALUE_DISCARDED
 			connect("stun", StageManager.player, "_on_stun_attack_hit")
-		emit_signal("stun", impactVector)
+		emit_signal("stun", impactVector * impactMagnitude)
 		#StageManager.player.knockback(impactVector * impactMagnitude)
 	#yield($AnimationPlayer, "animation_finished")
 	#queue_free()

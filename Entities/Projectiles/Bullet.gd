@@ -49,7 +49,9 @@ func _on_Bullet_body_entered(body: Node) -> void:
 func animate_explosion():
 	speed = 0 # stop moving forward
 	#$ExplosionHurtbox/ExplosionSound.start_persistent()
-	$ExplosionNoises.play_random_persistent()
+	$SnappyExplosionNoises.play_random_persistent()
+	$ThuddyExplosionNoises.play_random_persistent()
+	
 	$AnimatedSprite.hide()
 	$Explosion/AnimatedSprite.show()
 	$Explosion/AnimatedSprite.play("default")

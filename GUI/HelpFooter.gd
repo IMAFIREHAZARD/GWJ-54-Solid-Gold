@@ -12,7 +12,7 @@ func _ready():
 	
 func change_text_in_footer_to_match_keybinds():
 	$Vbox/TogglePanelButton.text = "Help [ " + InputMap.get_action_list("help")[0].as_text() + " ]"
-	var interactKey = InputMap.get_action_list("interact")[0].as_text().left(1)
+	#var interactKey = InputMap.get_action_list("interact")[0].as_text().left(1)
 	#$Vbox/PanelContents/F_Interact/F_Interact.text = "[ " + interactKey + " ] to Interact"
 	margin_top = -1 * $Vbox/TogglePanelButton.get_rect().size.y
 
