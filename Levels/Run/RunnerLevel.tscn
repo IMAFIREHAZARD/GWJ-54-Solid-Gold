@@ -116,14 +116,15 @@ script = ExtResource( 7 )
 base_speed = 600.0
 
 [node name="WallBottom" type="Sprite" parent="Floor"]
-self_modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
-position = Vector2( -16, 142.596 )
-scale = Vector2( 0.395806, 0.421983 )
+self_modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+position = Vector2( 11, 425.909 )
+scale = Vector2( 0.342635, 1.31713 )
 texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 9.11786, 193.477, 4121.45, 633.766 )
 script = ExtResource( 7 )
 base_speed = 600.0
+z_parallax = 2.0
 
 [node name="WallBottom2" type="Sprite" parent="Floor"]
 self_modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
