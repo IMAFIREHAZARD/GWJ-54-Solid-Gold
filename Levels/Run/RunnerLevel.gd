@@ -147,6 +147,7 @@ func spawn_dialog(dialogName : String):
 
 
 func _on_runner_died():
+	halt_movement()
 	spawn_dialog("PlayerDied")
 	$Timer/ExitTimer.stop()
 	$ObstacleSpawnTimer.stop()

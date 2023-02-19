@@ -72,7 +72,7 @@ func _on_hit(body):
 		$AnimationPlayer.play("recoil")
 
 	Global.player_health_remaining -= 1
-	if Global.player_health_remaining < 0:
+	if Global.player_health_remaining <= 0:
 		print("Player Died")
 		
 		get_parent()._on_runner_died()
