@@ -255,12 +255,12 @@ tile_data = PoolIntArray( -327681, 2, 0, -393216, 2, 0, -393215, 2, 0, -393214, 
 
 [node name="ShieldTower" parent="YSort" instance=ExtResource( 3 )]
 unique_name_in_owner = true
-position = Vector2( 1280, 448 )
+position = Vector2( 371, 766 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor2"), NodePath("../PushBlocks/BoxSensor3") ]
 
 [node name="ShieldTower2" parent="YSort" instance=ExtResource( 3 )]
 unique_name_in_owner = true
-position = Vector2( 384, 128 )
+position = Vector2( -153, 511 )
 box_sensors = [ NodePath("../PushBlocks/BoxSensor5"), NodePath("../PushBlocks/BoxSensor6") ]
 
 [node name="PushBlocks" type="YSort" parent="YSort"]
