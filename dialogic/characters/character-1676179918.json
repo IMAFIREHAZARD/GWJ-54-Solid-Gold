@@ -14,6 +14,10 @@
 		{
 			"name": "Default",
 			"path": "res://Art/Character portrait.png"
+		},
+		{
+			"name": "Scarf",
+			"path": "res://Art/Scarf.png"
 		}
 	],
 	"scale": 100,

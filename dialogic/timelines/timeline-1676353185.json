@@ -12,14 +12,14 @@
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
-			"portrait": "Default",
+			"portrait": "Scarf",
 			"portrait_definition": "",
 			"position": {
 				"0": false,
 				"1": false,
 				"2": false,
-				"3": false,
-				"4": true
+				"3": true,
+				"4": false
 			},
 			"type": 0,
 			"z_index": 0
@@ -27,7 +27,7 @@
 		{
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Hey there friend. Wake up!"
 		},
 		{

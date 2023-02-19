@@ -8,11 +8,11 @@
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": true,
-			"portrait": "Default",
+			"portrait": "Scarf",
 			"portrait_definition": "",
 			"position": {
-				"0": true,
-				"1": false,
+				"0": false,
+				"1": true,
 				"2": false,
 				"3": false,
 				"4": false
