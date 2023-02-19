@@ -27,6 +27,7 @@ position = Vector2( -254, -128 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="TileMap" type="TileMap" parent="YSort"]
+visible = false
 position = Vector2( 0, -64 )
 scale = Vector2( 2, 2 )
 z_index = -1
