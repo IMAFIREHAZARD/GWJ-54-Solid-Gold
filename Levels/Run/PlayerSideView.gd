@@ -32,7 +32,7 @@ func launch():
 	$CPUParticles2D.emitting = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	velocity.y += gravity * delta
 	if is_on_floor() and velocity.y > 0.0:
 		velocity = Vector2.ZERO

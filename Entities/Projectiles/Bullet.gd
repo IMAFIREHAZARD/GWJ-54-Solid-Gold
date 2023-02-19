@@ -6,7 +6,7 @@ var active = true
 signal hit(impactVector)
 
 func _ready() -> void:
-	$AudioStreamPlayer.pitch_scale = rand_range(0.9, 1.1)
+	$ShootNoises.play_random_noise()
 
 func _physics_process(delta: float) -> void:
 	global_position += transform.x * speed * delta
@@ -29,7 +29,8 @@ func _on_Bullet_body_entered(body: Node) -> void:
 
 func animate_explosion():
 	speed = 0 # stop moving forward
-	$ExplosionHurtbox/ExplosionSound.start_persistent()
+	#$ExplosionHurtbox/ExplosionSound.start_persistent()
+	$ExplosionNoises.play_random_persistent()
 	$AnimatedSprite.hide()
 	$Explosion/AnimatedSprite.show()
 	$Explosion/AnimatedSprite.play("default")

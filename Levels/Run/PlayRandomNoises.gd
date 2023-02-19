@@ -15,6 +15,13 @@ func play_random_noise():
 	var randomNoise = noises[randi()%noises.size()]
 	randomNoise.start()
 
+func play_random_persistent():
+	var noises = get_children()
+	var randomNoise = noises[randi()%noises.size()]
+	randomNoise.start_persistent()
+	
+
+
 func play_random_music():
 	var music = get_children()
 	var randomMusic = music[randi()%music.size()]
