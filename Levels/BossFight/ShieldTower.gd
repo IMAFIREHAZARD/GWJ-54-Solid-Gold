@@ -50,9 +50,9 @@ func get_direction():
 	else:
 		var directionInt = sequence_to_int(directionObjs)
 		var directionRad = directionInt/8.0 * (2 * PI)
-		print("directionObjs: ", directionObjs)
-		print("direction == ", directionInt)
-		print("in radians == ", directionRad)
+		#print("directionObjs: ", directionObjs)
+		#print("direction == ", directionInt)
+		#print("in radians == ", directionRad)
 		
 		return directionRad
 	

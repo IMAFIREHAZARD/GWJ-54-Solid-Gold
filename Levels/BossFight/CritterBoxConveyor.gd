@@ -25,6 +25,14 @@ func spawn_critter_box():
 	var newCrate = preload("res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn").instance()
 	$CritterBoxes.add_child(newCrate)
 	newCrate.global_position = $CritterBoxSpawner.global_position
+	newCrate.connect("bugs_spawned", self, "_on_bugs_spawned")
+
+func _on_bugs_spawned(bugs):
+	for bug in bugs:
+		var p = bug.global_position
+		$CritterBoxes.remove_child(bug)
+		get_parent().add_child(bug)
+		bug.global_position = p
 
 
 func _on_Timer_timeout():
