@@ -85,8 +85,12 @@ func get_flocking_vector():
 	
 			
 func reproduce():
-	state = State.PAUSED
 	animation_player.play("Wiggle")
+
+	return # wasn't clear to the player why the critter count is going up.
+	
+	state = State.PAUSED
+	
 	yield(animation_player, "animation_finished")
 	if state == State.DEAD: return
 	var extra_critter = duplicate()

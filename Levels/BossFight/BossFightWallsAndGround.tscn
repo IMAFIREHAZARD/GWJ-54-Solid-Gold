@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Shooter/ParallaxLayer.gd" type="Script" id=4]
 [ext_resource path="res://Art/Clouds.png" type="Texture" id=5]
-[ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Art/Background.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Objects/Big_Isometric items/sTATUE.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Light_Alpha.png" type="Texture" id=10]
@@ -650,6 +649,3 @@ texture = ExtResource( 12 )
 [node name="Boss placement" type="Node2D" parent="."]
 position = Vector2( 1189, -321 )
 rotation = -0.041209
-
-[node name="Boss" parent="Boss placement" instance=ExtResource( 7 )]
-self_modulate = Color( 1, 1, 10.41, 1 )
