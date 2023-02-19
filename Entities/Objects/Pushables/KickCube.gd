@@ -1,5 +1,7 @@
 class_name PushBlock extends KinematicBody2D
 
+signal bugs_spawned(bugs)
+
 onready var player : KinematicBody2D = StageManager.player
 onready var level = StageManager.current_map
 onready var ray_cast: RayCast2D = $RayCast2D
@@ -68,12 +70,15 @@ func explode_into_smithereens():
 		queue_free()
 
 func spawn_critters():
+	var bugs = []
 	for _i in range(num_critters):
 		var newCritter = critter_scene.instance()
 		#newCritter.set_global_position(global_position)
 		newCritter.random_start_location = false
 		get_parent().call_deferred("add_child", newCritter)
 		newCritter.set_deferred("global_position", global_position)
+		bugs.append(newCritter)
+	call_deferred("emit_signal", "bugs_spawned", bugs)
 
 
 func _physics_process(_delta: float) -> void:
