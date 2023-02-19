@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sfx/shh.wav" type="AudioStream" id=2]
+[ext_resource path="res://GUI/Help/WASD2.png" type="Texture" id=3]
+[ext_resource path="res://GUI/HelpFooter.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Help/Mouse2.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=6]
+[ext_resource path="res://Art/Objects/Boxes sheet2.png" type="Texture" id=7]
+[ext_resource path="res://GUI/VolumeSetting.gd" type="Script" id=8]
+[ext_resource path="res://sfx/bgMusicAudioVolumeTest.ogg" type="AudioStream" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 126.657, 130.623, 130.222, 124 )
+
+[node name="Footer" type="MarginContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+mouse_filter = 2
+theme = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Vbox" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 153.0
+mouse_filter = 2
+custom_constants/separation = 10
+alignment = 1
+
+[node name="TogglePanelButton" type="Button" parent="Vbox"]
+margin_left = 437.0
+margin_right = 587.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+toggle_mode = true
+pressed = true
+text = "Help"
+
+[node name="PanelContents" type="HBoxContainer" parent="Vbox"]
+margin_left = 294.0
+margin_top = 38.0
+margin_right = 730.0
+margin_bottom = 153.0
+grow_horizontal = 2
+mouse_filter = 2
+size_flags_horizontal = 4
+
+[node name="WASDMove" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_right = 64.0
+margin_bottom = 115.0
+
+[node name="WASDMove" type="Label" parent="Vbox/PanelContents/WASDMove"]
+margin_right = 64.0
+margin_bottom = 47.0
+text = "WASD
+Move"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/WASDMove"]
+margin_top = 51.0
+margin_right = 64.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="MouseShoot" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_left = 68.0
+margin_right = 167.0
+margin_bottom = 115.0
+
+[node name="MouseShoot" type="Label" parent="Vbox/PanelContents/MouseShoot"]
+margin_right = 99.0
+margin_bottom = 47.0
+text = "Left Click 
+Shoot"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/MouseShoot"]
+margin_top = 51.0
+margin_right = 99.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Boxes" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_left = 171.0
+margin_right = 282.0
+margin_bottom = 115.0
+
+[node name="Click" type="Label" parent="Vbox/PanelContents/Boxes"]
+margin_right = 111.0
+margin_bottom = 47.0
+text = "Left Click
+Move Boxes"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/PanelContents/Boxes"]
+margin_top = 51.0
+margin_right = 111.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 64, 64 )
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="VolumeSetting" type="VBoxContainer" parent="Vbox/PanelContents"]
+margin_left = 286.0
+margin_right = 436.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+script = ExtResource( 8 )
+
+[node name="Label2" type="Label" parent="Vbox/PanelContents/VolumeSetting"]
+margin_right = 150.0
+margin_bottom = 22.0
+text = "Volume"
+align = 1
+
+[node name="Label" type="Label" parent="Vbox/PanelContents/VolumeSetting"]
+margin_top = 26.0
+margin_right = 150.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+text = "VolumeBus"
+align = 1
+
+[node name="VolumeSlider" type="HSlider" parent="Vbox/PanelContents/VolumeSetting"]
+margin_top = 52.0
+margin_right = 150.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Vbox/PanelContents/VolumeSetting"]
+stream = ExtResource( 9 )
+
+[node name="PanelOpenNoise" parent="." instance=ExtResource( 1 )]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[connection signal="toggled" from="Vbox/TogglePanelButton" to="." method="_on_InventoryButton_toggled"]
+[connection signal="drag_ended" from="Vbox/PanelContents/VolumeSetting/VolumeSlider" to="Vbox/PanelContents/VolumeSetting" method="_on_VolumeSlider_drag_ended"]
+[connection signal="drag_started" from="Vbox/PanelContents/VolumeSetting/VolumeSlider" to="Vbox/PanelContents/VolumeSetting" method="_on_VolumeSlider_drag_started"]

@@ -1,0 +1,526 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Entities/Objects/Destructibles/TilemapToObjects.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Shooter/ParallaxLayer.gd" type="Script" id=4]
+[ext_resource path="res://Art/Clouds.png" type="Texture" id=5]
+[ext_resource path="res://Art/Background.png" type="Texture" id=8]
+[ext_resource path="res://Entities/Objects/Big_Isometric items/sTATUE.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Art/Light_Alpha.png" type="Texture" id=10]
+[ext_resource path="res://Art/Big_background elements/Pillar.png" type="Texture" id=13]
+[ext_resource path="res://Art/Big_background elements/Blurred_platform.png" type="Texture" id=14]
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( -1638, 45, -1482, 123, -1482, 612, -1602, 621, -1680, 588, -1662, 336, -1647, 297, -1707, 267, -1656, 258, -1644, 222, -1659, 168, -1650, 66 )
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 10 )
+width = 75
+fill_from = Vector2( 0, 0.000558036 )
+
+[sub_resource type="Environment" id=11]
+background_mode = 4
+ambient_light_color = Color( 0.262745, 0.0627451, 0.0627451, 1 )
+fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ss_reflections_enabled = true
+ssao_radius = 0.1
+ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_intensity = 0.88
+glow_strength = 0.77
+glow_bloom = 0.03
+glow_blend_mode = 0
+glow_hdr_threshold = 1.23
+glow_hdr_luminance_cap = 14.44
+glow_hdr_scale = 0.17
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_saturation = 0.62
+adjustment_color_correction = SubResource( 9 )
+
+[node name="BossFightWallsAndGround" type="YSort"]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 1499, -1090 )
+texture = ExtResource( 10 )
+texture_scale = 50.0
+color = Color( 2.31, 1.74, 2.31, 1 )
+energy = 0.83
+shadow_enabled = true
+shadow_color = Color( 0.952941, 0, 0.760784, 0.603922 )
+shadow_filter_smooth = 64.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2( 1995, -826 )
+occluder = SubResource( 12 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="Background" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 474, 684 )
+scale = Vector2( 6.47708, 5.58981 )
+z_index = -6
+texture = ExtResource( 8 )
+
+[node name="Pillars" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Pillar" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 520.224, 1228.01 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar3" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 1928.48, 852.922 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar4" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -297.349, 396.778 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar5" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -17.544, 1602.27 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar6" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -801.576, 1917.92 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar2" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 1263.41, 1184.02 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.65306 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 9 )]
+position = Vector2( 555, -437 )
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2126, 342 )
+
+[node name="Walls" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+cell_tile_origin = 1
+cell_y_sort = true
+show_collision = true
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -1310707, 6, 0, 131070, 21, 0, 589826, 11, 0, 589827, 536870915, 0, 589831, 536870915, 0, 589832, 536870923, 0, 851971, 9, 0, 851975, 9, 0, 851977, 536870929, 0, 917505, 536870929, 0, 917513, 536870929, 0, 983041, 536870918, 0, 983049, 536870918, 0, 1048577, 536870923, 0, 1048579, 536870918, 0, 1048583, 536870923, 0, 1048584, 536870918, 0 )
+script = ExtResource( 2 )
+ground_tilemap = NodePath("../Ground")
+
+[node name="DestructibleBoxOfCritters" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( -131, 34.5 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters2" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 642, 423.5 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters3" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 252.5, 419 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters4" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( -120, 232 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters5" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( -508.5, 354.5 )
+scale = Vector2( 2, 2 )
+
+[node name="DestructibleBoxOfCritters6" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1, 614.5 )
+scale = Vector2( 2, 2 )
+
+[node name="InvisibleWalls" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+cell_tile_origin = 1
+cell_y_sort = true
+show_collision = true
+collision_layer = 16
+format = 1
+tile_data = PoolIntArray( -1310707, 6, 0, -393217, 8, 0, -458752, 8, 0, -458751, 8, 0, -458750, 8, 0, -458749, 8, 0, -458748, 8, 0, -458747, 8, 0, -458746, 8, 0, -458745, 8, 0, -458744, 8, 0, -458743, 8, 0, -458742, 8, 0, -458741, 8, 0, -458740, 8, 0, -327682, 8, 0, -393204, 8, 0, -262146, 8, 0, -327668, 8, 0, -196610, 8, 0, -262132, 536870920, 0, -131074, 8, 0, -196596, 536870920, 0, -196595, 536870920, 0, -65538, 8, 0, -131060, 536870920, 0, -2, 8, 0, -65524, 536870920, 0, 196607, 536870920, 0, 131072, 536870920, 0, 131073, 536870920, 0, 131081, 536870920, 0, 131082, 536870920, 0, 131083, 536870920, 0, 196609, 536870920, 0, 196617, 536870920, 0, 262145, 536870920, 0, 262153, 536870920, 0, 327681, 536870920, 0, 327682, 536870920, 0, 327683, 536870920, 0, 327687, 536870920, 0, 327688, 536870920, 0, 327689, 536870920, 0, 393219, 536870920, 0, 393223, 536870920, 0, 458755, 536870920, 0, 458759, 536870920, 0, 524288, 536870920, 0, 524289, 536870920, 0, 524290, 536870920, 0, 524291, 536870920, 0, 524295, 536870920, 0, 524296, 536870920, 0, 524297, 536870920, 0, 655353, 8, 0, 589843, 8, 0, 720889, 8, 0, 720890, 8, 0, 720891, 8, 0, 720892, 8, 0, 720893, 8, 0, 720894, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 8, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 8, 0, 655379, 8, 0, 786430, 8, 0, 786431, 8, 0, 720896, 8, 0, 720906, 536870920, 0, 786432, 8, 0, 786442, 536870920, 0, 851968, 8, 0, 851978, 536870920, 0, 851979, 536870920, 0, 917504, 8, 0, 917514, 536870920, 0, 917515, 536870920, 0, 983040, 8, 0, 983050, 536870920, 0, 1048576, 8, 0, 1048586, 536870920, 0, 1114112, 8, 0, 1114113, 536870920, 0, 1114114, 536870920, 0, 1114115, 536870920, 0, 1114116, 536870920, 0, 1114117, 536870920, 0, 1114118, 536870920, 0, 1114119, 536870920, 0, 1114120, 536870920, 0, 1114121, 536870920, 0, 1114122, 536870920, 0, 1179653, 536870920, 0, 1179654, 536870920, 0 )
+
+[node name="Clouds" type="ParallaxBackground" parent="."]
+layer = -2
+visible = false
+follow_viewport_scale = 44.478
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds"]
+z_index = -6
+script = ExtResource( 4 )
+
+[node name="Clouds" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1588, 80 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="Clouds2" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1927, 340 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds14" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1927, 340 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds8" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1879, 83 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds9" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1621, 550 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds25" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1550, 244 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds35" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1398, 580 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds37" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1638, 1260 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds38" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1198, 836 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds39" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 898, 1164 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds40" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2330, 1548 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds41" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2858, 724 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds42" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -206, 1772 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds43" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2714, 2004 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds44" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 226, 2228 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds45" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -2030, 1516 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds46" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1310, 1828 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds47" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -982, 2116 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds48" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -190, 2404 )
+rotation = 3.11366
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds26" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 118, 1883 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds27" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2221, 1641 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds28" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 917, 893 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds29" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -195, 879 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds30" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 824, 1271 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds31" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -430, 1057 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds32" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -344, 1442 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds33" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -1705, 886 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds34" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1424, 1919 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds10" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2374, 794 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds11" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -194, 282 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds12" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -258, -15 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds13" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 564, -439 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds3" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1697, -158 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds15" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1693, -371 )
+rotation = 0.0378581
+scale = Vector2( 1, 0.863414 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds16" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2943, 279 )
+rotation = 0.0378581
+scale = Vector2( 1, 0.863414 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds17" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2837, -268 )
+rotation = 0.0378581
+scale = Vector2( 1, 0.863414 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds18" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1038, -641 )
+rotation = 0.0378581
+scale = Vector2( 1, 0.863414 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds19" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -71.0001, -254 )
+rotation = 0.0378581
+scale = Vector2( 1, 0.863414 )
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds4" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 779, -220 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds5" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2397, -158 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds6" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2624, 64 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds22" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 1477, 1532 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds23" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 722, 1532 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds24" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2311, 1276 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds20" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( -941, 445 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds21" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2608, 1045 )
+rotation = 0.0378581
+z_index = 2
+texture = ExtResource( 5 )
+
+[node name="Clouds7" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 2752, 480 )
+rotation = 0.0378581
+z_index = -12
+texture = ExtResource( 5 )
+
+[node name="Clouds36" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 815, 1828 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="BlurredPlatform" type="Sprite" parent="Clouds"]
+position = Vector2( 4090, 1637 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
+[node name="Clouds2" type="ParallaxBackground" parent="."]
+layer = 0
+visible = false
+follow_viewport_scale = 44.478
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds2"]
+z_index = -6
+script = ExtResource( 4 )
+
+[node name="Clouds" type="Sprite" parent="Clouds2/ParallaxLayer"]
+position = Vector2( 1885, 1134 )
+rotation = 0.0290453
+scale = Vector2( 0.521333, 0.687925 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="BlurredPlatform" type="Sprite" parent="Clouds2"]
+position = Vector2( 2935, 1015 )
+scale = Vector2( 0.45996, 0.45996 )
+texture = ExtResource( 14 )
+
+[node name="BlurredPlatform2" type="Sprite" parent="Clouds2"]
+position = Vector2( -1528, 1967 )
+scale = Vector2( 0.45996, 0.45996 )
+texture = ExtResource( 14 )
+
+[node name="Clouds35" type="Sprite" parent="Clouds2"]
+position = Vector2( 851, 1494 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="Clouds36" type="Sprite" parent="Clouds2"]
+position = Vector2( -419, 2280 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="Clouds37" type="Sprite" parent="Clouds2"]
+position = Vector2( 473, 2003 )
+z_index = 2556
+texture = ExtResource( 5 )
+
+[node name="Ground" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -2
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+format = 1
+tile_data = PoolIntArray( -327681, 2, 0, -393216, 2, 0, -393215, 2, 0, -393214, 2, 0, -393213, 2, 0, -393212, 2, 0, -393211, 2, 0, -393210, 2, 0, -393209, 2, 0, -393208, 2, 0, -393207, 2, 0, -393206, 2, 0, -393205, 2, 0, -262145, 2, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -327672, 1, 0, -327671, 1, 0, -327670, 1, 0, -327669, 2, 0, -196609, 2, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -262133, 2, 0, -131073, 2, 0, -196608, 1, 0, -196607, 1, 0, -196606, 2, 0, -196605, 0, 0, -196604, 2, 0, -196603, 2, 0, -196602, 2, 0, -196601, 0, 0, -196600, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 2, 0, -65537, 2, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 0, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 0, 0, -131064, 1, 0, -131063, 1, 0, -131062, 1, 0, -131061, 2, 0, -1, 2, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 0, 0, -65532, 1, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 2, 0, 65534, 1, 0, 65535, 2, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 2, 0, 12, 1, 0, 131070, 1, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 1, 0, 131074, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 2, 0, 196610, 2, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 536870913, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 327684, 2, 0, 327685, 536870913, 0, 327686, 2, 0, 393220, 2, 0, 393221, 536870913, 0, 393222, 2, 0, 458756, 2, 0, 458757, 536870913, 0, 458758, 2, 0, 524292, 2, 0, 524293, 536870913, 0, 524294, 2, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 0, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 2, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 0, 0, 720897, 0, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 2, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 0, 0, 786433, 0, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 2, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 0, 0, 851969, 0, 0, 851970, 1, 0, 851971, 1, 0, 851972, 2, 0, 851973, 2, 0, 851974, 2, 0, 851975, 1, 0, 851976, 1, 0, 851977, 0, 0, 917505, 0, 0, 917506, 2, 0, 917507, 2, 0, 917508, 2, 0, 917509, 1, 0, 917510, 2, 0, 917511, 2, 0, 917512, 2, 0, 917513, 0, 0, 983041, 0, 0, 983042, 536870912, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 0, 0, 1048577, 536870912, 0, 1048578, 536870912, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 536870912, 0 )
+
+[node name="Boss placement" type="Node2D" parent="."]
+position = Vector2( 1189, -321 )
+rotation = -0.041209

@@ -1,0 +1,25 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676179918.json",
+	"mirror_portraits": false,
+	"name": "Ragnok",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/Character portrait.png"
+		},
+		{
+			"name": "Scarf",
+			"path": "res://Art/Scarf.png"
+		}
+	],
+	"scale": 100,
+	"theme": "default-theme.cfg"
+}

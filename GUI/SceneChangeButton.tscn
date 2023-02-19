@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/GenericButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/SceneChangeButton.gd" type="Script" id=2]
+
+[node name="SceneChangeButton" instance=ExtResource( 1 )]
+text = "Next Scene"
+script = ExtResource( 2 )
+target_scene = null
+target_scene_path = ""
+dialogic_timeline = ""
+
+[node name="HoverNoise" parent="." index="0"]
+pitch_shift = 0.05

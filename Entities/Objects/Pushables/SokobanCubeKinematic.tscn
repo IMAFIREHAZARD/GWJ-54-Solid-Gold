@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Sokoban/PushBlockOrnate128.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Objects/Pushables/SokobanCubeKinematic.gd" type="Script" id=2]
+[ext_resource path="res://assets/test_art/cube-white.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Sokoban/PushZoneArea2D.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[node name="SokobanCubeKinematic" type="KinematicBody2D" groups=["SokobanCubes"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.8, 0.490196, 0.0941176, 1 )
+position = Vector2( 0.635361, -35 )
+texture = ExtResource( 1 )
+offset = Vector2( -3.8, 2 )
+
+[node name="SpriteWhiteCube" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.647059 )
+material = SubResource( 2 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -1.36464, -33 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( 0.799999, 30, -27.5629, 16.764, -27.5078, 15.2103, 0.799999, 2, 26.5898, 14.8949, 26.6197, 17.0901 )
+
+[node name="PollingTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -0.364639, 0 )
+enabled = true
+collision_mask = 4
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 14.6354, -20 )
+points = PoolVector2Array( -15, 20, -15, 68 )
+
+[node name="PlayerOccludedArea" type="Area2D" parent="."]
+position = Vector2( -2.36464, 0 )
+scale = Vector2( 2, 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerOccludedArea"]
+polygon = PoolVector2Array( -32, 0, -32, -32, -1, -48, 31, -32, 31, 0 )
+
+[node name="PushZones" type="Node2D" parent="."]
+position = Vector2( -1, 0 )
+
+[node name="PushSE" parent="PushZones" instance=ExtResource( 4 )]
+position = Vector2( -30, -16 )
+
+[node name="PushSW" parent="PushZones" instance=ExtResource( 4 )]
+position = Vector2( 29, -16 )
+direction_vector = Vector2( -2, 1 )
+
+[node name="PushNE" parent="PushZones" instance=ExtResource( 4 )]
+position = Vector2( -33, 15 )
+direction_vector = Vector2( 2, -1 )
+
+[node name="PushNW" parent="PushZones" instance=ExtResource( 4 )]
+position = Vector2( 36, 17 )
+direction_vector = Vector2( -2, -1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_SokobanCubeKinematic_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_SokobanCubeKinematic_mouse_exited"]
+[connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]
+[connection signal="body_entered" from="PlayerOccludedArea" to="." method="_on_PlayerOccludedArea_body_entered"]
+[connection signal="body_exited" from="PlayerOccludedArea" to="." method="_on_PlayerOccludedArea_body_exited"]

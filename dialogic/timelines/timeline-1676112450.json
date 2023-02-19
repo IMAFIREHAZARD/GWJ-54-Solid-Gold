@@ -1,0 +1,92 @@
+{
+	"events": [
+		{
+			"audio": "play",
+			"audio_bus": "sfx",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://GUI/Buttons/UI_hover_01.wav",
+			"volume": -12
+		},
+		{
+			"animation": "3-fade_in_up_big.gd",
+			"animation_length": 0.5,
+			"animation_wait": false,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Merchant",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 1
+		},
+		{
+			"animation": "slide_in_left.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": true,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 1
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's my good friend, the Little Devil and your trusty scarf, Ragnok. Long time no see. "
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wouldn't you like to have guns for hands?"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "Scarf",
+			"text": "We don't have a choice, do we?"
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not really, no."
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "Scarf",
+			"text": "Fine. B8st4rd."
+		},
+		{
+			"emit_signal": "curse_accepted",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1676112450.json",
+		"name": "GunHands"
+	}
+}

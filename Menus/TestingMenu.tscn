@@ -1,0 +1,194 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/BrokenConcrete.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Sokoban/Sokoban02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Run/EndlessRunner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Glass/GlassLevel01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/TestLevels/TileFix.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/TestLevels/TestLevel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Levels/TestLevels/Critters.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/BossFight/BossFight.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/TestLevels/YATL-plex.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Catwalks/Catwalks.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/Sokoban/Sokoban04_ANewHope.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/TestLevels/YATL2-plex.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/Run/RunnerLevel.tscn" type="PackedScene" id=16]
+
+[node name="TestingMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 0.184314, 0.145098, 0.145098, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 87.0
+margin_top = 130.0
+margin_right = 937.0
+margin_bottom = 470.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 850.0
+margin_bottom = 22.0
+text = "Testing"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 850.0
+margin_bottom = 287.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="LeftSide" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 250.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="ShooterScene" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_right = 250.0
+margin_bottom = 28.0
+text = "Shooter Scene"
+target_scene = ExtResource( 8 )
+
+[node name="TestScene01" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 53.0
+margin_right = 250.0
+margin_bottom = 81.0
+text = "Catwalks"
+target_scene = ExtResource( 13 )
+
+[node name="TestScene02" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 106.0
+margin_right = 250.0
+margin_bottom = 134.0
+text = "Runner"
+target_scene = ExtResource( 16 )
+
+[node name="Sokoban" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 159.0
+margin_right = 250.0
+margin_bottom = 187.0
+text = "Sokoban"
+target_scene = ExtResource( 3 )
+
+[node name="TestingCubes" parent="CenterContainer/VBoxContainer/HBoxContainer/LeftSide" instance=ExtResource( 1 )]
+margin_top = 212.0
+margin_right = 250.0
+margin_bottom = 240.0
+text = "Testing Cubes"
+target_scene = ExtResource( 5 )
+
+[node name="Center" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 300.0
+margin_right = 550.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Eddy14 TestLevel" parent="CenterContainer/VBoxContainer/HBoxContainer/Center" instance=ExtResource( 1 )]
+margin_right = 250.0
+margin_bottom = 28.0
+text = "Eddy14 Test Level"
+target_scene = ExtResource( 7 )
+
+[node name="CritterTestLevel2" parent="CenterContainer/VBoxContainer/HBoxContainer/Center" instance=ExtResource( 1 )]
+margin_top = 53.0
+margin_right = 250.0
+margin_bottom = 81.0
+text = "Critter Test Level"
+target_scene = ExtResource( 10 )
+
+[node name="CritterTestLevel3" parent="CenterContainer/VBoxContainer/HBoxContainer/Center" instance=ExtResource( 1 )]
+margin_top = 106.0
+margin_right = 250.0
+margin_bottom = 134.0
+text = "Boss Level"
+target_scene = ExtResource( 11 )
+
+[node name="ReflectingCrittersTest" parent="CenterContainer/VBoxContainer/HBoxContainer/Center" instance=ExtResource( 1 )]
+margin_top = 159.0
+margin_right = 250.0
+margin_bottom = 187.0
+text = "Reflecting Critters"
+target_scene = ExtResource( 12 )
+
+[node name="EndlessRunner" parent="CenterContainer/VBoxContainer/HBoxContainer/Center" instance=ExtResource( 1 )]
+margin_top = 212.0
+margin_right = 250.0
+margin_bottom = 240.0
+text = "Endless Runner"
+target_scene = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 600.0
+margin_right = 850.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="TileFix" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 250.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+text = "TileFix"
+target_scene = ExtResource( 6 )
+
+[node name="Cube Origin Player Origin" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 53.0
+margin_right = 250.0
+margin_bottom = 81.0
+text = "Sokoban IV : a new hope"
+target_scene = ExtResource( 14 )
+
+[node name="TestScene04" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 106.0
+margin_right = 250.0
+margin_bottom = 134.0
+text = "Cube and Player origins"
+target_scene = ExtResource( 15 )
+
+[node name="TestScene05" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 159.0
+margin_right = 250.0
+margin_bottom = 187.0
+disabled = true
+text = "Test Scene"
+
+[node name="TestScene06" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 212.0
+margin_right = 250.0
+margin_bottom = 240.0
+disabled = true
+text = "Test Scene"
+
+[node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 312.0
+margin_right = 850.0
+margin_bottom = 340.0
+text = "Return to Main Menu"
+target_scene_path = "res://Main.tscn"

@@ -1,0 +1,57 @@
+{
+	"events": [
+		{
+			"background": "res://CutScenes/SmokyBackground.tscn",
+			"event_id": "dialogic_021"
+		},
+		{
+			"animation": "3-fade_in_up_big.gd",
+			"animation_length": 0.67,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Scarf",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Hey there friend. Wake up!"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sh!t. We ain't supposed to be here, are we?"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Talking? Sorry friend, that’s a no-go. Sh&#, utter one word as a demon here and the forces of Paradise will locate you in an instant."
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Do you want to get bleeped out? No? Then we gotta go!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1676353185.json",
+		"name": "Intro"
+	}
+}

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Player/Affordances/InteractWithSokobanCubes.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Sokoban/PushingCharacter01.png" type="Texture" id=2]
+
+[node name="InteractWithSokobanCubes" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LookaheadProbeVisualizer" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.607843, 0.0705882, 0.737255, 1 )
+polygon = PoolVector2Array( -2, -17, 6, -17, 15, 3, 3, 17, -5, 17, -16, 0 )
+
+[node name="PushingSprite12" type="Sprite" parent="."]
+visible = false
+position = Vector2( 6, -72 )
+scale = Vector2( 0.609273, 0.609273 )
+texture = ExtResource( 2 )

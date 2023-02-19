@@ -1,0 +1,429 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Menus/Credits.gd" type="Script" id=1]
+[ext_resource path="res://GUI/SceneChangeButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Themes/credits_theme.tres" type="Theme" id=3]
+[ext_resource path="res://Art/smoke.png" type="Texture" id=4]
+[ext_resource path="res://Art/bgbg.jpg" type="Texture" id=5]
+
+[sub_resource type="Environment" id=7]
+background_mode = 4
+background_energy = 0.0
+fog_color = Color( 0.313726, 0.0627451, 0.141176, 1 )
+fog_sun_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+fog_depth_begin = 0.0
+fog_height_min = -3190.0
+glow_enabled = true
+glow_intensity = 0.88
+glow_strength = 1.02
+glow_bloom = 0.12
+glow_hdr_threshold = 4.0
+glow_hdr_luminance_cap = 256.0
+glow_hdr_scale = 4.0
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform vec4 BackColor : hint_color = vec4(0.0, 0.4, 0.58, 1.0);
+uniform vec4 CloudColor : hint_color = vec4(0.18, 0.70, 0.87, 1.0);
+uniform float speed : hint_range(0.0, 5.0) = 0.1;
+
+const float TAU = 6.28318530718;
+
+float Func(float pX)
+{
+	return 0.6*(0.5*sin(0.1*pX) + 0.5*sin(0.553*pX) + 0.7*sin(1.2*pX));
+}
+
+
+float FuncR(float pX)
+{
+	return 0.5 + 0.25*(1.0 + sin(mod(40.0*pX, TAU)));
+}
+
+
+float Layer(vec2 pQ, float pT)
+{
+	vec2 Qt = 3.5*pQ;
+	pT *= 0.5;
+	Qt.x += pT;
+
+	float Xi = floor(Qt.x);
+	float Xf = Qt.x - Xi -0.5;
+
+	vec2 C;
+	float Yi;
+	float D = 1.0 - step(Qt.y,  Func(Qt.x));
+
+	// Disk:
+	Yi = Func(Xi + 0.5);
+	C = vec2(Xf, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi+ pT/80.0));
+
+	// Previous disk:
+	Yi = Func(Xi+1.0 + 0.5);
+	C = vec2(Xf-1.0, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi+1.0+ pT/80.0));
+
+	// Next Disk:
+	Yi = Func(Xi-1.0 + 0.5);
+	C = vec2(Xf+1.0, Qt.y - Yi );
+	D =  min(D, length(C) - FuncR(Xi-1.0+ pT/80.0));
+
+	return min(1.0, D);
+}
+
+void fragment() {
+	//vec2 uv = 8.0 * (SCREEN_UV - UV * 2.0);
+	vec2 uv = 3.0 * (SCREEN_UV - UV * 2.0);
+
+	// Render:
+	vec3 Color= BackColor.rgb;
+	for(float J = 0.0; J <= 1.0; J += 0.2)
+	{
+		// Cloud Layer:
+		float Lt =  TIME * speed * (0.5  + 2.0 * J) * (1.0 + 0.1 * sin(226.0 * J)) + 17.0 * J;
+		vec2 Lp = vec2(0.0, 0.3 + 1.5 * ( J - 0.5));
+		float L = Layer(uv + Lp, Lt);
+		// Blur and color:
+		float Blur = 4.0 * (0.5 * abs(2.0 - 5.0 * J)) / (11.0 - 5.0 * J);
+		float V = mix( 0.0, 1.0, 1.0 - smoothstep( 0.0, 0.01 +0.2 * Blur, L ) );
+		vec3 Lc=  mix(CloudColor.rgb, vec3(1.0), J);
+		Color =mix(Color, Lc,  V);
+	}
+	COLOR = vec4(Color,1.);
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/BackColor = Color( 0, 0.4, 0.58, 1 )
+shader_param/CloudColor = Color( 0.18, 0.7, 0.87, 1 )
+shader_param/speed = 0.1
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
+
+[node name="Bgbg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+
+[node name="Embers" type="CPUParticles2D" parent="."]
+modulate = Color( 4, 1.5, 1.5, 1 )
+self_modulate = Color( 2.89, 1.5625, 0.0100001, 1 )
+position = Vector2( 486, 621 )
+amount = 151
+lifetime = 1.1
+preprocess = 10.0
+speed_scale = 0.25
+explosiveness = 0.27
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 600, 1.935 )
+direction = Vector2( -200, -200 )
+spread = 142.43
+gravity = Vector2( 0, -400 )
+initial_velocity = 91.74
+initial_velocity_random = 1.0
+angular_velocity_random = 0.97
+orbit_velocity_random = 0.2
+linear_accel = -72.4
+linear_accel_random = 0.85
+radial_accel = 9.17
+damping = 100.0
+damping_random = 0.29
+angle = 79.3
+angle_random = 0.89
+color = Color( 0.788235, 0.427451, 0.00392157, 1 )
+hue_variation = -0.29
+hue_variation_random = 0.5
+anim_speed = 7.05
+anim_speed_random = 0.17
+anim_offset = 0.83
+anim_offset_random = 0.34
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+modulate = Color( 0.607843, 0.607843, 0.607843, 1 )
+self_modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( 483, 598 )
+amount = 26
+lifetime = 0.5
+speed_scale = 0.15
+explosiveness = 0.27
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 200, 1.935 )
+direction = Vector2( -200, -200 )
+spread = 142.43
+gravity = Vector2( 0, -400 )
+initial_velocity = 605.5
+color = Color( 0.552941, 0.552941, 0.552941, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_top = 13.0
+margin_right = 1050.0
+margin_bottom = 586.0
+custom_constants/separation = 25
+
+[node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 1050.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Credits"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1050.0
+margin_bottom = 520.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1000.0
+margin_bottom = 423.0
+custom_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 450.0
+margin_bottom = 373.0
+
+[node name="ProductionLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 22.0
+text = "Production"
+
+[node name="James" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 450.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "James Medway (he/him) -  [url]https://www.linkedin.com/in/james-medway/[/url]"
+text = "James Medway (he/him) -  https://www.linkedin.com/in/james-medway/"
+
+[node name="WritingLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 450.0
+margin_bottom = 87.0
+text = "Writing"
+
+[node name="Xaeinovis" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 91.0
+margin_right = 450.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Xaeinovis -  [url][/url]"
+text = "Xaeinovis -  "
+
+[node name="ArtLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 450.0
+margin_bottom = 152.0
+text = "Art"
+
+[node name="Kyveri" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 450.0
+margin_bottom = 191.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Kyveri -  [url]https://linktr.ee/kyveri[/url]"
+text = "Kyveri -  https://linktr.ee/kyveri"
+
+[node name="discolexia" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 195.0
+margin_right = 450.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Petra Zegnal -  [url]https://artstation.com/discolexia[/url]"
+text = "Petra Zegnal -  https://artstation.com/discolexia"
+
+[node name="AudioLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 234.0
+margin_right = 450.0
+margin_bottom = 256.0
+text = "Audio"
+
+[node name="Jesus" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 260.0
+margin_right = 450.0
+margin_bottom = 295.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "JesusCaballero -  [url]https://www.jesuscaballeromusic.com/[/url]"
+text = "JesusCaballero -  https://www.jesuscaballeromusic.com/"
+
+[node name="RaSalz" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 299.0
+margin_right = 450.0
+margin_bottom = 334.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "RaSalz - Music [url]https://on.soundcloud.com/YfRui[/url]"
+text = "RaSalz - Music https://on.soundcloud.com/YfRui"
+
+[node name="Wodan" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 338.0
+margin_right = 450.0
+margin_bottom = 373.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Wodan - Sound Designer - wodangameaudio@gmail.com"
+text = "Wodan - Sound Designer - wodangameaudio@gmail.com"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 500.0
+margin_right = 950.0
+margin_bottom = 373.0
+
+[node name="DesignLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 450.0
+margin_bottom = 22.0
+text = "Design"
+
+[node name="Andy" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 26.0
+margin_right = 450.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Andy -  [url]https://ldandybrunet.wixsite.com/andy-brunet[/url]"
+text = "Andy -  https://ldandybrunet.wixsite.com/andy-brunet"
+
+[node name="CodeLabel" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 80.0
+margin_right = 450.0
+margin_bottom = 102.0
+text = "Code"
+
+[node name="Hayden" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 106.0
+margin_right = 450.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Hayden -  [url]https://haydoggo.itch.io/[/url]"
+text = "Hayden -  https://haydoggo.itch.io/"
+
+[node name="Plex" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 160.0
+margin_right = 450.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Plexsoup -  [url]https://plexsoup.itch.io[/url]"
+text = "Plexsoup -  https://plexsoup.itch.io"
+
+[node name="Twilightrh" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 214.0
+margin_right = 450.0
+margin_bottom = 264.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Twilightrh -  [url]...[/url]"
+text = "Twilightrh -  ..."
+
+[node name="Eddy14" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 268.0
+margin_right = 450.0
+margin_bottom = 318.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Eddy14 -  [url]https://eddy14.itch.io[/url]"
+text = "Eddy14 -  https://eddy14.itch.io"
+
+[node name="BitGhost" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 322.0
+margin_right = 450.0
+margin_bottom = 373.0
+rect_min_size = Vector2( 450, 35 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "BitGhost -  [url]...[/url]"
+text = "BitGhost -  ..."
+
+[node name="MainMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 415.0
+margin_top = 545.0
+margin_right = 634.0
+margin_bottom = 573.0
+size_flags_horizontal = 6
+text = "Return to Main Menu"
+target_scene_path = "res://Main.tscn"
+
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/James" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Xaeinovis" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Kyveri" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/discolexia" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Jesus" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/RaSalz" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Wodan" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/Andy" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/Hayden" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/Plex" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/Twilightrh" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/Eddy14" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_clicked" from="CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/BitGhost" to="." method="_on_RichTextLabel_meta_clicked"]

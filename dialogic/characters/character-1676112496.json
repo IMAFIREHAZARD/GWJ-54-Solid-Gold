@@ -1,0 +1,25 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676112496.json",
+	"mirror_portraits": false,
+	"name": "Luci",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/Devil_Bargin.png"
+		},
+		{
+			"name": "Merchant",
+			"path": "res://Art/Devil_Bargin.png"
+		}
+	],
+	"scale": 100,
+	"theme": "theme-1676672211.cfg"
+}

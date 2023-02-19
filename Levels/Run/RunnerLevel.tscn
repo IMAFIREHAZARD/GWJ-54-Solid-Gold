@@ -1,0 +1,207 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Levels/Run/PlayerSideView.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Run/RunnerLevel.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Shooter/Shooter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/CommonInfrastructure/ScrollingBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Run/floor.png" type="Texture" id=5]
+[ext_resource path="res://Music/BGM_LEVEL1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Levels/CommonInfrastructure/ScrollingSprite.gd" type="Script" id=7]
+[ext_resource path="res://Levels/Run/RunnerCamera2D.gd" type="Script" id=8]
+[ext_resource path="res://Art/Wall_flat.png" type="Texture" id=9]
+[ext_resource path="res://Art/Wall_bottom.png" type="Texture" id=10]
+[ext_resource path="res://Music/TRACK03.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Art/Wall_flat_decal.png" type="Texture" id=12]
+
+[sub_resource type="Gradient" id=13]
+colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 13 )
+width = 75
+fill_from = Vector2( 0, 0.000558036 )
+
+[sub_resource type="Environment" id=14]
+background_mode = 4
+ambient_light_color = Color( 0.262745, 0.0627451, 0.0627451, 1 )
+fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ss_reflections_enabled = true
+ssao_radius = 0.1
+ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_intensity = 0.88
+glow_strength = 0.77
+glow_bloom = 0.03
+glow_blend_mode = 0
+glow_hdr_threshold = 1.23
+glow_hdr_luminance_cap = 14.44
+glow_hdr_scale = 0.17
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_saturation = 0.62
+adjustment_color_correction = SubResource( 9 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( -301.5, -20.1097, -290.5, -420.475, -245.5, -489.031, -202.5, -493.601, -178.5, -391.225, -168, -20.1097, 395.5, 3.65631, 398, -401.28, 406, -468.921, 449, -489.031, 483.5, -474.406, 502.5, -25.5941, 708, -5.48444, 700, -679.159, -688.5, -664.534, -702, -0.914063, -632.5, -0.914063, -627, -395.795, -621.5, -474.406, -584.5, -478.976, -565.5, -328.154, -565.5, -5.48444 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 518, 31.4499 )
+
+[node name="Runner" type="Node2D"]
+script = ExtResource( 2 )
+next_scene = ExtResource( 3 )
+time_to_cover_distance = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 14 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 157, 420 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 1137, 568 )
+scale = Vector2( 2, 1.094 )
+collision_layer = 4
+
+[node name="WallFlat" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.568627, 0.568627, 0.568627, 1 )
+light_mask = 0
+position = Vector2( 13, -325.411 )
+scale = Vector2( 0.342433, 0.647691 )
+z_index = -1
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 22.1753, -3.14716, 4100.57, 1071.65 )
+script = ExtResource( 7 )
+base_speed = 600.0
+z_parallax = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/WallFlat"]
+visible = false
+position = Vector2( -332.912, 502.417 )
+scale = Vector2( 2.92028, 1.54395 )
+occluder = SubResource( 12 )
+
+[node name="decal" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.57, 1.16, 3.47, 1 )
+light_mask = 0
+position = Vector2( 13, -325.411 )
+scale = Vector2( 0.342433, 0.647691 )
+z_index = -1
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 22.1753, -3.14716, 4100.57, 1071.65 )
+script = ExtResource( 7 )
+base_speed = 600.0
+z_parallax = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/decal"]
+visible = false
+position = Vector2( -332.912, 502.417 )
+scale = Vector2( 2.92028, 1.54395 )
+occluder = SubResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+position = Vector2( 0.846191, 11.8861 )
+scale = Vector2( 0.233376, 0.355187 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( -2261.38, 0, 4897.12, 97.942 )
+script = ExtResource( 7 )
+base_speed = 600.0
+
+[node name="WallBottom" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+position = Vector2( 11, 425.909 )
+scale = Vector2( 0.342635, 1.31713 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 9.11786, 193.477, 4121.45, 633.766 )
+script = ExtResource( 7 )
+base_speed = 600.0
+z_parallax = 2.0
+
+[node name="WallBottom2" type="Sprite" parent="Floor"]
+self_modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
+position = Vector2( 7.5, -800.731 )
+scale = Vector2( 0.395806, 0.421983 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 9.11786, 193.477, 4121.45, 633.766 )
+script = ExtResource( 7 )
+base_speed = 600.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+visible = false
+texture = ExtResource( 5 )
+texture_offset = Vector2( 0, 10 )
+texture_scale = Vector2( 1, 2.5 )
+polygon = PoolVector2Array( -513, -10, 510, -9, 508, 32, -515, 25, -515, 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( -2, 10.6967 )
+scale = Vector2( 1, 0.561122 )
+shape = SubResource( 1 )
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ObstacleSpawns" type="Node2D" parent="."]
+
+[node name="Walk" type="Position2D" parent="ObstacleSpawns"]
+position = Vector2( 2203, 523 )
+
+[node name="Fly" type="Position2D" parent="ObstacleSpawns"]
+position = Vector2( 2203, 352 )
+
+[node name="Timer" type="Node2D" parent="."]
+position = Vector2( 12, 581 )
+
+[node name="ExitTimer" type="Timer" parent="Timer"]
+one_shot = true
+
+[node name="Label" type="Label" parent="Timer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -5.0
+margin_right = 67.0
+margin_bottom = 9.0
+text = "Time Left"
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="NearClouds" parent="Background" index="0"]
+position = Vector2( 933, 603 )
+scale = Vector2( 10, 10 )
+
+[node name="FarClouds" parent="Background" index="1"]
+position = Vector2( 1196, 306 )
+scale = Vector2( 10, 10 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -24.0
+bus = "Music"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -3, 3 )
+anchor_mode = 0
+script = ExtResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -24.0
+autoplay = true
+
+[connection signal="timeout" from="ObstacleSpawnTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer/ExitTimer" to="." method="_on_ExitTimer_timeout"]
+
+[editable path="Player"]
+[editable path="Background"]

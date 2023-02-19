@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Floor" type="TileMap" parent="YSort"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+cell_tile_origin = 1
+format = 1
+tile_data = PoolIntArray( -262135, 1, 0, -262134, 1, 0, -262133, 1, 0, -262132, 1, 0, -262131, 1, 0, -262130, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 1, 0, -196596, 1, 0, -196595, 1, 0, -196594, 1, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0, -131063, 1, 0, -131062, 1, 0, -131061, 1, 0, -131060, 1, 0, -131059, 1, 0, -131058, 1, 0, -65530, 1, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, 6, 1, 0, 7, 2, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 2, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 65542, 1, 0, 65543, 2, 0, 65544, 0, 0, 131078, 1, 0, 131079, 2, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 2, 0, 131084, 1, 0, 196614, 1, 0, 196615, 2, 0, 196616, 2, 0, 196617, 2, 0, 196618, 2, 0, 196619, 2, 0, 196620, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0 )
+
+[node name="Walls" type="TileMap" parent="YSort"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+cell_tile_origin = 1
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -65529, 3, 0, -65525, 3, 0, 8, 4, 0, 9, 4, 0, 10, 6, 0, 11, 6, 0, 65543, 3, 0, 65544, 4, 0, 131081, 6, 0, 131082, 6, 0, 131083, 6, 0, 262152, 5, 0 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 642, 323 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+
+[node name="Icon" type="Sprite" parent="YSort"]
+position = Vector2( -240, 497 )
+texture = ExtResource( 3 )
+
+[node name="Icon2" type="Sprite" parent="YSort"]
+position = Vector2( -149, 521 )
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+margin_top = 35.0
+margin_right = 323.0
+margin_bottom = 420.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 316.0
+margin_bottom = 446.0
+text = "My learning from this experiment:
+
+The tile origin property of the tilemap is the ysort origin of the tile with respect to the orange diamond you see when placing the tiles.
+What we want is origin = center.
+
+The top of the texture for each tile is aligned with the top of the orange placement diamonds by default. This can be adjusted per tile in the TileSet with Tex Offset (useful for anything taller than a flat panel)
+
+You don't want to ysort the floor unless the player is going to drop through it.
+
+The image we've been using for the tileset up until now has not been aligned to grid, making tile placement very difficult and finicky, I've aligned the tiles used in this scene in a modified atlas in  res://Levels/TestLevels/TileFix/
+
+(Then Plex moved the embedded tileset to res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres)"
+autowrap = true

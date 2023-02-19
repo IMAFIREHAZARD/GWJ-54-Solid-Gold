@@ -13,3 +13,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+.DS_Store
+Scenes/.DS_Store
+Scenes/Levels/.DS_Store
