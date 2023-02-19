@@ -79,59 +79,59 @@ texture = ExtResource( 8 )
 [node name="Pillars" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="Pillar" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 520.224, 1228.01 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar3" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 1928.48, 852.922 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar4" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -297.349, 396.778 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar5" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -17.544, 1602.27 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar6" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -801.576, 1917.92 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.85289 )
+z_index = -3
+texture = ExtResource( 13 )
+
+[node name="Pillar2" type="Sprite" parent="."]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 1263.41, 1184.02 )
+rotation = -0.041209
+scale = Vector2( 1.12319, 1.65306 )
+z_index = -3
+texture = ExtResource( 13 )
+
 [node name="StaticBody2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 349, -284 )
-
-[node name="Pillar" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( 535.075, 4725.04 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.79028 )
-z_index = -3
-texture = ExtResource( 13 )
-
-[node name="Pillar3" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( 4935.87, 3552.88 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.79028 )
-z_index = -3
-texture = ExtResource( 13 )
-
-[node name="Pillar4" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( -2019.84, 2127.43 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.79028 )
-z_index = -3
-texture = ExtResource( 13 )
-
-[node name="Pillar5" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( -1145.45, 5894.59 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.79028 )
-z_index = -3
-texture = ExtResource( 13 )
-
-[node name="Pillar6" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( -3595.55, 6881 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.79028 )
-z_index = -3
-texture = ExtResource( 13 )
-
-[node name="Pillar2" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
-position = Vector2( 2857.54, 4587.57 )
-rotation = -0.041209
-scale = Vector2( 3.50998, 5.16581 )
-z_index = -3
-texture = ExtResource( 13 )
+position = Vector2( 555, -437 )
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1787, 435 )
+position = Vector2( 2126, 342 )
 
 [node name="Walls" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
