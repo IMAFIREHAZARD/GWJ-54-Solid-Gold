@@ -956,7 +956,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2.45 ),
+"times": PoolRealArray( 2.65 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
@@ -1399,13 +1399,13 @@ __meta__ = {
 [node name="SummonAttackPositions" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="SummonAttackPositions"]
-position = Vector2( -338.484, 410.548 )
+position = Vector2( -2228.21, 1114.25 )
 
 [node name="Position2D2" type="Position2D" parent="SummonAttackPositions"]
-position = Vector2( -772.324, 429.34 )
+position = Vector2( -2662.05, 1133.04 )
 
 [node name="Position2D3" type="Position2D" parent="SummonAttackPositions"]
-position = Vector2( -423.412, 621.499 )
+position = Vector2( -2313.14, 1325.2 )
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -1517,7 +1517,7 @@ stream = ExtResource( 33 )
 [node name="DeathAnimatedSprite" type="AnimatedSprite" parent="Boss death Noise"]
 visible = false
 position = Vector2( 165, 35 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

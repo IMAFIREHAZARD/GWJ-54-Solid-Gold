@@ -10,7 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# we have 10 health represented by 5 hearts.
 	# each heart is 2 health.
 	# so we divide the player's health by 2 to get the heart's position.

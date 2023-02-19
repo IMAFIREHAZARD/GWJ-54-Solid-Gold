@@ -90,6 +90,10 @@ func _on_hit(damage):
 func die_horribly():
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	connect("dying", StageManager.current_map, "_on_boss_dying")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("dying", StageManager.player, "_on_boss_dying")
+	
+	emit_signal("dying")
 	#destroy_all_critters() # current map can do this
 	$AttackTimer.stop()
 	State = States.DYING
@@ -129,7 +133,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		#destroy_all_critters() # current_map can do this
 		State = States.DEAD
 
-		var timer = get_tree().create_timer(3)
+		var timer = get_tree().create_timer(1.5)
 		yield(timer, "timeout")
 		
 		spawn_dialog("DefeatedBoss") # this should probably go in the current_map instead. 

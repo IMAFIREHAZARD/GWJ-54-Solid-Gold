@@ -21,10 +21,14 @@ func start():
 func start_persistant():
 	start_persistent() # damn tricky spellings
 
-func start_persistent():
+func start_persistent(): # in global coordinates
 	var new_sound = self.duplicate()
 	new_sound.connect("finished", new_sound, "_on_finished")
-	get_tree().get_root().add_child(new_sound)
+	if StageManager.current_map != null and is_instance_valid(StageManager.current_map):
+		StageManager.current_map.add_child(new_sound)
+	else:
+		get_tree().get_root().add_child(new_sound)
+	#new_sound.global_position = location
 	
 	if pitch_shift:
 		new_sound.set_pitch_scale(rand_range(1.0-pitch_shift, 1.0+pitch_shift) * pitch_scale)

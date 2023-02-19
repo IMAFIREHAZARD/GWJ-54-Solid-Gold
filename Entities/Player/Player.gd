@@ -101,7 +101,9 @@ func fall(delta : float):
 			begin_dying()
 		
 func knockback(impactVector):
-	move_and_slide(impactVector)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", global_position + impactVector, 0.25)
+	#move_and_slide(impactVector)
 
 
 
@@ -182,10 +184,11 @@ func shoot():
 
 		# moved noises out of Bullet
 		if Global.curses_taken["gun_hands"]:
-			if randf()<0.67:
-				$Gun/ShootNoises.play_random_noise()
-			else:
+			if randf()<0.99:
 				$Gun/WoofShootNoises.play_random_noise()
+			else:
+				$Gun/ShootNoises.play_random_noise()
+				
 		else:
 			$Gun/ShootNoises.play_random_noise()
 
@@ -269,7 +272,7 @@ func fall_off_map():
 				print("Player fell off the map!")
 
 
-func stun(time:float) -> void:
+func stun(_time:float) -> void:
 	#No slowing down the player
 	return
 	
@@ -280,3 +283,6 @@ func stun(time:float) -> void:
 func _on_stun_attack_hit(impactVector):
 	knockback(impactVector)
 
+func _on_boss_dying():
+	pause()
+	
