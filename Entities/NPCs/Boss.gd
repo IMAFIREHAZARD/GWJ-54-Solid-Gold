@@ -36,7 +36,8 @@ func do_summon_attack():
 
 func do_projectile_attack():
 	var emitter = $Visuals/Left_Arm/ForearmRight/HandRight/do_projectile_attack
-	for phi in [-0.2, -0.1, 0, 0.1, 0.2]:
+	
+	for phi in [-PI/3.0, -PI/6.0, 0, PI/6.0, PI/3.0]:
 		var attack_dir = emitter.global_position.direction_to(StageManager.player.global_position)
 		attack_dir = attack_dir.rotated(phi)
 		var proj = projectile_scene.instance()
