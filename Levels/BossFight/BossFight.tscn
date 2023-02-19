@@ -105,7 +105,7 @@ position = Vector2( 1537, 1382 )
 position = Vector2( -1257, 185 )
 
 [node name="Shield" parent="YSort/DirectionalProjectileTower2" index="2"]
-frame = 2
+frame = 0
 
 [node name="PushBlock" parent="YSort/DirectionalProjectileTower2/YSort" index="1"]
 position = Vector2( 265, 133 )
@@ -221,7 +221,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
-frame = 2
+frame = 0
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
