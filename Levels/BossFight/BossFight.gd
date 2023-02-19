@@ -42,3 +42,7 @@ func pan_camera(target : Vector2, time := 1.0):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(cam, "global_position", target, time)
 	yield(tween, "finished")
+
+func _on_boss_died():
+	var boss = $YSort/BossRoot
+	yield(pan_camera(boss.global_position), "completed")

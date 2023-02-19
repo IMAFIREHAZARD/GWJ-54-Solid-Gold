@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Art/Boss_Parts/Forearm_Right.png" type="Texture" id=1]
 [ext_resource path="res://Art/Boss_Parts/Wing_small.png" type="Texture" id=2]
@@ -31,8 +31,35 @@
 [ext_resource path="res://Entities/NPCs/Boss/BOSS_shot_02.wav" type="AudioStream" id=29]
 [ext_resource path="res://vfx/shaders/SolidWhite_shadermaterial.tres" type="Material" id=30]
 [ext_resource path="res://Entities/NPCs/Boss/BOSS_death_fall.wav" type="AudioStream" id=31]
-[ext_resource path="res://Entities/NPCs/Boss_Death_Animation.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Art/Boss_animation/Untitled-160005.png" type="Texture" id=32]
 [ext_resource path="res://sfx/BOSS_death_scream.wav" type="AudioStream" id=33]
+[ext_resource path="res://Art/Boss_animation/Untitled-160025.png" type="Texture" id=34]
+[ext_resource path="res://Art/Boss_animation/Untitled-160014.png" type="Texture" id=35]
+[ext_resource path="res://Art/Boss_animation/Untitled-160016.png" type="Texture" id=36]
+[ext_resource path="res://Art/Boss_animation/Untitled-160019.png" type="Texture" id=37]
+[ext_resource path="res://Art/Boss_animation/Untitled-160020.png" type="Texture" id=38]
+[ext_resource path="res://Art/Boss_animation/Untitled-160009.png" type="Texture" id=39]
+[ext_resource path="res://Art/Boss_animation/Untitled-160013.png" type="Texture" id=40]
+[ext_resource path="res://Art/Boss_animation/Untitled-160026.png" type="Texture" id=41]
+[ext_resource path="res://Art/Boss_animation/Untitled-160027.png" type="Texture" id=42]
+[ext_resource path="res://Art/Boss_animation/Untitled-160008.png" type="Texture" id=43]
+[ext_resource path="res://Art/Boss_animation/Untitled-160011.png" type="Texture" id=44]
+[ext_resource path="res://Art/Boss_animation/Untitled-160022.png" type="Texture" id=45]
+[ext_resource path="res://Art/Boss_animation/Untitled-160015.png" type="Texture" id=46]
+[ext_resource path="res://Art/Boss_animation/Untitled-160024.png" type="Texture" id=47]
+[ext_resource path="res://Art/Boss_animation/Untitled-160010.png" type="Texture" id=48]
+[ext_resource path="res://Art/Boss_animation/Untitled-160000.png" type="Texture" id=49]
+[ext_resource path="res://Art/Boss_animation/Untitled-160004.png" type="Texture" id=50]
+[ext_resource path="res://Art/Boss_animation/Untitled-160007.png" type="Texture" id=51]
+[ext_resource path="res://Art/Boss_animation/Untitled-160012.png" type="Texture" id=52]
+[ext_resource path="res://Art/Boss_animation/Untitled-160006.png" type="Texture" id=53]
+[ext_resource path="res://Art/Boss_animation/Untitled-160018.png" type="Texture" id=54]
+[ext_resource path="res://Art/Boss_animation/Untitled-160002.png" type="Texture" id=55]
+[ext_resource path="res://Art/Boss_animation/Untitled-160017.png" type="Texture" id=56]
+[ext_resource path="res://Art/Boss_animation/Untitled-160001.png" type="Texture" id=57]
+[ext_resource path="res://Art/Boss_animation/Untitled-160003.png" type="Texture" id=58]
+[ext_resource path="res://Art/Boss_animation/Untitled-160023.png" type="Texture" id=59]
+[ext_resource path="res://Art/Boss_animation/Untitled-160021.png" type="Texture" id=60]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -809,10 +836,34 @@ tracks/37/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/38/type = "value"
+tracks/38/path = NodePath("Boss death Noise/DeathAnimatedSprite:visible")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Boss death Noise/DeathAnimatedSprite:frame")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "die"
-length = 2.6
+length = 6.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visuals/Wing:rotation_degrees")
@@ -905,20 +956,34 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 1.65 ),
+"times": PoolRealArray( 2.45 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
-tracks/8/type = "animation"
-tracks/8/path = NodePath("AnimationPlayer/AnimationPlayer")
+tracks/8/type = "value"
+tracks/8/path = NodePath("Boss death Noise/DeathAnimatedSprite:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"clips": PoolStringArray( "New Anim" ),
-"times": PoolRealArray( 0.85 )
+"times": PoolRealArray( 0, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Boss death Noise/DeathAnimatedSprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.8, 3.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 28 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1100,6 +1165,14 @@ height = 73.9003
 [sub_resource type="CircleShape2D" id=9]
 radius = 99.3227
 
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 42 ), ExtResource( 49 ), ExtResource( 57 ), ExtResource( 55 ), ExtResource( 58 ), ExtResource( 50 ), ExtResource( 32 ), ExtResource( 53 ), ExtResource( 51 ), ExtResource( 43 ), ExtResource( 39 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 40 ), ExtResource( 35 ), ExtResource( 46 ), ExtResource( 36 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 60 ), ExtResource( 45 ), ExtResource( 59 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Boss" type="Sprite"]
 position = Vector2( 83, -40 )
 rotation = -0.0790671
@@ -1117,8 +1190,6 @@ anims/do_curse_attack = SubResource( 5 )
 anims/do_projectile_attack = SubResource( 6 )
 anims/do_summon_attack = SubResource( 7 )
 anims/hit = SubResource( 8 )
-
-[node name="AnimationPlayer" parent="AnimationPlayer" instance=ExtResource( 32 )]
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -1442,6 +1513,12 @@ bus = "sfx"
 
 [node name="Boss death Noise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 33 )
+
+[node name="DeathAnimatedSprite" type="AnimatedSprite" parent="Boss death Noise"]
+visible = false
+position = Vector2( 165, 35 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 10 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="do_next_attack"]

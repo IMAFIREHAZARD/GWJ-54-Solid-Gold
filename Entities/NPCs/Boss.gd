@@ -6,7 +6,7 @@ export(PackedScene) var slow_attack_scene
 const attacks = ["do_summon_attack", "do_curse_attack", "do_projectile_attack"]
 
 var attack_index = 0
-var health_max : float = 100.0
+var health_max : float = 66.0
 var health := health_max
 var crack_threshold : float = 10 # how much damage to get one crack
 var num_cracks : int = 0
@@ -109,10 +109,18 @@ func destroy_all_critters():
 			critter.kill()
 	StageManager.player.pause()
 
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
+		
+		StageManager.current_map._on_boss_died()
 		destroy_all_critters()
 		State = States.DEAD
+
+		var timer = get_tree().create_timer(3)
+		yield(timer, "timeout")
+		queue_free()
+		
 		print("Boss is Dead. Now what?")
 		spawn_dialog("DefeatedBoss") # this should probably go in the current_map instead. 
 

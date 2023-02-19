@@ -23,7 +23,7 @@
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/path = NodePath("AnimationPlayer/DeathAnimatedSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,7 +39,7 @@ tracks/0/keys = {
 resource_name = "New Anim"
 length = 1.908
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/path = NodePath("AnimationPlayer/DeathAnimatedSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -56,7 +56,7 @@ playback_speed = 0.8
 anims/Idle = SubResource( 2 )
 "anims/New Anim" = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="DeathAnimatedSprite" type="Sprite" parent="."]
 position = Vector2( 14.125, -86.875 )
 scale = Vector2( 1.732, 1.76611 )
-texture = ExtResource( 5 )
+texture = ExtResource( 12 )

@@ -234,6 +234,9 @@ position = Vector2( -24, -364 )
 
 [node name="Boss" parent="YSort/BossRoot/pos" instance=ExtResource( 1 )]
 
+[node name="DeathAnimatedSprite" parent="YSort/BossRoot/pos/Boss/Boss death Noise" index="0"]
+position = Vector2( 1518, -181 )
+
 [node name="BossLogic" type="Node2D" parent="YSort"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/BossLogic"]
@@ -363,7 +366,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
-frame = 2
+frame = 1
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -395,5 +398,6 @@ bus = "Music"
 [editable path="YSort/DirectionalTowerPlatform/ReflectorSensors/ReflectorSensor01"]
 [editable path="YSort/DirectionalTowerPlatform2"]
 [editable path="YSort/DirectionalTowerPlatform2/ReflectorSensors/ReflectorSensor01"]
+[editable path="YSort/BossRoot/pos/Boss"]
 [editable path="YSort/WallsAndGround"]
 [editable path="YSort/Player"]
