@@ -7,6 +7,7 @@
 
 [node name="DestructibleBoxOfCritters" instance=ExtResource( 1 )]
 scale = Vector2( 5, 5 )
+collision_mask = 8
 script = ExtResource( 2 )
 num_critters = 5
 critter_scene = ExtResource( 3 )

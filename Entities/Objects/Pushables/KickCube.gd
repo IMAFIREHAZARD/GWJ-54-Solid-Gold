@@ -71,7 +71,7 @@ func spawn_critters():
 		#newCritter.set_global_position(global_position)
 		newCritter.random_start_location = false
 		get_parent().call_deferred("add_child", newCritter)
-		newCritter.set_global_position(global_position / global_scale.x)
+		newCritter.set_deferred("global_position", global_position)
 
 
 func _physics_process(_delta: float) -> void:

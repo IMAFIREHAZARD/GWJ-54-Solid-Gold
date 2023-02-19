@@ -6,6 +6,16 @@ var directionObjs : Array
 export(PackedScene) var bug_scene
 var shield_power = 0
 
+enum tower_types {
+	SHIELD,
+	SPAWNER,
+	SHOOTER,
+}
+
+export (tower_types) var tower_type = tower_types.SHIELD
+export var projectile_scene : PackedScene
+
+
 enum {
 	REFLECT,
 	SPAWN
@@ -87,15 +97,34 @@ func _set_state(value):
 	$Reflector.monitoring = state == REFLECT
 
 func _on_Timer_timeout() -> void:
-	if StageManager.current_map.current_bugs < StageManager.current_map.max_tower_bugs\
-	and state == SPAWN:
-		var bug = bug_scene.instance()
-		get_parent().add_child(bug)
-		bug.global_position = global_position + Vector2(randf() * 100, 0).rotated(TAU * randf())
-	if "Projectile" in name:
+	if tower_type == tower_types.SHIELD:
+		if StageManager.current_map.current_bugs < StageManager.current_map.max_tower_bugs\
+		and state == SPAWN:
+			var bug = bug_scene.instance()
+			get_parent().add_child(bug)
+			bug.global_position = global_position + Vector2(randf() * 100, 0).rotated(TAU * randf())
+	elif tower_type == tower_types.SHOOTER:
+		var newDirVector = Vector2.RIGHT.rotated(get_direction())
+		var isoDirVector = top_to_iso(newDirVector)
 		
-		$DirectionViz/Arrow.rotation = get_direction()
-		#$DirectionViz/Arrow.scale.y = 0.5
+		$DirectionViz/Arrow.points = [Vector2.ZERO, isoDirVector]
+
+		spawn_projectile(isoDirVector)
+
+func spawn_projectile(directionVector):
+	var newProjectile = projectile_scene.instance()
+	if newProjectile.get("travel_dir") != null:
+		newProjectile.travel_dir = directionVector
+	else:
+		newProjectile.rotation = directionVector.angle()
+	add_child(newProjectile)
+	#newProjectile.rotation = projectileRotation
+
+	newProjectile.global_position = $DirectionViz.global_position
+
+
+func top_to_iso(vector : Vector2):
+	return Vector2(vector.x, vector.y / 2.0)
 
 func _on_Reflector_reflect() -> void:
 	create_tween().tween_property($Shield, "modulate", Color.white, 0.2).from(Color(2,2,2))
