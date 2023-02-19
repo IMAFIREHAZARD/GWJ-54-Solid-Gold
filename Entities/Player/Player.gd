@@ -100,7 +100,8 @@ func fall(delta : float):
 		if global_position.distance_to(last_known_position) > fall_distance:
 			begin_dying()
 		
-
+func knockback(impactVector):
+	move_and_slide(impactVector)
 
 
 
