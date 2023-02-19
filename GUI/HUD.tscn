@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HelpFooter.tscn" type="PackedScene" id=2]
@@ -9,6 +9,23 @@
 [ext_resource path="res://GUI/HUD/CurseTokens/gun_hands_boon128.png" type="Texture" id=7]
 [ext_resource path="res://GUI/HUD/CurseTokens/super_strong_boon128.png" type="Texture" id=8]
 [ext_resource path="res://GUI/Themes/main_theme.tres" type="Theme" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.87451, 0.596078, 0.105882, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -46,6 +63,12 @@ margin_bottom = 43.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
 align = 1
+
+[node name="Panel" type="Panel" parent="Header/HBox/LevelInstructions"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="Curses" type="GridContainer" parent="Header/HBox"]
 margin_left = 596.0
