@@ -41,14 +41,14 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"choice": "No. Seems a bit too easy if you ask me.",
+			"choice": "I know you'll force it on me no matter what I say.",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"emit_signal": "refused_levitation_curse",
+			"emit_signal": "accepted_levitation_curse",
 			"event_id": "dialogic_040"
 		},
 		{
