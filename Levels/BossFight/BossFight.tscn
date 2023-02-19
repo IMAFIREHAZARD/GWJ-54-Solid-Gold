@@ -101,6 +101,12 @@ script = ExtResource( 5 )
 [node name="DirectionalTowerPlatform" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( -1253, -71 )
 
+[node name="PushBlock2" parent="YSort/DirectionalTowerPlatform/YSort" index="2"]
+position = Vector2( 260, 138 )
+
+[node name="PushBlock3" parent="YSort/DirectionalTowerPlatform/YSort" index="3"]
+position = Vector2( 255, -126 )
+
 [node name="DirectionalTowerPlatform2" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 1522, 1348 )
 
@@ -209,7 +215,7 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
-frame = 0
+frame = 2
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -237,4 +243,5 @@ volume_db = -9.0
 autoplay = true
 bus = "Music"
 
+[editable path="YSort/DirectionalTowerPlatform"]
 [editable path="YSort/Player"]

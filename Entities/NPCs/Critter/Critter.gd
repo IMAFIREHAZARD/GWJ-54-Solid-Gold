@@ -30,12 +30,13 @@ func _ready() -> void:
 	if level != null and level.get("current_bugs") != null:
 		level.current_bugs += 1
 	
-	if random_start_location:
-		goto_random_pos()
+	#if random_start_location:
+	
+	set_random_navPos()
 	
 
 
-func goto_random_pos() -> void:
+func set_random_navPos() -> void:
 	var target = Vector2(randf(), randf())* 200
 	if targets:
 		target = targets[randi() % targets.size()]
@@ -99,16 +100,19 @@ func reproduce():
 
 
 func _on_NavigationAgent2D_navigation_finished() -> void:
+	choose_new_behaviour()
+
+
+func choose_new_behaviour():
 	if state == State.ROAM:
-		# 1 in 3 change of duplicating
-		if level.current_bugs < level.max_bugs and randi() % 3 == 0:
+		if level.current_bugs < level.max_bugs and randf() < 0.0: # never ever
 			reproduce()
-		# 1 in 5 chance of hunting down the player
-		elif randi() % 5 == 0 and Dialogic.has_current_dialog_node():
+		elif randf() < 1.0 and !Dialogic.has_current_dialog_node(): # always
 			state = State.TRACK_PLAYER
 			goto_player()
 			return
-		goto_random_pos()
+		
+		set_random_navPos()
 	elif state == State.TRACK_PLAYER:
 		goto_player()
 	
@@ -164,7 +168,7 @@ func _on_AttackArea_body_entered(body: Node2D) -> void:
 		yield(tween,"finished")
 		if state == State.DEAD: return
 		state = State.ROAM
-		goto_random_pos()
+		set_random_navPos()
 
 # hit player
 func _on_Critter_body_entered(body: Node) -> void:
@@ -173,3 +177,7 @@ func _on_Critter_body_entered(body: Node) -> void:
 	
 	if body == StageManager.player:
 		body._on_hit(1)
+
+
+func _on_NavUpdateTimer_timeout():
+	pass # Replace with function body.
