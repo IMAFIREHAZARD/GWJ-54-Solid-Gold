@@ -61,15 +61,19 @@ func _on_boss_dying():
 	destroy_all_critters()
 	var myBoss = $YSort/BossRoot
 	#pan_camera(myBoss.global_position)
+	var offset = Vector2.UP * 200.0
+	yield(pan_camera(myBoss.global_position + offset), "completed")
 
-	var camera = find_node("*Camera*")
-	if camera != null:
-#		remove_child(camera)
-#		get_parent().add_child(camera)
-		camera.global_position = StageManager.player.global_position
-		var tween = get_tree().create_tween()
-		var offset = Vector2.UP * 200.0
-		tween.tween_property(camera, "global_position", myBoss.global_position + offset, 1.0 ).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+
+#	var camera = find_node("Camera*")
+#	if camera != null:
+##		remove_child(camera)
+##		get_parent().add_child(camera)
+#		camera.current = true
+#		camera.global_position = StageManager.player.global_position
+#		var tween = get_tree().create_tween()
+#		var offset = Vector2.UP * 200.0
+#		tween.tween_property(camera, "global_position", myBoss.global_position + offset, 1.0 ).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
 
 func _on_boss_died():

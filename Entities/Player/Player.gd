@@ -98,7 +98,7 @@ func fall(delta : float):
 		position += vel
 		var fall_distance = 300.0
 		if global_position.distance_to(last_known_position) > fall_distance:
-			begin_dying()
+			begin_dying("FellOffMap")
 		
 func knockback(impactVector):
 	var tween = get_tree().create_tween()
@@ -198,7 +198,7 @@ func start_gun_curse():
 	Global.curses_taken["gun_hands"] = true
 	#Global.gun_curse_taken = true
 
-func begin_dying():
+func begin_dying(dialogicTimeline = "PlayerDied"):
 	
 	State = States.DEAD
 	print("Oh noes!")
@@ -207,7 +207,7 @@ func begin_dying():
 	if StageManager.current_map.name in Global.scene_attempts.keys():
 		Global.scene_attempts[StageManager.current_map.name] += 1
 	
-	StageManager.current_map.spawn_dialog("PlayerDied")
+	StageManager.current_map.spawn_dialog(dialogicTimeline)
 
 		
 	
@@ -217,7 +217,7 @@ func _on_hit(damage):
 			Global.player_health_remaining -= damage
 			$HurtNoises.play_random_noise()
 			if Global.player_health_remaining <= 0:
-				begin_dying()
+				begin_dying("PlayerDied")
 			$AnimationPlayer.play("hit")
 			$IFramesTimer.start()
 

@@ -19,7 +19,7 @@ func _delayed_ready():
 		
 
 func _on_BoxSensor_body_entered(body: Node) -> void:
-	print(body)
+	#print(body)
 	if body is PushBlock:
 		emit_signal("block_entered")
 		active = true
