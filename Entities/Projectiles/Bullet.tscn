@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Entities/Projectiles/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Art/VFX/Fire_4.png" type="Texture" id=2]
@@ -6,10 +6,19 @@
 [ext_resource path="res://Art/VFX/Fire_5.png" type="Texture" id=4]
 [ext_resource path="res://Art/VFX/Fire_3.png" type="Texture" id=5]
 [ext_resource path="res://Art/VFX/Fire_1.png" type="Texture" id=6]
-[ext_resource path="res://GUI/Buttons/UI_hover_03.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/shoot/SHOOT_better__02.wav" type="AudioStream" id=7]
 [ext_resource path="res://Art/VFX/Missle_hit.png" type="Texture" id=8]
 [ext_resource path="res://Art/VFX/Fireball_New.png" type="Texture" id=9]
 [ext_resource path="res://Art/Objects/Smoke texture.png" type="Texture" id=10]
+[ext_resource path="res://sfx/TemporarySound.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sfx/shoot/SHOT_impacts_02.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/shoot/SHOOT_better__01.wav" type="AudioStream" id=13]
+[ext_resource path="res://Levels/Run/PlayRandomNoises.gd" type="Script" id=14]
+[ext_resource path="res://sfx/shoot/SHOT_impacts_01.wav" type="AudioStream" id=15]
+[ext_resource path="res://sfx/shoot/SHOT_impacts_04.wav" type="AudioStream" id=16]
+[ext_resource path="res://sfx/shoot/SHOT_impacts_03.wav" type="AudioStream" id=17]
+[ext_resource path="res://GUI/Buttons/UI_hover_01.wav" type="AudioStream" id=18]
+[ext_resource path="res://GUI/Buttons/UI_hover_02.wav" type="AudioStream" id=19]
 
 [sub_resource type="Curve" id=22]
 min_value = -360.0
@@ -119,10 +128,13 @@ region = Rect2( 225, 0, 75, 119 )
 [sub_resource type="SpriteFrames" id=20]
 animations = [ {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
+"loop": false,
 "name": "default",
 "speed": 15.0
 } ]
+
+[sub_resource type="CircleShape2D" id=23]
+radius = 52.0865
 
 [node name="Bullet" type="Area2D" groups=["projectiles"]]
 collision_layer = 8
@@ -167,7 +179,7 @@ self_modulate = Color( 1.73, 0.97, 0.15, 1 )
 position = Vector2( -32, 1 )
 scale = Vector2( 0.29142, 0.29142 )
 frames = SubResource( 14 )
-frame = 3
+frame = 8
 speed_scale = 2.615
 playing = true
 
@@ -176,7 +188,7 @@ visible = false
 material = SubResource( 2 )
 position = Vector2( 21, 0 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 offset = Vector2( -58, 3 )
 
@@ -191,16 +203,86 @@ position = Vector2( 21, 0 )
 visible = false
 material = SubResource( 2 )
 position = Vector2( 5, -3 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 4.33353, 4.33353 )
 frames = SubResource( 20 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="ExplosionHurtbox" type="Area2D" parent="."]
+position = Vector2( 28, 0 )
+scale = Vector2( 0.761701, 0.761701 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHurtbox"]
+shape = SubResource( 23 )
+
+[node name="ShootNoises" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="Snap" parent="ShootNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 13 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Pop" parent="ShootNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 7 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="WoofShootNoises" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="Woof01" parent="WoofShootNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 18 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Woof02" parent="WoofShootNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 19 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="ThuddyExplosionNoises" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="Smack1" parent="ThuddyExplosionNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 15 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Boom2" parent="ThuddyExplosionNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 12 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Thud1" parent="ThuddyExplosionNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 17 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="Boom1" parent="ThuddyExplosionNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 16 )
+volume_db = -12.0
+bus = "sfx"
+pitch_shift = 0.05
+
+[node name="SnappyExplosionNoises" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="SnappySound" parent="SnappyExplosionNoises" instance=ExtResource( 11 )]
+stream = ExtResource( 13 )
+volume_db = -14.0
+bus = "sfx"
 
 [connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

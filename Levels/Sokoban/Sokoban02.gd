@@ -2,16 +2,29 @@ extends "res://Levels/CommonInfrastructure/MinimalLevel.gd"
 
 var hovered_block = null
 var cam : Camera2D
- 
+var intro_played : bool = false 
+
 func _ready():
-	play_intro_dialog()
 	cam = find_node("Camera2D")
 	cam.current = true
 	
+	if Global.scene_attempts["Sokoban"] == 0:
+		play_intro_dialog()
+	else:
+		skip_intro_dialog()
+	Global.scene_attempts["Sokoban"] += 1
+	
+
+	
 	
 func play_intro_dialog():
-	var dialog = spawn_dialog("SokobanIntro")
+	if not intro_played:
+		spawn_dialog("SokobanIntro")
+		intro_played = true
+
+func skip_intro_dialog():
 	
+	pan_camera(StageManager.player.global_position, 2.0)
 	
 
 

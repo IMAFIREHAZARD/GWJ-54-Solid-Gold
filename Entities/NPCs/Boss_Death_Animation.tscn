@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Art/Boss_animation/Untitled-160020.png" type="Texture" id=1]
 [ext_resource path="res://Art/Boss_animation/Untitled-160009.png" type="Texture" id=2]
@@ -20,11 +20,26 @@
 [ext_resource path="res://Art/Boss_animation/Untitled-160002.png" type="Texture" id=18]
 [ext_resource path="res://Art/Boss_animation/Untitled-160017.png" type="Texture" id=19]
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/DeathAnimatedSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
 length = 1.908
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:texture")
+tracks/0/path = NodePath("AnimationPlayer/DeathAnimatedSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -38,7 +53,10 @@ tracks/0/keys = {
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
 playback_speed = 0.8
+anims/Idle = SubResource( 2 )
 "anims/New Anim" = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 5 )
+[node name="DeathAnimatedSprite" type="Sprite" parent="."]
+position = Vector2( 14.125, -86.875 )
+scale = Vector2( 1.732, 1.76611 )
+texture = ExtResource( 12 )

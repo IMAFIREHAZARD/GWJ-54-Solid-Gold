@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_bug_died(_v):
 	if current_bugs <= 3  and victory_popup_offered == false:
-		
+		destroy_all_bugs()
 		if Dialogic.has_current_dialog_node():
 			yield(get_tree().get_meta('latest_dialogic_node'), "timeline_end")
 		victory_popup_offered = true
@@ -29,10 +29,18 @@ func reveal_exit(_v):
 
 func _on_dialogic_signal(signal_params):
 	if signal_params == "BugsKilled":
+		destroy_all_bugs()
 		teleport_to_bossfight()
 	elif signal_params == "restart_level":
 		StageManager.restart_current_level()
 
+func destroy_all_bugs():
+	var bugs = get_tree().get_nodes_in_group("critters")
+	for bug in bugs:
+		if bug.has_method("kill"):
+			bug.kill()
+		else:
+			bug.queue_free()
 
 func teleport_to_bossfight():
 	StageManager.change_scene("res://Levels/BossFight/BossFight.tscn")

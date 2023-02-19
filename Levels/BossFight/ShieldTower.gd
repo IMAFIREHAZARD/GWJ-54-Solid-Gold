@@ -6,6 +6,7 @@ var directionObjs : Array
 export(PackedScene) var bug_scene
 var shield_power = 0
 
+
 enum tower_types {
 	SHIELD,
 	SPAWNER,
@@ -97,6 +98,9 @@ func _set_state(value):
 	$Reflector.monitoring = state == REFLECT
 
 func _on_Timer_timeout() -> void:
+	if StageManager.current_map.get("boss_dead"):
+		return
+		
 	if tower_type == tower_types.SHIELD:
 		if StageManager.current_map.current_bugs < StageManager.current_map.max_tower_bugs\
 		and state == SPAWN:
@@ -117,6 +121,7 @@ func spawn_projectile(directionVector):
 		newProjectile.travel_dir = directionVector
 	else:
 		newProjectile.rotation = directionVector.angle()
+	$Gun/WoofShootNoises.play_random_noise()
 	add_child(newProjectile)
 	#newProjectile.rotation = projectileRotation
 
@@ -127,5 +132,5 @@ func top_to_iso(vector : Vector2):
 	return Vector2(vector.x, vector.y / 2.0)
 
 func _on_Reflector_reflect() -> void:
-	create_tween().tween_property($Shield, "modulate", Color.white, 0.2).from(Color(2,2,2))
+	var _tween = create_tween().tween_property($Shield, "modulate", Color.white, 0.2).from(Color(2,2,2))
 

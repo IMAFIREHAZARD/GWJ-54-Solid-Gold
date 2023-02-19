@@ -1,6 +1,8 @@
 extends "res://Levels/BaseLevel.gd"
 
 var current_bugs = 0
+var boss_dead : bool = false
+
 export var max_bugs = 3 # dictates when bugs stop duplicating
 export var max_tower_bugs = 10 # dictates when bugs stop spawning
 
@@ -42,3 +44,37 @@ func pan_camera(target : Vector2, time := 1.0):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(cam, "global_position", target, time)
 	yield(tween, "finished")
+
+func destroy_all_critters():
+	var critters = get_tree().get_nodes_in_group("critters")
+	for critter in critters:
+		critter.queue_free()
+
+
+	
+		
+
+
+func _on_boss_dying():
+	boss_dead = true
+
+	destroy_all_critters()
+	var myBoss = $YSort/BossRoot
+	#pan_camera(myBoss.global_position)
+	var offset = Vector2.UP * 200.0
+	yield(pan_camera(myBoss.global_position + offset), "completed")
+
+
+#	var camera = find_node("Camera*")
+#	if camera != null:
+##		remove_child(camera)
+##		get_parent().add_child(camera)
+#		camera.current = true
+#		camera.global_position = StageManager.player.global_position
+#		var tween = get_tree().create_tween()
+#		var offset = Vector2.UP * 200.0
+#		tween.tween_property(camera, "global_position", myBoss.global_position + offset, 1.0 ).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+
+
+func _on_boss_died():
+	pass

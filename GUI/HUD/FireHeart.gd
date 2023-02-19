@@ -10,7 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# we have 10 health represented by 5 hearts.
 	# each heart is 2 health.
 	# so we divide the player's health by 2 to get the heart's position.
@@ -20,7 +20,7 @@ func _process(delta):
 
 	var full_hearts = floor(float(Global.player_health_remaining) / float(HP_per_heart))
 	var half_hearts = int(Global.player_health_remaining) % HP_per_heart
-	var empty_hearts = 5-full_hearts + half_hearts	
+	#var empty_hearts = 5-full_hearts + half_hearts	
 	
 	var pos = get_position_in_parent() # watch for divide by one errors when using positions
 	if pos < full_hearts:

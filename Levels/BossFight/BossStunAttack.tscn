@@ -280,6 +280,7 @@ anims/Slow = SubResource( 1 )
 anims/Warn = SubResource( 4 )
 
 [node name="BurstDelay" type="Timer" parent="."]
+one_shot = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.249969, -54 )

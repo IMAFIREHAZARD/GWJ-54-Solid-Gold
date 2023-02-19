@@ -98,9 +98,12 @@ func fall(delta : float):
 		position += vel
 		var fall_distance = 300.0
 		if global_position.distance_to(last_known_position) > fall_distance:
-			begin_dying()
+			begin_dying("FellOffMap")
 		
-
+func knockback(impactVector):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", global_position + impactVector, 0.25)
+	#move_and_slide(impactVector)
 
 
 
@@ -155,6 +158,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.curses_taken["gun_hands"] = true
 		Global.curses_taken["strength"] = true
 		Global.curses_taken["speed"] = true
+		
 
 
 func has_affordance(affordanceName : String):
@@ -172,11 +176,21 @@ func shoot():
 	reload_timer.start()
 	if not State in [ States.PAUSED, States.DEAD]:
 		var bullet = bullet_scene.instance() as Node2D
+		bullet.set_shooter(self)
 		get_parent().add_child(bullet)
 		bullet.global_position = $BulletSpawnPoint.global_position
 		bullet.scale *= scale
 		bullet.rotation = bullet.get_local_mouse_position().angle() + rand_range(-0.1, 0.1)
-	
+
+		# moved noises out of Bullet
+		if Global.curses_taken["gun_hands"]:
+			if randf()<0.99:
+				$Gun/WoofShootNoises.play_random_noise()
+			else:
+				$Gun/ShootNoises.play_random_noise()
+				
+		else:
+			$Gun/ShootNoises.play_random_noise()
 
 func start_gun_curse():
 	animated_sprite.frames = gun_hands_frames
@@ -184,15 +198,16 @@ func start_gun_curse():
 	Global.curses_taken["gun_hands"] = true
 	#Global.gun_curse_taken = true
 
-func begin_dying():
+func begin_dying(dialogicTimeline = "PlayerDied"):
 	
 	State = States.DEAD
 	print("Oh noes!")
 	print("Player died!")
 	
-	Global.scene_attempts[StageManager.current_map.name] += 1
+	if StageManager.current_map.name in Global.scene_attempts.keys():
+		Global.scene_attempts[StageManager.current_map.name] += 1
 	
-	StageManager.current_map.spawn_dialog("PlayerDied")
+	StageManager.current_map.spawn_dialog(dialogicTimeline)
 
 		
 	
@@ -202,7 +217,7 @@ func _on_hit(damage):
 			Global.player_health_remaining -= damage
 			$HurtNoises.play_random_noise()
 			if Global.player_health_remaining <= 0:
-				begin_dying()
+				begin_dying("PlayerDied")
 			$AnimationPlayer.play("hit")
 			$IFramesTimer.start()
 
@@ -244,9 +259,9 @@ func fall_off_map():
 		if Global.player_events["falls"] > 1 and Global.curses_offered["levitation"] == false:
 			pause()
 			if StageManager.current_map.has_method("spawn_dialog"):
-				
-				StageManager.current_map.spawn_dialog("LevitationCurse")
-				Global.curses_offered["levitation"] = true
+				if !Dialogic.has_current_dialog_node():
+					StageManager.current_map.spawn_dialog("LevitationCurse")
+					Global.curses_offered["levitation"] = true
 
 		if Global.curses_taken["levitation"] == false:
 			detach_camera()
@@ -257,10 +272,17 @@ func fall_off_map():
 				print("Player fell off the map!")
 
 
-func stun(time:float) -> void:
-	State = States.STUNNED
-	yield(get_tree().create_timer(time), "timeout")
-	State = States.READY
+func stun(_time:float) -> void:
+	#No slowing down the player
+	return
+	
+#	State = States.STUNNED
+#	yield(get_tree().create_timer(time), "timeout")
+#	State = States.READY
 
+func _on_stun_attack_hit(impactVector):
+	knockback(impactVector)
 
-
+func _on_boss_dying():
+	pause()
+	

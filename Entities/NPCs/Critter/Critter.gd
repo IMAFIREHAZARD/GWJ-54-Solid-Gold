@@ -8,21 +8,25 @@ var velocity : Vector2
 
 export(PackedScene) var splat_scene
 
-export var move_speed := 250
+export var move_speed : float = 250.0
+export var knockback_speed : float = 2500.0
 export var random_start_location : bool = true
 
 enum State {
 	ROAM,
 	TRACK_PLAYER,
 	ATTACKING,
+	DYING,
 	DEAD,
 	PAUSED
 }
 var state = State.ROAM
+var previous_state = state
 
 signal died
 
 func _ready() -> void:
+	#$SpawnSafetyTimer.start() # autostarts now
 	velocity = Vector2.RIGHT.rotated(randf()*TAU)
 
 	for target in get_tree().get_nodes_in_group("BugTargets"):
@@ -34,7 +38,13 @@ func _ready() -> void:
 	
 	set_random_navPos()
 	
+func pause():
+	if state != State.PAUSED:
+		previous_state = state
+		state = State.PAUSED
 
+func resume():
+	state = previous_state
 
 func set_random_navPos() -> void:
 	var target = Vector2(randf(), randf())* 200
@@ -47,12 +57,18 @@ func goto_player() -> void:
 	nav_agent.set_target_location(StageManager.player.global_position)
 
 func _physics_process(delta : float):
+	if StageManager.current_map.get("boss_dead") == true:
+		return
+
 	if state in [State.ROAM, State.TRACK_PLAYER]:
 		if not nav_agent.is_navigation_finished():
 			var navigationVector = global_position.direction_to(nav_agent.get_next_location())
 			var flockingVector = get_flocking_vector()
 			velocity = navigationVector + flockingVector
 			global_position += velocity.normalized() * move_speed * delta
+	elif state in [ State.DYING ]: # knockback
+		global_position += velocity.normalized() * knockback_speed * delta 
+
 
 func get_flocking_vector():
 	var cutoff_distance = 200.0
@@ -88,10 +104,10 @@ func get_flocking_vector():
 func reproduce():
 	animation_player.play("Wiggle")
 
-	return # wasn't clear to the player why the critter count is going up.
+	#return # wasn't clear to the player why the critter count is going up.
 	
 	state = State.PAUSED
-	
+
 	yield(animation_player, "animation_finished")
 	if state == State.DEAD: return
 	var extra_critter = duplicate()
@@ -105,20 +121,25 @@ func _on_NavigationAgent2D_navigation_finished() -> void:
 
 func choose_new_behaviour():
 	if state == State.ROAM:
-		if level.current_bugs < level.max_bugs and randf() < 0.0: # never ever
+		if level.current_bugs < level.max_bugs and randf() < 0.10: # 10%
 			reproduce()
-		elif randf() < 1.0 and !Dialogic.has_current_dialog_node(): # always
+		elif randf() <= 0.95 and !Dialogic.has_current_dialog_node(): # almost always
 			state = State.TRACK_PLAYER
 			goto_player()
 			return
-		
-		set_random_navPos()
+		else: # hardly ever
+			set_random_navPos()
 	elif state == State.TRACK_PLAYER:
 		goto_player()
 	
 	
 	if level == null:
 		return
+
+func knockback(impactVector):
+	state = State.DYING
+	velocity = impactVector
+	$KnockbackTimer.start()
 
 
 func kill():
@@ -129,7 +150,8 @@ func kill():
 	if level != null:
 		level.current_bugs -= 1
 		#warning-ignore:RETURN_VALUE_DISCARDED
-		connect("died", StageManager.hud, "_on_bug_died")
+		if not is_connected("died", StageManager.hud, "_on_bug_died"):
+			connect("died", StageManager.hud, "_on_bug_died")
 		emit_signal("died")
 	$AnimationPlayer.play("hit")
 	play_death_sound()
@@ -181,3 +203,14 @@ func _on_Critter_body_entered(body: Node) -> void:
 
 func _on_NavUpdateTimer_timeout():
 	pass # Replace with function body.
+
+
+func _on_hit(impactVector : Vector2 = Vector2.ZERO):
+	if !$SpawnSafetyTimer.is_stopped():
+		return # geeze, let them out of their box. give them 1 second
+	if impactVector == Vector2.ZERO:
+		impactVector = global_position.direction_to(StageManager.player.global_position)
+	knockback(impactVector)
+
+func _on_KnockbackTimer_timeout():
+	kill()

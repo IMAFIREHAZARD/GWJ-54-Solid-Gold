@@ -6,13 +6,16 @@ export(PackedScene) var slow_attack_scene
 const attacks = ["do_summon_attack", "do_curse_attack", "do_projectile_attack"]
 
 var attack_index = 0
-var health_max : float = 100.0
+var health_max : float = 66.0
 var health := health_max
 var crack_threshold : float = 10 # how much damage to get one crack
 var num_cracks : int = 0
 
 enum States { READY, ATTACKING, DYING, DEAD }
 var State = States.READY
+
+signal dying
+signal died
 
 func do_next_attack():
 	if State in [States.DYING, States.DEAD]:
@@ -36,7 +39,8 @@ func do_summon_attack():
 
 func do_projectile_attack():
 	var emitter = $Visuals/Left_Arm/ForearmRight/HandRight/do_projectile_attack
-	for phi in [-0.2, -0.1, 0, 0.1, 0.2]:
+	
+	for phi in [-PI/3.0, -PI/6.0, 0, PI/6.0, PI/3.0]:
 		var attack_dir = emitter.global_position.direction_to(StageManager.player.global_position)
 		attack_dir = attack_dir.rotated(phi)
 		var proj = projectile_scene.instance()
@@ -73,7 +77,7 @@ func _on_hit(damage):
 			#$AnimationPlayer.play("hit") # this interferes with attacks.
 			flash_white()
 			health -= damage
-			print("Boss health remaining " + str(health) + " out of " + str(health_max))
+			#print("Boss health remaining " + str(health) + " out of " + str(health_max))
 			if (health_max - health) / crack_threshold > num_cracks:
 				find_node("CrackDecals").spawn_crack()
 				$CrackNoises.play_random_noise()
@@ -84,17 +88,27 @@ func _on_hit(damage):
 			die_horribly()
 		
 func die_horribly():
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("dying", StageManager.current_map, "_on_boss_dying")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	connect("dying", StageManager.player, "_on_boss_dying")
+	
+	emit_signal("dying")
+	#destroy_all_critters() # current map can do this
 	$AttackTimer.stop()
 	State = States.DYING
 	$AnimationPlayer.play("die")
+	# see more logic in _on_AnimationPlayer_animation_finished
 
-func spawn_dialog(timeline_name):
+
+
+func spawn_dialog(_timeline_name):
 	var new_dialog = Dialogic.start('DefeatedBoss')
 	add_child(new_dialog)
 	new_dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 	new_dialog.connect("timeline_end", self, "_on_dialogic_timeline_end")
 
-func _on_dialogic_signal(params):
+func _on_dialogic_signal(_params):
 	pass
 
 func _on_dialogic_timeline_end(timeline_name):
@@ -109,10 +123,18 @@ func destroy_all_critters():
 			critter.kill()
 	StageManager.player.pause()
 
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
-		destroy_all_critters()
+		#warning-ignore:RETURN_VALUE_DISCARDED
+		connect("died", StageManager.current_map, "_on_boss_died")
+		emit_signal("died") # let the map pan the camera
+
+		#destroy_all_critters() # current_map can do this
 		State = States.DEAD
-		print("Boss is Dead. Now what?")
+
+		var timer = get_tree().create_timer(1.5)
+		yield(timer, "timeout")
+		
 		spawn_dialog("DefeatedBoss") # this should probably go in the current_map instead. 
 
