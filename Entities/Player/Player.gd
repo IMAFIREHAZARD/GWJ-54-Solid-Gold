@@ -121,25 +121,40 @@ func is_outside_frustum():
 func animate_movement(directionVector):
 	var anim_array
 	var idle_speed_threshold = 50.0
+	var idle = false
+	
 	if (directionVector.length_squared() > idle_speed_threshold * idle_speed_threshold):
+		
 		anim_array = run_anim_names
 		dir_index = round(Vector2.DOWN.angle_to(vel)/deg2rad(45))
 		last_direction = directionVector
-		if $SpriteRoot/AnimatedSprite.frame in [1,3]:
+
+		if $SpriteRoot/AnimatedSprite.frame in [1,3]: # footfall landing frame
 			# sprite frames extend more than 1 game frame. slow the noises down
 			if Time.get_ticks_msec() > last_footstep_time + footstep_interval:
 				last_footstep_time = Time.get_ticks_msec()
 				$FootstepNoises.play_random_noise()
-
 	else:
+		idle = true
 		anim_array = idle_anim_names
-	
+
 	
 	animated_sprite.animation = anim_array[abs(dir_index)]
-	if dir_index > 0:
-		$SpriteRoot.scale.x = 1
-	else:
-		$SpriteRoot.scale.x = -1
+	
+	if idle == false: # flip_h follows WASD
+		if dir_index > 0 and idle == false:
+			$SpriteRoot.scale.x = 1
+		else:
+			$SpriteRoot.scale.x = -1
+	elif idle == true: # flip_h follows Mouse
+		var mousePos = get_global_mouse_position()
+		var myPos = global_position
+		if myPos.x < mousePos.x:
+			$SpriteRoot.scale.x = -1
+		else:
+			$SpriteRoot.scale.x = 1
+	
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):

@@ -30,9 +30,9 @@ margin_bottom = 640.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 424.0
-margin_top = 101.0
+margin_top = 67.0
 margin_right = 599.0
-margin_bottom = 498.0
+margin_bottom = 532.0
 rect_min_size = Vector2( 175, 0 )
 custom_constants/separation = 40
 
@@ -67,7 +67,6 @@ text = "Play Game"
 target_scene = ExtResource( 8 )
 
 [node name="TestingMenuButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-visible = false
 margin_top = 233.0
 margin_right = 175.0
 margin_bottom = 261.0
@@ -75,23 +74,23 @@ text = "Testing"
 target_scene = ExtResource( 4 )
 
 [node name="Settings" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 233.0
+margin_top = 301.0
 margin_right = 175.0
-margin_bottom = 261.0
+margin_bottom = 329.0
 text = "Settings"
 target_scene = ExtResource( 9 )
 
 [node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 301.0
+margin_top = 369.0
 margin_right = 175.0
-margin_bottom = 329.0
+margin_bottom = 397.0
 text = "Credits"
 target_scene = ExtResource( 7 )
 
 [node name="QuitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
-margin_top = 369.0
+margin_top = 437.0
 margin_right = 175.0
-margin_bottom = 397.0
+margin_bottom = 465.0
 text = "Quit"
 script = ExtResource( 6 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://sfx/shoot/SHOOT_better__01.wav" type="AudioStream" id=23]
 [ext_resource path="res://GUI/Buttons/UI_hover_02.wav" type="AudioStream" id=24]
 [ext_resource path="res://GUI/Buttons/UI_hover_01.wav" type="AudioStream" id=25]
+[ext_resource path="res://Entities/Player/BulletSpawnPoint.gd" type="Script" id=26]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0217
@@ -466,6 +467,7 @@ color_ramp = SubResource( 67 )
 
 [node name="BulletSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 0, -76 )
+script = ExtResource( 26 )
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 layer = 20
