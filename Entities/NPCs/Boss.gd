@@ -58,6 +58,15 @@ func do_curse_attack():
 		attack.global_position = attack_pos.global_position
 		yield(get_tree().create_timer(0.3), "timeout")
 
+func recoil():
+	var tween = get_tree().create_tween()
+	var base = $Visuals/BodyBase
+	var currentRot = rotation
+	tween.tween_property(base, "rotation", currentRot + (0.3), 0.25)
+	tween.tween_interval(0.5)
+	tween.tween_property(base, "rotation", currentRot, 0.5)
+	
+
 func flash_white():
 	var duration = 0.2
 	var material = $Visuals/BodyBase.material
@@ -75,6 +84,7 @@ func _on_hit(damage):
 		if damage > 0:
 			$ShotNoises/IFramesTimer.start()
 			#$AnimationPlayer.play("hit") # this interferes with attacks.
+			recoil()
 			flash_white()
 			health -= damage
 			#print("Boss health remaining " + str(health) + " out of " + str(health_max))
