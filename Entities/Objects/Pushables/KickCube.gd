@@ -84,6 +84,7 @@ func spawn_critters():
 		newCritter.random_start_location = false
 		get_parent().call_deferred("add_child", newCritter)
 		newCritter.set_deferred("global_position", global_position)
+		newCritter.set_deferred("global_scale", Vector2(1, 1))
 		bugs.append(newCritter)
 	call_deferred("emit_signal", "bugs_spawned", bugs)
 
