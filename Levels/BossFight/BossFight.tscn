@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/NPCs/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Objects/Pushables/KickCube.tscn" type="PackedScene" id=2]
@@ -94,6 +94,39 @@ tracks/2/keys = {
 vertices = PoolVector2Array( 2278, -2390, 5899, -185, -1463, 3525, -1578, -467, -4862, 1124 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2 ) ]
 outlines = [ PoolVector2Array( -4862, 1124, -1463, 3525, 5899, -185, 2278, -2390, -1578, -467 ) ]
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 0.0336914, 0.0319805, 0.0319805, 1, 0.79834, 0.815388, 0.851563, 1 )
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 10 )
+width = 75
+fill_from = Vector2( 0, 0.000558036 )
+
+[sub_resource type="Environment" id=11]
+background_mode = 4
+ambient_light_color = Color( 0.262745, 0.0627451, 0.0627451, 1 )
+fog_color = Color( 0.172549, 0.270588, 0.372549, 1 )
+ss_reflections_enabled = true
+ssao_radius = 0.1
+ssao_color = Color( 0.207843, 0.0666667, 0.0666667, 1 )
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_intensity = 0.88
+glow_strength = 0.77
+glow_bloom = 0.03
+glow_blend_mode = 0
+glow_hdr_threshold = 1.23
+glow_hdr_luminance_cap = 14.44
+glow_hdr_scale = 0.17
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_saturation = 0.62
+adjustment_color_correction = SubResource( 9 )
 
 [node name="BossFight" type="Node2D"]
 script = ExtResource( 5 )
@@ -372,7 +405,6 @@ position = Vector2( -1454, 1428 )
 
 [node name="AnimatedSprite" parent="YSort/Player/SpriteRoot" index="0"]
 animation = "RunNW"
-frame = 1
 flip_h = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/Player"]
@@ -398,6 +430,9 @@ stream = ExtResource( 12 )
 volume_db = -14.0
 autoplay = true
 bus = "Music"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
 
 [editable path="YSort/DirectionalTowerPlatform"]
 [editable path="YSort/DirectionalTowerPlatform/ReflectorSensors/ReflectorSensor01"]
