@@ -79,7 +79,7 @@ func get_flocking_vector():
 			nearby_critters.push_back(critter)
 	
 	var avoidance_vector = Vector2.ZERO
-	var avoidance_distance = 60.0
+	var avoidance_distance = 75.0
 	var collision_count = 0.0
 	for critter in nearby_critters:
 		if critter.get_global_position().distance_squared_to(global_position) < avoidance_distance * avoidance_distance:
