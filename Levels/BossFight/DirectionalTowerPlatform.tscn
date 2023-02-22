@@ -1,33 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Levels/BossFight/LightUpLine.gd" type="Script" id=2]
-[ext_resource path="res://Levels/BossFight/BoxSensor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Levels/BossFight/DirectionalProjectileTower.tscn" type="PackedScene" id=5]
 
 [node name="DirectionalTowerPlatform" type="Node2D"]
-
-[node name="DirectionSensors" type="Node2D" parent="."]
-z_index = 1
-
-[node name="BoxSensor01" parent="DirectionSensors" instance=ExtResource( 3 )]
-position = Vector2( -257, 126 )
-z_index = 1
-
-[node name="BoxSensor02" parent="DirectionSensors" instance=ExtResource( 3 )]
-position = Vector2( 258, 129 )
-z_index = 1
-
-[node name="BoxSensor03" parent="DirectionSensors" instance=ExtResource( 3 )]
-position = Vector2( 260, -128 )
-z_index = 1
-
-[node name="ReflectorSensors" type="Node2D" parent="."]
-z_index = 1
-
-[node name="ReflectorSensor01" parent="ReflectorSensors" instance=ExtResource( 3 )]
-position = Vector2( -254, -128 )
-z_index = 1
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -42,33 +18,6 @@ cell_size = Vector2( 128, 64 )
 format = 1
 tile_data = PoolIntArray( -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -131076, 0, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 0, 0, -65540, 0, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 0, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 0, 0, -4, 0, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 131068, 0, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 0, 0, 196604, 0, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 0, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 0, 0, 262140, 0, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 0, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0 )
 
-[node name="Wires" type="Node2D" parent="."]
-z_index = -2
-
-[node name="LightUpLine" type="Line2D" parent="Wires"]
-z_index = -1
-points = PoolVector2Array( 0, -1, -251, 130 )
-script = ExtResource( 2 )
-box_sensor = NodePath("../../DirectionSensors/BoxSensor01")
-
-[node name="LightUpLine2" type="Line2D" parent="Wires"]
-z_index = -1
-points = PoolVector2Array( 0, -1, 261, 128 )
-script = ExtResource( 2 )
-box_sensor = NodePath("../../DirectionSensors/BoxSensor02")
-
-[node name="LightUpLine3" type="Line2D" parent="Wires"]
-z_index = -1
-points = PoolVector2Array( 0, -1, 256, -132 )
-script = ExtResource( 2 )
-box_sensor = NodePath("../../DirectionSensors/BoxSensor03")
-
-[node name="LightUpLine4" type="Line2D" parent="Wires"]
-z_index = -1
-points = PoolVector2Array( 0, -1, -255, -125 )
-script = ExtResource( 2 )
-box_sensor = NodePath("../../ReflectorSensors/ReflectorSensor01")
-
 [node name="DirectionViz" type="Node2D" parent="."]
 position = Vector2( -6, -440 )
 
@@ -80,4 +29,7 @@ default_color = Color( 0.94902, 0.333333, 0, 1 )
 
 [node name="ProjectileTower" parent="." instance=ExtResource( 5 )]
 
-[editable path="ReflectorSensors/ReflectorSensor01"]
+[node name="Shield" parent="ProjectileTower" index="4"]
+frame = 1
+
+[editable path="ProjectileTower"]

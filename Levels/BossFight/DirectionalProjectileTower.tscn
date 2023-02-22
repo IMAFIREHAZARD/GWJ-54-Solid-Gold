@@ -19,14 +19,7 @@ projectile_scene = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="." index="0"]
 
-[node name="Polygon2D" parent="." index="3"]
-scale = Vector2( 2, 3.28 )
-
-[node name="Polygon2D" parent="Polygon2D" index="0"]
-position = Vector2( -4, -55.7927 )
-scale = Vector2( 1, 0.646341 )
-
-[node name="Shield" parent="." index="5"]
+[node name="Shield" parent="." index="4"]
 frame = 2
 
 [node name="DirectionSensors" type="Node2D" parent="." index="6"]
@@ -80,10 +73,10 @@ position = Vector2( 1, -4 )
 points = PoolVector2Array( 1, 0, 358, 2 )
 default_color = Color( 0.94902, 0.333333, 0, 1 )
 
-[node name="Timer" parent="." index="11"]
+[node name="Timer" parent="." index="10"]
 wait_time = 0.5
 
-[node name="Gun" type="Node2D" parent="." index="12"]
+[node name="Gun" type="Node2D" parent="." index="11"]
 
 [node name="ShootNoises" type="Node2D" parent="Gun" index="0"]
 script = ExtResource( 8 )
