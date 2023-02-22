@@ -14,7 +14,7 @@
 			"change_z_index": false,
 			"character": "character-1676179918.json",
 			"event_id": "dialogic_002",
-			"mirror_portrait": false,
+			"mirror_portrait": true,
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
@@ -32,6 +32,64 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "He looks like a party pooper"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's my Arch Enemy. Defeat them!"
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wait. We thought you were leading us to the exit."
+		},
+		{
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Right. Right after you defeat this guy."
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676112496.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
 		},
 		{
 			"animation": "[Default]",
@@ -76,6 +134,21 @@
 			"event_id": "dialogic_023",
 			"hide_dialogbox": true,
 			"wait_seconds": 1
+		},
+		{
+			"character": "character-1676179918.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Now, these towers look  interesting. What's happening here?"
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1
+		},
+		{
+			"emit_signal": "",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

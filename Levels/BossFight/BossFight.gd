@@ -8,6 +8,7 @@ export var max_tower_bugs = 10 # dictates when bugs stop spawning
 
 onready var shield_tower: StaticBody2D = $"%ShieldTower"
 onready var shield_tower_2: StaticBody2D = $"%ShieldTower2"
+onready var projectile_tower_1 = $"CameraPositions/CameraPosition2"
 onready var boss: Sprite = $YSort/BossRoot/pos/Boss
 
 func _ready() -> void:
@@ -32,6 +33,9 @@ func do_cutscene() -> void:
 	yield(dialog, "dialogic_signal")
 	pan_camera(shield_tower_2.global_position)
 	yield(dialog, "dialogic_signal")
+	pan_camera(projectile_tower_1.global_position)
+	yield(dialog, "dialogic_signal")
+	
 	yield(pan_camera(player.global_position), "completed")
 	start_active_play()
 	

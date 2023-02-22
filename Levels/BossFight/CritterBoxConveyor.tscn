@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/CommonInfrastructure/HaydenTileFixTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Levels/BossFight/CritterBoxConveyor.gd" type="Script" id=2]
 [ext_resource path="res://Levels/BossFight/CritterBoxDestroyer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Objects/Destructibles/DestructibleBoxOfCritters.tscn" type="PackedScene" id=4]
 
 [node name="CritterBoxConveyor" type="Node2D"]
 script = ExtResource( 2 )
@@ -28,5 +29,8 @@ autostart = true
 position = Vector2( 3635, -1663 )
 
 [node name="CritterBoxes" type="YSort" parent="."]
+
+[node name="DestructibleBoxOfCritters3" parent="CritterBoxes" instance=ExtResource( 4 )]
+position = Vector2( -1470, 938 )
 
 [connection signal="timeout" from="CritterBoxSpawner/Timer" to="." method="_on_Timer_timeout"]
