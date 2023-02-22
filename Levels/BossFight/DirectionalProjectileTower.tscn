@@ -27,7 +27,7 @@ position = Vector2( -4, -55.7927 )
 scale = Vector2( 1, 0.646341 )
 
 [node name="Shield" parent="." index="5"]
-frame = 3
+frame = 2
 
 [node name="DirectionSensors" type="Node2D" parent="." index="6"]
 

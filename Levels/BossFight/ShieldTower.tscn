@@ -35,25 +35,20 @@ position = Vector2( -1, -1 )
 texture = ExtResource( 10 )
 offset = Vector2( -10, -178 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-scale = Vector2( 2, 2 )
-polygon = PoolVector2Array( -32, 0, 0, 16, 32, 0, 24, -32, 24, -56, 32, -64, 32, -72, 24, -96, 32, -112, 32, -128, 56, -144, 56, -160, 40, -176, 48, -160, 32, -144, 24, -160, 8, -168, 16, -144, 8, -120, -8, -128, -8, -160, -8, -152, -16, -120, -32, -128, -24, -104, -48, -128, -40, -96, -40, -80, -32, -72, -24, -56, -24, -32, -32, -16 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
-color = Color( 0.670588, 0.0784314, 0.0784314, 1 )
-polygon = PoolVector2Array( -8, -152, -32, -120, 0, -88, 24, -120 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -3, -2 )
+scale = Vector2( 2.54961, 2.27272 )
 polygon = PoolVector2Array( 0, 16, 32, 0, 0, -16, -32, 0 )
 
 [node name="Shield" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -160.64 )
 scale = Vector2( 1.12, 1.10289 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Reflector" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 2.36657, 1.40657 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
